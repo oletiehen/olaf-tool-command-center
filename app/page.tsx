@@ -1,5 +1,5 @@
-import CommandCenter from "./CommandCenter";
+import DashboardHome from "./DashboardHome";
 
 export default function Home() {
-  return <CommandCenter />;
+  return <DashboardHome />;
 }

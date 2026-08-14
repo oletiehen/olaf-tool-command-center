@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html", host: "localhost" },
     }),
     {
@@ -23,24 +23,38 @@ async function render() {
   );
 }
 
-test("server-renders the Tool Command Center", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+test("server-renders all four app routes", async () => {
+  const routes = [
+    ["/", /Guten Tag, Olaf\./],
+    ["/funktionen", /Finde genau die Funktion/],
+    ["/workflow", /Arbeite nicht mit allen Werkzeugen zugleich/],
+    ["/prompts", /Wähle den Prompt/],
+  ];
 
-  const html = await response.text();
-  assert.match(html, /<html lang="de">/i);
-  assert.match(html, /<title>Olaf · Tool Command Center<\/title>/i);
-  assert.match(html, /Das richtige Werkzeug\./);
-  assert.match(html, /29 Funktionen/);
-  assert.match(html, /Werkzeug finden/);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+  for (const [pathname, expectedCopy] of routes) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200, pathname);
+    assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+    const html = await response.text();
+    assert.match(html, /<html lang="de">/i);
+    assert.match(html, /Olaf · Tool Command Center/i);
+    assert.match(html, expectedCopy);
+    assert.match(html, /Dashboard/);
+    assert.match(html, /Funktionen/);
+    assert.match(html, /Workflow/);
+    assert.match(html, /Prompts/);
+    assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+  }
 });
 
-test("contains all 29 functions and the requested interaction surfaces", async () => {
-  const [data, component, css, layout, packageJson, og] = await Promise.all([
+test("contains all 29 functions and the multi-route interaction surfaces", async () => {
+  const [data, shell, library, workflowBoard, promptStudio, css, layout, packageJson, og] = await Promise.all([
     readFile(new URL("../app/tool-data.ts", import.meta.url), "utf8"),
-    readFile(new URL("../app/CommandCenter.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/AppShell.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/ToolLibrary.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/WorkflowBoard.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/PromptStudio.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -63,18 +77,27 @@ test("contains all 29 functions and the requested interaction surfaces", async (
     assert.match(data, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 
-  assert.match(component, /type="search"/);
-  assert.match(component, /Projektfokus/);
-  assert.match(component, /Priorität/);
-  assert.match(component, /showModal\(\)/);
-  assert.match(component, /navigator\.clipboard\.writeText/);
-  assert.match(component, /workflow\.map/);
-  assert.match(component, /masterPrompt/);
+  for (const href of ["/", "/funktionen", "/workflow", "/prompts"]) {
+    assert.match(shell, new RegExp(`href: "${href.replace("/", "\\/")}"`));
+  }
+  assert.match(shell, /app-mobile-nav/);
+  assert.match(shell, /router\.push/);
 
-  assert.match(css, /@media \(max-width: 700px\)/);
-  assert.match(css, /@media \(max-width: 370px\)/);
+  assert.match(library, /type="search"/);
+  assert.match(library, /Projektfokus/);
+  assert.match(library, /Priorität/);
+  assert.match(library, /showModal\(\)/);
+  assert.match(library, /navigator\.clipboard\.writeText/);
+  assert.match(workflowBoard, /workflow\.map/);
+  assert.match(workflowBoard, /setActiveIndex/);
+  assert.match(promptStudio, /masterPrompt/);
+  assert.match(promptStudio, /navigator\.clipboard\.writeText/);
+
+  assert.match(css, /@media \(max-width: 860px\)/);
+  assert.match(css, /@media \(max-width: 360px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(css, /\.mobile-nav/);
+  assert.match(css, /\.app-mobile-nav/);
+  assert.match(css, /\.app-sidebar/);
   assert.match(layout, /openGraph/);
   assert.match(layout, /twitter/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
