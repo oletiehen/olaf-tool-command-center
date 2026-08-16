@@ -127,7 +127,7 @@ test("contains the 29-function core, the deduplicated screenshot catalog and all
   assert.doesNotMatch(layout, /headers\(\)/);
   assert.match(nextConfig, /output: "export"/);
   assert.match(nextConfig, /basePath/);
-  assert.match(pagesWorkflow, /actions\/deploy-pages@v4/);
+  assert.match(pagesWorkflow, /actions\/deploy-pages@v5/);
   assert.match(pagesWorkflow, /NEXT_PUBLIC_BASE_PATH: \/olaf-tool-command-center/);
   assert.match(pagesWorkflow, /path: dist\/client/);
   assert.match(packageJson, /"build:pages"/);
