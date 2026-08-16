@@ -48,9 +48,10 @@ test("server-renders all four app routes", async () => {
   }
 });
 
-test("contains all 29 functions and the multi-route interaction surfaces", async () => {
-  const [data, shell, library, workflowBoard, promptStudio, css, layout, packageJson, og] = await Promise.all([
+test("contains the 29-function core, the deduplicated screenshot catalog and all interaction surfaces", async () => {
+  const [data, catalog, shell, library, workflowBoard, promptStudio, css, layout, packageJson, nextConfig, pagesWorkflow, og] = await Promise.all([
     readFile(new URL("../app/tool-data.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/plugin-catalog.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/AppShell.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/ToolLibrary.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/WorkflowBoard.tsx", import.meta.url), "utf8"),
@@ -58,11 +59,26 @@ test("contains all 29 functions and the multi-route interaction surfaces", async
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
-    stat(new URL("../public/og.png", import.meta.url)),
+    readFile(new URL("../next.config.ts", import.meta.url), "utf8"),
+    readFile(new URL("../.github/workflows/pages.yml", import.meta.url), "utf8"),
+    stat(new URL("../public/og-v2.png", import.meta.url)),
   ]);
 
-  const toolIds = data.match(/^\s{4}id: /gm) ?? [];
-  assert.equal(toolIds.length, 29);
+  const coreToolIds = data.match(/^\s{4}id: "/gm) ?? [];
+  const coreToolNames = [...data.matchAll(/^\s{4}name: "([^"]+)",/gm)].map((match) => match[1]);
+  const catalogNames = [...catalog.matchAll(/^\s{4}\["([^"]+)",/gm)].map((match) => match[1]);
+  const normalizedCoreNames = new Set(coreToolNames.map((name) => name.toLocaleLowerCase("de")));
+  const normalizedCatalogNames = catalogNames.map((name) => name.toLocaleLowerCase("de"));
+
+  assert.equal(coreToolIds.length, 29);
+  assert.equal(coreToolNames.length, 29);
+  assert.equal(catalogNames.length, 206);
+  assert.equal(new Set(normalizedCatalogNames).size, catalogNames.length, "screenshot catalog contains duplicates");
+  assert.deepEqual(
+    catalogNames.filter((name) => normalizedCoreNames.has(name.toLocaleLowerCase("de"))),
+    [],
+    "screenshot catalog duplicates the personal core",
+  );
 
   for (const name of [
     "Planmodus",
@@ -77,6 +93,10 @@ test("contains all 29 functions and the multi-route interaction surfaces", async
     assert.match(data, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 
+  for (const name of ["GitHub", "Figma", "Supabase", "Vercel", "Remotion", "HeyGen", "Dovetail"]) {
+    assert.match(catalog, new RegExp(`\\["${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  }
+
   for (const href of ["/", "/funktionen", "/workflow", "/prompts"]) {
     assert.match(shell, new RegExp(`href: "${href.replace("/", "\\/")}"`));
   }
@@ -86,11 +106,15 @@ test("contains all 29 functions and the multi-route interaction surfaces", async
   assert.match(library, /type="search"/);
   assert.match(library, /Projektfokus/);
   assert.match(library, /Priorität/);
+  assert.match(library, /Quelle &amp; Status/);
+  assert.match(library, /PAGE_SIZE = 48/);
+  assert.match(library, /availabilityLabels/);
   assert.match(library, /showModal\(\)/);
   assert.match(library, /navigator\.clipboard\.writeText/);
   assert.match(workflowBoard, /workflow\.map/);
   assert.match(workflowBoard, /setActiveIndex/);
   assert.match(promptStudio, /masterPrompt/);
+  assert.match(promptStudio, /sourceOptions/);
   assert.match(promptStudio, /navigator\.clipboard\.writeText/);
 
   assert.match(css, /@media \(max-width: 860px\)/);
@@ -100,6 +124,13 @@ test("contains all 29 functions and the multi-route interaction surfaces", async
   assert.match(css, /\.app-sidebar/);
   assert.match(layout, /openGraph/);
   assert.match(layout, /twitter/);
+  assert.doesNotMatch(layout, /headers\(\)/);
+  assert.match(nextConfig, /output: "export"/);
+  assert.match(nextConfig, /basePath/);
+  assert.match(pagesWorkflow, /actions\/deploy-pages@v4/);
+  assert.match(pagesWorkflow, /NEXT_PUBLIC_BASE_PATH: \/olaf-tool-command-center/);
+  assert.match(pagesWorkflow, /path: dist\/client/);
+  assert.match(packageJson, /"build:pages"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.ok(og.size > 100_000);
 

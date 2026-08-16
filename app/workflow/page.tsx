@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import WorkflowBoard from "../WorkflowBoard";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Workflow · Olaf Tool Command Center",
   description: "Der empfohlene siebenstufige Workflow für Olafs Projekte.",

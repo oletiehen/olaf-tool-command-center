@@ -2,7 +2,19 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { categoryLabels, categoryOptions, masterPrompt, tools, type Category } from "./tool-data";
+import {
+  categoryLabels,
+  categoryOptions,
+  coreTools,
+  getToolSource,
+  masterPrompt,
+  screenshotTools,
+  sourceLabels,
+  sourceOptions,
+  tools,
+  type Category,
+  type ToolSource,
+} from "./tool-data";
 
 type PromptItem = {
   id: string;
@@ -13,6 +25,7 @@ type PromptItem = {
   summary: string;
   prompt: string;
   toolName: string;
+  source: ToolSource;
 };
 
 const promptItems: PromptItem[] = [
@@ -25,6 +38,7 @@ const promptItems: PromptItem[] = [
     summary: "Der vollständige Planungsauftrag für den KI-Immobiliencoach mit klarer Freigabegrenze.",
     prompt: masterPrompt,
     toolName: "Planmodus",
+    source: "core",
   },
   ...tools.map((tool) => ({
     id: tool.id,
@@ -35,6 +49,7 @@ const promptItems: PromptItem[] = [
     summary: tool.summary,
     prompt: tool.prompt,
     toolName: tool.name,
+    source: getToolSource(tool),
   })),
 ];
 
@@ -42,19 +57,21 @@ export default function PromptStudio() {
   const [selectedId, setSelectedId] = useState("master");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<"all" | Category>("all");
+  const [source, setSource] = useState<"all" | ToolSource>("all");
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
 
   const filteredItems = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("de");
     return promptItems.filter((item) => {
       const categoryMatches = category === "all" || item.category === category;
+      const sourceMatches = source === "all" || item.source === source;
       const textMatches = !normalized || [item.name, item.label, item.summary, item.prompt]
         .join(" ")
         .toLocaleLowerCase("de")
         .includes(normalized);
-      return categoryMatches && textMatches;
+      return categoryMatches && sourceMatches && textMatches;
     });
-  }, [category, query]);
+  }, [category, query, source]);
 
   const selected = promptItems.find((item) => item.id === selectedId) ?? promptItems[0];
 
@@ -72,12 +89,12 @@ export default function PromptStudio() {
     <div className="app-page prompts-page">
       <section className="app-page-intro prompts-page-intro">
         <div>
-          <span className="app-eyebrow">30 direkt nutzbare Vorlagen</span>
+          <span className="app-eyebrow">{promptItems.length} direkt nutzbare Vorlagen</span>
           <h2>Wähle den Prompt, der zu deinem nächsten Schritt passt.</h2>
         </div>
         <p>
-          Links findest du den Master-Startprompt und alle 29 Werkzeugvorlagen. Rechts kannst du
-          die vollständige Fassung lesen und direkt kopieren.
+          Enthalten sind der Master-Startprompt, {coreTools.length} persönliche Kernvorlagen und
+          {" "}{screenshotTools.length} Vorlagen aus dem erweiterten Screenshot-Katalog.
         </p>
       </section>
 
@@ -88,7 +105,7 @@ export default function PromptStudio() {
         </div>
         <div>
           <span>Bibliothek</span>
-          <strong>30 Vorlagen</strong>
+          <strong>{promptItems.length} Vorlagen</strong>
         </div>
         <div className="prompt-safety-status">
           <span className="draft-dot" aria-hidden="true" />
@@ -120,6 +137,14 @@ export default function PromptStudio() {
               ))}
             </select>
           </label>
+          <label className="prompt-category-field">
+            <span className="sr-only">Prompt-Quelle auswählen</span>
+            <select value={source} onChange={(event) => setSource(event.target.value as "all" | ToolSource)}>
+              {sourceOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
 
           <ul className="prompt-list" aria-label="Prompt-Vorlagen">
             {filteredItems.map((item) => (
@@ -135,7 +160,7 @@ export default function PromptStudio() {
                   <span className="prompt-list-mark" data-category={item.category}>{item.mark}</span>
                   <span>
                     <strong>{item.name}</strong>
-                    <small>{item.label}</small>
+                    <small>{item.label} · {item.source === "screenshots" ? "Screenshot" : "Kern"}</small>
                   </span>
                   <i aria-hidden="true">›</i>
                 </button>
@@ -159,6 +184,7 @@ export default function PromptStudio() {
 
           <div className="prompt-editor-meta">
             <span>{selected.label}</span>
+            <span>{sourceLabels[selected.source]}</span>
             <span>{selected.prompt.length} Zeichen</span>
           </div>
 

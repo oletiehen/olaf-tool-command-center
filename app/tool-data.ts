@@ -1,3 +1,5 @@
+import { screenshotPluginRecords } from "./plugin-catalog";
+
 export type Priority = "A" | "B" | "C";
 
 export type Category =
@@ -7,7 +9,16 @@ export type Category =
   | "sales"
   | "analyse"
   | "utility"
-  | "travel";
+  | "travel"
+  | "design"
+  | "media"
+  | "productivity"
+  | "documents"
+  | "research"
+  | "integrations";
+
+export type ToolSource = "core" | "screenshots";
+export type ToolAvailability = "included" | "check";
 
 export type Project =
   | "immobilien"
@@ -31,6 +42,8 @@ export type Tool = {
   use: string;
   example: string;
   prompt: string;
+  source?: ToolSource;
+  availability?: ToolAvailability;
 };
 
 export const projectOptions: Array<{ value: "all" | Project; label: string }> = [
@@ -52,6 +65,12 @@ export const categoryOptions: Array<{ value: "all" | Category; label: string }> 
   { value: "analyse", label: "Analyse" },
   { value: "utility", label: "Alltag" },
   { value: "travel", label: "Reise" },
+  { value: "design", label: "Design & UI" },
+  { value: "media", label: "Bild, Video & Audio" },
+  { value: "productivity", label: "Produktivität" },
+  { value: "documents", label: "Dokumente & PDF" },
+  { value: "research", label: "Recherche & Daten" },
+  { value: "integrations", label: "Apps & Integrationen" },
 ];
 
 export const categoryLabels: Record<Category, string> = {
@@ -62,7 +81,37 @@ export const categoryLabels: Record<Category, string> = {
   analyse: "Analyse",
   utility: "Alltag",
   travel: "Reise",
+  design: "Design & UI",
+  media: "Bild, Video & Audio",
+  productivity: "Produktivität",
+  documents: "Dokumente & PDF",
+  research: "Recherche & Daten",
+  integrations: "Apps & Integrationen",
 };
+
+export const sourceOptions: Array<{ value: "all" | ToolSource; label: string }> = [
+  { value: "all", label: "Alle Quellen" },
+  { value: "core", label: "29 Kernfunktionen" },
+  { value: "screenshots", label: "Screenshot-Erweiterungen" },
+];
+
+export const sourceLabels: Record<ToolSource, string> = {
+  core: "Persönliche Kernbibliothek",
+  screenshots: "Aus deinen Screenshots",
+};
+
+export const availabilityLabels: Record<ToolAvailability, string> = {
+  included: "Im Command Center eingeordnet",
+  check: "Verfügbarkeit prüfen",
+};
+
+export function getToolSource(tool: Tool): ToolSource {
+  return tool.source ?? "core";
+}
+
+export function getToolAvailability(tool: Tool): ToolAvailability {
+  return tool.availability ?? "included";
+}
 
 export const projectLabels: Record<Project, string> = {
   immobilien: "KI-Immobiliencoach",
@@ -73,7 +122,7 @@ export const projectLabels: Record<Project, string> = {
   privat: "Privat & Alltag",
 };
 
-export const tools: Tool[] = [
+export const coreTools: Tool[] = [
   {
     id: "planmodus",
     index: 1,
@@ -626,6 +675,132 @@ export const tools: Tool[] = [
       "Finde Aktivitäten in [Ort] für [Datum]. Berücksichtige Interessen, verfügbare Zeit, Wege, Gesamtpreis und Stornierungsbedingungen. Erstelle einen realistischen Vorschlag und buche nichts ohne meine Freigabe.",
   },
 ];
+
+const projectsByCategory: Record<Category, Project[]> = {
+  strategy: ["immobilien", "training", "organisation"],
+  create: ["content", "training", "immobilien"],
+  build: ["immobilien", "content", "organisation"],
+  sales: ["immobilien", "training", "content"],
+  analyse: ["immobilien", "content", "organisation"],
+  utility: ["organisation", "privat"],
+  travel: ["privat", "organisation"],
+  design: ["content", "immobilien", "training"],
+  media: ["content", "training", "privat"],
+  productivity: ["organisation", "training", "privat"],
+  documents: ["organisation", "immobilien", "training"],
+  research: ["immobilien", "content", "organisation"],
+  integrations: ["organisation", "immobilien", "training"],
+};
+
+const categoryUse: Record<Category, string> = {
+  strategy: "Sinnvoll, wenn Ideen, Entscheidungen und nächste Schritte zuerst strukturiert werden sollen.",
+  create: "Sinnvoll für Inhalte, Vorlagen und ausformulierte Arbeitsergebnisse.",
+  build: "Sinnvoll für Websites, Apps, Datenbanken und technische Prototypen.",
+  sales: "Sinnvoll für Akquise, CRM, Marketing, Termine und Kundenkommunikation.",
+  analyse: "Sinnvoll, wenn Inhalte, Risiken oder Signale ausgewertet und verglichen werden sollen.",
+  utility: "Sinnvoll als ergänzendes Werkzeug für klar abgegrenzte Alltagsaufgaben.",
+  travel: "Sinnvoll für private Reiseplanung und die Vorbereitung konkreter Aktivitäten.",
+  design: "Sinnvoll für Nutzerführung, visuelle Konzepte, Markenarbeit und Prototypen.",
+  media: "Sinnvoll für Bild-, Video- und Audioinhalte sowie deren Nachbearbeitung.",
+  productivity: "Sinnvoll für Aufgaben, Meetings, Notizen, Planung und Teamorganisation.",
+  documents: "Sinnvoll für Dokumente, PDFs, Transkripte, Tabellen und Bewerbungsunterlagen.",
+  research: "Sinnvoll für Recherche, Marktbeobachtung, Datenquellen und belastbare Vergleiche.",
+  integrations: "Sinnvoll, wenn Informationen aus einer verbundenen App in den Arbeitsablauf einfließen sollen.",
+};
+
+const priorityATools = new Set([
+  "Airtable",
+  "Apollo.io",
+  "Figma",
+  "GitHub",
+  "Google Drive",
+  "HubSpot",
+  "Notion",
+  "PostHog",
+  "Supabase",
+  "Vercel",
+]);
+
+const priorityBTools = new Set([
+  "Asana",
+  "Atlassian Rovo",
+  "Base44",
+  "Box",
+  "Calendly",
+  "ClickUp",
+  "Dovetail",
+  "HeyGen",
+  "Linear",
+  "Lovable",
+  "Monday.com",
+  "OpenAI Developers",
+  "Product Design",
+  "Remotion",
+  "Semrush",
+  "Slack",
+  "Teams",
+  "UX Pilot",
+]);
+
+function slugifyToolName(name: string, fallbackIndex: number) {
+  const slug = name
+    .normalize("NFKD")
+    .toLocaleLowerCase("en")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return slug || `screenshot-tool-${fallbackIndex}`;
+}
+
+function createToolMark(name: string) {
+  const words = name.match(/[A-Za-z0-9]+/g) ?? [];
+  const mark = words.slice(0, 2).map((word) => word[0]).join("").toUpperCase();
+  return (mark || "SC").slice(0, 2);
+}
+
+const seenToolNames = new Set(coreTools.map((tool) => tool.name.toLocaleLowerCase("de")));
+const uniqueScreenshotRecords = screenshotPluginRecords.filter((record) => {
+  const key = record.name.toLocaleLowerCase("de");
+  if (seenToolNames.has(key)) return false;
+  seenToolNames.add(key);
+  return true;
+});
+
+export const screenshotTools: Tool[] = uniqueScreenshotRecords.map((record, offset) => {
+  const index = coreTools.length + offset + 1;
+  const priority: Priority = priorityATools.has(record.name)
+    ? "A"
+    : priorityBTools.has(record.name)
+      ? "B"
+      : "C";
+  const firstProject = projectsByCategory[record.category][0];
+
+  return {
+    id: `screenshot-${slugifyToolName(record.name, index)}`,
+    index,
+    name: record.name,
+    mark: createToolMark(record.name),
+    type: "Screenshot-Funktion",
+    priority,
+    category: record.category,
+    projects: projectsByCategory[record.category],
+    summary: record.description,
+    function:
+      `${record.name} ist in den bereitgestellten Screenshots mit „${record.description}“ beschrieben. ` +
+      "Der Eintrag dokumentiert die dort sichtbare Funktion; tatsächliche Verfügbarkeit, Berechtigungen und genauer Umfang sind vor der Nutzung live zu prüfen.",
+    use: categoryUse[record.category],
+    example:
+      `${record.name} für ein klar abgegrenztes Ergebnis im Bereich „${projectLabels[firstProject]}“ einsetzen ` +
+      "und den Entwurf vor jeder externen Aktion prüfen.",
+    prompt:
+      `Prüfe zuerst, ob ${record.name} in diesem Chat verfügbar und verbunden ist. ` +
+      `Wenn ja, nutze ${record.name} für folgende Aufgabe: [Ziel]. Orientierung aus dem Screenshot: ${record.description}. ` +
+      "Arbeite nur mit den bereitgestellten Informationen, kennzeichne Unsicherheiten und führe keine Veröffentlichung, Übertragung, Buchung oder kostenpflichtige Aktion ohne meine ausdrückliche Freigabe aus.",
+    source: "screenshots",
+    availability: "check",
+  };
+});
+
+export const tools: Tool[] = [...coreTools, ...screenshotTools];
 
 export const workflow = [
   {

@@ -3,20 +3,31 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
+  availabilityLabels,
   categoryLabels,
   categoryOptions,
+  coreTools,
+  getToolAvailability,
+  getToolSource,
   projectLabels,
   projectOptions,
+  screenshotTools,
+  sourceLabels,
+  sourceOptions,
   tools,
   type Category,
   type Priority,
   type Project,
   type Tool,
+  type ToolSource,
 } from "./tool-data";
 
 type CategoryFilter = "all" | Category;
 type ProjectFilter = "all" | Project;
 type PriorityFilter = "all" | Priority;
+type SourceFilter = "all" | ToolSource;
+
+const PAGE_SIZE = 48;
 
 const priorityLabels: Record<Priority, string> = {
   A: "A · hoher Hebel",
@@ -25,6 +36,8 @@ const priorityLabels: Record<Priority, string> = {
 };
 
 function LibraryCard({ tool, onOpen }: { tool: Tool; onOpen: (tool: Tool) => void }) {
+  const source = getToolSource(tool);
+
   return (
     <article className="tool-card" data-category={tool.category}>
       <button
@@ -41,6 +54,7 @@ function LibraryCard({ tool, onOpen }: { tool: Tool; onOpen: (tool: Tool) => voi
           <div className="tool-meta-row">
             <span className="priority-pill" data-priority={tool.priority}>{tool.priority}</span>
             <span>{categoryLabels[tool.category]}</span>
+            {source === "screenshots" ? <span className="source-pill">Screenshot</span> : null}
           </div>
           <h3>{tool.name}</h3>
           <p>{tool.summary}</p>
@@ -102,7 +116,17 @@ function ToolDialog({ tool, onClose }: { tool: Tool | null; onClose: () => void 
               {priorityLabels[tool.priority]}
             </span>
             <span className="soft-pill">{categoryLabels[tool.category]}</span>
+            <span className="soft-pill">{sourceLabels[getToolSource(tool)]}</span>
+            <span className="availability-pill" data-availability={getToolAvailability(tool)}>
+              {availabilityLabels[getToolAvailability(tool)]}
+            </span>
           </div>
+
+          {getToolSource(tool) === "screenshots" ? (
+            <div className="catalog-note" role="note">
+              Im Screenshot gesehen · nicht automatisch installiert oder verbunden. Bitte vor der Nutzung live prüfen.
+            </div>
+          ) : null}
 
           <div className="detail-grid">
             <section>
@@ -157,8 +181,10 @@ function ToolLibraryView({
   const [project, setProject] = useState<ProjectFilter>("all");
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [priority, setPriority] = useState<PriorityFilter>(initialPriority);
+  const [source, setSource] = useState<SourceFilter>("all");
   const [query, setQuery] = useState(initialQuery);
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filteredTools = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase("de");
@@ -166,6 +192,7 @@ function ToolLibraryView({
       const matchesProject = project === "all" || tool.projects.includes(project);
       const matchesCategory = category === "all" || tool.category === category;
       const matchesPriority = priority === "all" || tool.priority === priority;
+      const matchesSource = source === "all" || getToolSource(tool) === source;
       const searchable = [
         tool.name,
         tool.type,
@@ -174,18 +201,22 @@ function ToolLibraryView({
         tool.use,
         tool.example,
         categoryLabels[tool.category],
+        sourceLabels[getToolSource(tool)],
+        availabilityLabels[getToolAvailability(tool)],
       ].join(" ").toLocaleLowerCase("de");
-      return matchesProject && matchesCategory && matchesPriority && (!normalizedQuery || searchable.includes(normalizedQuery));
+      return matchesProject && matchesCategory && matchesPriority && matchesSource && (!normalizedQuery || searchable.includes(normalizedQuery));
     });
-  }, [category, priority, project, query]);
+  }, [category, priority, project, query, source]);
 
-  const hasFilters = project !== "all" || category !== "all" || priority !== "all" || query !== "";
+  const hasFilters = project !== "all" || category !== "all" || priority !== "all" || source !== "all" || query !== "";
 
   function resetFilters() {
     setProject("all");
     setCategory("all");
     setPriority("all");
+    setSource("all");
     setQuery("");
+    setVisibleCount(PAGE_SIZE);
   }
 
   return (
@@ -196,15 +227,15 @@ function ToolLibraryView({
           <h2>Finde genau die Funktion, die jetzt weiterhilft.</h2>
         </div>
         <p>
-          Suche nach Aufgabe oder Werkzeug, filtere nach deinem Projekt und öffne anschließend
-          Erklärung, Beispiel und Prompt-Vorlage in einer kompakten Detailansicht.
+          Durchsuche 29 persönlich eingeordnete Kernfunktionen und den bereinigten Katalog aus
+          deinen Screenshots. Jede Erweiterung enthält Status, Einordnung und eine Prompt-Vorlage.
         </p>
       </section>
 
       <section className="library-summary" aria-label="Bibliotheksübersicht">
-        <div><strong>29</strong><span>Funktionen</span></div>
-        <div><strong>7</strong><span>Kategorien</span></div>
-        <div><strong>6</strong><span>Projektfokusse</span></div>
+        <div><strong>{tools.length}</strong><span>Funktionen gesamt</span></div>
+        <div><strong>{coreTools.length}</strong><span>Kernfunktionen</span></div>
+        <div><strong>{screenshotTools.length}</strong><span>Screenshot-Erweiterungen</span></div>
       </section>
 
       <div className="filter-panel app-filter-panel">
@@ -216,14 +247,20 @@ function ToolLibraryView({
               <input
                 type="search"
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setVisibleCount(PAGE_SIZE);
+                }}
                 placeholder="z. B. Canva, App, Vertrieb …"
               />
             </span>
           </label>
           <label className="select-field project-select">
             <span className="field-label">Projektfokus</span>
-            <select value={project} onChange={(event) => setProject(event.target.value as ProjectFilter)}>
+            <select value={project} onChange={(event) => {
+              setProject(event.target.value as ProjectFilter);
+              setVisibleCount(PAGE_SIZE);
+            }}>
               {projectOptions.map((option) => (
                 <option value={option.value} key={option.value}>{option.label}</option>
               ))}
@@ -231,11 +268,25 @@ function ToolLibraryView({
           </label>
           <label className="select-field priority-select">
             <span className="field-label">Priorität</span>
-            <select value={priority} onChange={(event) => setPriority(event.target.value as PriorityFilter)}>
+            <select value={priority} onChange={(event) => {
+              setPriority(event.target.value as PriorityFilter);
+              setVisibleCount(PAGE_SIZE);
+            }}>
               <option value="all">Alle Prioritäten</option>
               <option value="A">A · hoher Hebel</option>
               <option value="B">B · sinnvoll</option>
               <option value="C">C · ergänzend</option>
+            </select>
+          </label>
+          <label className="select-field source-select">
+            <span className="field-label">Quelle &amp; Status</span>
+            <select value={source} onChange={(event) => {
+              setSource(event.target.value as SourceFilter);
+              setVisibleCount(PAGE_SIZE);
+            }}>
+              {sourceOptions.map((option) => (
+                <option value={option.value} key={option.value}>{option.label}</option>
+              ))}
             </select>
           </label>
         </div>
@@ -246,7 +297,10 @@ function ToolLibraryView({
               key={option.value}
               className={category === option.value ? "category-chip active" : "category-chip"}
               aria-pressed={category === option.value}
-              onClick={() => setCategory(option.value)}
+              onClick={() => {
+                setCategory(option.value);
+                setVisibleCount(PAGE_SIZE);
+              }}
             >
               {option.label}
             </button>
@@ -267,11 +321,21 @@ function ToolLibraryView({
       </div>
 
       {filteredTools.length ? (
-        <div className="tool-grid app-tool-grid">
-          {filteredTools.map((tool) => (
-            <LibraryCard key={tool.id} tool={tool} onOpen={setSelectedTool} />
-          ))}
-        </div>
+        <>
+          <div className="tool-grid app-tool-grid">
+            {filteredTools.slice(0, visibleCount).map((tool) => (
+              <LibraryCard key={tool.id} tool={tool} onOpen={setSelectedTool} />
+            ))}
+          </div>
+          {visibleCount < filteredTools.length ? (
+            <div className="load-more-row">
+              <button className="app-secondary-button" type="button" onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}>
+                Weitere {Math.min(PAGE_SIZE, filteredTools.length - visibleCount)} anzeigen
+              </button>
+              <span>{visibleCount} von {filteredTools.length} geladen</span>
+            </div>
+          ) : null}
+        </>
       ) : (
         <div className="empty-state app-empty-state">
           <span aria-hidden="true">⌕</span>

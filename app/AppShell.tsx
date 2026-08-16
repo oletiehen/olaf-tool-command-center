@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { FormEvent, ReactNode, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { coreTools, screenshotTools, tools } from "./tool-data";
+
+const isPublicBuild = Boolean(process.env.NEXT_PUBLIC_PUBLICATION_URL);
 
 const navigation = [
   { href: "/", label: "Dashboard", icon: "⌂" },
@@ -18,7 +21,7 @@ const pageDetails: Record<string, { title: string; description: string }> = {
   },
   "/funktionen": {
     title: "Funktionen",
-    description: "29 Werkzeuge finden und anwenden",
+    description: `${tools.length} Werkzeuge finden und anwenden`,
   },
   "/workflow": {
     title: "Workflow",
@@ -37,9 +40,10 @@ function isActive(pathname: string, href: string) {
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? "/";
+  const routePath = pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
   const router = useRouter();
   const [quickSearch, setQuickSearch] = useState("");
-  const details = pageDetails[pathname] ?? pageDetails["/"];
+  const details = pageDetails[routePath] ?? pageDetails["/"];
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,10 +67,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
         <nav className="sidebar-navigation" aria-label="App-Navigation">
           {navigation.map((item) => (
             <Link
-              className={isActive(pathname, item.href) ? "sidebar-link active" : "sidebar-link"}
+              className={isActive(routePath, item.href) ? "sidebar-link active" : "sidebar-link"}
               href={item.href}
               key={item.href}
-              aria-current={isActive(pathname, item.href) ? "page" : undefined}
+              aria-current={isActive(routePath, item.href) ? "page" : undefined}
             >
               <span className="sidebar-icon" aria-hidden="true">{item.icon}</span>
               <span>{item.label}</span>
@@ -85,8 +89,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
         <div className="sidebar-status">
           <span className="draft-dot" aria-hidden="true" />
           <span>
-            <strong>Unveröffentlichter Entwurf</strong>
-            <small>Nur als Vorschau gespeichert</small>
+            <strong>{isPublicBuild ? "Auf GitHub veröffentlicht" : "Lokale Vorschau"}</strong>
+            <small>{coreTools.length} Kern + {screenshotTools.length} Erweiterungen</small>
           </span>
         </div>
       </aside>
@@ -110,9 +114,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
             />
             <button type="submit">Suchen</button>
           </form>
-          <div className="header-status" aria-label="Status: Vorschau">
+          <div className="header-status" aria-label={isPublicBuild ? "Status: öffentlich auf GitHub Pages" : "Status: lokale Vorschau"}>
             <span className="draft-dot" aria-hidden="true" />
-            Vorschau
+            {isPublicBuild ? "GitHub Pages" : "Vorschau"}
           </div>
         </header>
 
@@ -122,10 +126,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <nav className="app-mobile-nav" aria-label="Mobile App-Navigation">
         {navigation.map((item) => (
           <Link
-            className={isActive(pathname, item.href) ? "active" : ""}
+            className={isActive(routePath, item.href) ? "active" : ""}
             href={item.href}
             key={item.href}
-            aria-current={isActive(pathname, item.href) ? "page" : undefined}
+            aria-current={isActive(routePath, item.href) ? "page" : undefined}
           >
             <span aria-hidden="true">{item.icon}</span>
             {item.label === "Prompt-Studio" ? "Prompts" : item.label}

@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { tools, workflow } from "./tool-data";
+import { coreTools, screenshotTools, tools, workflow } from "./tool-data";
 
-const priorityTools = tools.filter((tool) => tool.priority === "A").slice(0, 6);
+const priorityTools = coreTools.filter((tool) => tool.priority === "A").slice(0, 6);
+const featuredScreenshotTools = ["GitHub", "Figma", "Supabase", "Vercel"]
+  .map((name) => screenshotTools.find((tool) => tool.name === name))
+  .filter((tool): tool is (typeof screenshotTools)[number] => Boolean(tool));
 
 export default function DashboardHome() {
   return (
@@ -11,8 +14,8 @@ export default function DashboardHome() {
           <span className="app-eyebrow">Dein persönliches Command Center</span>
           <h2>Guten Tag, Olaf.</h2>
           <p>
-            Von hier aus findest du das passende Werkzeug, arbeitest deinen empfohlenen Ablauf
-            durch oder öffnest direkt eine fertige Prompt-Vorlage.
+            Von hier aus findest du {coreTools.length} persönliche Kernwerkzeuge und
+            {" "}{screenshotTools.length} ergänzende Funktionen aus deinen Screenshots.
           </p>
           <div className="welcome-actions">
             <Link className="app-primary-button" href="/funktionen">Funktion auswählen <span aria-hidden="true">→</span></Link>
@@ -33,13 +36,13 @@ export default function DashboardHome() {
       <section className="dashboard-stats" aria-label="App-Kennzahlen">
         <article>
           <span>Werkzeugbibliothek</span>
-          <strong>29</strong>
-          <small>persönlich eingeordnete Funktionen</small>
+          <strong>{tools.length}</strong>
+          <small>{coreTools.length} Kern + {screenshotTools.length} Erweiterungen</small>
         </article>
         <article>
           <span>Hohe Priorität</span>
-          <strong>{tools.filter((tool) => tool.priority === "A").length}</strong>
-          <small>Werkzeuge mit direktem Hebel</small>
+          <strong>{coreTools.filter((tool) => tool.priority === "A").length}</strong>
+          <small>persönliche Werkzeuge mit direktem Hebel</small>
         </article>
         <article>
           <span>Kern-Workflow</span>
@@ -48,9 +51,25 @@ export default function DashboardHome() {
         </article>
         <article>
           <span>Prompt-Bibliothek</span>
-          <strong>30</strong>
-          <small>29 Vorlagen plus Master-Prompt</small>
+          <strong>{tools.length + 1}</strong>
+          <small>alle Werkzeuge plus Master-Prompt</small>
         </article>
+      </section>
+
+      <section className="catalog-highlight" aria-label="Neue Screenshot-Erweiterungen">
+        <div>
+          <span className="app-eyebrow">Neu eingelesen &amp; bereinigt</span>
+          <h2>{screenshotTools.length} zusätzliche Funktionen aus deinen Screenshots</h2>
+          <p>Als eigener Katalog geführt, ohne Dopplungen und mit dem Status „Verfügbarkeit prüfen“.</p>
+        </div>
+        <div className="catalog-highlight-links">
+          {featuredScreenshotTools.map((tool) => (
+            <Link href={"/funktionen?q=" + encodeURIComponent(tool.name)} key={tool.id}>
+              <span>{tool.mark}</span>{tool.name}<i aria-hidden="true">↗</i>
+            </Link>
+          ))}
+          <Link className="catalog-all-link" href="/funktionen">Gesamten Katalog öffnen <i aria-hidden="true">→</i></Link>
+        </div>
       </section>
 
       <section className="dashboard-section">
