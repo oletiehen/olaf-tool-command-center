@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import AppLink from "./AppLink";
 import {
   categoryLabels,
   categoryOptions,
@@ -197,9 +197,9 @@ export default function PromptStudio() {
               {copyState === "copied" ? "Prompt kopiert" : copyState === "error" ? "Erneut versuchen" : "Prompt kopieren"}
               <span aria-hidden="true">{copyState === "copied" ? "✓" : "↗"}</span>
             </button>
-            <Link className="app-secondary-button" href={"/funktionen?q=" + encodeURIComponent(selected.toolName)}>
+            <AppLink className="app-secondary-button" href={"/funktionen/alle?q=" + encodeURIComponent(selected.toolName)}>
               Funktion ansehen
-            </Link>
+            </AppLink>
           </footer>
         </article>
       </section>

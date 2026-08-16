@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, ReactNode, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import AppLink from "./AppLink";
+import { appHref } from "./app-routes";
 import { coreTools, screenshotTools, tools } from "./tool-data";
 
 const isPublicBuild = Boolean(process.env.NEXT_PUBLIC_PUBLICATION_URL);
@@ -14,6 +15,14 @@ const navigation = [
   { href: "/prompts", label: "Prompt-Studio", icon: "✦" },
 ] as const;
 
+const functionNavigation = [
+  { href: "/funktionen", label: "Übersicht" },
+  { href: "/funktionen/alle", label: "Alle Werkzeuge" },
+  { href: "/funktionen/kern", label: `Kern · ${coreTools.length}` },
+  { href: "/funktionen/erweiterungen", label: `Erweiterungen · ${screenshotTools.length}` },
+  { href: "/funktionen/kategorien", label: "Kategorien" },
+] as const;
+
 const pageDetails: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Dashboard",
@@ -21,7 +30,23 @@ const pageDetails: Record<string, { title: string; description: string }> = {
   },
   "/funktionen": {
     title: "Funktionen",
-    description: `${tools.length} Werkzeuge finden und anwenden`,
+    description: "Werkzeuge über klare Bereiche auswählen",
+  },
+  "/funktionen/alle": {
+    title: "Alle Werkzeuge",
+    description: `${tools.length} Funktionen durchsuchen und filtern`,
+  },
+  "/funktionen/kern": {
+    title: "Kernwerkzeuge",
+    description: `${coreTools.length} persönlich eingeordnete Funktionen`,
+  },
+  "/funktionen/erweiterungen": {
+    title: "Erweiterungen",
+    description: `${screenshotTools.length} Funktionen aus deinen Screenshots`,
+  },
+  "/funktionen/kategorien": {
+    title: "Kategorien",
+    description: "Werkzeuge nach Aufgabe auswählen",
   },
   "/workflow": {
     title: "Workflow",
@@ -41,41 +66,57 @@ function isActive(pathname: string, href: string) {
 export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? "/";
   const routePath = pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
-  const router = useRouter();
   const [quickSearch, setQuickSearch] = useState("");
-  const details = pageDetails[routePath] ?? pageDetails["/"];
+  const details = pageDetails[routePath]
+    ?? (routePath.startsWith("/funktionen") ? pageDetails["/funktionen"] : pageDetails["/"]);
+  const showFunctionNavigation = routePath.startsWith("/funktionen");
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const query = quickSearch.trim();
-    router.push(query ? "/funktionen?q=" + encodeURIComponent(query) : "/funktionen");
+    window.location.assign(appHref(query ? "/funktionen/alle?q=" + encodeURIComponent(query) : "/funktionen/alle"));
     setQuickSearch("");
   }
 
   return (
     <div className="app-frame">
       <aside className="app-sidebar">
-        <Link className="app-brand" href="/" aria-label="Tool Command Center – Dashboard">
+        <AppLink className="app-brand" href="/" aria-label="Tool Command Center – Dashboard">
           <span className="app-brand-mark" aria-hidden="true">OT</span>
           <span>
             <strong>Tool Command Center</strong>
             <small>Olafs App-Navigator</small>
           </span>
-        </Link>
+        </AppLink>
 
         <div className="sidebar-section-label">Navigation</div>
         <nav className="sidebar-navigation" aria-label="App-Navigation">
           {navigation.map((item) => (
-            <Link
-              className={isActive(routePath, item.href) ? "sidebar-link active" : "sidebar-link"}
-              href={item.href}
-              key={item.href}
-              aria-current={isActive(routePath, item.href) ? "page" : undefined}
-            >
-              <span className="sidebar-icon" aria-hidden="true">{item.icon}</span>
-              <span>{item.label}</span>
-              <span className="sidebar-arrow" aria-hidden="true">›</span>
-            </Link>
+            <div className="sidebar-nav-group" key={item.href}>
+              <AppLink
+                className={isActive(routePath, item.href) ? "sidebar-link active" : "sidebar-link"}
+                href={item.href}
+                aria-current={isActive(routePath, item.href) ? "page" : undefined}
+              >
+                <span className="sidebar-icon" aria-hidden="true">{item.icon}</span>
+                <span>{item.label}</span>
+                <span className="sidebar-arrow" aria-hidden="true">›</span>
+              </AppLink>
+              {item.href === "/funktionen" && showFunctionNavigation ? (
+                <div className="sidebar-subnavigation" aria-label="Untermenü Funktionen">
+                  {functionNavigation.map((subitem) => (
+                    <AppLink
+                      className={routePath === subitem.href ? "active" : ""}
+                      href={subitem.href}
+                      key={subitem.href}
+                      aria-current={routePath === subitem.href ? "page" : undefined}
+                    >
+                      {subitem.label}
+                    </AppLink>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ))}
         </nav>
 
@@ -83,7 +124,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           <span className="sidebar-focus-kicker">Empfohlener Start</span>
           <strong>Planmodus</strong>
           <p>Erst vollständig ordnen, dann gezielt ausführen.</p>
-          <Link href="/funktionen?q=Planmodus">Funktion öffnen <span aria-hidden="true">↗</span></Link>
+          <AppLink href="/funktionen/alle?q=Planmodus">Funktion öffnen <span aria-hidden="true">↗</span></AppLink>
         </div>
 
         <div className="sidebar-status">
@@ -120,12 +161,27 @@ export default function AppShell({ children }: { children: ReactNode }) {
           </div>
         </header>
 
+        {showFunctionNavigation ? (
+          <nav className="app-section-nav" aria-label="Untermenü Funktionen">
+            {functionNavigation.map((item) => (
+              <AppLink
+                className={routePath === item.href ? "active" : ""}
+                href={item.href}
+                key={item.href}
+                aria-current={routePath === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </AppLink>
+            ))}
+          </nav>
+        ) : null}
+
         <main className="app-main">{children}</main>
       </div>
 
       <nav className="app-mobile-nav" aria-label="Mobile App-Navigation">
         {navigation.map((item) => (
-          <Link
+          <AppLink
             className={isActive(routePath, item.href) ? "active" : ""}
             href={item.href}
             key={item.href}
@@ -133,7 +189,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           >
             <span aria-hidden="true">{item.icon}</span>
             {item.label === "Prompt-Studio" ? "Prompts" : item.label}
-          </Link>
+          </AppLink>
         ))}
       </nav>
     </div>

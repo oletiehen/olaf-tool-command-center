@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import ToolLibrary from "../ToolLibrary";
+import FunctionHub from "../FunctionHub";
 import { coreTools, screenshotTools, tools } from "../tool-data";
 
 export const dynamic = "force-static";
@@ -11,9 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function FunktionenPage() {
-  return (
-    <Suspense fallback={<div className="app-route-loading">Werkzeugbibliothek wird geladen …</div>}>
-      <ToolLibrary />
-    </Suspense>
-  );
+  return <FunctionHub />;
 }

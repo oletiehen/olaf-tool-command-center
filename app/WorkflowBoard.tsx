@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import AppLink from "./AppLink";
 import { workflow } from "./tool-data";
 
 const workflowDetails = [
@@ -114,10 +114,10 @@ export default function WorkflowBoard() {
           </div>
 
           <div className="workflow-detail-actions">
-            <Link className="app-primary-button" href={"/funktionen?q=" + encodeURIComponent(detail.tool)}>
+            <AppLink className="app-primary-button" href={"/funktionen/alle?q=" + encodeURIComponent(detail.tool)}>
               {detail.tool} öffnen <span aria-hidden="true">→</span>
-            </Link>
-            <Link className="app-secondary-button" href="/prompts">Prompt-Studio öffnen</Link>
+            </AppLink>
+            <AppLink className="app-secondary-button" href="/prompts">Prompt-Studio öffnen</AppLink>
           </div>
 
           <div className="workflow-step-controls">

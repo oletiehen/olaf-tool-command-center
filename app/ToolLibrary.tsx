@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   availabilityLabels,
   categoryLabels,
@@ -27,7 +26,22 @@ type ProjectFilter = "all" | Project;
 type PriorityFilter = "all" | Priority;
 type SourceFilter = "all" | ToolSource;
 
-const PAGE_SIZE = 48;
+const PAGE_SIZE = 18;
+
+function subscribeToLocation(onStoreChange: () => void) {
+  window.addEventListener("popstate", onStoreChange);
+  return () => window.removeEventListener("popstate", onStoreChange);
+}
+
+function getLocationSearch() {
+  return window.location.search;
+}
+
+function getServerSearch() {
+  return "";
+}
+
+type ToolLibraryMode = "all" | ToolSource;
 
 const priorityLabels: Record<Priority, string> = {
   A: "A · hoher Hebel",
@@ -174,21 +188,27 @@ function ToolDialog({ tool, onClose }: { tool: Tool | null; onClose: () => void 
 function ToolLibraryView({
   initialQuery,
   initialPriority,
+  initialCategory,
+  mode,
 }: {
   initialQuery: string;
   initialPriority: PriorityFilter;
+  initialCategory: CategoryFilter;
+  mode: ToolLibraryMode;
 }) {
+  const fixedSource: ToolSource | null = mode === "all" ? null : mode;
+  const libraryTools = mode === "core" ? coreTools : mode === "screenshots" ? screenshotTools : tools;
   const [project, setProject] = useState<ProjectFilter>("all");
-  const [category, setCategory] = useState<CategoryFilter>("all");
+  const [category, setCategory] = useState<CategoryFilter>(initialCategory);
   const [priority, setPriority] = useState<PriorityFilter>(initialPriority);
-  const [source, setSource] = useState<SourceFilter>("all");
+  const [source, setSource] = useState<SourceFilter>(fixedSource ?? "all");
   const [query, setQuery] = useState(initialQuery);
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filteredTools = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase("de");
-    return tools.filter((tool) => {
+    return libraryTools.filter((tool) => {
       const matchesProject = project === "all" || tool.projects.includes(project);
       const matchesCategory = category === "all" || tool.category === category;
       const matchesPriority = priority === "all" || tool.priority === priority;
@@ -206,15 +226,19 @@ function ToolLibraryView({
       ].join(" ").toLocaleLowerCase("de");
       return matchesProject && matchesCategory && matchesPriority && matchesSource && (!normalizedQuery || searchable.includes(normalizedQuery));
     });
-  }, [category, priority, project, query, source]);
+  }, [category, libraryTools, priority, project, query, source]);
 
-  const hasFilters = project !== "all" || category !== "all" || priority !== "all" || source !== "all" || query !== "";
+  const hasFilters = project !== "all"
+    || category !== "all"
+    || priority !== "all"
+    || (!fixedSource && source !== "all")
+    || query !== "";
 
   function resetFilters() {
     setProject("all");
     setCategory("all");
     setPriority("all");
-    setSource("all");
+    setSource(fixedSource ?? "all");
     setQuery("");
     setVisibleCount(PAGE_SIZE);
   }
@@ -223,23 +247,44 @@ function ToolLibraryView({
     <div className="app-page library-page">
       <section className="app-page-intro">
         <div>
-          <span className="app-eyebrow">Werkzeugbibliothek</span>
-          <h2>Finde genau die Funktion, die jetzt weiterhilft.</h2>
+          <span className="app-eyebrow">
+            {mode === "core" ? "Persönliche Kernbibliothek" : mode === "screenshots" ? "Screenshot-Erweiterungen" : "Gesamte Werkzeugbibliothek"}
+          </span>
+          <h2>
+            {mode === "core"
+              ? "Deine wichtigsten Werkzeuge auf einen Blick."
+              : mode === "screenshots"
+                ? "Ergänzende Funktionen gezielt prüfen."
+                : "Finde genau die Funktion, die jetzt weiterhilft."}
+          </h2>
         </div>
         <p>
-          Durchsuche 29 persönlich eingeordnete Kernfunktionen und den bereinigten Katalog aus
-          deinen Screenshots. Jede Erweiterung enthält Status, Einordnung und eine Prompt-Vorlage.
+          {mode === "core"
+            ? `Diese ${coreTools.length} Funktionen sind persönlich eingeordnet und direkt mit deinen Projekten verknüpft.`
+            : mode === "screenshots"
+              ? `Diese ${screenshotTools.length} Einträge stammen aus deinen Screenshots. Installation und Verfügbarkeit werden bewusst separat gekennzeichnet.`
+              : `Durchsuche ${coreTools.length} Kernfunktionen und ${screenshotTools.length} bereinigte Erweiterungen. Öffne nur die Details, die du wirklich brauchst.`}
         </p>
       </section>
 
       <section className="library-summary" aria-label="Bibliotheksübersicht">
-        <div><strong>{tools.length}</strong><span>Funktionen gesamt</span></div>
-        <div><strong>{coreTools.length}</strong><span>Kernfunktionen</span></div>
-        <div><strong>{screenshotTools.length}</strong><span>Screenshot-Erweiterungen</span></div>
+        {mode === "all" ? (
+          <>
+            <div><strong>{tools.length}</strong><span>Funktionen gesamt</span></div>
+            <div><strong>{coreTools.length}</strong><span>Kernfunktionen</span></div>
+            <div><strong>{screenshotTools.length}</strong><span>Erweiterungen</span></div>
+          </>
+        ) : (
+          <>
+            <div><strong>{libraryTools.length}</strong><span>in diesem Bereich</span></div>
+            <div><strong>{libraryTools.filter((tool) => tool.priority === "A").length}</strong><span>hohe Priorität</span></div>
+            <div><strong>{new Set(libraryTools.map((tool) => tool.category)).size}</strong><span>Kategorien</span></div>
+          </>
+        )}
       </section>
 
       <div className="filter-panel app-filter-panel">
-        <div className="filter-main-row">
+        <div className="simplified-filter-row">
           <label className="search-field">
             <span className="field-label">Funktion suchen</span>
             <span className="search-input-wrap">
@@ -255,57 +300,64 @@ function ToolLibraryView({
               />
             </span>
           </label>
-          <label className="select-field project-select">
-            <span className="field-label">Projektfokus</span>
-            <select value={project} onChange={(event) => {
-              setProject(event.target.value as ProjectFilter);
+          <label className="select-field category-select">
+            <span className="field-label">Aufgabenbereich</span>
+            <select value={category} onChange={(event) => {
+              setCategory(event.target.value as CategoryFilter);
               setVisibleCount(PAGE_SIZE);
             }}>
-              {projectOptions.map((option) => (
-                <option value={option.value} key={option.value}>{option.label}</option>
-              ))}
-            </select>
-          </label>
-          <label className="select-field priority-select">
-            <span className="field-label">Priorität</span>
-            <select value={priority} onChange={(event) => {
-              setPriority(event.target.value as PriorityFilter);
-              setVisibleCount(PAGE_SIZE);
-            }}>
-              <option value="all">Alle Prioritäten</option>
-              <option value="A">A · hoher Hebel</option>
-              <option value="B">B · sinnvoll</option>
-              <option value="C">C · ergänzend</option>
-            </select>
-          </label>
-          <label className="select-field source-select">
-            <span className="field-label">Quelle &amp; Status</span>
-            <select value={source} onChange={(event) => {
-              setSource(event.target.value as SourceFilter);
-              setVisibleCount(PAGE_SIZE);
-            }}>
-              {sourceOptions.map((option) => (
+              {categoryOptions.map((option) => (
                 <option value={option.value} key={option.value}>{option.label}</option>
               ))}
             </select>
           </label>
         </div>
-        <div className="category-filter" aria-label="Nach Kategorie filtern">
-          {categoryOptions.map((option) => (
-            <button
-              type="button"
-              key={option.value}
-              className={category === option.value ? "category-chip active" : "category-chip"}
-              aria-pressed={category === option.value}
-              onClick={() => {
-                setCategory(option.value);
+
+        <details className="advanced-filter-panel">
+          <summary>
+            <span>Weitere Filter</span>
+            <small>Projekt, Priorität{fixedSource ? "" : " und Quelle"}</small>
+          </summary>
+          <div className="advanced-filter-grid">
+            <label className="select-field project-select">
+              <span className="field-label">Projektfokus</span>
+              <select value={project} onChange={(event) => {
+                setProject(event.target.value as ProjectFilter);
                 setVisibleCount(PAGE_SIZE);
               }}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
+              >
+                {projectOptions.map((option) => (
+                  <option value={option.value} key={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label>
+            <label className="select-field priority-select">
+              <span className="field-label">Priorität</span>
+              <select value={priority} onChange={(event) => {
+                setPriority(event.target.value as PriorityFilter);
+                setVisibleCount(PAGE_SIZE);
+              }}>
+                <option value="all">Alle Prioritäten</option>
+                <option value="A">A · hoher Hebel</option>
+                <option value="B">B · sinnvoll</option>
+                <option value="C">C · ergänzend</option>
+              </select>
+            </label>
+            {!fixedSource ? (
+              <label className="select-field source-select">
+                <span className="field-label">Quelle &amp; Status</span>
+                <select value={source} onChange={(event) => {
+                  setSource(event.target.value as SourceFilter);
+                  setVisibleCount(PAGE_SIZE);
+                }}>
+                  {sourceOptions.map((option) => (
+                    <option value={option.value} key={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+          </div>
+        </details>
       </div>
 
       <div className="results-bar app-results-bar">
@@ -350,19 +402,26 @@ function ToolLibraryView({
   );
 }
 
-export default function ToolLibrary() {
-  const searchParams = useSearchParams();
+export default function ToolLibrary({ mode = "all" }: { mode?: ToolLibraryMode }) {
+  const locationSearch = useSyncExternalStore(subscribeToLocation, getLocationSearch, getServerSearch);
+  const searchParams = useMemo(() => new URLSearchParams(locationSearch), [locationSearch]);
   const requestedPriority = searchParams.get("priority");
+  const requestedCategory = searchParams.get("category");
   const initialPriority: PriorityFilter =
     requestedPriority === "A" || requestedPriority === "B" || requestedPriority === "C"
       ? requestedPriority
       : "all";
+  const initialCategory: CategoryFilter = categoryOptions.some((option) => option.value === requestedCategory)
+    ? requestedCategory as CategoryFilter
+    : "all";
 
   return (
     <ToolLibraryView
-      key={searchParams.toString()}
+      key={`${mode}:${searchParams.toString()}`}
       initialQuery={searchParams.get("q") ?? ""}
       initialPriority={initialPriority}
+      initialCategory={initialCategory}
+      mode={mode}
     />
   );
 }

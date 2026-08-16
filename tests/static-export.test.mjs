@@ -10,7 +10,11 @@ test("GitHub Pages export contains all routes under the repository base path", a
   await access(new URL("og-v2.png", outputRoot));
   const routeFiles = [
     ["index.html", /Guten Tag, Olaf\./],
-    ["funktionen/index.html", /Finde genau die Funktion/],
+    ["funktionen/index.html", /Wie möchtest du ein Werkzeug finden/],
+    ["funktionen/alle/index.html", /Finde genau die Funktion/],
+    ["funktionen/kern/index.html", /Deine wichtigsten Werkzeuge/],
+    ["funktionen/erweiterungen/index.html", /Ergänzende Funktionen gezielt prüfen/],
+    ["funktionen/kategorien/index.html", /Wähle zuerst die Aufgabe/],
     ["prompts/index.html", /Wähle den Prompt/],
     ["workflow/index.html", /Arbeite nicht mit allen Werkzeugen zugleich/],
   ];
@@ -31,21 +35,33 @@ test("GitHub Pages export contains all routes under the repository base path", a
     }
   }
 
-  const [home, library, prompts, workflow, manifest] = await Promise.all([
+  const [home, functionsHub, library, prompts, workflow, manifest] = await Promise.all([
     readFile(new URL("index.html", outputRoot), "utf8"),
     readFile(new URL("funktionen/index.html", outputRoot), "utf8"),
+    readFile(new URL("funktionen/alle/index.html", outputRoot), "utf8"),
     readFile(new URL("prompts/index.html", outputRoot), "utf8"),
     readFile(new URL("workflow/index.html", outputRoot), "utf8"),
     readFile(new URL("../server/vinext-prerender.json", outputRoot), "utf8"),
   ]);
 
-  assert.match(home, /206<!-- --> zusätzliche Funktionen/);
+  assert.match(home, /alle <!-- -->235<!-- --> Funktionen/);
+  assert.match(functionsHub, /13 Kategorien/);
   assert.match(library, /235<\/strong><span>Funktionen gesamt/);
   assert.match(prompts, /236<!-- --> direkt nutzbare Vorlagen/);
   assert.match(workflow, /<h1>Workflow<\/h1>/);
 
   const prerender = JSON.parse(manifest);
-  const appRoutes = prerender.routes.filter((route) => ["/", "/funktionen", "/prompts", "/workflow"].includes(route.route));
-  assert.equal(appRoutes.length, 4);
+  const expectedRoutes = [
+    "/",
+    "/funktionen",
+    "/funktionen/alle",
+    "/funktionen/kern",
+    "/funktionen/erweiterungen",
+    "/funktionen/kategorien",
+    "/prompts",
+    "/workflow",
+  ];
+  const appRoutes = prerender.routes.filter((route) => expectedRoutes.includes(route.route));
+  assert.equal(appRoutes.length, expectedRoutes.length);
   assert.ok(appRoutes.every((route) => route.status === "rendered"));
 });

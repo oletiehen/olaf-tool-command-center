@@ -23,10 +23,14 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders all four app routes", async () => {
+test("server-renders the app routes and function submenus", async () => {
   const routes = [
     ["/", /Guten Tag, Olaf\./],
-    ["/funktionen", /Finde genau die Funktion/],
+    ["/funktionen", /Wie möchtest du ein Werkzeug finden/],
+    ["/funktionen/alle", /Finde genau die Funktion/],
+    ["/funktionen/kern", /Deine wichtigsten Werkzeuge/],
+    ["/funktionen/erweiterungen", /Ergänzende Funktionen gezielt prüfen/],
+    ["/funktionen/kategorien", /Wähle zuerst die Aufgabe/],
     ["/workflow", /Arbeite nicht mit allen Werkzeugen zugleich/],
     ["/prompts", /Wähle den Prompt/],
   ];
@@ -48,11 +52,14 @@ test("server-renders all four app routes", async () => {
   }
 });
 
-test("contains the 29-function core, the deduplicated screenshot catalog and all interaction surfaces", async () => {
-  const [data, catalog, shell, library, workflowBoard, promptStudio, css, layout, packageJson, nextConfig, pagesWorkflow, og] = await Promise.all([
+test("contains the 29-function core, screenshot catalog, submenus and interaction surfaces", async () => {
+  const [data, catalog, shell, appLink, functionHub, categoryHub, library, workflowBoard, promptStudio, css, layout, packageJson, nextConfig, pagesWorkflow, og] = await Promise.all([
     readFile(new URL("../app/tool-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/plugin-catalog.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/AppShell.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/AppLink.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/FunctionHub.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/CategoryHub.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/ToolLibrary.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/WorkflowBoard.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/PromptStudio.tsx", import.meta.url), "utf8"),
@@ -101,13 +108,24 @@ test("contains the 29-function core, the deduplicated screenshot catalog and all
     assert.match(shell, new RegExp(`href: "${href.replace("/", "\\/")}"`));
   }
   assert.match(shell, /app-mobile-nav/);
-  assert.match(shell, /router\.push/);
+  assert.match(shell, /app-section-nav/);
+  assert.match(shell, /\/funktionen\/alle/);
+  assert.match(shell, /\/funktionen\/kern/);
+  assert.match(shell, /\/funktionen\/erweiterungen/);
+  assert.match(shell, /\/funktionen\/kategorien/);
+  assert.doesNotMatch(shell, /router\.push|useRouter/);
+  assert.match(appLink, /<a href=\{appHref\(href\)\}/);
+  assert.match(functionHub, /function-path-grid/);
+  assert.match(categoryHub, /category-hub-grid/);
+  assert.match(categoryHub, /\/funktionen\/alle\?category=/);
 
   assert.match(library, /type="search"/);
   assert.match(library, /Projektfokus/);
   assert.match(library, /Priorität/);
   assert.match(library, /Quelle &amp; Status/);
-  assert.match(library, /PAGE_SIZE = 48/);
+  assert.match(library, /Aufgabenbereich/);
+  assert.match(library, /Weitere Filter/);
+  assert.match(library, /PAGE_SIZE = 18/);
   assert.match(library, /availabilityLabels/);
   assert.match(library, /showModal\(\)/);
   assert.match(library, /navigator\.clipboard\.writeText/);
