@@ -36,17 +36,17 @@
           "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-1.png"
         },
         {
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "f77e9db2d3e0bef11ceee55321f3b3330e795be4c0e1f23aff4d40c23faa319e",
+          "fingerprint": "13f6487d5e39041fcffe6fe0aefa3fd03548d6c399494db25c45ca8bc3771ae5",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png"
         }
       ],
@@ -90,10 +90,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "32a2562a33e666b43b652b2f6fda8530d0fbedd9f7ad16b083a39e54451684ec",
+          "fingerprint": "17b99052b48eb83329034a286be00442e9eab4a4f037739eb7bf29b2f532520c",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z"
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z"
         }
       ],
       "files": [
@@ -140,7 +140,13 @@
         {
           "label": "Öffentliche medienfreie Vorschau",
           "url": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
-          "kind": "live"
+          "kind": "live",
+          "fingerprint": "7a1d0dc715e35d9f6f4b29b97a54e2000911791679b38bc65df01e1b82fd6ca4",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
+          "previewImage": "previews/catalog/olaf-personal-website-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -154,7 +160,10 @@
           "date": "2026-08-19",
           "text": "Medienfreie öffentliche Edition als Render-Unterseite bereitgestellt."
         }
-      ]
+      ],
+      "previewImage": "previews/catalog/olaf-personal-website-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "website-animation-showcase",
@@ -189,7 +198,7 @@
           "fingerprint": "c4f55332aa24dbb6560e91cb6f5ef4b5901c827146667b9810cec5306f5d25b9",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://www.davidlangarica.dev/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/website-animation-showcase-1.png"
         }
       ],
@@ -229,7 +238,7 @@
           "fingerprint": "eb6b9dcd3191ec437ba820623cd7d031a666028e44172cc648abfce247fa105a",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/reha-kompass-1.png"
         }
       ],
@@ -327,7 +336,7 @@
           "fingerprint": "9190169e25557116bb8eb657c35e533b3ba62eb6fc3e17abee4bc3269ccdd773",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/niklas-volland/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/niklas-volland-dashboard-1.png"
         }
       ],
@@ -373,7 +382,7 @@
           "fingerprint": "463772c809f72e0090663447629076c9f363ccff803304bda49c6397254df55b",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-taxi-bus/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/wiechert-taxi-bus-1.png"
         }
       ],
@@ -416,7 +425,7 @@
           "fingerprint": "a240a9a6a8242f7d20933b004027d2936cdf98d0c580c9a913654ab27a5895ff",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-reisen/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/wiechert-reisen-1.png"
         }
       ],
@@ -457,7 +466,7 @@
           "fingerprint": "1bfd040b99bcbfdb4aeec824b0fde5ebfb29bc71286c7902ad524451eb9db99d",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/oc-reiseplan/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/oc-reiseplan-1.png"
         }
       ],
@@ -498,7 +507,7 @@
           "fingerprint": "9976c466be05e10a455bfe9713cdbf8482aaf1cc36834dcffd90f0f59fcff4c7",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/sonos-alexa-mobile-1.png"
         }
       ],
@@ -539,7 +548,7 @@
           "fingerprint": "29111046552fe8a0b801c205b67edeb37a286e4cfc7851145b0da879b5398d56",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/apple-intelligence/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png"
         }
       ],
@@ -582,7 +591,7 @@
           "fingerprint": "0aec9c7efb02290c60dc208d84ceef9a94d60bd4cbd1482a9b281fdc94a273cd",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/chatgpt-business-system/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/chatgpt-business-system-1.png"
         }
       ],
@@ -675,10 +684,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "c29a07656d770378030132d6bedecad588317f8c2b5859c06d9a4179dfb87937",
+          "fingerprint": "51266b1aeb89b0d9f774d3ff64adb5fd1867b7a56f9f592b901094907854f9c9",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png"
         }
       ],
@@ -769,7 +778,7 @@
           "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
-          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
           "previewImage": "previews/catalog/render-deploy-process-1.png"
         }
       ],
