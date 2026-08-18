@@ -18,3 +18,10 @@ services:
       - path: /*
         name: Referrer-Policy
         value: "strict-origin-when-cross-origin"
+      - path: /apps/persoenliche-webseite/*
+        name: X-Robots-Tag
+        value: "noindex, nofollow, noarchive"
+    routes:
+      - type: rewrite
+        source: /apps/persoenliche-webseite/*
+        destination: /apps/persoenliche-webseite/index.html

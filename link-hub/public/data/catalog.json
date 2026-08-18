@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 6,
-    "updatedAt": "2026-08-18T22:40:16.292Z",
+    "version": 7,
+    "updatedAt": "2026-08-18T22:50:23Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -106,20 +106,20 @@
       "kind": "project",
       "title": "Persönliche Premium-Webseite Olaf Tiehen",
       "category": "Persönliche Webseite",
-      "source": "ChatGPT + Codex",
-      "description": "Große persönliche Premium-Editorial-Webseite mit Galerie, Journal, Medien, privaten Bereichen und starkem Motion-Konzept.",
+      "source": "ChatGPT + Codex + Render",
+      "description": "Allowlist-basierte, medienfreie öffentliche Edition der persönlichen Premium-Editorial-Webseite.",
       "objective": "Hochwertige persönliche digitale Identität mit klarer Trennung öffentlicher und privater Inhalte.",
-      "phase": "Veröffentlichung wird vorbereitet",
-      "progress": 88,
+      "phase": "Öffentliche Vorschau auf Render",
+      "progress": 92,
       "priority": "hoch",
-      "status": "needs-link",
-      "statusText": "Im Render-Publish-Bereich liegt bisher nur ein Payload-Teil, aber noch keine index.html. Deshalb wird noch keine öffentliche URL angezeigt.",
-      "currentState": "Public-Release- und private Übergabepakete liegen vor; die Render-Fassung ist noch nicht vollständig veröffentlicht.",
-      "nextAction": "Render-Unterseite erst nach vorhandener index.html als öffentlich markieren und anschließend fotografieren.",
+      "status": "active",
+      "statusText": "Die vorhandene medienfreie öffentliche Edition liegt als Render-Unterseite vor; private Originalmedien bleiben ausgeschlossen.",
+      "currentState": "Die allowlist-basierte public-edition wurde unter /apps/persoenliche-webseite/ in den Render-Publish-Bereich übernommen. Sie enthält keine privaten Medien, Formulare, Tracker oder externen Runtime-Anfragen.",
+      "nextAction": "Öffentliche Render-URL und Screenshot prüfen; Rechtsangaben separat finalisieren.",
       "openPoints": [
-        "Render-Veröffentlichung vervollständigen",
         "Privatbereich final",
         "Kontakt/Datenschutz final",
+        "Rechtliche Schlussprüfung",
         "Öffentliche Inhaltsprüfung"
       ],
       "tags": [
@@ -127,13 +127,28 @@
         "Premium",
         "Motion",
         "Galerie",
-        "Journal"
+        "Journal",
+        "Render",
+        "Medienfrei"
       ],
-      "links": [],
+      "links": [
+        {
+          "label": "Öffentliche medienfreie Vorschau",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
+          "kind": "live"
+        }
+      ],
       "files": [
+        "public-edition/index.html",
         "ALL_IN_ONE.html",
         "Olaf_Tiehen_Webseite_PUBLIC_RELEASE.zip",
         "Olaf_Tiehen_Webseite_Private_Uebergabe.zip"
+      ],
+      "timeline": [
+        {
+          "date": "2026-08-19",
+          "text": "Medienfreie öffentliche Edition als Render-Unterseite bereitgestellt."
+        }
       ]
     },
     {

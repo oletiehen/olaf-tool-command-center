@@ -33,8 +33,13 @@ jobs:
           test -f link-hub/public/assets/styles.css
           test -f link-hub/public/assets/workspace.css
           test -f link-hub/public/assets/app.js
+          test -f link-hub/public/apps/persoenliche-webseite/index.html
+          test -f link-hub/public/apps/persoenliche-webseite/robots.txt
+          test -n "$(find link-hub/public/apps/persoenliche-webseite/assets -name '*.js' -print -quit)"
+          test -n "$(find link-hub/public/apps/persoenliche-webseite/assets -name '*.css' -print -quit)"
           grep -q 'DEIN DIGITALER LEITSTAND' link-hub/public/index.html
           grep -q 'catalog.json' link-hub/public/assets/app.js
+          grep -q 'Olaf Tiehen · Persönliches digitales Zuhause' link-hub/public/apps/persoenliche-webseite/index.html
 
       - name: Serve static hub
         run: |
@@ -44,5 +49,7 @@ jobs:
           curl --fail --silent http://127.0.0.1:4173/ >/tmp/project-hub-index.html
           curl --fail --silent http://127.0.0.1:4173/data/sites.json >/tmp/project-hub-sites.json
           curl --fail --silent http://127.0.0.1:4173/data/catalog.json >/tmp/project-hub-catalog.json
+          curl --fail --silent http://127.0.0.1:4173/apps/persoenliche-webseite/ >/tmp/persoenliche-webseite-index.html
           grep -q 'Alles im Blick' /tmp/project-hub-index.html
+          grep -q 'Persönliches digitales Zuhause' /tmp/persoenliche-webseite-index.html
           kill $(cat /tmp/project-hub-http.pid)
