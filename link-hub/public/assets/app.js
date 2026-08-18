@@ -47,7 +47,7 @@ const el = {
 const kindLabel = { project: 'Projekt', artifact: 'ChatGPT-Seite', process: 'Prozess' };
 const statusLabel = {
   live: 'Live', active: 'Aktiv', repository: 'Repository', draft: 'Entwurf', artifact: 'Artefakt', historical: 'Historisch',
-  unknown: 'Ungeprüft', 'needs-link': 'Link zuordnen', offline: 'Nicht erreichbar'
+  unknown: 'Ungeprüft', 'needs-link': 'Öffentliche URL fehlt', offline: 'Nicht erreichbar'
 };
 const priorityWeight = { 'sehr hoch': 4, hoch: 3, mittel: 2, niedrig: 1 };
 
@@ -69,8 +69,22 @@ function formatDate(value, short = false) {
 }
 function clamp(n, min=0, max=100) { return Math.max(min, Math.min(max, Number(n) || 0)); }
 function slugify(text='eintrag') { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60) || `eintrag-${Date.now()}`; }
-function isWebUrl(url='') { return /^https?:\/\//i.test(url); }
-function isSandbox(url='') { return /^sandbox:\//i.test(url); }
+function isPrivateIpv4(host) {
+  const parts = host.split('.').map(Number);
+  if (parts.length !== 4 || parts.some(Number.isNaN)) return false;
+  const [a,b] = parts;
+  return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168);
+}
+function isPublicWebUrl(value='') {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase();
+    return url.protocol === 'https:' && host !== 'localhost' && host !== '::1' && !host.endsWith('.local') && !isPrivateIpv4(host);
+  } catch { return false; }
+}
+function publicLinks(item) {
+  return (item.links || []).filter(link => link?.url && isPublicWebUrl(link.url));
+}
 function latestTechnicalDate(site={}) {
   const values = [site.lastChangedAt,site.lastPublishedAt,site.lastPlatformUpdateAt,site.lastSourceUpdateAt,site.firstSeenAt].filter(Boolean).map(v=>new Date(v)).filter(d=>!Number.isNaN(d.getTime()));
   return values.length ? new Date(Math.max(...values.map(d=>d.getTime()))) : null;
@@ -96,8 +110,8 @@ function siteAsCatalog(site) {
     status: site.status || 'unknown',
     statusText: site.status === 'live' ? 'Öffentliche Version ist erreichbar.' : site.status === 'repository' ? 'Quellcode ist öffentlich vorhanden.' : 'Technischer Stand wird geprüft.',
     currentState: '',
-    nextAction: site.status === 'needs-link' ? 'Öffentliche Zieladresse ergänzen.' : '',
-    openPoints: site.status === 'needs-link' ? ['Öffentliche URL zuordnen'] : [],
+    nextAction: site.status === 'needs-link' ? 'Öffentliche HTTPS-Adresse ergänzen.' : '',
+    openPoints: site.status === 'needs-link' ? ['Öffentliche HTTPS-Adresse zuordnen'] : [],
     tags: [site.platform].filter(Boolean),
     links: site.links || [],
     files: [],
@@ -141,7 +155,7 @@ function buildItems() {
 }
 
 function itemSearchText(item) {
-  return [item.title,item.category,item.source,item.description,item.objective,item.phase,item.priority,item.status,item.statusText,item.currentState,item.nextAction,item.notes,...(item.tags||[]),...(item.openPoints||[]),...(item.files||[]),...(item.links||[]).flatMap(l=>[l.label,l.url])].filter(Boolean).join(' ').toLowerCase();
+  return [item.title,item.category,item.source,item.description,item.objective,item.phase,item.priority,item.status,item.statusText,item.currentState,item.nextAction,item.notes,...(item.tags||[]),...(item.openPoints||[]),...(item.files||[]),...publicLinks(item).flatMap(l=>[l.label,l.url])].filter(Boolean).join(' ').toLowerCase();
 }
 function matches(item) {
   return (state.kind === 'all' || item.kind === state.kind) &&
@@ -159,16 +173,17 @@ function sortItems(a,b) {
 }
 function statusClass(status='unknown') { return `status-${String(status).replace(/[^a-z0-9-]/gi,'-')}`; }
 function previewMarkup(item) {
-  const src = item.technical?.previewImage;
+  const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
   if (src) return `<img src="${escapeHtml(src)}" alt="Vorschau ${escapeHtml(item.title)}" loading="lazy" data-preview>`;
   const symbol = item.kind === 'process' ? '↻' : item.kind === 'artifact' ? '◇' : 'OT';
   return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
 }
 function linkTypeLabel(kind='') {
-  return ({live:'Live',source:'Quellcode',historical:'Historisch',file:'Datei'})[kind] || kind || 'Link';
+  return ({live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'Öffentliche URL';
 }
 function primaryLink(item) {
-  return (item.links||[]).find(l=>l.kind==='live' && isWebUrl(l.url)) || (item.links||[]).find(l=>isWebUrl(l.url)) || null;
+  const links = publicLinks(item);
+  return links.find(l=>l.kind==='live') || links.find(l=>l.kind==='reference') || links[0] || null;
 }
 function cardMarkup(item) {
   const open = primaryLink(item);
@@ -182,7 +197,7 @@ function cardMarkup(item) {
       <h3>${escapeHtml(item.title)}</h3>
       <p class="description">${escapeHtml(item.description || item.statusText || '')}</p>
       <div class="progress-row"><div class="progress-meta"><span>${escapeHtml(item.phase || 'Stand offen')}</span><strong>${clamp(item.progress)}%</strong></div><div class="progress-track"><span style="width:${clamp(item.progress)}%"></span></div></div>
-      <div class="mini-info"><div><span>Nächster Schritt</span><strong>${escapeHtml(item.nextAction || 'Keiner eingetragen')}</strong></div><div><span>Offene Punkte</span><strong>${points}</strong></div></div>
+      <div class="mini-info"><div><span>Nächster Schritt</span><strong>${escapeHtml(item.nextAction || 'Keiner eingetragen')}</strong></div><div><span>Öffentliche URLs</span><strong>${publicLinks(item).length}</strong></div></div>
       <div class="card-actions">
         ${open ? `<a class="btn btn-primary" href="${escapeHtml(open.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<button class="btn btn-primary detail-button" type="button" data-detail="${escapeHtml(item.id)}">Ansehen</button>`}
         <button class="btn btn-secondary detail-button" type="button" data-detail="${escapeHtml(item.id)}">Details</button>
@@ -228,13 +243,13 @@ function renderAttention() {
 }
 
 function linksMarkup(item) {
-  if (!(item.links||[]).length) return `<p class="muted-copy">Noch kein Link hinterlegt.</p>`;
-  return (item.links||[]).map(link=>{
-    const clickable = isWebUrl(link.url);
-    const historical = isSandbox(link.url) || link.kind === 'historical';
-    return `<div class="resource-link ${historical?'historical-link':''}">
-      <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))}</span><strong>${escapeHtml(link.label || 'Link')}</strong><code>${escapeHtml(link.url)}</code></div>
-      ${clickable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<button type="button" data-copy="${escapeHtml(link.url)}">Kopieren</button>`}
+  const links = publicLinks(item);
+  if (!links.length) return `<div class="no-public-link"><strong>Noch keine öffentliche HTTPS-Adresse</strong><p>Lokale Entwicklungsadressen, Sandbox-Dateien und interne Codex-Links werden hier bewusst nicht angezeigt.</p></div>`;
+  return links.map(link=>{
+    const check = link.lastHttpStatus ? `HTTP ${link.lastHttpStatus}` : 'wird geprüft';
+    return `<div class="resource-link">
+      <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))} · ${escapeHtml(check)}</span><strong>${escapeHtml(link.label || 'Öffentliche URL')}</strong><code>${escapeHtml(link.url)}</code></div>
+      <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>
     </div>`;
   }).join('');
 }
@@ -266,23 +281,22 @@ function openDetails(id) {
   const item = state.items.find(i=>i.id===id); if(!item)return;
   el.detailContent.innerHTML = `<div class="dialog-hero detail-hero"><p class="eyebrow">${escapeHtml(kindLabel[item.kind]||item.kind)} · ${escapeHtml(item.category||'')}</p><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.description||'')}</p><div class="detail-statusline"><span class="priority priority-${escapeHtml(item.priority||'mittel')}">Priorität ${escapeHtml(item.priority||'mittel')}</span><span>${escapeHtml(item.phase||'Phase offen')}</span><strong>${clamp(item.progress)}%</strong></div></div>
     <div class="detail-progress"><div><span style="width:${clamp(item.progress)}%"></span></div></div>
-    <div class="detail-actions"><button class="btn btn-primary" id="detail-edit" type="button">✎ Bearbeiten</button>${primaryLink(item)?`<a class="btn btn-secondary" href="${escapeHtml(primaryLink(item).url)}" target="_blank" rel="noopener noreferrer">Hauptlink öffnen ↗</a>`:''}</div>
-    <div class="detail-tabs" role="tablist"><button class="active" data-detail-tab="overview">Übersicht</button><button data-detail-tab="links">Links & Dateien</button><button data-detail-tab="tech">Technik</button><button data-detail-tab="history">Historie</button></div>
+    <div class="detail-actions"><button class="btn btn-primary" id="detail-edit" type="button">✎ Bearbeiten</button>${primaryLink(item)?`<a class="btn btn-secondary" href="${escapeHtml(primaryLink(item).url)}" target="_blank" rel="noopener noreferrer">Öffentliche Seite öffnen ↗</a>`:''}</div>
+    <div class="detail-tabs" role="tablist"><button class="active" data-detail-tab="overview">Übersicht</button><button data-detail-tab="links">Öffentliche Links & Dateien</button><button data-detail-tab="tech">Technik</button><button data-detail-tab="history">Historie</button></div>
     <section class="detail-panel active" data-detail-panel="overview">
       <div class="detail-grid"><article><span>Ziel</span><p>${escapeHtml(item.objective||'Noch nicht dokumentiert.')}</p></article><article><span>Aktueller Stand</span><p>${escapeHtml(item.currentState||item.statusText||'Noch nicht dokumentiert.')}</p></article></div>
       <div class="focus-card"><span>Nächster sinnvoller Schritt</span><strong>${escapeHtml(item.nextAction||'Noch nicht festgelegt.')}</strong></div>
       <div class="detail-grid"><article><span>Offene Punkte</span>${listMarkup(item.openPoints||[])}</article><article><span>Notizen</span><p class="notes-copy">${escapeHtml(item.notes||'Noch keine eigenen Notizen auf diesem Gerät.')}</p></article></div>
       ${(item.tags||[]).length?`<div class="tag-row">${item.tags.map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div>`:''}
     </section>
-    <section class="detail-panel" data-detail-panel="links"><h3>URLs</h3><div class="resource-list">${linksMarkup(item)}</div><h3>Dateien / ChatGPT-Artefakte</h3>${listMarkup(item.files||[],'Keine Datei zugeordnet.')}</section>
-    <section class="detail-panel" data-detail-panel="tech"><h3>Automatisch erkannte Fakten</h3>${technicalMarkup(item)}<p class="dialog-note">Technische Daten stammen aus der automatischen Überwachung. Deine eigenen Projektfelder bleiben davon getrennt und werden nicht überschrieben.</p></section>
+    <section class="detail-panel" data-detail-panel="links"><h3>Öffentliche HTTPS-Adressen</h3><div class="resource-list">${linksMarkup(item)}</div><h3>Dateien / interne Projektartefakte</h3>${listMarkup(item.files||[],'Keine Datei zugeordnet.')}</section>
+    <section class="detail-panel" data-detail-panel="tech"><h3>Automatisch erkannte Fakten</h3>${technicalMarkup(item)}<p class="dialog-note">Nur öffentliche HTTPS-Seiten werden als Website verlinkt und automatisch fotografiert. Lokale oder interne Pfade bleiben außerhalb der Linkliste.</p></section>
     <section class="detail-panel" data-detail-panel="history"><h3>Projekt-Historie</h3><div class="timeline">${timelineMarkup(item)}</div></section>`;
   $('#detail-edit').addEventListener('click',()=>{el.detail.close();openEditor(id)});
   $$('[data-detail-tab]').forEach(btn=>btn.addEventListener('click',()=>{
     $$('[data-detail-tab]').forEach(x=>x.classList.toggle('active',x===btn));
     $$('[data-detail-panel]').forEach(p=>p.classList.toggle('active',p.dataset.detailPanel===btn.dataset.detailTab));
   }));
-  $$('[data-copy]').forEach(btn=>btn.addEventListener('click',()=>copyText(btn.dataset.copy)));
   el.detail.showModal();
 }
 
@@ -314,8 +328,12 @@ function saveEditor() {
   const current=state.items.find(i=>i.id===id)||{};
   const existingOverride=state.overrides[id]||{};
   const url=$('#edit-url').value.trim();
-  const newLinks=[...(existingOverride.links||[])];
-  if(url && !newLinks.some(l=>l.url===url)) newLinks.push({label:'Eigener Link',url,kind:isSandbox(url)?'historical':'live'});
+  if (url && !isPublicWebUrl(url)) {
+    showToast('Nur öffentliche HTTPS-Adressen werden als URL gespeichert.');
+    return;
+  }
+  const newLinks=[...(existingOverride.links||[])].filter(link=>isPublicWebUrl(link.url));
+  if(url && !newLinks.some(l=>l.url===url)) newLinks.push({label:'Eigene öffentliche URL',url,kind:'live'});
   state.overrides[id]={
     ...existingOverride,
     title, kind:$('#edit-kind').value, priority:$('#edit-priority').value, category:$('#edit-category').value.trim()||'Eigener Eintrag',
@@ -326,9 +344,6 @@ function saveEditor() {
   };
   saveOverrides(); buildItems(); renderFilters(); renderMetrics(); renderAttention(); render(); el.editor.close(); showToast('Änderungen auf diesem Gerät gespeichert.');
 }
-function copyText(text) {
-  navigator.clipboard?.writeText(text).then(()=>showToast('Adresse kopiert.')).catch(()=>showToast('Kopieren nicht möglich.'));
-}
 function exportOverrides() {
   const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),overrides:state.overrides},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`olaf-projektzentrale-backup-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(a.href); showToast('Lokale Projektdaten exportiert.');
@@ -336,7 +351,7 @@ function exportOverrides() {
 function importOverrides(file) {
   const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result);state.overrides={...state.overrides,...(parsed.overrides||parsed)};saveOverrides();buildItems();renderFilters();renderMetrics();renderAttention();render();showToast('Projektdaten importiert.')}catch{showToast('JSON konnte nicht importiert werden.')}};reader.readAsText(file);
 }
-function showToast(message) { el.toast.textContent=message;el.toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.toast.classList.remove('show'),2200); }
+function showToast(message) { el.toast.textContent=message;el.toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.toast.classList.remove('show'),2400); }
 
 async function init() {
   try {
