@@ -26,6 +26,7 @@ jobs:
       - name: Validate JSON data
         run: |
           node -e "const fs=require('fs'); const sites=JSON.parse(fs.readFileSync('link-hub/public/data/sites.json','utf8')); const catalog=JSON.parse(fs.readFileSync('link-hub/public/data/catalog.json','utf8')); if(!Array.isArray(sites.sites)) throw new Error('sites.json: sites missing'); if(!Array.isArray(catalog.items)) throw new Error('catalog.json: items missing'); console.log('sites', sites.sites.length, 'catalog', catalog.items.length);"
+          node link-hub/monitor/validate-public-data.mjs
 
       - name: Check required workspace files
         run: |

@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 3,
-    "generatedAt": "2026-08-18T22:40:16.292Z",
+    "version": 4,
+    "generatedAt": "2026-08-18T23:08:05.757Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -31,7 +31,9 @@
       "fingerprint": "3831405f417b5f76fd0140f4e3b7b294e3a187f9316047a263d281790bb2ea84",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://olaf-wissens-zentrale.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "olaf-tool-command-center",
@@ -63,7 +65,9 @@
       "fingerprint": "efffd87092c27836b625f7d0e80800526f00f0d47a761b5d94f899caa468f610",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "codex-faehigkeiten-navigator",
@@ -95,7 +99,9 @@
       "fingerprint": "72d55b0bde013e66f8fd204ab04e9463f8cfac4a2fdb0e4f4bf898d3a478b1db",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/codex-faehigkeiten-navigator/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "harbor-ai-support",
@@ -122,7 +128,9 @@
       "fingerprint": "aaa1dc9bc51578f9846a62d355e1b1113de0466ac048713eec3619ae802819a1",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "apple-intelligence-watch",
@@ -149,7 +157,9 @@
       "fingerprint": "648389ee9e3fda1b05c835f0609630be0a404402fd543b453f4f2cfd6d746017",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://apple-intelligence-watch.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "apple-intelligence-guide",
@@ -176,7 +186,9 @@
       "fingerprint": "5fb1c8dda4afd8a08b2afa0f3c6c15ba17f9f45ed30d7f8353d331bc46a7f0fd",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://apple-intelligence-guide.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "marens-daily-glow",
@@ -203,7 +215,7 @@
           "kind": "source"
         }
       ],
-      "previewImage": "previews/marens-daily-glow.png",
+      "previewImage": "previews/covers/marens-daily-glow.webp",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
@@ -213,7 +225,9 @@
       "fingerprint": "ea233a936be095eabcfa52c69f8736dc027797ac45f10c65f089126e38215c39",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "my-daily-compass",
@@ -230,7 +244,7 @@
           "kind": "live"
         }
       ],
-      "previewImage": "previews/my-daily-compass.png",
+      "previewImage": "previews/covers/my-daily-compass.webp",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-07-20T23:52:39.502425Z",
@@ -240,7 +254,9 @@
       "fingerprint": "0105adb73311436dc7f141c7cfe615576b0f5d381dd4c875b4d0fee10fb87251",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://ole-verwaltung.lovable.app/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "eingliederungshilfe-nrw",
@@ -272,7 +288,9 @@
       "fingerprint": "f87081e445dcf215296331f3d64ba0d08f6ecb91d00b44907c965fc925b87076",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/eingliederungshilfe-nrw/",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "gdp-dashboard",
@@ -289,7 +307,7 @@
           "kind": "source"
         }
       ],
-      "previewImage": "https://opengraph.githubassets.com/1/oletiehen/gdp-dashboard",
+      "previewImage": "previews/covers/gdp-dashboard.webp",
       "status": "repository",
       "monitorMode": "repo",
       "lastPlatformUpdateAt": null,
@@ -298,7 +316,9 @@
       "lastChangedAt": null,
       "fingerprint": null,
       "lastHttpStatus": null,
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "gpt-researcher",
@@ -315,7 +335,7 @@
           "kind": "source"
         }
       ],
-      "previewImage": "https://opengraph.githubassets.com/1/oletiehen/gpt-researcher-mrs82180",
+      "previewImage": "previews/covers/gpt-researcher.webp",
       "status": "needs-link",
       "monitorMode": "repo",
       "lastPlatformUpdateAt": null,
@@ -324,7 +344,9 @@
       "lastChangedAt": null,
       "fingerprint": null,
       "lastHttpStatus": null,
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "chatgpt-tinder-bot",
@@ -341,7 +363,7 @@
           "kind": "source"
         }
       ],
-      "previewImage": "https://opengraph.githubassets.com/1/oletiehen/ChatGPT-Tinder-Bot",
+      "previewImage": "previews/covers/chatgpt-tinder-bot.webp",
       "status": "repository",
       "monitorMode": "repo",
       "lastPlatformUpdateAt": null,
@@ -350,7 +372,9 @@
       "lastChangedAt": null,
       "fingerprint": null,
       "lastHttpStatus": null,
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "chatgpt-share-pitch",
@@ -377,7 +401,9 @@
       "fingerprint": "2aa6a32fd0072bfa992c101432071fab92abd933caa315b622fb8ad2ec2db152",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-      "firstSeenAt": "2026-08-18T21:31:15.009Z"
+      "firstSeenAt": "2026-08-18T21:31:15.009Z",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     }
   ]
 }

@@ -75,11 +75,22 @@ function isPrivateIpv4(host) {
   const [a,b] = parts;
   return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168);
 }
+function isPrivateIpv6(host) {
+  const normalized = host.replace(/^\[|\]$/g, '').toLowerCase();
+  return normalized === '::' || normalized === '::1' || normalized.startsWith('fc') || normalized.startsWith('fd') || /^fe[89ab]/.test(normalized);
+}
 function isPublicWebUrl(value='') {
   try {
     const url = new URL(value);
     const host = url.hostname.toLowerCase();
-    return url.protocol === 'https:' && host !== 'localhost' && host !== '::1' && !host.endsWith('.local') && !isPrivateIpv4(host);
+    const normalizedHost = host.replace(/^\[|\]$/g, '');
+    return url.protocol === 'https:' &&
+      normalizedHost !== 'localhost' &&
+      !normalizedHost.endsWith('.localhost') &&
+      !normalizedHost.endsWith('.local') &&
+      !isPrivateIpv4(normalizedHost) &&
+      !isPrivateIpv6(normalizedHost) &&
+      (normalizedHost.includes('.') || normalizedHost.includes(':'));
   } catch { return false; }
 }
 function publicLinks(item) {
@@ -121,6 +132,9 @@ function siteAsCatalog(site) {
     openPoints: site.status === 'needs-link' ? ['Öffentliche HTTPS-Adresse zuordnen'] : [],
     tags: [site.platform].filter(Boolean),
     links: site.links || [],
+    previewImage: site.previewImage,
+    previewKind: site.previewKind,
+    previewPolicy: site.previewPolicy,
     files: [],
     timeline: []
   };
@@ -142,6 +156,8 @@ function mergeItem(base, site) {
       httpStatus: site.lastHttpStatus,
       resolvedUrl: site.resolvedUrl,
       previewImage: site.previewImage,
+      previewKind: site.previewKind,
+      previewPolicy: site.previewPolicy,
       lastChangedAt: site.lastChangedAt,
       lastPublishedAt: site.lastPublishedAt,
       lastPlatformUpdateAt: site.lastPlatformUpdateAt,
@@ -181,9 +197,20 @@ function sortItems(a,b) {
 function statusClass(status='unknown') { return `status-${String(status).replace(/[^a-z0-9-]/gi,'-')}`; }
 function previewMarkup(item) {
   const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
-  if (src) return `<img src="${escapeHtml(src)}" alt="Vorschau ${escapeHtml(item.title)}" loading="lazy" data-preview>`;
+  const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || (src ? 'website-screenshot' : 'fallback');
+  if (src) {
+    const alt = previewKind === 'ai-cover' ? `KI-Cover zu ${item.title}` : `Screenshot der öffentlichen Website ${item.title}`;
+    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" data-preview data-preview-kind="${escapeHtml(previewKind)}">`;
+  }
   const symbol = item.kind === 'process' ? '↻' : item.kind === 'artifact' ? '◇' : 'OT';
   return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
+}
+function previewOriginMarkup(item) {
+  const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
+  if (!src) return '';
+  const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || 'website-screenshot';
+  const label = previewKind === 'ai-cover' ? 'KI-Cover' : 'Webseiten-Screenshot';
+  return `<span class="preview-origin preview-origin-${escapeHtml(previewKind)}">${label}</span>`;
 }
 function linkTypeLabel(kind='') {
   return ({live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'Öffentliche URL';
@@ -198,7 +225,7 @@ function cardMarkup(item) {
   const technicalStatus = item.technical?.liveStatus;
   const status = technicalStatus === 'live' ? 'live' : item.status || technicalStatus || 'unknown';
   return `<article class="project-card kind-${escapeHtml(item.kind)}" data-id="${escapeHtml(item.id)}">
-    <div class="preview">${previewMarkup(item)}<span class="platform-tag">${escapeHtml(item.source || item.technical?.platform || kindLabel[item.kind])}</span><span class="kind-tag">${escapeHtml(kindLabel[item.kind] || item.kind)}</span></div>
+    <div class="preview">${previewMarkup(item)}${previewOriginMarkup(item)}<span class="platform-tag">${escapeHtml(item.source || item.technical?.platform || kindLabel[item.kind])}</span><span class="kind-tag">${escapeHtml(kindLabel[item.kind] || item.kind)}</span></div>
     <div class="card-body">
       <div class="card-topline"><span class="category">${escapeHtml(item.category || '')}</span><span class="status ${statusClass(status)}">${escapeHtml(statusLabel[status] || status)}</span></div>
       <h3>${escapeHtml(item.title)}</h3>

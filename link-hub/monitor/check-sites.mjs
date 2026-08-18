@@ -37,13 +37,20 @@ function isPrivateIpv4(host) {
   return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168);
 }
 
+function isPrivateIpv6(host) {
+  const normalized = host.replace(/^\[|\]$/g, '').toLowerCase();
+  return normalized === '::' || normalized === '::1' || normalized.startsWith('fc') || normalized.startsWith('fd') || /^fe[89ab]/.test(normalized);
+}
+
 function isPublicHttps(value) {
   try {
     const url = new URL(value);
     const host = url.hostname.toLowerCase();
+    const normalizedHost = host.replace(/^\[|\]$/g, '');
     if (url.protocol !== 'https:') return false;
-    if (host === 'localhost' || host === '::1' || host.endsWith('.local') || isPrivateIpv4(host)) return false;
-    return true;
+    if (normalizedHost === 'localhost' || normalizedHost.endsWith('.localhost') || normalizedHost.endsWith('.local')) return false;
+    if (isPrivateIpv4(normalizedHost) || isPrivateIpv6(normalizedHost)) return false;
+    return normalizedHost.includes('.') || normalizedHost.includes(':');
   } catch {
     return false;
   }
@@ -103,7 +110,11 @@ async function screenshotUrl(url, file, label) {
 async function screenshotSite(site) {
   const file = path.join(previewsDir, `${site.id}.png`);
   const ok = await screenshotUrl(site.primaryUrl, file, site.id);
-  if (ok) site.previewImage = `previews/${site.id}.png`;
+  if (ok) {
+    site.previewImage = `previews/${site.id}.png`;
+    site.previewKind = 'website-screenshot';
+    site.previewPolicy = 'website-screenshot';
+  }
   return ok;
 }
 
@@ -160,8 +171,9 @@ async function monitorWeb(site) {
     sitesDirty = true;
   }
 
-  const needsPreview = !(await exists(previewFile));
-  if (result.ok && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
+  const coverOnly = site.previewPolicy === 'cover-only' || site.previewKind === 'ai-cover';
+  const needsPreview = !coverOnly && !(await exists(previewFile));
+  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
     if (await screenshotSite(site)) sitesDirty = true;
   }
 }
@@ -199,9 +211,11 @@ async function monitorCatalogLink(item, link, index) {
   try {
     result = await fetchText(link.url);
   } catch (error) {
-    if (link.lastHttpStatus !== 0) { link.lastHttpStatus = 0; catalogDirty = true; }
-    link.lastCheckedAt = now;
-    catalogDirty = true;
+    if (link.lastHttpStatus !== 0) {
+      link.lastHttpStatus = 0;
+      link.lastCheckedAt = now;
+      catalogDirty = true;
+    }
     console.warn(`[catalog] ${item.id} ${link.url}: ${error.message}`);
     return false;
   }
@@ -212,21 +226,27 @@ async function monitorCatalogLink(item, link, index) {
   const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
   const file = path.join(catalogPreviewsDir, fileName);
   const previewPath = `previews/catalog/${fileName}`;
+  const coverOnly = item.previewPolicy === 'cover-only' || item.previewKind === 'ai-cover';
+  let metadataChanged = false;
 
-  if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; catalogDirty = true; }
-  if (link.lastHttpStatus !== result.status) { link.lastHttpStatus = result.status; catalogDirty = true; }
-  if (link.resolvedUrl !== result.url) { link.resolvedUrl = result.url; catalogDirty = true; }
-  link.lastCheckedAt = now;
-  catalogDirty = true;
+  if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; metadataChanged = true; }
+  if (link.lastHttpStatus !== result.status) { link.lastHttpStatus = result.status; metadataChanged = true; }
+  if (link.resolvedUrl !== result.url) { link.resolvedUrl = result.url; metadataChanged = true; }
+  if (metadataChanged) {
+    link.lastCheckedAt = now;
+    catalogDirty = true;
+  }
 
-  const needsPreview = !(await exists(file));
-  if (result.ok && (needsPreview || contentChanged || statusChanged)) {
+  const needsPreview = !coverOnly && !(await exists(file));
+  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged)) {
     if (await screenshotUrl(link.url, file, `${item.id}#${index + 1}`)) {
       if (link.previewImage !== previewPath) link.previewImage = previewPath;
+      link.previewKind = 'website-screenshot';
       catalogDirty = true;
     }
-  } else if (result.ok && await exists(file) && link.previewImage !== previewPath) {
+  } else if (result.ok && !coverOnly && await exists(file) && link.previewImage !== previewPath) {
     link.previewImage = previewPath;
+    link.previewKind = 'website-screenshot';
     catalogDirty = true;
   }
 
@@ -243,9 +263,12 @@ async function monitorCatalog(catalog) {
       await monitorCatalogLink(item, publicLinks[index], index);
     }
 
+    if (item.previewPolicy === 'cover-only' || item.previewKind === 'ai-cover') continue;
     const preferred = publicLinks.find(link => link.kind === 'live' && link.previewImage) || publicLinks.find(link => link.previewImage);
     if (preferred?.previewImage && item.previewImage !== preferred.previewImage) {
       item.previewImage = preferred.previewImage;
+      item.previewKind = 'website-screenshot';
+      item.previewPolicy = 'website-screenshot';
       catalogDirty = true;
     }
   }

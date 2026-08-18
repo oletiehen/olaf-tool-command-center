@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 7,
-    "updatedAt": "2026-08-18T22:50:23Z",
+    "version": 8,
+    "updatedAt": "2026-08-18T23:08:05.753Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -60,7 +60,9 @@
           "text": "Automatisches Link- und Screenshot-Monitoring eingerichtet."
         }
       ],
-      "previewImage": "previews/catalog/olaf-projektzentrale-1.png"
+      "previewImage": "previews/catalog/olaf-projektzentrale-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "immobiliencoach-webseite-2025",
@@ -99,7 +101,10 @@
         "style.css",
         "immobilien_coach_website.zip",
         "index_expanded.html"
-      ]
+      ],
+      "previewImage": "previews/covers/immobiliencoach-webseite-2025.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "olaf-personal-website",
@@ -188,7 +193,9 @@
           "previewImage": "previews/catalog/website-animation-showcase-1.png"
         }
       ],
-      "previewImage": "previews/catalog/website-animation-showcase-1.png"
+      "previewImage": "previews/catalog/website-animation-showcase-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "reha-kompass",
@@ -231,7 +238,9 @@
         "Olafs-Reha-Kompass-V2.html",
         "Olafs-Reha-Kompass-Designvorschau.html"
       ],
-      "previewImage": "previews/catalog/reha-kompass-1.png"
+      "previewImage": "previews/catalog/reha-kompass-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "olaf-ki-kompass",
@@ -256,7 +265,10 @@
         "KI",
         "Wissenssystem"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/olaf-ki-kompass.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "duesseldorf-weekend-planner",
@@ -279,7 +291,10 @@
         "Düsseldorf",
         "Lovable"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/duesseldorf-weekend-planner.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "niklas-volland-dashboard",
@@ -321,7 +336,9 @@
         "niklas-to-olaf-action-dashboard.html",
         "niklas-volland-dashboard-navy-gold.html"
       ],
-      "previewImage": "previews/catalog/niklas-volland-dashboard-1.png"
+      "previewImage": "previews/catalog/niklas-volland-dashboard-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "wiechert-taxi-bus",
@@ -363,7 +380,9 @@
       "files": [
         "wiechert-taxi-bus-webapp-v2.html"
       ],
-      "previewImage": "previews/catalog/wiechert-taxi-bus-1.png"
+      "previewImage": "previews/catalog/wiechert-taxi-bus-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "wiechert-reisen",
@@ -404,7 +423,9 @@
       "files": [
         "wiechert-reisen-webapp.html"
       ],
-      "previewImage": "previews/catalog/wiechert-reisen-1.png"
+      "previewImage": "previews/catalog/wiechert-reisen-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "oc-reiseplan",
@@ -443,7 +464,9 @@
       "files": [
         "OC-Reiseplan-App-Vorschau.html"
       ],
-      "previewImage": "previews/catalog/oc-reiseplan-1.png"
+      "previewImage": "previews/covers/oc-reiseplan.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "sonos-alexa-mobile",
@@ -482,7 +505,9 @@
       "files": [
         "sonos-alexa-mobile-lite.html"
       ],
-      "previewImage": "previews/catalog/sonos-alexa-mobile-1.png"
+      "previewImage": "previews/catalog/sonos-alexa-mobile-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "apple-intelligence-chatgpt-app",
@@ -521,7 +546,9 @@
       "files": [
         "apple-intelligence-iphone17.html"
       ],
-      "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png"
+      "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "chatgpt-business-system",
@@ -562,7 +589,9 @@
       "files": [
         "ChatGPT_Business_System_Olaf_FINAL_Übersicht.html"
       ],
-      "previewImage": "previews/catalog/chatgpt-business-system-1.png"
+      "previewImage": "previews/catalog/chatgpt-business-system-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "icloud-chatgpt-bridge",
@@ -587,7 +616,10 @@
         "Kontakte",
         "Connector"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/icloud-chatgpt-bridge.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "remotion-prototypes",
@@ -612,7 +644,10 @@
         "Video",
         "React"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/remotion-prototypes.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "chatgpt-share-pitch",
@@ -647,7 +682,9 @@
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png"
         }
       ],
-      "previewImage": "previews/catalog/chatgpt-share-pitch-1.png"
+      "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "project-monitoring-process",
@@ -671,7 +708,10 @@
         "Monitoring",
         "Screenshots"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/project-monitoring-process.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "project-link-sync-process",
@@ -695,7 +735,10 @@
         "GitHub",
         "ChatGPT Library"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/project-link-sync-process.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     },
     {
       "id": "render-deploy-process",
@@ -730,7 +773,9 @@
           "previewImage": "previews/catalog/render-deploy-process-1.png"
         }
       ],
-      "previewImage": "previews/catalog/render-deploy-process-1.png"
+      "previewImage": "previews/catalog/render-deploy-process-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "chatgpt-library-scan-process",
@@ -755,7 +800,10 @@
         "Inventar",
         "Render"
       ],
-      "links": []
+      "links": [],
+      "previewImage": "previews/covers/chatgpt-library-scan-process.webp",
+      "previewKind": "ai-cover",
+      "previewPolicy": "cover-only"
     }
   ]
 }
