@@ -85,6 +85,13 @@ function isPublicWebUrl(value='') {
 function publicLinks(item) {
   return (item.links || []).filter(link => link?.url && isPublicWebUrl(link.url));
 }
+function isReachableLink(link) {
+  const status = Number(link?.lastHttpStatus || 0);
+  return !status || (status >= 200 && status < 400);
+}
+function reachablePublicLinks(item) {
+  return publicLinks(item).filter(isReachableLink);
+}
 function latestTechnicalDate(site={}) {
   const values = [site.lastChangedAt,site.lastPublishedAt,site.lastPlatformUpdateAt,site.lastSourceUpdateAt,site.firstSeenAt].filter(Boolean).map(v=>new Date(v)).filter(d=>!Number.isNaN(d.getTime()));
   return values.length ? new Date(Math.max(...values.map(d=>d.getTime()))) : null;
@@ -182,7 +189,7 @@ function linkTypeLabel(kind='') {
   return ({live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'Öffentliche URL';
 }
 function primaryLink(item) {
-  const links = publicLinks(item);
+  const links = reachablePublicLinks(item);
   return links.find(l=>l.kind==='live') || links.find(l=>l.kind==='reference') || links[0] || null;
 }
 function cardMarkup(item) {
@@ -197,7 +204,7 @@ function cardMarkup(item) {
       <h3>${escapeHtml(item.title)}</h3>
       <p class="description">${escapeHtml(item.description || item.statusText || '')}</p>
       <div class="progress-row"><div class="progress-meta"><span>${escapeHtml(item.phase || 'Stand offen')}</span><strong>${clamp(item.progress)}%</strong></div><div class="progress-track"><span style="width:${clamp(item.progress)}%"></span></div></div>
-      <div class="mini-info"><div><span>Nächster Schritt</span><strong>${escapeHtml(item.nextAction || 'Keiner eingetragen')}</strong></div><div><span>Öffentliche URLs</span><strong>${publicLinks(item).length}</strong></div></div>
+      <div class="mini-info"><div><span>Nächster Schritt</span><strong>${escapeHtml(item.nextAction || 'Keiner eingetragen')}</strong></div><div><span>Erreichbare URLs</span><strong>${reachablePublicLinks(item).length}</strong></div></div>
       <div class="card-actions">
         ${open ? `<a class="btn btn-primary" href="${escapeHtml(open.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<button class="btn btn-primary detail-button" type="button" data-detail="${escapeHtml(item.id)}">Ansehen</button>`}
         <button class="btn btn-secondary detail-button" type="button" data-detail="${escapeHtml(item.id)}">Details</button>
@@ -246,10 +253,12 @@ function linksMarkup(item) {
   const links = publicLinks(item);
   if (!links.length) return `<div class="no-public-link"><strong>Noch keine öffentliche HTTPS-Adresse</strong><p>Lokale Entwicklungsadressen, Sandbox-Dateien und interne Codex-Links werden hier bewusst nicht angezeigt.</p></div>`;
   return links.map(link=>{
-    const check = link.lastHttpStatus ? `HTTP ${link.lastHttpStatus}` : 'wird geprüft';
+    const status = Number(link.lastHttpStatus || 0);
+    const reachable = isReachableLink(link);
+    const check = status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
     return `<div class="resource-link">
       <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))} · ${escapeHtml(check)}</span><strong>${escapeHtml(link.label || 'Öffentliche URL')}</strong><code>${escapeHtml(link.url)}</code></div>
-      <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>
+      ${reachable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">Nicht erreichbar</span>`}
     </div>`;
   }).join('');
 }
