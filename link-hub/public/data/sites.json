@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 1,
-    "generatedAt": "2026-08-18T20:48:00Z",
+    "version": 2,
+    "generatedAt": "2026-08-18T21:31:15.009Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -14,16 +14,24 @@
       "description": "Zentrale Wissens- und Funktions-App für Webseiten, KI-App und den KI-Immobilienverkaufscoach.",
       "primaryUrl": "https://olaf-wissens-zentrale.lovable.app",
       "sourceRepo": null,
-      "links": [{"label":"Live-Seite","url":"https://olaf-wissens-zentrale.lovable.app","kind":"live"}],
-      "previewImage": "https://screenshot2.lovable.dev/1c6294b895dda700ad52c3a02e0bac83/id-preview-a2dd9532--dc0c6b68-8bda-4149-9a28-3c872747ecd2.lovable.app-1786488935917.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://olaf-wissens-zentrale.lovable.app",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/olaf-wissens-hub.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-11T22:59:14.904544Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "3831405f417b5f76fd0140f4e3b7b294e3a187f9316047a263d281790bb2ea84",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://olaf-wissens-zentrale.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "olaf-tool-command-center",
@@ -33,16 +41,29 @@
       "description": "Mobiloptimierte Übersicht deiner wichtigsten Tools, Funktionen und Schnellzugriffe.",
       "primaryUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
       "sourceRepo": "oletiehen/olaf-tool-command-center",
-      "links": [{"label":"Live-Seite","url":"https://oletiehen.github.io/olaf-tool-command-center/","kind":"live"},{"label":"GitHub","url":"https://github.com/oletiehen/olaf-tool-command-center","kind":"source"}],
-      "previewImage": "https://raw.githubusercontent.com/oletiehen/olaf-tool-command-center/main/public/og-v2.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://oletiehen.github.io/olaf-tool-command-center/",
+          "kind": "live"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/olaf-tool-command-center",
+          "kind": "source"
+        }
+      ],
+      "previewImage": "previews/olaf-tool-command-center.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-16T18:19:39Z",
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "c7eb19e5d4a8369c6d97ee83099aab58fa2d46aef9ec951de16eef60a688f810",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "codex-faehigkeiten-navigator",
@@ -52,16 +73,29 @@
       "description": "Interaktiver Navigator für Codex-Fähigkeiten, Funktionen und Einsatzbereiche.",
       "primaryUrl": "https://oletiehen.github.io/codex-faehigkeiten-navigator/",
       "sourceRepo": "oletiehen/codex-faehigkeiten-navigator",
-      "links": [{"label":"Live-Seite","url":"https://oletiehen.github.io/codex-faehigkeiten-navigator/","kind":"live"},{"label":"GitHub","url":"https://github.com/oletiehen/codex-faehigkeiten-navigator","kind":"source"}],
-      "previewImage": "https://opengraph.githubassets.com/1/oletiehen/codex-faehigkeiten-navigator",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://oletiehen.github.io/codex-faehigkeiten-navigator/",
+          "kind": "live"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
+          "kind": "source"
+        }
+      ],
+      "previewImage": "previews/codex-faehigkeiten-navigator.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-01T06:06:01Z",
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "72d55b0bde013e66f8fd204ab04e9463f8cfac4a2fdb0e4f4bf898d3a478b1db",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://oletiehen.github.io/codex-faehigkeiten-navigator/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "harbor-ai-support",
@@ -71,16 +105,24 @@
       "description": "KI-gestützte Customer-Support-Anwendung mit Inbox, Wissensbasis, Analytics und Human-in-the-loop-Copilot.",
       "primaryUrl": "https://harbor-ki-support.lovable.app",
       "sourceRepo": null,
-      "links": [{"label":"Live-Seite","url":"https://harbor-ki-support.lovable.app","kind":"live"}],
-      "previewImage": "https://screenshot2.lovable.dev/ebca9a0c0284c9707f37ce4c99960ee7/id-preview-7d620966--bc50ff5b-ab90-47ed-9adb-217a0479e9bc.lovable.app-1786911646054.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://harbor-ki-support.lovable.app",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/harbor-ai-support.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "d93ff6a5c5f481416f245d830fec7b3d7e08d5df3ac99e68917978ddaea81bc7",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://harbor-ki-support.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "apple-intelligence-watch",
@@ -90,16 +132,24 @@
       "description": "Übersicht über verfügbare, eingeschränkte und angekündigte Apple-Intelligence-Funktionen.",
       "primaryUrl": "https://apple-intelligence-watch.lovable.app",
       "sourceRepo": null,
-      "links": [{"label":"Live-Seite","url":"https://apple-intelligence-watch.lovable.app","kind":"live"}],
-      "previewImage": "https://screenshot2.lovable.dev/0266658df4366c50825e865b26a9256b/id-preview-da93fb3c--cbc5bd01-07fe-479b-bc6a-2df64cc62dc8.lovable.app-1786049687070.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://apple-intelligence-watch.lovable.app",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/apple-intelligence-watch.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-11T22:53:45.928547Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "648389ee9e3fda1b05c835f0609630be0a404402fd543b453f4f2cfd6d746017",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://apple-intelligence-watch.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "apple-intelligence-guide",
@@ -109,16 +159,24 @@
       "description": "Mobile-first Guide mit Suche, Filtern, Funktionskarten und Einrichtungshinweisen zu Apple Intelligence.",
       "primaryUrl": "https://apple-intelligence-guide.lovable.app",
       "sourceRepo": null,
-      "links": [{"label":"Live-Seite","url":"https://apple-intelligence-guide.lovable.app","kind":"live"}],
-      "previewImage": "https://screenshot2.lovable.dev/91379f6a348ea39b4dca8dadf368ef08/id-preview-d2b76e66--cbe87d6e-7480-48f6-b7eb-85a42ac0104d.lovable.app-1786049182302.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://apple-intelligence-guide.lovable.app",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/apple-intelligence-guide.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-07T23:54:07.126094Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "5fb1c8dda4afd8a08b2afa0f3c6c15ba17f9f45ed30d7f8353d331bc46a7f0fd",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://apple-intelligence-guide.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "marens-daily-glow",
@@ -128,16 +186,34 @@
       "description": "Persönliches 6-Minuten-Journal mit Morgen- und Abendroutine, Verlauf und Insights.",
       "primaryUrl": "https://mindful-pink-moments.lovable.app",
       "sourceRepo": "oletiehen/marens-6-minuten",
-      "links": [{"label":"Lovable","url":"https://mindful-pink-moments.lovable.app","kind":"live"},{"label":"GitHub Pages","url":"https://oletiehen.github.io/marens-6-minuten/","kind":"live"},{"label":"GitHub","url":"https://github.com/oletiehen/marens-6-minuten","kind":"source"}],
-      "previewImage": "https://screenshot2.lovable.dev/f5392a7f752c1558be39c77bfb3b20fe/id-preview-8178e141--a437a209-2542-4636-b43b-51fc10ce879a.lovable.app-1786147994748.png",
+      "links": [
+        {
+          "label": "Lovable",
+          "url": "https://mindful-pink-moments.lovable.app",
+          "kind": "live"
+        },
+        {
+          "label": "GitHub Pages",
+          "url": "https://oletiehen.github.io/marens-6-minuten/",
+          "kind": "live"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/marens-6-minuten",
+          "kind": "source"
+        }
+      ],
+      "previewImage": "previews/marens-daily-glow.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "ea233a936be095eabcfa52c69f8736dc027797ac45f10c65f089126e38215c39",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "my-daily-compass",
@@ -147,16 +223,24 @@
       "description": "Persönliche Organisations-App für Medikamente, Einnahmen, Ausgaben und wichtige Notizen.",
       "primaryUrl": "https://ole-verwaltung.lovable.app",
       "sourceRepo": null,
-      "links": [{"label":"Live-Seite","url":"https://ole-verwaltung.lovable.app","kind":"live"}],
-      "previewImage": "https://screenshot2.lovable.dev/c4af10b9-e89d-4162-9178-db7789faa83c/id-preview-038536e9--782fe319-d718-460c-8742-1f1f83d6366b.lovable.app-1784591432125.png",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://ole-verwaltung.lovable.app",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/my-daily-compass.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-07-20T23:52:39.502425Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "0105adb73311436dc7f141c7cfe615576b0f5d381dd4c875b4d0fee10fb87251",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://ole-verwaltung.lovable.app/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "eingliederungshilfe-nrw",
@@ -166,16 +250,29 @@
       "description": "Öffentliche Projektseite zum Repository Eingliederungshilfe NRW.",
       "primaryUrl": "https://oletiehen.github.io/eingliederungshilfe-nrw/",
       "sourceRepo": "oletiehen/eingliederungshilfe-nrw",
-      "links": [{"label":"Live-Seite","url":"https://oletiehen.github.io/eingliederungshilfe-nrw/","kind":"live"},{"label":"GitHub","url":"https://github.com/oletiehen/eingliederungshilfe-nrw","kind":"source"}],
-      "previewImage": "https://opengraph.githubassets.com/1/oletiehen/eingliederungshilfe-nrw",
+      "links": [
+        {
+          "label": "Live-Seite",
+          "url": "https://oletiehen.github.io/eingliederungshilfe-nrw/",
+          "kind": "live"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
+          "kind": "source"
+        }
+      ],
+      "previewImage": "previews/eingliederungshilfe-nrw.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-14T20:58:15Z",
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "f87081e445dcf215296331f3d64ba0d08f6ecb91d00b44907c965fc925b87076",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://oletiehen.github.io/eingliederungshilfe-nrw/",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "gdp-dashboard",
@@ -185,7 +282,13 @@
       "description": "Öffentliches Dashboard-Repository; aktuell ohne bestätigte separate Live-Webseite.",
       "primaryUrl": "https://github.com/oletiehen/gdp-dashboard",
       "sourceRepo": "oletiehen/gdp-dashboard",
-      "links": [{"label":"GitHub","url":"https://github.com/oletiehen/gdp-dashboard","kind":"source"}],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/gdp-dashboard",
+          "kind": "source"
+        }
+      ],
       "previewImage": "https://opengraph.githubassets.com/1/oletiehen/gdp-dashboard",
       "status": "repository",
       "monitorMode": "repo",
@@ -194,7 +297,8 @@
       "lastPublishedAt": null,
       "lastChangedAt": null,
       "fingerprint": null,
-      "lastHttpStatus": null
+      "lastHttpStatus": null,
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "gpt-researcher",
@@ -204,7 +308,13 @@
       "description": "Research-Projekt aus einem Render-Template. Der öffentliche Render-Link ist noch nicht verifiziert.",
       "primaryUrl": "https://github.com/oletiehen/gpt-researcher-mrs82180",
       "sourceRepo": "oletiehen/gpt-researcher-mrs82180",
-      "links": [{"label":"GitHub","url":"https://github.com/oletiehen/gpt-researcher-mrs82180","kind":"source"}],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/gpt-researcher-mrs82180",
+          "kind": "source"
+        }
+      ],
       "previewImage": "https://opengraph.githubassets.com/1/oletiehen/gpt-researcher-mrs82180",
       "status": "needs-link",
       "monitorMode": "repo",
@@ -213,7 +323,8 @@
       "lastPublishedAt": null,
       "lastChangedAt": null,
       "fingerprint": null,
-      "lastHttpStatus": null
+      "lastHttpStatus": null,
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "chatgpt-tinder-bot",
@@ -223,7 +334,13 @@
       "description": "Öffentliches Repository zur Integration von ChatGPT in Discord.",
       "primaryUrl": "https://github.com/oletiehen/ChatGPT-Tinder-Bot",
       "sourceRepo": "oletiehen/ChatGPT-Tinder-Bot",
-      "links": [{"label":"GitHub","url":"https://github.com/oletiehen/ChatGPT-Tinder-Bot","kind":"source"}],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/ChatGPT-Tinder-Bot",
+          "kind": "source"
+        }
+      ],
       "previewImage": "https://opengraph.githubassets.com/1/oletiehen/ChatGPT-Tinder-Bot",
       "status": "repository",
       "monitorMode": "repo",
@@ -232,7 +349,8 @@
       "lastPublishedAt": null,
       "lastChangedAt": null,
       "fingerprint": null,
-      "lastHttpStatus": null
+      "lastHttpStatus": null,
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     },
     {
       "id": "chatgpt-share-pitch",
@@ -242,16 +360,24 @@
       "description": "Öffentlich geteilter ChatGPT-Inhalt aus deinem Projektbestand.",
       "primaryUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "sourceRepo": null,
-      "links": [{"label":"ChatGPT öffnen","url":"https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de","kind":"live"}],
-      "previewImage": null,
-      "status": "unknown",
+      "links": [
+        {
+          "label": "ChatGPT öffnen",
+          "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
+          "kind": "live"
+        }
+      ],
+      "previewImage": "previews/chatgpt-share-pitch.png",
+      "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": null
+      "fingerprint": "614e350200e0909921547531bb22d2b983def45f7cc02f5faeb63bccc6c930d4",
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
+      "firstSeenAt": "2026-08-18T21:31:15.009Z"
     }
   ]
 }
