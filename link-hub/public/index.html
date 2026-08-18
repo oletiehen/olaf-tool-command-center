@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#06101d">
-  <meta name="description" content="Olaf Tiehen Projektzentrale – alle öffentlichen Web-, App- und GitHub-Projekte an einem Ort.">
+  <meta name="description" content="Olaf Tiehen Projektzentrale – Projekte, Webseiten, ChatGPT-Artefakte und Prozesse an einem Ort.">
   <title>Olaf Tiehen · Projektzentrale</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -15,55 +15,94 @@
   <header class="topbar">
     <a class="brand" href="./" aria-label="Olaf Tiehen Projektzentrale">
       <span class="brand-mark" aria-hidden="true">OT</span>
-      <span class="brand-copy">
-        <strong>Olaf Tiehen</strong>
-        <small>PROJEKTZENTRALE</small>
-      </span>
+      <span class="brand-copy"><strong>Olaf Tiehen</strong><small>PROJEKTZENTRALE</small></span>
     </a>
-    <div class="monitor-status" id="monitor-status">
-      <span class="pulse" aria-hidden="true"></span>
-      <span>Monitoring aktiv</span>
+    <div class="top-actions">
+      <div class="monitor-status"><span class="pulse" aria-hidden="true"></span><span>Monitoring aktiv</span></div>
+      <button class="icon-button" id="export-button" type="button" title="Lokale Änderungen exportieren">⇩</button>
+      <button class="icon-button" id="import-button" type="button" title="Lokale Änderungen importieren">⇧</button>
+      <button class="new-button" id="new-item-button" type="button">＋ Neu</button>
+      <input id="import-file" type="file" accept="application/json" hidden>
     </div>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <p class="eyebrow">WEB &amp; APP HUB</p>
-      <h1 id="hero-title">Alle Projekte.<br><span>Ein zentraler Ort.</span></h1>
-      <p class="hero-copy">Öffentliche Webseiten, Apps, GitHub-Projekte und ChatGPT-Links – mit Vorschau, Änderungsstand und direktem Zugriff.</p>
+      <p class="eyebrow">DEIN DIGITALER LEITSTAND</p>
+      <h1 id="hero-title">Alles im Blick.<br><span>Nichts geht verloren.</span></h1>
+      <p class="hero-copy">Live-Webseiten, Apps, GitHub-Projekte, ChatGPT-Seiten, historische Vorschauen, Prozesse, Projektstände, offene Punkte und nächste Schritte – zentral zusammengeführt.</p>
 
-      <div class="metrics" aria-label="Projektübersicht">
-        <article class="metric"><span>Projekte</span><strong id="metric-total">–</strong></article>
-        <article class="metric"><span>Live</span><strong id="metric-live">–</strong></article>
-        <article class="metric"><span>Plattformen</span><strong id="metric-platforms">–</strong></article>
-        <article class="metric"><span>Letzte Änderung</span><strong id="metric-latest">–</strong></article>
+      <div class="metrics" aria-label="Übersicht">
+        <article class="metric"><span>Gesamt</span><strong id="metric-total">–</strong><small>Einträge</small></article>
+        <article class="metric"><span>Aktiv / Live</span><strong id="metric-active">–</strong><small>in Arbeit</small></article>
+        <article class="metric"><span>Handlungsbedarf</span><strong id="metric-attention">–</strong><small>offene Punkte</small></article>
+        <article class="metric"><span>Automationen</span><strong id="metric-processes">–</strong><small>Prozesse</small></article>
       </div>
     </section>
 
-    <section class="toolbar" aria-label="Projekte filtern">
-      <label class="search-wrap" for="search-input">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <input id="search-input" type="search" placeholder="Projekt, Plattform oder Thema suchen …" autocomplete="off">
-      </label>
+    <nav class="mode-nav" id="mode-nav" aria-label="Bereiche">
+      <button class="mode-tab active" data-kind="all" type="button"><span>◎</span>Alles</button>
+      <button class="mode-tab" data-kind="project" type="button"><span>◆</span>Projekte</button>
+      <button class="mode-tab" data-kind="artifact" type="button"><span>◇</span>ChatGPT-Seiten</button>
+      <button class="mode-tab" data-kind="process" type="button"><span>↻</span>Prozesse</button>
+    </nav>
+
+    <section class="toolbar" aria-label="Einträge filtern">
+      <label class="search-wrap" for="search-input"><span class="search-icon" aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Projekt, URL, Datei, Tag oder Status suchen …" autocomplete="off"></label>
       <div class="select-row">
-        <label><span>Plattform</span><select id="platform-filter"><option value="all">Alle Plattformen</option></select></label>
-        <label><span>Status</span><select id="status-filter"><option value="all">Alle Status</option><option value="live">Live</option><option value="repository">Repository</option><option value="unknown">Ungeprüft</option><option value="needs-link">Link ergänzen</option></select></label>
+        <label><span>Kategorie</span><select id="category-filter"><option value="all">Alle Kategorien</option></select></label>
+        <label><span>Priorität</span><select id="priority-filter"><option value="all">Alle Prioritäten</option><option value="sehr hoch">Sehr hoch</option><option value="hoch">Hoch</option><option value="mittel">Mittel</option><option value="niedrig">Niedrig</option></select></label>
+        <label><span>Status</span><select id="status-filter"><option value="all">Alle Status</option></select></label>
       </div>
-      <div class="chips" id="category-chips" aria-label="Kategorien"></div>
+    </section>
+
+    <section class="attention-strip" id="attention-strip" hidden>
+      <div><p class="eyebrow">JETZT WICHTIG</p><h2>Offene Punkte & nächste Schritte</h2></div>
+      <div class="attention-list" id="attention-list"></div>
     </section>
 
     <section class="content-head">
-      <div><p class="eyebrow">PROJEKTE</p><h2>Deine öffentlichen Ziele</h2></div>
+      <div><p class="eyebrow" id="section-eyebrow">GESAMTÜBERSICHT</p><h2 id="section-title">Projekte, Seiten & Prozesse</h2></div>
       <span id="result-count">–</span>
     </section>
 
     <section class="project-grid" id="project-grid" aria-live="polite"></section>
-    <div class="empty-state" id="empty-state" hidden><div class="empty-mark">OT</div><h2>Keine Treffer</h2><p>Für diese Filterkombination wurde kein Projekt gefunden.</p></div>
+    <div class="empty-state" id="empty-state" hidden><div class="empty-mark">OT</div><h2>Keine Treffer</h2><p>Für diese Auswahl wurde kein Eintrag gefunden.</p></div>
   </main>
 
-  <footer><div class="footer-brand">Olaf Tiehen</div><p>Projektzentrale · automatisch überwacht</p><p id="data-version">Daten werden geladen …</p></footer>
+  <footer>
+    <div class="footer-brand">Olaf Tiehen</div>
+    <p>Projektzentrale · Live-Daten + persönliche Arbeitsstände</p>
+    <p id="data-version">Daten werden geladen …</p>
+  </footer>
 
-  <dialog id="detail-dialog"><div class="dialog-shell"><button class="dialog-close" id="dialog-close" type="button" aria-label="Details schließen">×</button><div id="dialog-content"></div></div></dialog>
+  <dialog id="detail-dialog"><div class="dialog-shell detail-shell"><button class="dialog-close" id="dialog-close" type="button" aria-label="Details schließen">×</button><div id="dialog-content"></div></div></dialog>
+
+  <dialog id="editor-dialog">
+    <form class="dialog-shell editor-shell" id="editor-form" method="dialog">
+      <button class="dialog-close" id="editor-close" type="button" aria-label="Editor schließen">×</button>
+      <div class="editor-head"><p class="eyebrow">BEARBEITEN</p><h2 id="editor-title">Projekt</h2><p>Diese Änderungen werden auf deinem aktuellen Gerät gespeichert und bleiben von der automatischen Live-Prüfung getrennt.</p></div>
+      <input type="hidden" id="edit-id">
+      <div class="form-grid">
+        <label class="span-2"><span>Titel</span><input id="edit-title" required></label>
+        <label><span>Typ</span><select id="edit-kind"><option value="project">Projekt</option><option value="artifact">ChatGPT-Seite / Artefakt</option><option value="process">Prozess</option></select></label>
+        <label><span>Priorität</span><select id="edit-priority"><option>sehr hoch</option><option>hoch</option><option>mittel</option><option>niedrig</option></select></label>
+        <label><span>Kategorie</span><input id="edit-category"></label>
+        <label><span>Phase</span><input id="edit-phase"></label>
+        <label class="span-2"><span>Beschreibung</span><textarea id="edit-description" rows="3"></textarea></label>
+        <label class="span-2"><span>Aktueller Stand</span><textarea id="edit-current" rows="4"></textarea></label>
+        <label class="span-2"><span>Nächster Schritt</span><textarea id="edit-next" rows="3"></textarea></label>
+        <label><span>Fortschritt (%)</span><input id="edit-progress" type="number" min="0" max="100" step="1"></label>
+        <label><span>Status</span><input id="edit-status" placeholder="z. B. active, live, draft"></label>
+        <label class="span-2"><span>Offene Punkte – eine Zeile pro Punkt</span><textarea id="edit-open" rows="5"></textarea></label>
+        <label class="span-2"><span>Notizen</span><textarea id="edit-notes" rows="5" placeholder="Eigene Notizen, Entscheidungen, Ideen …"></textarea></label>
+        <label class="span-2"><span>Zusätzliche URL</span><input id="edit-url" placeholder="https://… oder sandbox:/mnt/data/…"></label>
+      </div>
+      <div class="editor-actions"><button class="btn btn-secondary" id="editor-cancel" type="button">Abbrechen</button><button class="btn btn-primary" type="submit">Änderungen speichern</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="assets/app.js" defer></script>
 </body>
 </html>
