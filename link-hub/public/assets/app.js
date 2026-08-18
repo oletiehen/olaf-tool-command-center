@@ -194,7 +194,6 @@ function primaryLink(item) {
 }
 function cardMarkup(item) {
   const open = primaryLink(item);
-  const points = item.openPoints?.length || 0;
   const technicalStatus = item.technical?.liveStatus;
   const status = technicalStatus === 'live' ? 'live' : item.status || technicalStatus || 'unknown';
   return `<article class="project-card kind-${escapeHtml(item.kind)}" data-id="${escapeHtml(item.id)}">
