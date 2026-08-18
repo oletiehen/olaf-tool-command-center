@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 11,
-    "updatedAt": "2026-08-18T23:34:00.730Z",
+    "version": 12,
+    "updatedAt": "2026-08-18T23:37:49.521Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -119,9 +119,9 @@
       "progress": 92,
       "priority": "hoch",
       "status": "active",
-      "statusText": "Die vorhandene medienfreie öffentliche Edition liegt als Render-Unterseite vor; private Originalmedien bleiben ausgeschlossen.",
-      "currentState": "Die allowlist-basierte public-edition wurde unter /apps/persoenliche-webseite/ in den Render-Publish-Bereich übernommen. Sie enthält keine privaten Medien, Formulare, Tracker oder externen Runtime-Anfragen.",
-      "nextAction": "Öffentliche Render-URL und Screenshot prüfen; Rechtsangaben separat finalisieren.",
+      "statusText": "Die richtige medienfreie Render-Unterseite ist hinterlegt und live verifiziert; private Originalmedien bleiben ausgeschlossen.",
+      "currentState": "Die öffentliche Karte verweist korrekt auf /apps/persoenliche-webseite/. Start, Mein Weg, Gedanken, Impressum und Datenschutz bleiben innerhalb dieser öffentlichen Edition.",
+      "nextAction": "Rechtliche Angaben separat finalisieren; die medienfreie öffentliche Edition und ihre Datenschutzgrenze beibehalten.",
       "openPoints": [
         "Privatbereich final",
         "Kontakt/Datenschutz final",
@@ -212,19 +212,17 @@
       "kind": "project",
       "title": "Olafs Reha-Kompass",
       "category": "Gesundheit & Orientierung",
-      "source": "Render + ChatGPT",
+      "source": "Render Production + GitHub",
       "description": "Umfangreiche Reha-/Klinik-Orientierungsanwendung mit mehreren Premium-Prototypen und Render-Deployment.",
       "objective": "Strukturierte und verständliche Orientierung bei Reha- und Klinikentscheidungen.",
-      "phase": "Öffentlich auf Render veröffentlicht",
-      "progress": 94,
+      "phase": "Geschützter Pilot · Render Production",
+      "progress": 96,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Eine öffentliche Render-Unterseite des Reha-Kompass ist jetzt vorhanden.",
-      "currentState": "Der Reha-Kompass wurde unter /apps/reha-kompass/ in den Render-Publish-Bereich übernommen.",
-      "nextAction": "HTTP-Status, Screenshot und fachlichen Stand gegen Production/Release Candidate prüfen.",
-      "openPoints": [
-        "Production/RC-Zuordnung fachlich prüfen"
-      ],
+      "statusText": "Der geschützte persönliche Reha-Kompass ist über die verifizierte Render-Production erreichbar.",
+      "currentState": "Die öffentliche Einstiegsseite der Production lädt korrekt. Persönliche Inhalte bleiben hinter Geräte- oder Codezugang geschützt.",
+      "nextAction": "Öffentlichen Zugangsbildschirm als echten Screenshot übernehmen und den geschützten Betrieb weiter überwachen.",
+      "openPoints": [],
       "tags": [
         "Render",
         "Reha",
@@ -233,8 +231,8 @@
       ],
       "links": [
         {
-          "label": "Öffentlicher Reha-Kompass",
-          "url": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
+          "label": "Geschützter Reha-Kompass",
+          "url": "https://gdp-dashboard-lccm.onrender.com/",
           "kind": "live",
           "fingerprint": "eb6b9dcd3191ec437ba820623cd7d031a666028e44172cc648abfce247fa105a",
           "lastHttpStatus": 200,
