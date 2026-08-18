@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 5,
-    "updatedAt": "2026-08-18T22:38:00Z",
+    "version": 6,
+    "updatedAt": "2026-08-18T22:40:16.292Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -22,15 +22,45 @@
       "currentState": "Render-Deployment, GitHub-Monitoring und der Projektkatalog sind aktiv. Die Linklogik akzeptiert nur öffentliche HTTPS-Adressen.",
       "nextAction": "Neue öffentliche ChatGPT-Unterseiten automatisch prüfen und fotografieren.",
       "openPoints": [],
-      "tags": ["Render", "GitHub", "Dashboard", "Monitoring"],
+      "tags": [
+        "Render",
+        "GitHub",
+        "Dashboard",
+        "Monitoring"
+      ],
       "links": [
-        {"label":"Live","url":"https://olaf-projektzentrale.onrender.com","kind":"live"},
-        {"label":"GitHub","url":"https://github.com/oletiehen/olaf-tool-command-center","kind":"source"}
+        {
+          "label": "Live",
+          "url": "https://olaf-projektzentrale.onrender.com",
+          "kind": "live",
+          "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/olaf-projektzentrale-1.png"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/oletiehen/olaf-tool-command-center",
+          "kind": "source",
+          "fingerprint": "f77e9db2d3e0bef11ceee55321f3b3330e795be4c0e1f23aff4d40c23faa319e",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/olaf-projektzentrale-2.png"
+        }
       ],
       "timeline": [
-        {"date":"2026-08-18","text":"Erste Live-Version über Render veröffentlicht."},
-        {"date":"2026-08-18","text":"Automatisches Link- und Screenshot-Monitoring eingerichtet."}
-      ]
+        {
+          "date": "2026-08-18",
+          "text": "Erste Live-Version über Render veröffentlicht."
+        },
+        {
+          "date": "2026-08-18",
+          "text": "Automatisches Link- und Screenshot-Monitoring eingerichtet."
+        }
+      ],
+      "previewImage": "previews/catalog/olaf-projektzentrale-1.png"
     },
     {
       "id": "immobiliencoach-webseite-2025",
@@ -48,11 +78,28 @@
       "currentState": "HTML/CSS-Dateien sind als Projektartefakte dokumentiert; die Netlify-Adresse wird erneut geprüft.",
       "nextAction": "Bei Bedarf relevante Inhalte in ein aktuelles Immobilienprojekt übernehmen.",
       "openPoints": [],
-      "tags": ["ChatGPT", "Netlify", "Immobiliencoach"],
-      "links": [
-        {"label":"Frühere öffentliche Netlify-Vorschau","url":"https://immobilien-coach.netlify.app","kind":"historical"}
+      "tags": [
+        "ChatGPT",
+        "Netlify",
+        "Immobiliencoach"
       ],
-      "files": ["index.html", "style.css", "immobilien_coach_website.zip", "index_expanded.html"]
+      "links": [
+        {
+          "label": "Frühere öffentliche Netlify-Vorschau",
+          "url": "https://immobilien-coach.netlify.app",
+          "kind": "historical",
+          "fingerprint": "32a2562a33e666b43b652b2f6fda8530d0fbedd9f7ad16b083a39e54451684ec",
+          "lastHttpStatus": 404,
+          "resolvedUrl": "https://immobilien-coach.netlify.app/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z"
+        }
+      ],
+      "files": [
+        "index.html",
+        "style.css",
+        "immobilien_coach_website.zip",
+        "index_expanded.html"
+      ]
     },
     {
       "id": "olaf-personal-website",
@@ -69,10 +116,25 @@
       "statusText": "Im Render-Publish-Bereich liegt bisher nur ein Payload-Teil, aber noch keine index.html. Deshalb wird noch keine öffentliche URL angezeigt.",
       "currentState": "Public-Release- und private Übergabepakete liegen vor; die Render-Fassung ist noch nicht vollständig veröffentlicht.",
       "nextAction": "Render-Unterseite erst nach vorhandener index.html als öffentlich markieren und anschließend fotografieren.",
-      "openPoints": ["Render-Veröffentlichung vervollständigen", "Privatbereich final", "Kontakt/Datenschutz final", "Öffentliche Inhaltsprüfung"],
-      "tags": ["Editorial", "Premium", "Motion", "Galerie", "Journal"],
+      "openPoints": [
+        "Render-Veröffentlichung vervollständigen",
+        "Privatbereich final",
+        "Kontakt/Datenschutz final",
+        "Öffentliche Inhaltsprüfung"
+      ],
+      "tags": [
+        "Editorial",
+        "Premium",
+        "Motion",
+        "Galerie",
+        "Journal"
+      ],
       "links": [],
-      "files": ["ALL_IN_ONE.html", "Olaf_Tiehen_Webseite_PUBLIC_RELEASE.zip", "Olaf_Tiehen_Webseite_Private_Uebergabe.zip"]
+      "files": [
+        "ALL_IN_ONE.html",
+        "Olaf_Tiehen_Webseite_PUBLIC_RELEASE.zip",
+        "Olaf_Tiehen_Webseite_Private_Uebergabe.zip"
+      ]
     },
     {
       "id": "website-animation-showcase",
@@ -89,11 +151,29 @@
       "statusText": "Eine konkrete öffentliche Referenzseite aus dem früheren Chat ist vorhanden und wird fotografiert.",
       "currentState": "David Langaricas öffentliche Portfolio-Seite ist als Referenz hinterlegt.",
       "nextAction": "Weitere konkrete öffentliche Animationsreferenzen ergänzen.",
-      "openPoints": ["Weitere Referenzseiten ergänzen"],
-      "tags": ["GSAP", "WebGL", "3D", "Scroll Animation", "Motion"],
+      "openPoints": [
+        "Weitere Referenzseiten ergänzen"
+      ],
+      "tags": [
+        "GSAP",
+        "WebGL",
+        "3D",
+        "Scroll Animation",
+        "Motion"
+      ],
       "links": [
-        {"label":"Öffentliche Referenzseite","url":"https://www.davidlangarica.dev/","kind":"reference"}
-      ]
+        {
+          "label": "Öffentliche Referenzseite",
+          "url": "https://www.davidlangarica.dev/",
+          "kind": "reference",
+          "fingerprint": "c4f55332aa24dbb6560e91cb6f5ef4b5901c827146667b9810cec5306f5d25b9",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://www.davidlangarica.dev/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/website-animation-showcase-1.png"
+        }
+      ],
+      "previewImage": "previews/catalog/website-animation-showcase-1.png"
     },
     {
       "id": "reha-kompass",
@@ -110,12 +190,33 @@
       "statusText": "Eine öffentliche Render-Unterseite des Reha-Kompass ist jetzt vorhanden.",
       "currentState": "Der Reha-Kompass wurde unter /apps/reha-kompass/ in den Render-Publish-Bereich übernommen.",
       "nextAction": "HTTP-Status, Screenshot und fachlichen Stand gegen Production/Release Candidate prüfen.",
-      "openPoints": ["Production/RC-Zuordnung fachlich prüfen"],
-      "tags": ["Render", "Reha", "Klinik", "Premium"],
-      "links": [
-        {"label":"Öffentlicher Reha-Kompass","url":"https://olaf-projektzentrale.onrender.com/apps/reha-kompass/","kind":"live"}
+      "openPoints": [
+        "Production/RC-Zuordnung fachlich prüfen"
       ],
-      "files": ["index(2).html", "Olafs-Reha-Kompass-V2.html", "Olafs-Reha-Kompass-Designvorschau.html"]
+      "tags": [
+        "Render",
+        "Reha",
+        "Klinik",
+        "Premium"
+      ],
+      "links": [
+        {
+          "label": "Öffentlicher Reha-Kompass",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
+          "kind": "live",
+          "fingerprint": "eb6b9dcd3191ec437ba820623cd7d031a666028e44172cc648abfce247fa105a",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/reha-kompass-1.png"
+        }
+      ],
+      "files": [
+        "index(2).html",
+        "Olafs-Reha-Kompass-V2.html",
+        "Olafs-Reha-Kompass-Designvorschau.html"
+      ],
+      "previewImage": "previews/catalog/reha-kompass-1.png"
     },
     {
       "id": "olaf-ki-kompass",
@@ -132,8 +233,14 @@
       "statusText": "Lovable-Projekt ist gebaut, aber aktuell nicht öffentlich veröffentlicht.",
       "currentState": "Technisch vorhanden; Rolle gegenüber dem Wissens-Hub noch offen.",
       "nextAction": "Zusammenführen, archivieren oder gezielt öffentlich veröffentlichen.",
-      "openPoints": ["Rolle gegenüber Wissens-Hub"],
-      "tags": ["Lovable", "KI", "Wissenssystem"],
+      "openPoints": [
+        "Rolle gegenüber Wissens-Hub"
+      ],
+      "tags": [
+        "Lovable",
+        "KI",
+        "Wissenssystem"
+      ],
       "links": []
     },
     {
@@ -152,7 +259,11 @@
       "currentState": "Als Reiseplaner-Vorlage weiter nutzbar.",
       "nextAction": "Archivieren oder als Template behalten.",
       "openPoints": [],
-      "tags": ["Reise", "Düsseldorf", "Lovable"],
+      "tags": [
+        "Reise",
+        "Düsseldorf",
+        "Lovable"
+      ],
       "links": []
     },
     {
@@ -171,11 +282,31 @@
       "currentState": "V2/aktuelle Dashboard-Fassung wurde in den Render-Publish-Bereich übernommen.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
       "openPoints": [],
-      "tags": ["Niklas Volland", "Dashboard", "Prompts", "KI Updates", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/niklas-volland/","kind":"live"}
+      "tags": [
+        "Niklas Volland",
+        "Dashboard",
+        "Prompts",
+        "KI Updates",
+        "Render"
       ],
-      "files": ["niklas-volland-nutzen-dashboard-v2.html", "niklas-to-olaf-action-dashboard.html", "niklas-volland-dashboard-navy-gold.html"]
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/niklas-volland/",
+          "kind": "live",
+          "fingerprint": "9190169e25557116bb8eb657c35e533b3ba62eb6fc3e17abee4bc3269ccdd773",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/niklas-volland/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/niklas-volland-dashboard-1.png"
+        }
+      ],
+      "files": [
+        "niklas-volland-nutzen-dashboard-v2.html",
+        "niklas-to-olaf-action-dashboard.html",
+        "niklas-volland-dashboard-navy-gold.html"
+      ],
+      "previewImage": "previews/catalog/niklas-volland-dashboard-1.png"
     },
     {
       "id": "wiechert-taxi-bus",
@@ -192,12 +323,32 @@
       "statusText": "Die ChatGPT-Web-App liegt jetzt als öffentliche Render-Unterseite vor.",
       "currentState": "Der interaktive V2-Prototyp wurde in den Render-Publish-Bereich übernommen.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
-      "openPoints": ["Produktionsdaten später prüfen"],
-      "tags": ["Wiechert", "Taxi", "Bus", "Website", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/wiechert-taxi-bus/","kind":"live"}
+      "openPoints": [
+        "Produktionsdaten später prüfen"
       ],
-      "files": ["wiechert-taxi-bus-webapp-v2.html"]
+      "tags": [
+        "Wiechert",
+        "Taxi",
+        "Bus",
+        "Website",
+        "Render"
+      ],
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/wiechert-taxi-bus/",
+          "kind": "live",
+          "fingerprint": "463772c809f72e0090663447629076c9f363ccff803304bda49c6397254df55b",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-taxi-bus/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/wiechert-taxi-bus-1.png"
+        }
+      ],
+      "files": [
+        "wiechert-taxi-bus-webapp-v2.html"
+      ],
+      "previewImage": "previews/catalog/wiechert-taxi-bus-1.png"
     },
     {
       "id": "wiechert-reisen",
@@ -214,12 +365,31 @@
       "statusText": "Der ChatGPT-Prototyp liegt jetzt als öffentliche Render-Unterseite vor.",
       "currentState": "Beispielreisen, Filter, Favoriten und Detailansichten wurden in den Render-Publish-Bereich übernommen.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
-      "openPoints": ["Echte Angebote später integrieren"],
-      "tags": ["Wiechert", "Reisen", "Web-App", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/wiechert-reisen/","kind":"live"}
+      "openPoints": [
+        "Echte Angebote später integrieren"
       ],
-      "files": ["wiechert-reisen-webapp.html"]
+      "tags": [
+        "Wiechert",
+        "Reisen",
+        "Web-App",
+        "Render"
+      ],
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/wiechert-reisen/",
+          "kind": "live",
+          "fingerprint": "a240a9a6a8242f7d20933b004027d2936cdf98d0c580c9a913654ab27a5895ff",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-reisen/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/wiechert-reisen-1.png"
+        }
+      ],
+      "files": [
+        "wiechert-reisen-webapp.html"
+      ],
+      "previewImage": "previews/catalog/wiechert-reisen-1.png"
     },
     {
       "id": "oc-reiseplan",
@@ -237,11 +407,28 @@
       "currentState": "Funktionsfähige mobile Vorschau im Render-Publish-Bereich vorhanden.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen; Privatsphäre der Inhalte im Blick behalten.",
       "openPoints": [],
-      "tags": ["O.C.", "Düsseldorf", "Reiseplan", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/oc-reiseplan/","kind":"live"}
+      "tags": [
+        "O.C.",
+        "Düsseldorf",
+        "Reiseplan",
+        "Render"
       ],
-      "files": ["OC-Reiseplan-App-Vorschau.html"]
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/oc-reiseplan/",
+          "kind": "live",
+          "fingerprint": "1bfd040b99bcbfdb4aeec824b0fde5ebfb29bc71286c7902ad524451eb9db99d",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/oc-reiseplan/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/oc-reiseplan-1.png"
+        }
+      ],
+      "files": [
+        "OC-Reiseplan-App-Vorschau.html"
+      ],
+      "previewImage": "previews/catalog/oc-reiseplan-1.png"
     },
     {
       "id": "sonos-alexa-mobile",
@@ -259,11 +446,28 @@
       "currentState": "Statische HTML-Version befindet sich unter /apps/sonos-alexa/.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
       "openPoints": [],
-      "tags": ["Sonos", "Alexa", "Smart Home", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/","kind":"live"}
+      "tags": [
+        "Sonos",
+        "Alexa",
+        "Smart Home",
+        "Render"
       ],
-      "files": ["sonos-alexa-mobile-lite.html"]
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/",
+          "kind": "live",
+          "fingerprint": "9976c466be05e10a455bfe9713cdbf8482aaf1cc36834dcffd90f0f59fcff4c7",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/sonos-alexa-mobile-1.png"
+        }
+      ],
+      "files": [
+        "sonos-alexa-mobile-lite.html"
+      ],
+      "previewImage": "previews/catalog/sonos-alexa-mobile-1.png"
     },
     {
       "id": "apple-intelligence-chatgpt-app",
@@ -281,11 +485,28 @@
       "currentState": "Öffentliche Unterseite /apps/apple-intelligence/ vorhanden.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
       "openPoints": [],
-      "tags": ["Apple Intelligence", "iPhone", "ChatGPT", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/apple-intelligence/","kind":"live"}
+      "tags": [
+        "Apple Intelligence",
+        "iPhone",
+        "ChatGPT",
+        "Render"
       ],
-      "files": ["apple-intelligence-iphone17.html"]
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/apple-intelligence/",
+          "kind": "live",
+          "fingerprint": "29111046552fe8a0b801c205b67edeb37a286e4cfc7851145b0da879b5398d56",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/apple-intelligence/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png"
+        }
+      ],
+      "files": [
+        "apple-intelligence-iphone17.html"
+      ],
+      "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png"
     },
     {
       "id": "chatgpt-business-system",
@@ -302,12 +523,31 @@
       "statusText": "Eine ChatGPT-Business-Übersichtsseite wurde als Render-Unterseite veröffentlicht.",
       "currentState": "Öffentliche Unterseite vorhanden; Inhalte sollten weiterhin auf sensible Angaben geprüft werden.",
       "nextAction": "HTTP-Status/Screenshot übernehmen und Datenschutz der veröffentlichten Übersicht prüfen.",
-      "openPoints": ["Datenschutzprüfung der öffentlichen Übersicht"],
-      "tags": ["ChatGPT Business", "Memory", "Custom Instructions", "Render"],
-      "links": [
-        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/apps/chatgpt-business-system/","kind":"live"}
+      "openPoints": [
+        "Datenschutzprüfung der öffentlichen Übersicht"
       ],
-      "files": ["ChatGPT_Business_System_Olaf_FINAL_Übersicht.html"]
+      "tags": [
+        "ChatGPT Business",
+        "Memory",
+        "Custom Instructions",
+        "Render"
+      ],
+      "links": [
+        {
+          "label": "Öffentliche ChatGPT-Web-App",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/chatgpt-business-system/",
+          "kind": "live",
+          "fingerprint": "0aec9c7efb02290c60dc208d84ceef9a94d60bd4cbd1482a9b281fdc94a273cd",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/chatgpt-business-system/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/chatgpt-business-system-1.png"
+        }
+      ],
+      "files": [
+        "ChatGPT_Business_System_Olaf_FINAL_Übersicht.html"
+      ],
+      "previewImage": "previews/catalog/chatgpt-business-system-1.png"
     },
     {
       "id": "icloud-chatgpt-bridge",
@@ -325,7 +565,13 @@
       "currentState": "Connector-Funktionen sind verfügbar.",
       "nextAction": "Dokumentation und Wartungsroutine vereinheitlichen.",
       "openPoints": [],
-      "tags": ["iCloud", "Mail", "Kalender", "Kontakte", "Connector"],
+      "tags": [
+        "iCloud",
+        "Mail",
+        "Kalender",
+        "Kontakte",
+        "Connector"
+      ],
       "links": []
     },
     {
@@ -343,8 +589,14 @@
       "statusText": "Code-/Video-Artefakte, keine öffentliche Webseite hinterlegt.",
       "currentState": "Experimentier- und Lernstand.",
       "nextAction": "Ein produktives Video-Template standardisieren.",
-      "openPoints": ["Produktives Template"],
-      "tags": ["Remotion", "Video", "React"],
+      "openPoints": [
+        "Produktives Template"
+      ],
+      "tags": [
+        "Remotion",
+        "Video",
+        "React"
+      ],
       "links": []
     },
     {
@@ -363,10 +615,24 @@
       "currentState": "ChatGPT-Share-URL im Katalog.",
       "nextAction": "Titel und Projektzuordnung bei Bedarf präzisieren.",
       "openPoints": [],
-      "tags": ["ChatGPT", "Share", "Pitch"],
+      "tags": [
+        "ChatGPT",
+        "Share",
+        "Pitch"
+      ],
       "links": [
-        {"label":"Öffentlicher ChatGPT Share","url":"https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de","kind":"live"}
-      ]
+        {
+          "label": "Öffentlicher ChatGPT Share",
+          "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
+          "kind": "live",
+          "fingerprint": "c29a07656d770378030132d6bedecad588317f8c2b5859c06d9a4179dfb87937",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/chatgpt-share-pitch-1.png"
+        }
+      ],
+      "previewImage": "previews/catalog/chatgpt-share-pitch-1.png"
     },
     {
       "id": "project-monitoring-process",
@@ -384,7 +650,12 @@
       "currentState": "Playwright erzeugt 1440×900-Screenshots; HTTP-Status und Zieladresse werden gespeichert.",
       "nextAction": "Neue Render-Unterseiten prüfen und fotografieren.",
       "openPoints": [],
-      "tags": ["GitHub Actions", "Playwright", "Monitoring", "Screenshots"],
+      "tags": [
+        "GitHub Actions",
+        "Playwright",
+        "Monitoring",
+        "Screenshots"
+      ],
       "links": []
     },
     {
@@ -403,7 +674,12 @@
       "currentState": "Ändert die Datenbasis nur bei echten Änderungen.",
       "nextAction": "Weiterlaufen lassen.",
       "openPoints": [],
-      "tags": ["Automation", "Lovable", "GitHub", "ChatGPT Library"],
+      "tags": [
+        "Automation",
+        "Lovable",
+        "GitHub",
+        "ChatGPT Library"
+      ],
       "links": []
     },
     {
@@ -422,10 +698,24 @@
       "currentState": "Auto-Deploy aus main aktiv.",
       "nextAction": "Nur überwachen.",
       "openPoints": [],
-      "tags": ["Render", "Blueprint", "Auto Deploy"],
+      "tags": [
+        "Render",
+        "Blueprint",
+        "Auto Deploy"
+      ],
       "links": [
-        {"label":"Öffentliche Projektzentrale","url":"https://olaf-projektzentrale.onrender.com","kind":"live"}
-      ]
+        {
+          "label": "Öffentliche Projektzentrale",
+          "url": "https://olaf-projektzentrale.onrender.com",
+          "kind": "live",
+          "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
+          "lastCheckedAt": "2026-08-18T22:40:16.292Z",
+          "previewImage": "previews/catalog/render-deploy-process-1.png"
+        }
+      ],
+      "previewImage": "previews/catalog/render-deploy-process-1.png"
     },
     {
       "id": "chatgpt-library-scan-process",
@@ -443,7 +733,13 @@
       "currentState": "HTML-Artefakte werden inventarisiert und bei geeigneter Freigabe als /apps/.../ veröffentlicht.",
       "nextAction": "Weitere sichere Webapps prüfen; sensible Inhalte nicht automatisch veröffentlichen.",
       "openPoints": [],
-      "tags": ["ChatGPT Library", "HTML", "Artefakte", "Inventar", "Render"],
+      "tags": [
+        "ChatGPT Library",
+        "HTML",
+        "Artefakte",
+        "Inventar",
+        "Render"
+      ],
       "links": []
     }
   ]

@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 2,
-    "generatedAt": "2026-08-18T21:31:15.009Z",
+    "version": 3,
+    "generatedAt": "2026-08-18T22:40:16.292Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -59,8 +59,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-16T18:19:39Z",
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "c7eb19e5d4a8369c6d97ee83099aab58fa2d46aef9ec951de16eef60a688f810",
+      "lastChangedAt": "2026-08-18T22:40:16.292Z",
+      "fingerprint": "efffd87092c27836b625f7d0e80800526f00f0d47a761b5d94f899caa468f610",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z"
@@ -118,8 +118,8 @@
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "d93ff6a5c5f481416f245d830fec7b3d7e08d5df3ac99e68917978ddaea81bc7",
+      "lastChangedAt": "2026-08-18T22:40:16.292Z",
+      "fingerprint": "aaa1dc9bc51578f9846a62d355e1b1113de0466ac048713eec3619ae802819a1",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z"
@@ -373,8 +373,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "614e350200e0909921547531bb22d2b983def45f7cc02f5faeb63bccc6c930d4",
+      "lastChangedAt": "2026-08-18T22:40:16.292Z",
+      "fingerprint": "2aa6a32fd0072bfa992c101432071fab92abd933caa315b622fb8ad2ec2db152",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z"
