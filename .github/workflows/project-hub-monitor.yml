@@ -2,6 +2,14 @@ name: Project Hub Monitor
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'link-hub/public/data/**'
+      - 'link-hub/public/artifacts/**'
+      - 'link-hub/monitor/**'
+      - '.github/workflows/project-hub-monitor.yml'
   schedule:
     - cron: '0 * * * *'
 
