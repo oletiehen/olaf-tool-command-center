@@ -33,7 +33,7 @@ jobs:
           npm install --no-save --package-lock=false playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Check sites and refresh previews
+      - name: Check public links and refresh previews
         working-directory: link-hub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,12 +42,12 @@ jobs:
       - name: Commit real changes only
         shell: bash
         run: |
-          git add link-hub/public/data/sites.json link-hub/public/previews || true
+          git add link-hub/public/data/sites.json link-hub/public/data/catalog.json link-hub/public/previews || true
           if git diff --cached --quiet; then
             echo "No monitored changes detected."
             exit 0
           fi
           git config user.name "Olaf Project Hub Monitor"
           git config user.email "actions@users.noreply.github.com"
-          git commit -m "chore(project-hub): refresh monitored sites"
+          git commit -m "chore(project-hub): refresh verified links and previews"
           git push
