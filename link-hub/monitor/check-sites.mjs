@@ -5,13 +5,16 @@ import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
-const dataPath = path.join(root, 'public', 'data', 'sites.json');
+const sitesPath = path.join(root, 'public', 'data', 'sites.json');
+const catalogPath = path.join(root, 'public', 'data', 'catalog.json');
 const previewsDir = path.join(root, 'public', 'previews');
+const catalogPreviewsDir = path.join(previewsDir, 'catalog');
 const now = new Date().toISOString();
 const token = process.env.GITHUB_TOKEN || '';
 
 let browser = null;
-let dirty = false;
+let sitesDirty = false;
+let catalogDirty = false;
 
 const exists = async file => {
   try { await access(file); return true; } catch { return false; }
@@ -27,6 +30,25 @@ function canonicalizeHtml(html) {
     .trim();
 }
 
+function isPrivateIpv4(host) {
+  const parts = host.split('.').map(Number);
+  if (parts.length !== 4 || parts.some(Number.isNaN)) return false;
+  const [a,b] = parts;
+  return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168);
+}
+
+function isPublicHttps(value) {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase();
+    if (url.protocol !== 'https:') return false;
+    if (host === 'localhost' || host === '::1' || host.endsWith('.local') || isPrivateIpv4(host)) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function fetchText(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
@@ -35,7 +57,7 @@ async function fetchText(url) {
       redirect: 'follow',
       signal: controller.signal,
       headers: {
-        'User-Agent': 'Olaf-Tiehen-Project-Hub-Monitor/1.0',
+        'User-Agent': 'Olaf-Tiehen-Project-Hub-Monitor/2.0',
         'Accept': 'text/html,application/xhtml+xml'
       }
     });
@@ -47,7 +69,7 @@ async function fetchText(url) {
 }
 
 async function githubRepo(repo) {
-  const headers = { 'User-Agent': 'Olaf-Tiehen-Project-Hub-Monitor/1.0', 'Accept': 'application/vnd.github+json' };
+  const headers = { 'User-Agent': 'Olaf-Tiehen-Project-Hub-Monitor/2.0', 'Accept': 'application/vnd.github+json' };
   if (token) headers.Authorization = `Bearer ${token}`;
   const response = await fetch(`https://api.github.com/repos/${repo}`, { headers });
   if (!response.ok) throw new Error(`GitHub ${response.status}`);
@@ -61,24 +83,36 @@ async function ensureBrowser() {
   return browser;
 }
 
-async function screenshot(site) {
+async function screenshotUrl(url, file, label) {
+  let page;
   try {
     const activeBrowser = await ensureBrowser();
-    const page = await activeBrowser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
-    await page.goto(site.primaryUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    page = await activeBrowser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
     await page.waitForTimeout(2500);
-    const file = path.join(previewsDir, `${site.id}.png`);
     await page.screenshot({ path: file, type: 'png', fullPage: false });
-    await page.close();
-    site.previewImage = `previews/${site.id}.png`;
     return true;
   } catch (error) {
-    console.warn(`[preview] ${site.id}: ${error.message}`);
+    console.warn(`[preview] ${label}: ${error.message}`);
     return false;
+  } finally {
+    if (page) await page.close().catch(() => {});
   }
 }
 
+async function screenshotSite(site) {
+  const file = path.join(previewsDir, `${site.id}.png`);
+  const ok = await screenshotUrl(site.primaryUrl, file, site.id);
+  if (ok) site.previewImage = `previews/${site.id}.png`;
+  return ok;
+}
+
 async function monitorWeb(site) {
+  if (!isPublicHttps(site.primaryUrl)) {
+    console.warn(`[web] ${site.id}: skipped non-public URL ${site.primaryUrl}`);
+    return;
+  }
+
   const previousFingerprint = site.fingerprint;
   const previousHttpStatus = site.lastHttpStatus;
   const previewFile = path.join(previewsDir, `${site.id}.png`);
@@ -92,7 +126,7 @@ async function monitorWeb(site) {
     if (!wasOffline) {
       site.status = 'offline';
       site.lastChangedAt = now;
-      dirty = true;
+      sitesDirty = true;
     }
     console.warn(`[web] ${site.id}: ${error.message}`);
     return;
@@ -104,31 +138,31 @@ async function monitorWeb(site) {
   const statusChanged = previousHttpStatus !== null && previousHttpStatus !== result.status;
   const wasNotLive = !['live', 'unknown'].includes(site.status);
 
-  if (site.fingerprint !== fingerprint) { site.fingerprint = fingerprint; dirty = true; }
-  if (site.lastHttpStatus !== result.status) { site.lastHttpStatus = result.status; dirty = true; }
-  if (site.resolvedUrl !== result.url) { site.resolvedUrl = result.url; dirty = true; }
+  if (site.fingerprint !== fingerprint) { site.fingerprint = fingerprint; sitesDirty = true; }
+  if (site.lastHttpStatus !== result.status) { site.lastHttpStatus = result.status; sitesDirty = true; }
+  if (site.resolvedUrl !== result.url) { site.resolvedUrl = result.url; sitesDirty = true; }
 
   if (result.ok && site.status !== 'live') {
     site.status = 'live';
-    dirty = true;
+    sitesDirty = true;
   } else if (!result.ok && site.status !== 'offline') {
     site.status = 'offline';
-    dirty = true;
+    sitesDirty = true;
   }
 
   if (!site.firstSeenAt && result.ok) {
     site.firstSeenAt = now;
-    dirty = true;
+    sitesDirty = true;
   }
 
   if (!baseline && (contentChanged || statusChanged || wasNotLive)) {
     site.lastChangedAt = now;
-    dirty = true;
+    sitesDirty = true;
   }
 
   const needsPreview = !(await exists(previewFile));
   if (result.ok && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
-    if (await screenshot(site)) dirty = true;
+    if (await screenshotSite(site)) sitesDirty = true;
   }
 }
 
@@ -140,37 +174,114 @@ async function monitorRepo(site) {
     if (pushedAt && site.lastSourceUpdateAt !== pushedAt) {
       if (site.lastSourceUpdateAt) site.lastChangedAt = now;
       site.lastSourceUpdateAt = pushedAt;
-      dirty = true;
+      sitesDirty = true;
     }
     if (!site.firstSeenAt) {
       site.firstSeenAt = now;
-      dirty = true;
+      sitesDirty = true;
     }
   } catch (error) {
     console.warn(`[repo] ${site.id}: ${error.message}`);
   }
 }
 
+function safeFilePart(value) {
+  return String(value || 'link').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'link';
+}
+
+async function monitorCatalogLink(item, link, index) {
+  if (!isPublicHttps(link.url)) return false;
+
+  const previousFingerprint = link.fingerprint || null;
+  const previousStatus = link.lastHttpStatus ?? null;
+  let result;
+
+  try {
+    result = await fetchText(link.url);
+  } catch (error) {
+    if (link.lastHttpStatus !== 0) { link.lastHttpStatus = 0; catalogDirty = true; }
+    link.lastCheckedAt = now;
+    catalogDirty = true;
+    console.warn(`[catalog] ${item.id} ${link.url}: ${error.message}`);
+    return false;
+  }
+
+  const fingerprint = hash(canonicalizeHtml(result.text));
+  const contentChanged = Boolean(previousFingerprint && previousFingerprint !== fingerprint);
+  const statusChanged = previousStatus !== null && previousStatus !== result.status;
+  const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
+  const file = path.join(catalogPreviewsDir, fileName);
+  const previewPath = `previews/catalog/${fileName}`;
+
+  if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; catalogDirty = true; }
+  if (link.lastHttpStatus !== result.status) { link.lastHttpStatus = result.status; catalogDirty = true; }
+  if (link.resolvedUrl !== result.url) { link.resolvedUrl = result.url; catalogDirty = true; }
+  link.lastCheckedAt = now;
+  catalogDirty = true;
+
+  const needsPreview = !(await exists(file));
+  if (result.ok && (needsPreview || contentChanged || statusChanged)) {
+    if (await screenshotUrl(link.url, file, `${item.id}#${index + 1}`)) {
+      if (link.previewImage !== previewPath) link.previewImage = previewPath;
+      catalogDirty = true;
+    }
+  } else if (result.ok && await exists(file) && link.previewImage !== previewPath) {
+    link.previewImage = previewPath;
+    catalogDirty = true;
+  }
+
+  return result.ok;
+}
+
+async function monitorCatalog(catalog) {
+  for (const item of catalog.items || []) {
+    const publicLinks = (item.links || []).filter(link => isPublicHttps(link.url));
+    if (!publicLinks.length) continue;
+
+    console.log(`Checking catalog links for ${item.id}`);
+    for (let index = 0; index < publicLinks.length; index++) {
+      await monitorCatalogLink(item, publicLinks[index], index);
+    }
+
+    const preferred = publicLinks.find(link => link.kind === 'live' && link.previewImage) || publicLinks.find(link => link.previewImage);
+    if (preferred?.previewImage && item.previewImage !== preferred.previewImage) {
+      item.previewImage = preferred.previewImage;
+      catalogDirty = true;
+    }
+  }
+}
+
 async function main() {
   await mkdir(previewsDir, { recursive: true });
-  const data = JSON.parse(await readFile(dataPath, 'utf8'));
+  await mkdir(catalogPreviewsDir, { recursive: true });
 
-  for (const site of data.sites) {
+  const sites = JSON.parse(await readFile(sitesPath, 'utf8'));
+  const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
+
+  for (const site of sites.sites) {
     console.log(`Checking ${site.id} (${site.monitorMode})`);
     if (site.monitorMode === 'web') await monitorWeb(site);
     if (site.monitorMode === 'repo') await monitorRepo(site);
   }
 
+  await monitorCatalog(catalog);
+
   if (browser) await browser.close();
 
-  if (dirty) {
-    data.meta.generatedAt = now;
-    data.meta.version = Number(data.meta.version || 0) + 1;
-    await writeFile(dataPath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-    console.log('Project hub data changed. Files updated.');
-  } else {
-    console.log('No project changes detected. Nothing to commit.');
+  if (sitesDirty) {
+    sites.meta.generatedAt = now;
+    sites.meta.version = Number(sites.meta.version || 0) + 1;
+    await writeFile(sitesPath, `${JSON.stringify(sites, null, 2)}\n`, 'utf8');
   }
+
+  if (catalogDirty) {
+    catalog.meta.updatedAt = now;
+    catalog.meta.version = Number(catalog.meta.version || 0) + 1;
+    await writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
+  }
+
+  if (sitesDirty || catalogDirty) console.log('Project hub monitoring updated data and/or previews.');
+  else console.log('No project changes detected. Nothing to commit.');
 }
 
 main().catch(async error => {
