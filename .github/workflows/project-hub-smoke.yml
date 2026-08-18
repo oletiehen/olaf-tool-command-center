@@ -1,0 +1,48 @@
+name: Project Hub Smoke Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'link-hub/public/**'
+      - 'link-hub/monitor/**'
+      - '.github/workflows/project-hub-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check JavaScript syntax
+        run: node --check link-hub/public/assets/app.js
+
+      - name: Validate JSON data
+        run: |
+          node -e "const fs=require('fs'); const sites=JSON.parse(fs.readFileSync('link-hub/public/data/sites.json','utf8')); const catalog=JSON.parse(fs.readFileSync('link-hub/public/data/catalog.json','utf8')); if(!Array.isArray(sites.sites)) throw new Error('sites.json: sites missing'); if(!Array.isArray(catalog.items)) throw new Error('catalog.json: items missing'); console.log('sites', sites.sites.length, 'catalog', catalog.items.length);"
+
+      - name: Check required workspace files
+        run: |
+          test -f link-hub/public/index.html
+          test -f link-hub/public/assets/styles.css
+          test -f link-hub/public/assets/workspace.css
+          test -f link-hub/public/assets/app.js
+          grep -q 'DEIN DIGITALER LEITSTAND' link-hub/public/index.html
+          grep -q 'catalog.json' link-hub/public/assets/app.js
+
+      - name: Serve static hub
+        run: |
+          python3 -m http.server 4173 --directory link-hub/public >/tmp/project-hub-http.log 2>&1 &
+          echo $! >/tmp/project-hub-http.pid
+          sleep 2
+          curl --fail --silent http://127.0.0.1:4173/ >/tmp/project-hub-index.html
+          curl --fail --silent http://127.0.0.1:4173/data/sites.json >/tmp/project-hub-sites.json
+          curl --fail --silent http://127.0.0.1:4173/data/catalog.json >/tmp/project-hub-catalog.json
+          grep -q 'Alles im Blick' /tmp/project-hub-index.html
+          kill $(cat /tmp/project-hub-http.pid)
