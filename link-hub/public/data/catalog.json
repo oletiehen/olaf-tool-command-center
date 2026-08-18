@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 12,
-    "updatedAt": "2026-08-18T23:37:49.521Z",
+    "version": 13,
+    "updatedAt": "2026-08-18T23:39:03.832Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -43,10 +43,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "4c8398bbd790a883167f0b1b8b762fd39b06b42c1a99c66997738108573de639",
+          "fingerprint": "755e43deb9e234157f91c9861f1b61e705a0983eee2e27b253e83b56fd16c2c2",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-18T23:34:00.730Z",
+          "lastCheckedAt": "2026-08-18T23:39:03.832Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot"
         }
@@ -91,10 +91,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "d612bcb2dbe70faf3e4123b9780e81ca962a1f9110463ea8f111f9be56b38830",
+          "fingerprint": "cf20ae36bc192259d2997d12bc30a41e10e1e1e2b99ec1ab107b9a6829f3ee5e",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-08-18T23:34:00.730Z"
+          "lastCheckedAt": "2026-08-18T23:39:03.832Z"
         }
       ],
       "files": [
@@ -234,11 +234,12 @@
           "label": "Geschützter Reha-Kompass",
           "url": "https://gdp-dashboard-lccm.onrender.com/",
           "kind": "live",
-          "fingerprint": "eb6b9dcd3191ec437ba820623cd7d031a666028e44172cc648abfce247fa105a",
+          "fingerprint": "01b0abef751130fdb72a2bf21b81b6bca61b157315263d1eb8a7fed526fe95f5",
           "lastHttpStatus": 200,
-          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
-          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/reha-kompass-1.png"
+          "resolvedUrl": "https://gdp-dashboard-lccm.onrender.com/",
+          "lastCheckedAt": "2026-08-18T23:39:03.832Z",
+          "previewImage": "previews/catalog/reha-kompass-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -683,10 +684,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "e6db7d76039ae54f0f900ac4685e05ac03c0bfb2dc3e88a2c56b5578569377fe",
+          "fingerprint": "c3aa1730127a5feab108b86eee6a14452ee876eed6fc715de7e9165fc10f74b7",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-08-18T23:34:00.730Z",
+          "lastCheckedAt": "2026-08-18T23:39:03.832Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot"
         }
