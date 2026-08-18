@@ -1,8 +1,9 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 1,
-    "updatedAt": "2026-08-18T21:58:00Z"
+    "version": 2,
+    "updatedAt": "2026-08-18T22:28:00Z",
+    "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
     {
@@ -14,13 +15,13 @@
       "description": "Zentrale App für Projekte, Webseiten, ChatGPT-Artefakte, Prozesse und Arbeitsstände.",
       "objective": "Ein verlässlicher Einstiegspunkt für die gesamte digitale Projektlandschaft.",
       "phase": "Live & Ausbau",
-      "progress": 88,
+      "progress": 91,
       "priority": "sehr hoch",
       "status": "live",
-      "statusText": "Live auf Render; Ausbau zur vollständigen Projekt- und Prozesszentrale läuft.",
-      "currentState": "Render-Deployment und GitHub-Monitoring sind aktiv. Die Oberfläche wird zur vollständigen Arbeitszentrale erweitert.",
-      "nextAction": "Alle ChatGPT-Artefakte und historischen URLs weiter katalogisieren und die Bearbeitungslogik absichern.",
-      "openPoints": ["Historische ChatGPT-Seiten weiter zuordnen", "Render-Reha-URL ergänzen", "Serverseitige Bearbeitung später optional ergänzen"],
+      "statusText": "Live auf Render; öffentliche Links und Vorschaubilder werden automatisch geprüft.",
+      "currentState": "Render-Deployment, GitHub-Monitoring und der Projektkatalog sind aktiv. Die Linklogik akzeptiert nur öffentliche HTTPS-Adressen.",
+      "nextAction": "Weitere sichere ChatGPT-Webapps gezielt veröffentlichen und anschließend automatisch fotografieren.",
+      "openPoints": ["Reha-Kompass-Render-URL ergänzen", "Weitere ChatGPT-Webapps auf öffentliche Eignung prüfen"],
       "tags": ["Render", "GitHub", "Dashboard", "Monitoring"],
       "links": [
         {"label":"Live","url":"https://olaf-projektzentrale.onrender.com","kind":"live"},
@@ -28,7 +29,7 @@
       ],
       "timeline": [
         {"date":"2026-08-18","text":"Erste Live-Version über Render veröffentlicht."},
-        {"date":"2026-08-18","text":"Automatisches Monitoring und Projektlink-Sync eingerichtet."}
+        {"date":"2026-08-18","text":"Automatisches Link- und Screenshot-Monitoring eingerichtet."}
       ]
     },
     {
@@ -37,24 +38,21 @@
       "title": "Immobiliencoach-Webseite 2025",
       "category": "Immobilien & Website",
       "source": "ChatGPT + Netlify",
-      "description": "Frühe von ChatGPT erstellte Immobiliencoach-Webseite mit HTML/CSS-Dateien und Netlify-Vorschau.",
+      "description": "Frühe von ChatGPT erstellte Immobiliencoach-Webseite mit einer damals genutzten öffentlichen Netlify-Vorschau.",
       "objective": "Immobiliencoaching-Angebot als hochwertige Website darstellen.",
-      "phase": "Historische Version",
+      "phase": "Historische öffentliche Version",
       "progress": 100,
       "priority": "mittel",
       "status": "historical",
-      "statusText": "Historische ChatGPT-/Netlify-Version. Die Links bleiben bewusst dokumentiert, auch wenn sie heute nicht mehr erreichbar sein müssen.",
-      "currentState": "Konkrete frühere ChatGPT-Dateilinks und eine Netlify-Vorschau sind aus dem früheren Verlauf wiedergefunden.",
-      "nextAction": "Nur als Historie behalten oder relevante Inhalte in ein aktuelles Projekt übernehmen.",
+      "statusText": "Nur die frühere öffentliche Netlify-Adresse wird als URL geführt; ChatGPT-Sandbox-Dateien sind nur interne Artefakte.",
+      "currentState": "Die ursprünglichen HTML/CSS-Dateien sind als Projektartefakte dokumentiert. Die öffentliche Netlify-Adresse wird vom Monitor erneut geprüft.",
+      "nextAction": "Bei Bedarf relevante Inhalte in ein aktuelles Immobilienprojekt übernehmen.",
       "openPoints": [],
       "tags": ["ChatGPT", "Netlify", "Immobiliencoach"],
       "links": [
-        {"label":"Frühe ChatGPT-Startseite","url":"sandbox:/mnt/data/index.html","kind":"historical"},
-        {"label":"Frühes Stylesheet","url":"sandbox:/mnt/data/style.css","kind":"historical"},
-        {"label":"ChatGPT ZIP","url":"sandbox:/mnt/data/immobilien_coach_website.zip","kind":"historical"},
-        {"label":"Erweiterte ChatGPT-Seite","url":"sandbox:/mnt/data/index_expanded.html","kind":"historical"},
-        {"label":"Frühere Netlify-Vorschau","url":"https://immobilien-coach.netlify.app","kind":"historical"}
+        {"label":"Frühere öffentliche Netlify-Vorschau","url":"https://immobilien-coach.netlify.app","kind":"historical"}
       ],
+      "files": ["index.html", "style.css", "immobilien_coach_website.zip", "index_expanded.html"],
       "timeline": [{"date":"2025-04-12","text":"ChatGPT-Webseite und Netlify-Vorschau erstellt."}]
     },
     {
@@ -62,26 +60,21 @@
       "kind": "project",
       "title": "Persönliche Premium-Webseite Olaf Tiehen",
       "category": "Persönliche Webseite",
-      "source": "ChatGPT / Codex lokal",
+      "source": "ChatGPT + Codex",
       "description": "Große persönliche Premium-Editorial-Webseite mit Galerie, Journal, Medien, privaten Bereichen und starkem Motion-Konzept.",
       "objective": "Hochwertige persönliche digitale Identität mit klarer Trennung öffentlicher und privater Inhalte.",
       "phase": "Release-Pakete vorhanden",
       "progress": 82,
       "priority": "hoch",
-      "status": "active",
-      "statusText": "Umfangreiche Release- und Übergabepakete existieren; eine lokale Master-Version lief zuletzt auf Port 5174.",
-      "currentState": "Die lokale Master-Seite nutzte einen Video-Slider mit 50 Videos und Motion-Effekten. Public-Release- und Übergabepakete liegen in der Library.",
-      "nextAction": "Aktuelle Hosting-Strategie und öffentlich gewünschte Inhalte festlegen.",
+      "status": "needs-link",
+      "statusText": "Es ist aktuell keine bestätigte öffentliche HTTPS-Adresse hinterlegt. Lokale Entwicklungsadressen werden bewusst nicht angezeigt.",
+      "currentState": "Public-Release- und private Übergabepakete liegen in der Library. Eine Veröffentlichung muss bewusst festgelegt werden.",
+      "nextAction": "Öffentliche Fassung auswählen und sicher hosten.",
       "openPoints": ["Öffentliche Haupt-URL", "Privatbereich final", "Kontakt/Datenschutz final"],
       "tags": ["Editorial", "Premium", "Motion", "Galerie", "Journal"],
-      "links": [
-        {"label":"Lokale Master-Seite","url":"http://127.0.0.1:5174/?mode=master&fresh=start-video-only-1#/start","kind":"historical"}
-      ],
+      "links": [],
       "files": ["ALL_IN_ONE.html", "Olaf_Tiehen_Webseite_PUBLIC_RELEASE.zip", "Olaf_Tiehen_Webseite_Private_Uebergabe.zip"],
-      "timeline": [
-        {"date":"2026-07-11","text":"Public-Release- und private Übergabepakete erzeugt."},
-        {"date":"2026-06-01","text":"Lokale Master-Version mit Video-Slider und Motion geprüft."}
-      ]
+      "timeline": [{"date":"2026-07-11","text":"Public-Release- und private Übergabepakete erzeugt."}]
     },
     {
       "id": "website-animation-showcase",
@@ -91,17 +84,17 @@
       "source": "ChatGPT / Referenz",
       "description": "Sammlung und Konzept rund um außergewöhnliche Webdesigns mit starken Scroll-Animationen, Motion, WebGL/3D und modernen Interaktionsmustern.",
       "objective": "Starke Webanimationen und aktuelle Website-Techniken als Referenz- und Ideenbibliothek bündeln.",
-      "phase": "Referenz wiedergefunden",
-      "progress": 70,
+      "phase": "Öffentliche Referenz wiedergefunden",
+      "progress": 72,
       "priority": "hoch",
       "status": "active",
-      "statusText": "Die damalige Referenzseite aus dem Chat wurde wiedergefunden.",
-      "currentState": "Die Referenzseite https://www.davidlangarica.dev/ war im früheren Chat explizit als Website-Showcase genannt.",
-      "nextAction": "Weitere im damaligen Chat genannte Animationsseiten ergänzen und die Sammlung in der Zentrale ausbauen.",
-      "openPoints": ["Weitere Referenzseiten aus früheren Chats ergänzen"],
+      "statusText": "Eine konkrete öffentliche Referenzseite aus dem früheren Chat ist vorhanden und wird fotografiert.",
+      "currentState": "David Langaricas öffentliche Portfolio-Seite ist als Referenz für moderne interaktive Web-Erlebnisse hinterlegt.",
+      "nextAction": "Weitere konkrete öffentliche Animationsreferenzen aus früheren Chats ergänzen.",
+      "openPoints": ["Weitere Referenzseiten ergänzen"],
       "tags": ["GSAP", "WebGL", "3D", "Scroll Animation", "Motion"],
       "links": [
-        {"label":"Referenzseite aus dem Chat","url":"https://www.davidlangarica.dev/","kind":"historical"}
+        {"label":"Öffentliche Referenzseite","url":"https://www.davidlangarica.dev/","kind":"reference"}
       ]
     },
     {
@@ -115,12 +108,13 @@
       "phase": "Production + Release Candidate",
       "progress": 84,
       "priority": "sehr hoch",
-      "status": "active",
-      "statusText": "Im Render-Projekt existieren Production und Release Candidate; die genaue öffentliche Reha-Kompass-URL wird noch ergänzt.",
-      "currentState": "Mehrere High-End-Versionen liegen in der ChatGPT Library. Render zeigt einen Production-Service und einen Reha-Kompass Release Candidate.",
-      "nextAction": "Live-URL übernehmen und Production gegen Release Candidate abgleichen.",
+      "status": "needs-link",
+      "statusText": "Render-Projekte sind vorhanden, aber die konkrete öffentliche HTTPS-Adresse des Reha-Kompass ist noch nicht in der Zentrale hinterlegt.",
+      "currentState": "Mehrere High-End-Versionen liegen in der ChatGPT Library. Die öffentliche URL muss aus Render übernommen werden.",
+      "nextAction": "Öffentliche Render-URL übernehmen und Production gegen Release Candidate abgleichen.",
       "openPoints": ["Exakte Render-URL", "Production/RC-Zuordnung", "Fachlichen Stand dokumentieren"],
       "tags": ["Render", "Reha", "Klinik", "Premium"],
+      "links": [],
       "files": ["index(2).html", "Olafs-Reha-Kompass-V2.html", "Olafs-Reha-Kompass-Designvorschau.html"]
     },
     {
@@ -134,12 +128,13 @@
       "phase": "Gebaut, nicht veröffentlicht",
       "progress": 68,
       "priority": "mittel",
-      "status": "draft",
-      "statusText": "Lovable-Projekt ist gebaut, aber nicht öffentlich veröffentlicht.",
+      "status": "needs-link",
+      "statusText": "Lovable-Projekt ist gebaut, aber aktuell nicht öffentlich veröffentlicht.",
       "currentState": "Technisch vorhanden; Rolle gegenüber dem Wissens-Hub noch offen.",
-      "nextAction": "Zusammenführen, archivieren oder als neue Hauptversion veröffentlichen.",
-      "openPoints": ["Rolle gegenüber Wissens-Hub"],
-      "tags": ["Lovable", "KI", "Wissenssystem"]
+      "nextAction": "Zusammenführen, archivieren oder gezielt öffentlich veröffentlichen.",
+      "openPoints": ["Rolle gegenüber Wissens-Hub", "Öffentliche URL nur nach Veröffentlichung"],
+      "tags": ["Lovable", "KI", "Wissenssystem"],
+      "links": []
     },
     {
       "id": "duesseldorf-weekend-planner",
@@ -153,11 +148,12 @@
       "progress": 88,
       "priority": "niedrig",
       "status": "draft",
-      "statusText": "Lovable-Projekt abgeschlossen, aber nicht veröffentlicht.",
+      "statusText": "Bewusst nicht als öffentliche Webseite geführt.",
       "currentState": "Als Reiseplaner-Vorlage weiter nutzbar.",
       "nextAction": "Archivieren oder als Template behalten.",
       "openPoints": [],
-      "tags": ["Reise", "Düsseldorf", "Lovable"]
+      "tags": ["Reise", "Düsseldorf", "Lovable"],
+      "links": []
     },
     {
       "id": "niklas-volland-dashboard",
@@ -167,21 +163,16 @@
       "source": "ChatGPT Web-App",
       "description": "Umsetzungsorientierte Wissens- und Projektdatenbank für verwertbare Niklas-Volland-Inhalte, Prompts und Projektideen.",
       "objective": "Aus KI-Content konkrete Anwendungen, Prompts und Projekte für Olaf ableiten.",
-      "phase": "Mehrere Versionen vorhanden",
+      "phase": "Mehrere HTML-Versionen vorhanden",
       "progress": 82,
       "priority": "hoch",
-      "status": "artifact",
-      "statusText": "Mehrere ChatGPT-HTML-Versionen und ein Codex-Thread sind konkret wiedergefunden.",
+      "status": "needs-link",
+      "statusText": "Die HTML-Dateien sind vorhanden, aber Sandbox- und Codex-Pfade sind keine öffentlichen URLs und werden nicht mehr als Links geführt.",
       "currentState": "V2 ist die jüngste gefundene Fassung; daneben existieren Navy-Gold- und Action-Dashboard-Versionen.",
-      "nextAction": "V2 als feste Unterseite der Projektzentrale spiegeln.",
-      "openPoints": ["Stabile öffentliche URL"],
+      "nextAction": "Eine sichere Dashboard-Fassung öffentlich unter der Projektzentrale hosten.",
+      "openPoints": ["Öffentliche HTTPS-Version erstellen"],
       "tags": ["Niklas Volland", "Dashboard", "Prompts", "KI Updates"],
-      "links": [
-        {"label":"Navy-Gold ChatGPT-Datei","url":"sandbox:/mnt/data/niklas-volland-dashboard-navy-gold.html","kind":"historical"},
-        {"label":"Action-Dashboard ChatGPT-Datei","url":"sandbox:/mnt/data/niklas-to-olaf-action-dashboard.html","kind":"historical"},
-        {"label":"V2 ChatGPT-Datei","url":"sandbox:/mnt/data/niklas-volland-nutzen-dashboard-v2.html","kind":"historical"},
-        {"label":"Codex-Thread","url":"codex://threads/019fbc12-afff-7180-a287-024ab4aa8609","kind":"historical"}
-      ],
+      "links": [],
       "files": ["niklas-volland-nutzen-dashboard-v2.html", "niklas-to-olaf-action-dashboard.html", "niklas-volland-dashboard-navy-gold.html"]
     },
     {
@@ -195,12 +186,13 @@
       "phase": "V2 HTML vorhanden",
       "progress": 75,
       "priority": "mittel",
-      "status": "artifact",
-      "statusText": "Aktuelle V2 liegt als eigenständige ChatGPT-HTML-Datei in der Library vor.",
+      "status": "needs-link",
+      "statusText": "ChatGPT-HTML vorhanden, aber noch keine öffentliche HTTPS-Version in der Zentrale hinterlegt.",
       "currentState": "Interaktiver Prototyp mit Premium-Layout.",
-      "nextAction": "Bei Bedarf veröffentlichen und reale Daten einsetzen.",
-      "openPoints": ["Produktionsdaten", "Hosting"],
+      "nextAction": "Öffentliche Freigabe/Hosting festlegen und anschließend fotografieren.",
+      "openPoints": ["Hosting", "Produktionsdaten prüfen"],
       "tags": ["Wiechert", "Taxi", "Bus", "Website"],
+      "links": [],
       "files": ["wiechert-taxi-bus-webapp-v2.html"]
     },
     {
@@ -214,12 +206,13 @@
       "phase": "HTML-Prototyp vorhanden",
       "progress": 72,
       "priority": "mittel",
-      "status": "artifact",
-      "statusText": "Interaktiver ChatGPT-Prototyp vorhanden; Demo-Inhalte sind noch nicht produktiv.",
+      "status": "needs-link",
+      "statusText": "ChatGPT-Prototyp vorhanden, aber noch keine öffentliche HTTPS-Version in der Zentrale hinterlegt.",
       "currentState": "Beispielreisen, Filter, Favoriten und Detailansichten funktionieren.",
-      "nextAction": "Echte Reisedaten integrieren und Hosting festlegen.",
+      "nextAction": "Echte Reisedaten/Freigabe prüfen und anschließend öffentlich hosten.",
       "openPoints": ["Echte Angebote", "Hosting", "Kontakt/Buchung"],
       "tags": ["Wiechert", "Reisen", "Web-App"],
+      "links": [],
       "files": ["wiechert-reisen-webapp.html"]
     },
     {
@@ -230,15 +223,16 @@
       "source": "ChatGPT Web-App",
       "description": "Mobiler Reiseplaner für Termine bei O.C. Hairsystems Düsseldorf.",
       "objective": "Termine, Reiseablauf und wichtige Informationen mobil bündeln.",
-      "phase": "App-Vorschau vorhanden",
+      "phase": "Private App-Vorschau",
       "progress": 83,
       "priority": "niedrig",
       "status": "artifact",
-      "statusText": "HTML-App und ZIP-Paket liegen in der ChatGPT Library.",
-      "currentState": "Funktionsfähige mobile Vorschau.",
-      "nextAction": "Als wiederverwendbare Reisevorlage archivieren oder spiegeln.",
+      "statusText": "Als privates ChatGPT-Artefakt dokumentiert; keine öffentliche URL wird automatisch erzeugt.",
+      "currentState": "Funktionsfähige mobile Vorschau vorhanden.",
+      "nextAction": "Nur bei ausdrücklichem Bedarf öffentlich veröffentlichen.",
       "openPoints": [],
       "tags": ["O.C.", "Düsseldorf", "Reiseplan"],
+      "links": [],
       "files": ["OC-Reiseplan-App-Vorschau.html"]
     },
     {
@@ -246,18 +240,21 @@
       "kind": "artifact",
       "title": "Sonos & Alexa Mobile Referenz",
       "category": "Apple & Smart Home",
-      "source": "ChatGPT Web-App",
+      "source": "ChatGPT Web-App + Render",
       "description": "Mobile Referenzseite für Sonos-/Alexa-Einrichtung und Befehle.",
       "objective": "Smart-Home-Informationen schnell auf dem iPhone verfügbar machen.",
-      "phase": "HTML vorhanden",
-      "progress": 74,
+      "phase": "Öffentliche Render-Version angelegt",
+      "progress": 92,
       "priority": "niedrig",
-      "status": "artifact",
-      "statusText": "Mobile-Lite-HTML und Referenzpaket vorhanden.",
-      "currentState": "Als Nachschlagewerk nutzbar.",
-      "nextAction": "Bei Bedarf in das Tool Command Center integrieren.",
+      "status": "active",
+      "statusText": "Die ChatGPT-Web-App wurde als echte öffentliche Unterseite der Projektzentrale angelegt; der Monitor prüft Erreichbarkeit und erstellt den Screenshot.",
+      "currentState": "Statische HTML-Version liegt im Render-Publish-Verzeichnis.",
+      "nextAction": "Nach Render-Deploy HTTP-Status und Screenshot automatisch übernehmen.",
       "openPoints": [],
-      "tags": ["Sonos", "Alexa", "Smart Home"],
+      "tags": ["Sonos", "Alexa", "Smart Home", "Render"],
+      "links": [
+        {"label":"Öffentliche ChatGPT-Web-App","url":"https://olaf-projektzentrale.onrender.com/artifacts/sonos-alexa-mobile/","kind":"live"}
+      ],
       "files": ["sonos-alexa-mobile-lite.html"]
     },
     {
@@ -268,15 +265,16 @@
       "source": "ChatGPT Library",
       "description": "Masterprofile, Custom Instructions, Projektprofile, Entscheidungslog sowie MVP-/Roadmap-Unterlagen für Olafs ChatGPT-Arbeitsbasis.",
       "objective": "Arbeitsweise und Projektwissen strukturiert in ChatGPT Business abbilden.",
-      "phase": "Final-Paket vorhanden",
+      "phase": "Privates Systempaket vorhanden",
       "progress": 88,
       "priority": "hoch",
       "status": "artifact",
-      "statusText": "Finales Systempaket und Übersichts-HTML sind vorhanden.",
+      "statusText": "Privates System-/Migrationsmaterial; keine öffentliche URL vorgesehen.",
       "currentState": "Mehrere Migrations- und Uploadpakete sowie aktuelle Masterdokumente liegen vor.",
       "nextAction": "Aktive Masterdateien konsolidieren und alte Duplikate archivieren.",
       "openPoints": ["Versionen konsolidieren"],
       "tags": ["ChatGPT Business", "Memory", "Custom Instructions"],
+      "links": [],
       "files": ["ChatGPT_Business_System_Olaf_FINAL_Übersicht.html"]
     },
     {
@@ -287,15 +285,16 @@
       "source": "ChatGPT / Connector",
       "description": "Bridge-/Connector-Pakete für Apple Mail, Kalender, Kontakte und lokale Wartung.",
       "objective": "Apple-Daten kontrolliert mit ChatGPT-Workflows verbinden.",
-      "phase": "Code- und Maintenance-Pakete vorhanden",
+      "phase": "Aktiver privater Connector",
       "progress": 72,
       "priority": "hoch",
       "status": "active",
-      "statusText": "Mehrere ZIP-Pakete existieren; die Bridge ist im aktuellen ChatGPT-System verbunden.",
+      "statusText": "Privates Connector-Projekt; wird nicht als öffentliche Webseite veröffentlicht.",
       "currentState": "Connector-Funktionen sind verfügbar.",
       "nextAction": "Dokumentation und Wartungsroutine vereinheitlichen.",
       "openPoints": [],
-      "tags": ["iCloud", "Mail", "Kalender", "Kontakte", "Connector"]
+      "tags": ["iCloud", "Mail", "Kalender", "Kontakte", "Connector"],
+      "links": []
     },
     {
       "id": "remotion-prototypes",
@@ -309,11 +308,12 @@
       "progress": 52,
       "priority": "mittel",
       "status": "artifact",
-      "statusText": "Remotion-Capabilities- und Boat-Prototyp-Pakete liegen vor.",
+      "statusText": "Code-/Video-Artefakte, keine öffentliche Webseite hinterlegt.",
       "currentState": "Experimentier- und Lernstand.",
       "nextAction": "Ein produktives Video-Template standardisieren.",
       "openPoints": ["Produktives Template"],
-      "tags": ["Remotion", "Video", "React"]
+      "tags": ["Remotion", "Video", "React"],
+      "links": []
     },
     {
       "id": "chatgpt-share-pitch",
@@ -322,35 +322,38 @@
       "category": "ChatGPT-Seite",
       "source": "ChatGPT Share",
       "description": "Öffentlich geteilter ChatGPT-Inhalt aus einem früheren Pitch-/Präsentationsprojekt.",
-      "objective": "Inhalt über einen ChatGPT-Share-Link zugänglich machen.",
-      "phase": "Geteilt",
+      "objective": "Inhalt über einen öffentlichen ChatGPT-Share-Link zugänglich machen.",
+      "phase": "Öffentlich geteilt",
       "progress": 100,
       "priority": "niedrig",
       "status": "live",
-      "statusText": "Konkreter Share-Link ist im Bestand erfasst.",
-      "currentState": "ChatGPT-Share-URL vorhanden.",
+      "statusText": "Konkrete öffentliche HTTPS-Adresse vorhanden; wird technisch geprüft und fotografiert, sofern ChatGPT den automatisierten Abruf zulässt.",
+      "currentState": "ChatGPT-Share-URL im Katalog.",
       "nextAction": "Titel und Projektzuordnung bei Bedarf präzisieren.",
       "openPoints": [],
       "tags": ["ChatGPT", "Share", "Pitch"],
-      "links": [{"label":"ChatGPT Share","url":"https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de","kind":"live"}]
+      "links": [
+        {"label":"Öffentlicher ChatGPT Share","url":"https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de","kind":"live"}
+      ]
     },
     {
       "id": "project-monitoring-process",
       "kind": "process",
-      "title": "Stündliches Website-Monitoring",
+      "title": "Stündliches Link- & Screenshot-Monitoring",
       "category": "Automatisierung",
       "source": "GitHub Actions",
-      "description": "Prüft öffentliche Seiten auf Erreichbarkeit und Inhaltsänderungen und aktualisiert Vorschaubilder.",
-      "objective": "Die Projektzentrale automatisch aktuell halten.",
+      "description": "Prüft öffentliche HTTPS-Seiten auf Erreichbarkeit und Inhaltsänderungen und erstellt echte Miniatur-Screenshots.",
+      "objective": "Die Projektzentrale automatisch aktuell halten und jede öffentliche Webseite visuell darstellen.",
       "phase": "Aktiv",
-      "progress": 92,
+      "progress": 96,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Erster erfolgreicher Lauf hat Fingerprints, HTTP-Status und Screenshots erzeugt.",
-      "currentState": "Stündlicher Workflow aktiv; echte Änderungen erzeugen Commit und Render-Deploy.",
-      "nextAction": "Mehrfach-Links pro Projekt einzeln prüfen und Fehlerhistorie ergänzen.",
-      "openPoints": ["Mehrfach-URL-Monitoring", "Fehlerhistorie"],
-      "tags": ["GitHub Actions", "Playwright", "Monitoring"]
+      "statusText": "Der Monitor prüft sites.json und öffentliche Links aus catalog.json. Nicht öffentliche Adressen werden übersprungen.",
+      "currentState": "Playwright erzeugt 1440×900-Screenshots; HTTP-Status und Zieladresse werden gespeichert.",
+      "nextAction": "Ersten vollständigen Lauf mit den neuen Katalog-URLs abwarten und Ergebnis kontrollieren.",
+      "openPoints": [],
+      "tags": ["GitHub Actions", "Playwright", "Monitoring", "Screenshots"],
+      "links": []
     },
     {
       "id": "project-link-sync-process",
@@ -358,17 +361,18 @@
       "title": "Projektlinks synchronisieren",
       "category": "Automatisierung",
       "source": "ChatGPT Automation",
-      "description": "Vergleicht verbundene Lovable-/GitHub-Projekte mit der Projektzentrale und übernimmt neue oder geänderte öffentliche Links.",
-      "objective": "Neue Veröffentlichungen und geänderte URLs automatisch erfassen.",
+      "description": "Vergleicht verbundene Lovable-/GitHub-Projekte und ChatGPT-Artefakte mit der Projektzentrale.",
+      "objective": "Neue Veröffentlichungen und geänderte öffentliche URLs automatisch erfassen.",
       "phase": "Aktiv",
-      "progress": 90,
+      "progress": 92,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Stündliche Condition-Watch-Automation ist eingerichtet.",
-      "currentState": "Ändert die Datenbasis nur bei bestätigten neuen oder geänderten Links.",
-      "nextAction": "Render und ChatGPT Library als zusätzliche Quellen weiter ausbauen.",
-      "openPoints": ["Render ohne direkten Connector", "Library-Sync"],
-      "tags": ["Automation", "Lovable", "GitHub"]
+      "statusText": "Die Automation bewahrt nur belegte öffentliche Ziele; lokale Pfade werden nicht als Website-URL geführt.",
+      "currentState": "Ändert die Datenbasis nur bei echten Änderungen.",
+      "nextAction": "Weiterlaufen lassen.",
+      "openPoints": [],
+      "tags": ["Automation", "Lovable", "GitHub", "ChatGPT Library"],
+      "links": []
     },
     {
       "id": "render-deploy-process",
@@ -382,12 +386,14 @@
       "progress": 100,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Blueprint olaf-projektzentrale-blueprint ist verbunden; Live-URL funktioniert.",
+      "statusText": "Blueprint ist verbunden; die öffentliche Projektzentrale wird aus main aktualisiert.",
       "currentState": "Auto-Deploy aus main aktiv.",
       "nextAction": "Nur überwachen.",
       "openPoints": [],
       "tags": ["Render", "Blueprint", "Auto Deploy"],
-      "links": [{"label":"Projektzentrale","url":"https://olaf-projektzentrale.onrender.com","kind":"live"}]
+      "links": [
+        {"label":"Öffentliche Projektzentrale","url":"https://olaf-projektzentrale.onrender.com","kind":"live"}
+      ]
     },
     {
       "id": "chatgpt-library-scan-process",
@@ -397,15 +403,16 @@
       "source": "ChatGPT Library",
       "description": "Erfasst ChatGPT-generierte HTML-Seiten, Web-App-Prototypen und Projektpakete und ordnet sie Projekten zu.",
       "objective": "Keine mit ChatGPT erzeugte Seite oder wichtige Projektdatei mehr verlieren.",
-      "phase": "Im Aufbau",
-      "progress": 70,
+      "phase": "Aktiv im Ausbau",
+      "progress": 75,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Erste Vollsuche hat 21 HTML-Artefakte in der Library gefunden; mehrere konkrete historische URLs wurden zusätzlich aus früheren Chats wiedergefunden.",
-      "currentState": "Persönliche Webseite, Immobiliencoach-Webseite, Reha-Kompass, Niklas-Dashboard, Wiechert-Web-Apps, Apple Intelligence, O.C.-Reiseplan und Sonos/Alexa wurden gefunden.",
-      "nextAction": "Weitere frühere Chats nach konkreten URLs und Seitenprojekten durchsuchen und den Katalog fortlaufend ergänzen.",
-      "openPoints": ["Weitere historische URLs", "Automatische Projektzuordnung"],
-      "tags": ["ChatGPT Library", "HTML", "Artefakte", "Inventar"]
+      "statusText": "Dateien werden inventarisiert; als URL werden nur tatsächlich öffentliche HTTPS-Adressen übernommen.",
+      "currentState": "Wichtige HTML-Artefakte und Projektpakete sind erfasst.",
+      "nextAction": "Weitere geeignete ChatGPT-Webapps nach Inhaltsprüfung gezielt öffentlich hosten.",
+      "openPoints": ["Weitere sichere Webapps veröffentlichen"],
+      "tags": ["ChatGPT Library", "HTML", "Artefakte", "Inventar"],
+      "links": []
     }
   ]
 }
