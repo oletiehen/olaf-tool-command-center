@@ -1,0 +1,20 @@
+services:
+  - type: web
+    runtime: static
+    name: olaf-projektzentrale
+    repo: https://github.com/oletiehen/olaf-tool-command-center
+    branch: main
+    rootDir: link-hub
+    buildCommand: echo "Static project hub - no build required"
+    staticPublishPath: ./public
+    autoDeployTrigger: commit
+    headers:
+      - path: /data/*
+        name: Cache-Control
+        value: "no-store, max-age=0"
+      - path: /*
+        name: X-Content-Type-Options
+        value: "nosniff"
+      - path: /*
+        name: Referrer-Policy
+        value: "strict-origin-when-cross-origin"
