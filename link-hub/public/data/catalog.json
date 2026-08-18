@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 4,
-    "updatedAt": "2026-08-18T22:36:00Z",
+    "version": 5,
+    "updatedAt": "2026-08-18T22:38:00Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -59,21 +59,19 @@
       "kind": "project",
       "title": "Persönliche Premium-Webseite Olaf Tiehen",
       "category": "Persönliche Webseite",
-      "source": "ChatGPT + Codex + Render",
+      "source": "ChatGPT + Codex",
       "description": "Große persönliche Premium-Editorial-Webseite mit Galerie, Journal, Medien, privaten Bereichen und starkem Motion-Konzept.",
       "objective": "Hochwertige persönliche digitale Identität mit klarer Trennung öffentlicher und privater Inhalte.",
-      "phase": "Öffentlich auf Render veröffentlicht",
-      "progress": 94,
+      "phase": "Veröffentlichung wird vorbereitet",
+      "progress": 88,
       "priority": "hoch",
-      "status": "active",
-      "statusText": "Eine öffentliche Render-Unterseite ist jetzt vorhanden; lokale Entwicklungsadressen werden nicht mehr verwendet.",
-      "currentState": "Die persönliche Website wurde in den Render-Publish-Bereich unter /apps/persoenliche-webseite/ übernommen.",
-      "nextAction": "Öffentliche Inhalte, Privatsphäre und automatisch erzeugten Screenshot prüfen.",
-      "openPoints": ["Privatbereich final", "Kontakt/Datenschutz final", "Öffentliche Inhaltsprüfung"],
-      "tags": ["Editorial", "Premium", "Motion", "Galerie", "Journal", "Render"],
-      "links": [
-        {"label":"Öffentliche persönliche Webseite","url":"https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/","kind":"live"}
-      ],
+      "status": "needs-link",
+      "statusText": "Im Render-Publish-Bereich liegt bisher nur ein Payload-Teil, aber noch keine index.html. Deshalb wird noch keine öffentliche URL angezeigt.",
+      "currentState": "Public-Release- und private Übergabepakete liegen vor; die Render-Fassung ist noch nicht vollständig veröffentlicht.",
+      "nextAction": "Render-Unterseite erst nach vorhandener index.html als öffentlich markieren und anschließend fotografieren.",
+      "openPoints": ["Render-Veröffentlichung vervollständigen", "Privatbereich final", "Kontakt/Datenschutz final", "Öffentliche Inhaltsprüfung"],
+      "tags": ["Editorial", "Premium", "Motion", "Galerie", "Journal"],
+      "links": [],
       "files": ["ALL_IN_ONE.html", "Olaf_Tiehen_Webseite_PUBLIC_RELEASE.zip", "Olaf_Tiehen_Webseite_Private_Uebergabe.zip"]
     },
     {
