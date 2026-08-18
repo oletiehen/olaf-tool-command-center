@@ -31,7 +31,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <p class="eyebrow">DEIN DIGITALER LEITSTAND</p>
       <h1 id="hero-title">Alles im Blick.<br><span>Nichts geht verloren.</span></h1>
-      <p class="hero-copy">Live-Webseiten, Apps, GitHub-Projekte, ChatGPT-Seiten, historische Vorschauen, Prozesse, Projektstände, offene Punkte und nächste Schritte – zentral zusammengeführt.</p>
+      <p class="hero-copy">Live-Webseiten, Apps, GitHub-Projekte, ChatGPT-Seiten, Prozesse, Projektstände, offene Punkte und nächste Schritte – zentral zusammengeführt. Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen angezeigt.</p>
 
       <div class="metrics" aria-label="Übersicht">
         <article class="metric"><span>Gesamt</span><strong id="metric-total">–</strong><small>Einträge</small></article>
@@ -49,7 +49,7 @@
     </nav>
 
     <section class="toolbar" aria-label="Einträge filtern">
-      <label class="search-wrap" for="search-input"><span class="search-icon" aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Projekt, URL, Datei, Tag oder Status suchen …" autocomplete="off"></label>
+      <label class="search-wrap" for="search-input"><span class="search-icon" aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Projekt, öffentliche URL, Datei, Tag oder Status suchen …" autocomplete="off"></label>
       <div class="select-row">
         <label><span>Kategorie</span><select id="category-filter"><option value="all">Alle Kategorien</option></select></label>
         <label><span>Priorität</span><select id="priority-filter"><option value="all">Alle Prioritäten</option><option value="sehr hoch">Sehr hoch</option><option value="hoch">Hoch</option><option value="mittel">Mittel</option><option value="niedrig">Niedrig</option></select></label>
@@ -73,7 +73,7 @@
 
   <footer>
     <div class="footer-brand">Olaf Tiehen</div>
-    <p>Projektzentrale · Live-Daten + persönliche Arbeitsstände</p>
+    <p>Projektzentrale · öffentliche Links + persönliche Arbeitsstände</p>
     <p id="data-version">Daten werden geladen …</p>
   </footer>
 
@@ -82,7 +82,7 @@
   <dialog id="editor-dialog">
     <form class="dialog-shell editor-shell" id="editor-form" method="dialog">
       <button class="dialog-close" id="editor-close" type="button" aria-label="Editor schließen">×</button>
-      <div class="editor-head"><p class="eyebrow">BEARBEITEN</p><h2 id="editor-title">Projekt</h2><p>Diese Änderungen werden auf deinem aktuellen Gerät gespeichert und bleiben von der automatischen Live-Prüfung getrennt.</p></div>
+      <div class="editor-head"><p class="eyebrow">BEARBEITEN</p><h2 id="editor-title">Projekt</h2><p>Eigene Arbeitsstände werden auf diesem Gerät gespeichert. Als Website-Adresse akzeptiert die Zentrale ausschließlich öffentliche HTTPS-Links.</p></div>
       <input type="hidden" id="edit-id">
       <div class="form-grid">
         <label class="span-2"><span>Titel</span><input id="edit-title" required></label>
@@ -97,7 +97,7 @@
         <label><span>Status</span><input id="edit-status" placeholder="z. B. active, live, draft"></label>
         <label class="span-2"><span>Offene Punkte – eine Zeile pro Punkt</span><textarea id="edit-open" rows="5"></textarea></label>
         <label class="span-2"><span>Notizen</span><textarea id="edit-notes" rows="5" placeholder="Eigene Notizen, Entscheidungen, Ideen …"></textarea></label>
-        <label class="span-2"><span>Zusätzliche URL</span><input id="edit-url" placeholder="https://… oder sandbox:/mnt/data/…"></label>
+        <label class="span-2"><span>Öffentliche HTTPS-Adresse</span><input id="edit-url" type="url" inputmode="url" placeholder="https://beispiel.de"></label>
       </div>
       <div class="editor-actions"><button class="btn btn-secondary" id="editor-cancel" type="button">Abbrechen</button><button class="btn btn-primary" type="submit">Änderungen speichern</button></div>
     </form>
