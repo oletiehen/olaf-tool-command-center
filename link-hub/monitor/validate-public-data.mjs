@@ -38,6 +38,11 @@ function isPublicHttps(value) {
 }
 
 async function validatePreview(owner, previewImage, previewKind, previewPolicy) {
+  if (previewPolicy && !['cover-only', 'recover-to-screenshot', 'website-screenshot', 'no-preview'].includes(previewPolicy)) errors.push(`${owner}: previewPolicy ist ungültig`);
+  if (previewPolicy === 'no-preview') {
+    if (previewImage || previewKind) errors.push(`${owner}: no-preview darf kein Vorschaubild referenzieren`);
+    return;
+  }
   if (!previewImage) return;
   if (!['ai-cover', 'website-screenshot'].includes(previewKind)) errors.push(`${owner}: previewKind fehlt oder ist ungültig`);
   if (previewKind === 'ai-cover' && !['cover-only', 'recover-to-screenshot'].includes(previewPolicy)) errors.push(`${owner}: KI-Cover braucht eine gültige Cover-Policy`);

@@ -180,9 +180,9 @@ async function monitorWeb(site) {
     sitesDirty = true;
   }
 
-  const coverOnly = site.previewPolicy === 'cover-only' || site.previewKind === 'ai-cover';
-  const needsPreview = !coverOnly && !(await exists(previewFile));
-  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
+  const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview';
+  const needsPreview = !skipPreview && !(await exists(previewFile));
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
     if (await screenshotSite(site)) sitesDirty = true;
   }
 }
@@ -235,7 +235,7 @@ async function monitorCatalogLink(item, link, index) {
   const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
   const file = path.join(catalogPreviewsDir, fileName);
   const previewPath = `previews/catalog/${fileName}`;
-  const coverOnly = item.previewPolicy === 'cover-only';
+  const skipPreview = item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview';
   let metadataChanged = false;
 
   if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; metadataChanged = true; }
@@ -246,9 +246,9 @@ async function monitorCatalogLink(item, link, index) {
     catalogDirty = true;
   }
 
-  const needsPreview = !coverOnly && !(await exists(file));
+  const needsPreview = !skipPreview && !(await exists(file));
   const mustRecheckFailedContent = item.previewPolicy === 'recover-to-screenshot' && link.contentStatus === 'failed';
-  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged || mustRecheckFailedContent)) {
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || mustRecheckFailedContent)) {
     const screenshot = await screenshotUrl(link.url, file, `${item.id}#${index + 1}`);
     if (link.contentStatus !== screenshot.contentStatus) {
       link.contentStatus = screenshot.contentStatus;
@@ -260,7 +260,7 @@ async function monitorCatalogLink(item, link, index) {
       link.previewKind = 'website-screenshot';
       catalogDirty = true;
     }
-  } else if (result.ok && !coverOnly && link.contentStatus !== 'failed' && await exists(file) && link.previewImage !== previewPath) {
+  } else if (result.ok && !skipPreview && link.contentStatus !== 'failed' && await exists(file) && link.previewImage !== previewPath) {
     link.previewImage = previewPath;
     link.previewKind = 'website-screenshot';
     catalogDirty = true;
@@ -279,7 +279,7 @@ async function monitorCatalog(catalog) {
       await monitorCatalogLink(item, publicLinks[index], index);
     }
 
-    if (item.previewPolicy === 'cover-only') continue;
+    if (item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview') continue;
     const preferred = publicLinks.find(link => link.kind === 'live' && link.previewImage) || publicLinks.find(link => link.previewImage);
     if (preferred?.previewImage && item.previewImage !== preferred.previewImage) {
       const recoveredFromCover = item.previewPolicy === 'recover-to-screenshot';

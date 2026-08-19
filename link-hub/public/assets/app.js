@@ -196,6 +196,10 @@ function sortItems(a,b) {
 }
 function statusClass(status='unknown') { return `status-${String(status).replace(/[^a-z0-9-]/gi,'-')}`; }
 function previewMarkup(item) {
+  if (item.previewPolicy === 'no-preview' || item.technical?.previewPolicy === 'no-preview') {
+    const symbol = item.kind === 'process' ? '↻' : item.kind === 'artifact' ? '◇' : 'OT';
+    return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
+  }
   const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || (src ? 'website-screenshot' : 'fallback');
   if (src) {
@@ -206,6 +210,7 @@ function previewMarkup(item) {
   return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
 }
 function previewOriginMarkup(item) {
+  if (item.previewPolicy === 'no-preview' || item.technical?.previewPolicy === 'no-preview') return '';
   const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
   if (!src) return '';
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || 'website-screenshot';

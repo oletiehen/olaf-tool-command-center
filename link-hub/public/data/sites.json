@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 10,
-    "generatedAt": "2026-08-19T00:39:04.970Z",
+    "version": 11,
+    "generatedAt": "2026-08-19T00:42:35.000Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -408,6 +408,33 @@
       "previewKind": "website-screenshot",
       "previewPolicy": "website-screenshot",
       "contentStatus": "ok"
+    },
+    {
+      "id": "olaf-personal-website",
+      "title": "Persönliche Premium-Webseite Olaf Tiehen",
+      "category": "Persönliche Webseite",
+      "platform": "ChatGPT Sites",
+      "description": "Tatsächliche persönliche filmische Webseite von Olaf Tiehen mit Biografie, Menschen, Gedanken und Erinnerungen.",
+      "primaryUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
+      "sourceRepo": null,
+      "links": [
+        {
+          "label": "Tatsächliche persönliche Webseite",
+          "url": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
+          "kind": "live"
+        }
+      ],
+      "status": "live",
+      "monitorMode": "web",
+      "lastPlatformUpdateAt": null,
+      "lastSourceUpdateAt": null,
+      "lastPublishedAt": null,
+      "lastChangedAt": null,
+      "fingerprint": null,
+      "lastHttpStatus": 200,
+      "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
+      "firstSeenAt": "2026-08-19T00:36:57.000Z",
+      "previewPolicy": "no-preview"
     }
   ]
 }
