@@ -221,7 +221,10 @@ function linkTypeLabel(kind='') {
   return ({live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'Öffentliche URL';
 }
 function primaryLink(item) {
-  const links = reachablePublicLinks(item);
+  const allLinks = publicLinks(item);
+  const explicitPrimary = allLinks.find(link => link.isPrimary === true);
+  if (explicitPrimary) return explicitPrimary;
+  const links = allLinks.filter(isReachableLink);
   return links.find(l=>l.kind==='live') || links.find(l=>l.kind==='reference') || links[0] || null;
 }
 function cardMarkup(item) {
@@ -286,12 +289,13 @@ function linksMarkup(item) {
   return links.map(link=>{
     const status = Number(link.lastHttpStatus || 0);
     const reachable = isReachableLink(link);
+    const canOpen = reachable || link.isPrimary === true;
     const check = link.contentStatus === 'failed'
       ? `HTTP ${status || '–'} · Inhalt fehlerhaft`
       : status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
     return `<div class="resource-link">
       <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))} · ${escapeHtml(check)}</span><strong>${escapeHtml(link.label || 'Öffentliche URL')}</strong><code>${escapeHtml(link.url)}</code></div>
-      ${reachable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">${link.contentStatus === 'failed' ? 'Inhalt fehlerhaft' : 'Nicht erreichbar'}</span>`}
+      ${canOpen ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">${link.contentStatus === 'failed' ? 'Inhalt fehlerhaft' : 'Nicht erreichbar'}</span>`}
     </div>`;
   }).join('');
 }

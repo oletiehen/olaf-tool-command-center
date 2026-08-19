@@ -60,6 +60,8 @@ async function validatePreview(owner, previewImage, previewKind, previewPolicy) 
 }
 
 for (const item of catalog.items || []) {
+  const primaryLinks = (item.links || []).filter(link => link.isPrimary === true);
+  if (primaryLinks.length > 1) errors.push(`catalog:${item.id}: mehr als ein primärer Link`);
   for (const link of item.links || []) {
     if (!isPublicHttps(link.url)) errors.push(`catalog:${item.id}: nicht öffentliche URL (${link.url})`);
   }
