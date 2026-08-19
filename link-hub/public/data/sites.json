@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 12,
-    "generatedAt": "2026-08-19T00:47:56.968Z",
+    "version": 13,
+    "generatedAt": "2026-08-19T00:49:59.000Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -421,10 +421,12 @@
         {
           "label": "Tatsächliche persönliche Webseite",
           "url": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
-          "kind": "live"
+          "kind": "canonical",
+          "accessMode": "account-required"
         }
       ],
-      "status": "offline",
+      "status": "restricted",
+      "accessMode": "account-required",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,

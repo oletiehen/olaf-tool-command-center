@@ -156,7 +156,8 @@ async function monitorWeb(site) {
   const baseline = !previousFingerprint;
   const contentChanged = Boolean(previousFingerprint && previousFingerprint !== fingerprint);
   const statusChanged = previousHttpStatus !== null && previousHttpStatus !== result.status;
-  const wasNotLive = !['live', 'unknown'].includes(site.status);
+  const accountRestricted = site.accessMode === 'account-required' && [401, 403].includes(result.status);
+  const wasNotLive = !['live', 'unknown', 'restricted'].includes(site.status);
 
   if (site.fingerprint !== fingerprint) { site.fingerprint = fingerprint; sitesDirty = true; }
   if (site.lastHttpStatus !== result.status) { site.lastHttpStatus = result.status; sitesDirty = true; }
@@ -165,12 +166,17 @@ async function monitorWeb(site) {
   if (result.ok && site.status !== 'live') {
     site.status = 'live';
     sitesDirty = true;
+  } else if (accountRestricted) {
+    if (site.status !== 'restricted') {
+      site.status = 'restricted';
+      sitesDirty = true;
+    }
   } else if (!result.ok && site.status !== 'offline') {
     site.status = 'offline';
     sitesDirty = true;
   }
 
-  if (!site.firstSeenAt && result.ok) {
+  if (!site.firstSeenAt && (result.ok || accountRestricted)) {
     site.firstSeenAt = now;
     sitesDirty = true;
   }
