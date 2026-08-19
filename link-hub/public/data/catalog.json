@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 13,
-    "updatedAt": "2026-08-18T23:39:03.832Z",
+    "version": 14,
+    "updatedAt": "2026-08-19T00:29:23.000Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -357,14 +357,15 @@
       "source": "ChatGPT Web-App + Render",
       "description": "Mobile-first Website-/Web-App-Prototyp für Taxi- und Bus-Angebote von Wiechert.",
       "objective": "Modernes digitales Angebot für Taxi-/Bus-Leistungen.",
-      "phase": "Öffentlich auf Render veröffentlicht",
+      "phase": "Öffentliche Seite gestört",
       "progress": 94,
       "priority": "mittel",
-      "status": "active",
-      "statusText": "Die ChatGPT-Web-App liegt jetzt als öffentliche Render-Unterseite vor.",
-      "currentState": "Der interaktive V2-Prototyp wurde in den Render-Publish-Bereich übernommen.",
-      "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
+      "status": "offline",
+      "statusText": "Die öffentliche Adresse antwortet, der eigentliche Seiteninhalt meldet jedoch einen Ladefehler.",
+      "currentState": "Bis zur Reparatur kennzeichnet die Projektzentrale die Miniatur klar als KI-Projektcover und bietet keinen irreführenden Öffnen-Link an.",
+      "nextAction": "Datenabruf der Render-Unterseite reparieren; danach automatisch wieder einen echten Website-Screenshot übernehmen.",
       "openPoints": [
+        "Ladefehler der öffentlichen Unterseite beheben",
         "Produktionsdaten später prüfen"
       ],
       "tags": [
@@ -382,16 +383,17 @@
           "fingerprint": "463772c809f72e0090663447629076c9f363ccff803304bda49c6397254df55b",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-taxi-bus/",
-          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/wiechert-taxi-bus-1.png"
+          "lastCheckedAt": "2026-08-19T00:29:23.000Z",
+          "contentStatus": "failed",
+          "contentMessage": "Seite konnte nicht geladen werden. Failed to fetch"
         }
       ],
       "files": [
         "wiechert-taxi-bus-webapp-v2.html"
       ],
-      "previewImage": "previews/catalog/wiechert-taxi-bus-1.png",
-      "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewImage": "previews/covers/wiechert-taxi-bus.jpg",
+      "previewKind": "ai-cover",
+      "previewPolicy": "recover-to-screenshot"
     },
     {
       "id": "wiechert-reisen",
@@ -473,9 +475,9 @@
       "files": [
         "OC-Reiseplan-App-Vorschau.html"
       ],
-      "previewImage": "previews/covers/oc-reiseplan.webp",
-      "previewKind": "ai-cover",
-      "previewPolicy": "cover-only"
+      "previewImage": "previews/catalog/oc-reiseplan-1.png",
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "sonos-alexa-mobile",
