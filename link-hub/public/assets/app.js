@@ -98,7 +98,7 @@ function publicLinks(item) {
 }
 function isReachableLink(link) {
   const status = Number(link?.lastHttpStatus || 0);
-  return !status || (status >= 200 && status < 400);
+  return link?.contentStatus !== 'failed' && (!status || (status >= 200 && status < 400));
 }
 function reachablePublicLinks(item) {
   return publicLinks(item).filter(isReachableLink);
@@ -203,8 +203,8 @@ function previewMarkup(item) {
   const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || (src ? 'website-screenshot' : 'fallback');
   if (src) {
-    const alt = previewKind === 'ai-cover' ? `KI-Cover zu ${item.title}` : `Screenshot der öffentlichen Website ${item.title}`;
-    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" data-preview data-preview-kind="${escapeHtml(previewKind)}">`;
+    const alt = previewKind === 'ai-cover' ? `KI-Projektcover für ${item.title}` : `Website-Screenshot von ${item.title}`;
+    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" data-preview data-preview-kind="${escapeHtml(previewKind)}">`;
   }
   const symbol = item.kind === 'process' ? '↻' : item.kind === 'artifact' ? '◇' : 'OT';
   return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
@@ -214,7 +214,7 @@ function previewOriginMarkup(item) {
   const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
   if (!src) return '';
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || 'website-screenshot';
-  const label = previewKind === 'ai-cover' ? 'KI-Cover' : 'Webseiten-Screenshot';
+  const label = previewKind === 'ai-cover' ? 'KI-Projektcover' : 'Website-Screenshot';
   return `<span class="preview-origin preview-origin-${escapeHtml(previewKind)}">${label}</span>`;
 }
 function linkTypeLabel(kind='') {
@@ -286,10 +286,12 @@ function linksMarkup(item) {
   return links.map(link=>{
     const status = Number(link.lastHttpStatus || 0);
     const reachable = isReachableLink(link);
-    const check = status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
+    const check = link.contentStatus === 'failed'
+      ? `HTTP ${status || '–'} · Inhalt fehlerhaft`
+      : status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
     return `<div class="resource-link">
       <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))} · ${escapeHtml(check)}</span><strong>${escapeHtml(link.label || 'Öffentliche URL')}</strong><code>${escapeHtml(link.url)}</code></div>
-      ${reachable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">Nicht erreichbar</span>`}
+      ${reachable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">${link.contentStatus === 'failed' ? 'Inhalt fehlerhaft' : 'Nicht erreichbar'}</span>`}
     </div>`;
   }).join('');
 }

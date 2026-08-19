@@ -97,11 +97,16 @@ async function screenshotUrl(url, file, label) {
     page = await activeBrowser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
     await page.waitForTimeout(2500);
+    const bodyText = await page.locator('body').innerText().catch(() => '');
+    if (/Seite konnte nicht geladen werden|Failed to fetch/i.test(bodyText)) {
+      console.warn(`[preview] ${label}: rendered content reports a loading failure`);
+      return { ok: false, contentStatus: 'failed' };
+    }
     await page.screenshot({ path: file, type: 'png', fullPage: false });
-    return true;
+    return { ok: true, contentStatus: 'ok' };
   } catch (error) {
     console.warn(`[preview] ${label}: ${error.message}`);
-    return false;
+    return { ok: false, contentStatus: 'unavailable' };
   } finally {
     if (page) await page.close().catch(() => {});
   }
@@ -109,13 +114,17 @@ async function screenshotUrl(url, file, label) {
 
 async function screenshotSite(site) {
   const file = path.join(previewsDir, `${site.id}.png`);
-  const ok = await screenshotUrl(site.primaryUrl, file, site.id);
-  if (ok) {
+  const result = await screenshotUrl(site.primaryUrl, file, site.id);
+  if (site.contentStatus !== result.contentStatus) {
+    site.contentStatus = result.contentStatus;
+    sitesDirty = true;
+  }
+  if (result.ok) {
     site.previewImage = `previews/${site.id}.png`;
     site.previewKind = 'website-screenshot';
     site.previewPolicy = 'website-screenshot';
   }
-  return ok;
+  return result.ok;
 }
 
 async function monitorWeb(site) {
@@ -171,7 +180,7 @@ async function monitorWeb(site) {
     sitesDirty = true;
   }
 
-  const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview' || site.previewKind === 'ai-cover';
+  const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview';
   const needsPreview = !skipPreview && !(await exists(previewFile));
   if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
     if (await screenshotSite(site)) sitesDirty = true;
@@ -226,7 +235,7 @@ async function monitorCatalogLink(item, link, index) {
   const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
   const file = path.join(catalogPreviewsDir, fileName);
   const previewPath = `previews/catalog/${fileName}`;
-  const skipPreview = item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview' || item.previewKind === 'ai-cover';
+  const skipPreview = item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview';
   let metadataChanged = false;
 
   if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; metadataChanged = true; }
@@ -238,13 +247,20 @@ async function monitorCatalogLink(item, link, index) {
   }
 
   const needsPreview = !skipPreview && !(await exists(file));
-  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged)) {
-    if (await screenshotUrl(link.url, file, `${item.id}#${index + 1}`)) {
+  const mustRecheckFailedContent = item.previewPolicy === 'recover-to-screenshot' && link.contentStatus === 'failed';
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || mustRecheckFailedContent)) {
+    const screenshot = await screenshotUrl(link.url, file, `${item.id}#${index + 1}`);
+    if (link.contentStatus !== screenshot.contentStatus) {
+      link.contentStatus = screenshot.contentStatus;
+      if (screenshot.contentStatus === 'ok') delete link.contentMessage;
+      catalogDirty = true;
+    }
+    if (screenshot.ok) {
       if (link.previewImage !== previewPath) link.previewImage = previewPath;
       link.previewKind = 'website-screenshot';
       catalogDirty = true;
     }
-  } else if (result.ok && !skipPreview && await exists(file) && link.previewImage !== previewPath) {
+  } else if (result.ok && !skipPreview && link.contentStatus !== 'failed' && await exists(file) && link.previewImage !== previewPath) {
     link.previewImage = previewPath;
     link.previewKind = 'website-screenshot';
     catalogDirty = true;
@@ -263,12 +279,21 @@ async function monitorCatalog(catalog) {
       await monitorCatalogLink(item, publicLinks[index], index);
     }
 
-    if (item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview' || item.previewKind === 'ai-cover') continue;
+    if (item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview') continue;
     const preferred = publicLinks.find(link => link.kind === 'live' && link.previewImage) || publicLinks.find(link => link.previewImage);
     if (preferred?.previewImage && item.previewImage !== preferred.previewImage) {
+      const recoveredFromCover = item.previewPolicy === 'recover-to-screenshot';
       item.previewImage = preferred.previewImage;
       item.previewKind = 'website-screenshot';
       item.previewPolicy = 'website-screenshot';
+      if (recoveredFromCover) {
+        item.status = 'active';
+        item.phase = 'Öffentlich auf Render veröffentlicht';
+        item.statusText = 'Die öffentliche Web-App ist wieder vollständig erreichbar.';
+        item.currentState = 'Der Ladefehler wurde behoben und die Projektzentrale zeigt wieder einen echten Website-Screenshot.';
+        item.nextAction = 'Produktionsdaten und Inhalt regelmäßig prüfen.';
+        item.openPoints = (item.openPoints || []).filter(point => !/Ladefehler/i.test(point));
+      }
       catalogDirty = true;
     }
   }

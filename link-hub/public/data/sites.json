@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 9,
-    "generatedAt": "2026-08-19T00:36:57.000Z",
+    "version": 11,
+    "generatedAt": "2026-08-19T00:42:35.000Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,13 +61,14 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-16T18:19:39Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-18T23:39:03.832Z",
-      "fingerprint": "af0810ddbe6e4adf790cb3d84fbe487647cba202705fe5a13de2ed3caa28493a",
+      "lastChangedAt": "2026-08-19T00:39:04.970Z",
+      "fingerprint": "e0ffee52c589981647c10ad37514348ac8728d4638c63d262b5fc37ed11393e6",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "codex-faehigkeiten-navigator",
@@ -124,13 +125,14 @@
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-18T22:40:16.292Z",
-      "fingerprint": "aaa1dc9bc51578f9846a62d355e1b1113de0466ac048713eec3619ae802819a1",
+      "lastChangedAt": "2026-08-19T00:39:04.970Z",
+      "fingerprint": "86e8fee3a7e65789b5aceb9a3cf1c8bb71d57d8db66bff232aa0f61bc5019eda",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "apple-intelligence-watch",
@@ -215,19 +217,20 @@
           "kind": "source"
         }
       ],
-      "previewImage": "previews/covers/marens-daily-glow.webp",
+      "previewImage": "previews/marens-daily-glow.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "ea233a936be095eabcfa52c69f8736dc027797ac45f10c65f089126e38215c39",
+      "lastChangedAt": "2026-08-19T00:39:04.970Z",
+      "fingerprint": "0ca3ec361cefef59e8734f22308d3b174bb38363520cf966316cb6cae014aa70",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
-      "previewKind": "ai-cover",
-      "previewPolicy": "cover-only"
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "my-daily-compass",
@@ -244,7 +247,7 @@
           "kind": "live"
         }
       ],
-      "previewImage": "previews/covers/my-daily-compass.webp",
+      "previewImage": "previews/my-daily-compass.png",
       "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": "2026-07-20T23:52:39.502425Z",
@@ -255,8 +258,8 @@
       "lastHttpStatus": 200,
       "resolvedUrl": "https://ole-verwaltung.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
-      "previewKind": "ai-cover",
-      "previewPolicy": "cover-only"
+      "previewKind": "website-screenshot",
+      "previewPolicy": "website-screenshot"
     },
     {
       "id": "eingliederungshilfe-nrw",
@@ -397,13 +400,14 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-18T23:39:03.832Z",
-      "fingerprint": "0caf431cdb93bc08cc8d4ceef94f80a9b815ebdfbad018dcdc63b9d538e08aea",
+      "lastChangedAt": "2026-08-19T00:39:04.970Z",
+      "fingerprint": "bcbea58b04d1b0f0fd1b8882f8c7308eeb5d86ce879ea99db7e6765cea81c553",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "olaf-personal-website",

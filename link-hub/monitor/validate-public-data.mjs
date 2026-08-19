@@ -38,14 +38,14 @@ function isPublicHttps(value) {
 }
 
 async function validatePreview(owner, previewImage, previewKind, previewPolicy) {
-  if (previewPolicy && !['cover-only', 'website-screenshot', 'no-preview'].includes(previewPolicy)) errors.push(`${owner}: previewPolicy ist ungültig`);
+  if (previewPolicy && !['cover-only', 'recover-to-screenshot', 'website-screenshot', 'no-preview'].includes(previewPolicy)) errors.push(`${owner}: previewPolicy ist ungültig`);
   if (previewPolicy === 'no-preview') {
     if (previewImage || previewKind) errors.push(`${owner}: no-preview darf kein Vorschaubild referenzieren`);
     return;
   }
   if (!previewImage) return;
   if (!['ai-cover', 'website-screenshot'].includes(previewKind)) errors.push(`${owner}: previewKind fehlt oder ist ungültig`);
-  if (previewKind === 'ai-cover' && previewPolicy !== 'cover-only') errors.push(`${owner}: KI-Cover muss cover-only sein`);
+  if (previewKind === 'ai-cover' && !['cover-only', 'recover-to-screenshot'].includes(previewPolicy)) errors.push(`${owner}: KI-Cover braucht eine gültige Cover-Policy`);
   if (previewKind === 'website-screenshot' && previewPolicy !== 'website-screenshot') errors.push(`${owner}: Screenshot-Policy fehlt`);
   if (/^[a-z][a-z0-9+.-]*:/i.test(previewImage)) {
     errors.push(`${owner}: Vorschaubild muss als lokales, geprüftes Asset vorliegen`);
@@ -64,6 +64,9 @@ for (const item of catalog.items || []) {
     if (!isPublicHttps(link.url)) errors.push(`catalog:${item.id}: nicht öffentliche URL (${link.url})`);
   }
   await validatePreview(`catalog:${item.id}`, item.previewImage, item.previewKind, item.previewPolicy);
+  if (item.previewPolicy === 'recover-to-screenshot' && !(item.links || []).some(link => link.contentStatus === 'failed')) {
+    errors.push(`catalog:${item.id}: Recovery-Cover braucht einen dokumentierten Inhaltsfehler`);
+  }
 }
 
 for (const site of sites.sites || []) {
