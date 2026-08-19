@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 13,
-    "updatedAt": "2026-08-18T23:39:03.832Z",
+    "version": 14,
+    "updatedAt": "2026-08-19T00:36:00Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -212,16 +212,16 @@
       "kind": "project",
       "title": "Olafs Reha-Kompass",
       "category": "Gesundheit & Orientierung",
-      "source": "Render Production + GitHub",
+      "source": "Öffentliche Render-Unterseite + GitHub",
       "description": "Umfangreiche Reha-/Klinik-Orientierungsanwendung mit mehreren Premium-Prototypen und Render-Deployment.",
       "objective": "Strukturierte und verständliche Orientierung bei Reha- und Klinikentscheidungen.",
-      "phase": "Geschützter Pilot · Render Production",
-      "progress": 96,
+      "phase": "Öffentliche Web-App auf Render",
+      "progress": 98,
       "priority": "sehr hoch",
       "status": "active",
-      "statusText": "Der geschützte persönliche Reha-Kompass ist über die verifizierte Render-Production erreichbar.",
-      "currentState": "Die öffentliche Einstiegsseite der Production lädt korrekt. Persönliche Inhalte bleiben hinter Geräte- oder Codezugang geschützt.",
-      "nextAction": "Öffentlichen Zugangsbildschirm als echten Screenshot übernehmen und den geschützten Betrieb weiter überwachen.",
+      "statusText": "Der Reha-Kompass ist als öffentliche Web-App ohne vorgeschalteten Geräte- oder Codezugang erreichbar.",
+      "currentState": "Die öffentliche Render-Unterseite lädt die vollständige eigenständige Web-App. Der separate persönliche Production-Datenspeicher wird dabei nicht geöffnet oder veröffentlicht.",
+      "nextAction": "Öffentliche Web-App und ihren echten Screenshot im regulären Monitoring weiter prüfen.",
       "openPoints": [],
       "tags": [
         "Render",
@@ -231,12 +231,12 @@
       ],
       "links": [
         {
-          "label": "Geschützter Reha-Kompass",
-          "url": "https://gdp-dashboard-lccm.onrender.com/",
+          "label": "Öffentlicher Reha-Kompass",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
           "kind": "live",
           "fingerprint": "01b0abef751130fdb72a2bf21b81b6bca61b157315263d1eb8a7fed526fe95f5",
           "lastHttpStatus": 200,
-          "resolvedUrl": "https://gdp-dashboard-lccm.onrender.com/",
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/reha-kompass/",
           "lastCheckedAt": "2026-08-18T23:39:03.832Z",
           "previewImage": "previews/catalog/reha-kompass-1.png",
           "previewKind": "website-screenshot"
