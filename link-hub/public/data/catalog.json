@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 18,
-    "updatedAt": "2026-08-19T00:47:56.968Z",
+    "version": 19,
+    "updatedAt": "2026-08-19T00:49:59.000Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -116,17 +116,17 @@
       "source": "ChatGPT Sites + Codex + Render-Referenz",
       "description": "Persönliche filmische Webseite von Olaf Tiehen mit Biografie, Menschen, Gedanken und Erinnerungen; keine Verkaufs- oder Coaching-Landingpage.",
       "objective": "Ein ruhiges persönliches digitales Zuhause mit klarer Trennung öffentlicher und privater Inhalte.",
-      "phase": "Tatsächliche ChatGPT-Sites-Version live",
+      "phase": "Kontogeschützte ChatGPT-Sites-Originalseite",
       "progress": 90,
       "priority": "hoch",
       "status": "active",
-      "statusText": "Die vom Auftraggeber benannte tatsächliche ChatGPT-Sites-Version ist als primärer Live-Link hinterlegt und im Browser erreichbar. Die medienfreie Render-Fassung bleibt nur als Referenz erhalten.",
-      "currentState": "Willkommen, Meine Geschichte, Die Menschen, Gedanken, Erinnerungen, Kontakt, FAQ, Impressum und Datenschutz sind erreichbar. Impressum und Datenschutz beschreiben die Seite jedoch noch als ausschließlich kontointern, obwohl die URL öffentlich aufrufbar ist.",
-      "nextAction": "Zugriffs- und Datenschutzhinweise im kanonischen ChatGPT-Sites-Projekt an die tatsächliche öffentliche Erreichbarkeit anpassen und rechtliche Angaben ohne erfundene Daten abschließend prüfen.",
+      "statusText": "Die vom Auftraggeber benannte tatsächliche ChatGPT-Sites-Version ist als primäre, kontogeschützte Originalseite hinterlegt. Ohne angemeldete Sitzung antwortet sie mit HTTP 401; die medienfreie Render-Fassung bleibt eine getrennte öffentliche Referenz.",
+      "currentState": "Willkommen, Meine Geschichte, Die Menschen, Gedanken, Erinnerungen, Kontakt, FAQ, Impressum und Datenschutz sind in der angemeldeten Sitzung erreichbar. Automatische anonyme Prüfungen bestätigen den Kontoschutz mit HTTP 401.",
+      "nextAction": "Vor einer möglichen öffentlichen Freigabe Zugriffskonzept, rechtliche Angaben sowie Inhalts- und Medienfreigaben im kanonischen ChatGPT-Sites-Projekt abschließend prüfen.",
       "openPoints": [
-        "Widerspruch zwischen öffentlicher Erreichbarkeit und den Hinweisen 'nur für den Kontoinhaber' korrigieren",
-        "Ladungsfähige Anschrift und Hosting-/Datenschutzhinweise im kanonischen Projekt rechtlich prüfen",
-        "Öffentliche Inhalts- und Medienfreigabe abschließend prüfen",
+        "Entscheiden, ob die Originalseite kontogeschützt bleiben oder später öffentlich freigegeben werden soll",
+        "Vor einer öffentlichen Freigabe ladungsfähige Anschrift und Hosting-/Datenschutzhinweise rechtlich prüfen",
+        "Vor einer öffentlichen Freigabe Inhalts- und Medienfreigaben abschließend prüfen",
         "Kontaktbereich enthält derzeit keine direkte Kontaktaktion"
       ],
       "tags": [
@@ -141,7 +141,8 @@
         {
           "label": "Tatsächliche persönliche Webseite",
           "url": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
-          "kind": "live",
+          "kind": "canonical",
+          "accessMode": "account-required",
           "lastHttpStatus": 401,
           "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/",
           "lastCheckedAt": "2026-08-19T00:47:56.968Z",
@@ -168,7 +169,7 @@
       "timeline": [
         {
           "date": "2026-08-19",
-          "text": "Tatsächliche ChatGPT-Sites-Version als primären Live-Link eingetragen; Render-Fassung zur Referenz herabgestuft und automatische Vorschau aus Datenschutzgründen deaktiviert."
+          "text": "Tatsächliche kontogeschützte ChatGPT-Sites-Version als primäre Originalseite eingetragen; Render-Fassung zur öffentlichen Referenz herabgestuft und automatische Vorschau aus Datenschutzgründen deaktiviert."
         },
         {
           "date": "2026-08-19",

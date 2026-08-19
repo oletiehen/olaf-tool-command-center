@@ -47,7 +47,7 @@ const el = {
 const kindLabel = { project: 'Projekt', artifact: 'ChatGPT-Seite', process: 'Prozess' };
 const statusLabel = {
   live: 'Live', active: 'Aktiv', repository: 'Repository', draft: 'Entwurf', artifact: 'Artefakt', historical: 'Historisch',
-  unknown: 'Ungeprüft', 'needs-link': 'Öffentliche URL fehlt', offline: 'Nicht erreichbar'
+  unknown: 'Ungeprüft', 'needs-link': 'Öffentliche URL fehlt', restricted: 'Kontogeschützt', offline: 'Nicht erreichbar'
 };
 const priorityWeight = { 'sehr hoch': 4, hoch: 3, mittel: 2, niedrig: 1 };
 
@@ -98,6 +98,7 @@ function publicLinks(item) {
 }
 function isReachableLink(link) {
   const status = Number(link?.lastHttpStatus || 0);
+  if (link?.accessMode === 'account-required' && [401, 403].includes(status)) return true;
   return link?.contentStatus !== 'failed' && (!status || (status >= 200 && status < 400));
 }
 function reachablePublicLinks(item) {
@@ -163,7 +164,8 @@ function mergeItem(base, site) {
       lastPlatformUpdateAt: site.lastPlatformUpdateAt,
       lastSourceUpdateAt: site.lastSourceUpdateAt,
       firstSeenAt: site.firstSeenAt,
-      sourceRepo: site.sourceRepo
+      sourceRepo: site.sourceRepo,
+      accessMode: site.accessMode
     } : null
   };
 }
@@ -218,16 +220,16 @@ function previewOriginMarkup(item) {
   return `<span class="preview-origin preview-origin-${escapeHtml(previewKind)}">${label}</span>`;
 }
 function linkTypeLabel(kind='') {
-  return ({live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'Öffentliche URL';
+  return ({canonical:'Kontogeschützte Originalseite',live:'Live-Webseite',source:'Öffentlicher Quellcode',historical:'Historische öffentliche Seite',reference:'Öffentliche Referenz'})[kind] || 'HTTPS-Adresse';
 }
 function primaryLink(item) {
   const links = reachablePublicLinks(item);
-  return links.find(l=>l.kind==='live') || links.find(l=>l.kind==='reference') || links[0] || null;
+  return links.find(l=>l.kind==='canonical') || links.find(l=>l.kind==='live') || links.find(l=>l.kind==='reference') || links[0] || null;
 }
 function cardMarkup(item) {
   const open = primaryLink(item);
   const technicalStatus = item.technical?.liveStatus;
-  const status = technicalStatus === 'live' ? 'live' : item.status || technicalStatus || 'unknown';
+  const status = technicalStatus === 'live' ? 'live' : technicalStatus === 'restricted' ? 'restricted' : item.status || technicalStatus || 'unknown';
   return `<article class="project-card kind-${escapeHtml(item.kind)}" data-id="${escapeHtml(item.id)}">
     <div class="preview">${previewMarkup(item)}${previewOriginMarkup(item)}<span class="platform-tag">${escapeHtml(item.source || item.technical?.platform || kindLabel[item.kind])}</span><span class="kind-tag">${escapeHtml(kindLabel[item.kind] || item.kind)}</span></div>
     <div class="card-body">
@@ -286,7 +288,10 @@ function linksMarkup(item) {
   return links.map(link=>{
     const status = Number(link.lastHttpStatus || 0);
     const reachable = isReachableLink(link);
-    const check = link.contentStatus === 'failed'
+    const accountRestricted = link.accessMode === 'account-required' && [401, 403].includes(status);
+    const check = accountRestricted
+      ? `HTTP ${status} · kontogeschützt`
+      : link.contentStatus === 'failed'
       ? `HTTP ${status || '–'} · Inhalt fehlerhaft`
       : status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
     return `<div class="resource-link">
@@ -323,16 +328,16 @@ function openDetails(id) {
   const item = state.items.find(i=>i.id===id); if(!item)return;
   el.detailContent.innerHTML = `<div class="dialog-hero detail-hero"><p class="eyebrow">${escapeHtml(kindLabel[item.kind]||item.kind)} · ${escapeHtml(item.category||'')}</p><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.description||'')}</p><div class="detail-statusline"><span class="priority priority-${escapeHtml(item.priority||'mittel')}">Priorität ${escapeHtml(item.priority||'mittel')}</span><span>${escapeHtml(item.phase||'Phase offen')}</span><strong>${clamp(item.progress)}%</strong></div></div>
     <div class="detail-progress"><div><span style="width:${clamp(item.progress)}%"></span></div></div>
-    <div class="detail-actions"><button class="btn btn-primary" id="detail-edit" type="button">✎ Bearbeiten</button>${primaryLink(item)?`<a class="btn btn-secondary" href="${escapeHtml(primaryLink(item).url)}" target="_blank" rel="noopener noreferrer">Öffentliche Seite öffnen ↗</a>`:''}</div>
-    <div class="detail-tabs" role="tablist"><button class="active" data-detail-tab="overview">Übersicht</button><button data-detail-tab="links">Öffentliche Links & Dateien</button><button data-detail-tab="tech">Technik</button><button data-detail-tab="history">Historie</button></div>
+    <div class="detail-actions"><button class="btn btn-primary" id="detail-edit" type="button">✎ Bearbeiten</button>${primaryLink(item)?`<a class="btn btn-secondary" href="${escapeHtml(primaryLink(item).url)}" target="_blank" rel="noopener noreferrer">${primaryLink(item).kind==='canonical'?'Originalseite':'Öffentliche Seite'} öffnen ↗</a>`:''}</div>
+    <div class="detail-tabs" role="tablist"><button class="active" data-detail-tab="overview">Übersicht</button><button data-detail-tab="links">Links & Dateien</button><button data-detail-tab="tech">Technik</button><button data-detail-tab="history">Historie</button></div>
     <section class="detail-panel active" data-detail-panel="overview">
       <div class="detail-grid"><article><span>Ziel</span><p>${escapeHtml(item.objective||'Noch nicht dokumentiert.')}</p></article><article><span>Aktueller Stand</span><p>${escapeHtml(item.currentState||item.statusText||'Noch nicht dokumentiert.')}</p></article></div>
       <div class="focus-card"><span>Nächster sinnvoller Schritt</span><strong>${escapeHtml(item.nextAction||'Noch nicht festgelegt.')}</strong></div>
       <div class="detail-grid"><article><span>Offene Punkte</span>${listMarkup(item.openPoints||[])}</article><article><span>Notizen</span><p class="notes-copy">${escapeHtml(item.notes||'Noch keine eigenen Notizen auf diesem Gerät.')}</p></article></div>
       ${(item.tags||[]).length?`<div class="tag-row">${item.tags.map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div>`:''}
     </section>
-    <section class="detail-panel" data-detail-panel="links"><h3>Öffentliche HTTPS-Adressen</h3><div class="resource-list">${linksMarkup(item)}</div><h3>Dateien / interne Projektartefakte</h3>${listMarkup(item.files||[],'Keine Datei zugeordnet.')}</section>
-    <section class="detail-panel" data-detail-panel="tech"><h3>Automatisch erkannte Fakten</h3>${technicalMarkup(item)}<p class="dialog-note">Nur öffentliche HTTPS-Seiten werden als Website verlinkt und automatisch fotografiert. Lokale oder interne Pfade bleiben außerhalb der Linkliste.</p></section>
+    <section class="detail-panel" data-detail-panel="links"><h3>HTTPS-Adressen</h3><div class="resource-list">${linksMarkup(item)}</div><h3>Dateien / interne Projektartefakte</h3>${listMarkup(item.files||[],'Keine Datei zugeordnet.')}</section>
+    <section class="detail-panel" data-detail-panel="tech"><h3>Automatisch erkannte Fakten</h3>${technicalMarkup(item)}<p class="dialog-note">Öffentlich erreichbare HTTPS-Seiten können automatisch fotografiert werden. Kontogeschützte Originalseiten bleiben ohne Screenshot verlinkt; lokale oder interne Pfade bleiben außerhalb der Linkliste.</p></section>
     <section class="detail-panel" data-detail-panel="history"><h3>Projekt-Historie</h3><div class="timeline">${timelineMarkup(item)}</div></section>`;
   $('#detail-edit').addEventListener('click',()=>{el.detail.close();openEditor(id)});
   $$('[data-detail-tab]').forEach(btn=>btn.addEventListener('click',()=>{
