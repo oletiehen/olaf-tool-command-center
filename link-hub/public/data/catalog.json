@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 13,
-    "updatedAt": "2026-08-18T23:39:03.832Z",
+    "version": 14,
+    "updatedAt": "2026-08-19T00:36:57.000Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -112,36 +112,43 @@
       "kind": "project",
       "title": "Persönliche Premium-Webseite Olaf Tiehen",
       "category": "Persönliche Webseite",
-      "source": "ChatGPT + Codex + Render",
-      "description": "Allowlist-basierte, medienfreie öffentliche Edition der persönlichen Premium-Editorial-Webseite.",
-      "objective": "Hochwertige persönliche digitale Identität mit klarer Trennung öffentlicher und privater Inhalte.",
-      "phase": "Öffentliche Vorschau auf Render",
-      "progress": 92,
+      "source": "ChatGPT Sites + Codex + Render-Referenz",
+      "description": "Persönliche filmische Webseite von Olaf Tiehen mit Biografie, Menschen, Gedanken und Erinnerungen; keine Verkaufs- oder Coaching-Landingpage.",
+      "objective": "Ein ruhiges persönliches digitales Zuhause mit klarer Trennung öffentlicher und privater Inhalte.",
+      "phase": "Tatsächliche ChatGPT-Sites-Version live",
+      "progress": 90,
       "priority": "hoch",
       "status": "active",
-      "statusText": "Die richtige medienfreie Render-Unterseite ist hinterlegt und live verifiziert; private Originalmedien bleiben ausgeschlossen.",
-      "currentState": "Die öffentliche Karte verweist korrekt auf /apps/persoenliche-webseite/. Start, Mein Weg, Gedanken, Impressum und Datenschutz bleiben innerhalb dieser öffentlichen Edition.",
-      "nextAction": "Rechtliche Angaben separat finalisieren; die medienfreie öffentliche Edition und ihre Datenschutzgrenze beibehalten.",
+      "statusText": "Die vom Auftraggeber benannte tatsächliche ChatGPT-Sites-Version ist als primärer Live-Link hinterlegt und im Browser erreichbar. Die medienfreie Render-Fassung bleibt nur als Referenz erhalten.",
+      "currentState": "Willkommen, Meine Geschichte, Die Menschen, Gedanken, Erinnerungen, Kontakt, FAQ, Impressum und Datenschutz sind erreichbar. Impressum und Datenschutz beschreiben die Seite jedoch noch als ausschließlich kontointern, obwohl die URL öffentlich aufrufbar ist.",
+      "nextAction": "Zugriffs- und Datenschutzhinweise im kanonischen ChatGPT-Sites-Projekt an die tatsächliche öffentliche Erreichbarkeit anpassen und rechtliche Angaben ohne erfundene Daten abschließend prüfen.",
       "openPoints": [
-        "Privatbereich final",
-        "Kontakt/Datenschutz final",
-        "Rechtliche Schlussprüfung",
-        "Öffentliche Inhaltsprüfung"
+        "Widerspruch zwischen öffentlicher Erreichbarkeit und den Hinweisen 'nur für den Kontoinhaber' korrigieren",
+        "Ladungsfähige Anschrift und Hosting-/Datenschutzhinweise im kanonischen Projekt rechtlich prüfen",
+        "Öffentliche Inhalts- und Medienfreigabe abschließend prüfen",
+        "Kontaktbereich enthält derzeit keine direkte Kontaktaktion"
       ],
       "tags": [
         "Editorial",
         "Premium",
-        "Motion",
-        "Galerie",
-        "Journal",
-        "Render",
-        "Medienfrei"
+        "Biografie",
+        "ChatGPT Sites",
+        "Privatsphäre",
+        "Noindex"
       ],
       "links": [
         {
-          "label": "Öffentliche medienfreie Vorschau",
-          "url": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
+          "label": "Tatsächliche persönliche Webseite",
+          "url": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
           "kind": "live",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
+          "lastCheckedAt": "2026-08-19T00:36:57.000Z"
+        },
+        {
+          "label": "Datensparsame Render-Referenz",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
+          "kind": "reference",
           "fingerprint": "7a1d0dc715e35d9f6f4b29b97a54e2000911791679b38bc65df01e1b82fd6ca4",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/persoenliche-webseite/",
@@ -159,12 +166,14 @@
       "timeline": [
         {
           "date": "2026-08-19",
+          "text": "Tatsächliche ChatGPT-Sites-Version als primären Live-Link eingetragen; Render-Fassung zur Referenz herabgestuft und automatische Vorschau aus Datenschutzgründen deaktiviert."
+        },
+        {
+          "date": "2026-08-19",
           "text": "Medienfreie öffentliche Edition als Render-Unterseite bereitgestellt."
         }
       ],
-      "previewImage": "previews/catalog/olaf-personal-website-1.png",
-      "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "no-preview"
     },
     {
       "id": "website-animation-showcase",

@@ -171,9 +171,9 @@ async function monitorWeb(site) {
     sitesDirty = true;
   }
 
-  const coverOnly = site.previewPolicy === 'cover-only' || site.previewKind === 'ai-cover';
-  const needsPreview = !coverOnly && !(await exists(previewFile));
-  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
+  const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview' || site.previewKind === 'ai-cover';
+  const needsPreview = !skipPreview && !(await exists(previewFile));
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
     if (await screenshotSite(site)) sitesDirty = true;
   }
 }
@@ -226,7 +226,7 @@ async function monitorCatalogLink(item, link, index) {
   const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
   const file = path.join(catalogPreviewsDir, fileName);
   const previewPath = `previews/catalog/${fileName}`;
-  const coverOnly = item.previewPolicy === 'cover-only' || item.previewKind === 'ai-cover';
+  const skipPreview = item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview' || item.previewKind === 'ai-cover';
   let metadataChanged = false;
 
   if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; metadataChanged = true; }
@@ -237,14 +237,14 @@ async function monitorCatalogLink(item, link, index) {
     catalogDirty = true;
   }
 
-  const needsPreview = !coverOnly && !(await exists(file));
-  if (result.ok && !coverOnly && (needsPreview || contentChanged || statusChanged)) {
+  const needsPreview = !skipPreview && !(await exists(file));
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged)) {
     if (await screenshotUrl(link.url, file, `${item.id}#${index + 1}`)) {
       if (link.previewImage !== previewPath) link.previewImage = previewPath;
       link.previewKind = 'website-screenshot';
       catalogDirty = true;
     }
-  } else if (result.ok && !coverOnly && await exists(file) && link.previewImage !== previewPath) {
+  } else if (result.ok && !skipPreview && await exists(file) && link.previewImage !== previewPath) {
     link.previewImage = previewPath;
     link.previewKind = 'website-screenshot';
     catalogDirty = true;
@@ -263,7 +263,7 @@ async function monitorCatalog(catalog) {
       await monitorCatalogLink(item, publicLinks[index], index);
     }
 
-    if (item.previewPolicy === 'cover-only' || item.previewKind === 'ai-cover') continue;
+    if (item.previewPolicy === 'cover-only' || item.previewPolicy === 'no-preview' || item.previewKind === 'ai-cover') continue;
     const preferred = publicLinks.find(link => link.kind === 'live' && link.previewImage) || publicLinks.find(link => link.previewImage);
     if (preferred?.previewImage && item.previewImage !== preferred.previewImage) {
       item.previewImage = preferred.previewImage;
