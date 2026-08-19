@@ -34,13 +34,24 @@ jobs:
           test -f link-hub/public/assets/styles.css
           test -f link-hub/public/assets/workspace.css
           test -f link-hub/public/assets/app.js
+          test -f link-hub/public/apps/reha-kompass/index.html
+          test -f link-hub/public/enhancements.js
+          test -f link-hub/public/icon.svg
+          test -f link-hub/public/apps/reha-kompass/payload-001.js
+          test -f link-hub/public/apps/reha-kompass/payload-002.js
+          test -f link-hub/public/apps/reha-kompass/payload-003.txt
           test -f link-hub/public/apps/persoenliche-webseite/index.html
           test -f link-hub/public/apps/persoenliche-webseite/robots.txt
           test -n "$(find link-hub/public/apps/persoenliche-webseite/assets -name '*.js' -print -quit)"
           test -n "$(find link-hub/public/apps/persoenliche-webseite/assets -name '*.css' -print -quit)"
           grep -q 'DEIN DIGITALER LEITSTAND' link-hub/public/index.html
           grep -q 'catalog.json' link-hub/public/assets/app.js
+          grep -q 'data-payload-global="__OT_REHA_PAYLOADS__"' link-hub/public/apps/reha-kompass/index.html
           grep -q 'Olaf Tiehen · Persönliches digitales Zuhause' link-hub/public/apps/persoenliche-webseite/index.html
+
+      - name: Validate public Reha-Kompass bundle
+        run: |
+          node -e "const fs=require('fs'); const vm=require('vm'); const zlib=require('zlib'); const dir='link-hub/public/apps/reha-kompass'; const context={}; context.globalThis=context; for(const file of ['payload-001.js','payload-002.js']) vm.runInNewContext(fs.readFileSync(dir+'/'+file,'utf8'),context); const html=zlib.gunzipSync(Buffer.from(context.__OT_REHA_PAYLOADS__.join(''),'base64')).toString('utf8'); if(!html.includes('<title>Olafs Reha-Kompass')) throw new Error('Reha-Kompass bundle title missing'); if(!html.includes('Olaf, wir machen heute nur das, was wirklich zählt.')) throw new Error('Reha-Kompass bundle content missing'); console.log('Reha-Kompass bundle', html.length, 'bytes');"
 
       - name: Check public-edition privacy boundary
         run: |
@@ -62,7 +73,15 @@ jobs:
           curl --fail --silent http://127.0.0.1:4173/ >/tmp/project-hub-index.html
           curl --fail --silent http://127.0.0.1:4173/data/sites.json >/tmp/project-hub-sites.json
           curl --fail --silent http://127.0.0.1:4173/data/catalog.json >/tmp/project-hub-catalog.json
+          curl --fail --silent http://127.0.0.1:4173/apps/reha-kompass/ >/tmp/reha-kompass-index.html
+          curl --fail --silent http://127.0.0.1:4173/apps/reha-kompass/payload-001.js >/tmp/reha-kompass-payload.js
+          curl --fail --silent http://127.0.0.1:4173/enhancements.js >/tmp/reha-kompass-enhancements.js
+          curl --fail --silent http://127.0.0.1:4173/icon.svg >/tmp/reha-kompass-icon.svg
           curl --fail --silent http://127.0.0.1:4173/apps/persoenliche-webseite/ >/tmp/persoenliche-webseite-index.html
           grep -q 'Alles im Blick' /tmp/project-hub-index.html
+          grep -q 'payload-001.js' /tmp/reha-kompass-index.html
+          test -s /tmp/reha-kompass-payload.js
+          test -s /tmp/reha-kompass-enhancements.js
+          test -s /tmp/reha-kompass-icon.svg
           grep -q 'Persönliches digitales Zuhause' /tmp/persoenliche-webseite-index.html
           kill $(cat /tmp/project-hub-http.pid)
