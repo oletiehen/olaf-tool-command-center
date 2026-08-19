@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 22,
-    "generatedAt": "2026-08-19T13:03:49.570Z",
+    "version": 23,
+    "generatedAt": "2026-08-19T13:52:09.171Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -400,8 +400,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T13:03:49.570Z",
-      "fingerprint": "9f2f9d76e697a0862ac2243c93bc88b8fe434517dba83843d21b33f67f9338cd",
+      "lastChangedAt": "2026-08-19T13:52:09.171Z",
+      "fingerprint": "c7bc762cad466283e7065efe0791b5a8cbd77c5ce123e8a5ee97bf431a345044",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
