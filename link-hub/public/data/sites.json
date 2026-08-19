@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 13,
-    "generatedAt": "2026-08-19T00:49:59.000Z",
+    "version": 14,
+    "generatedAt": "2026-08-19T00:55:49.285Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,8 +61,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-16T18:19:39Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:47:56.968Z",
-      "fingerprint": "26f52265c1761c5c213b927dc5c849884b0c78d94028094eed907df75492a49a",
+      "lastChangedAt": "2026-08-19T00:55:49.285Z",
+      "fingerprint": "8768de9e5fd5ea89b4898cf4d5735a0166f2e578ec7f3d5a22ed6e7dbbe8569f",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -400,8 +400,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:47:56.968Z",
-      "fingerprint": "e818952f9f67ab5f651e134cbb7864318af2ecb34829ab1fa642218407726744",
+      "lastChangedAt": "2026-08-19T00:55:49.285Z",
+      "fingerprint": "144bd1d4c52ea7e4ca9aa3807e47f9bb5e6d3cb1df5f4e9d7af67ea034271b0a",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
