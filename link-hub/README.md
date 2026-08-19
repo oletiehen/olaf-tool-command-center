@@ -12,7 +12,8 @@ Zentrale, mobile-first Übersicht aller öffentlichen Webseiten, Apps, GitHub-Pr
 
 ## Funktionen
 
-- Vorschaubild pro öffentlicher Webseite
+- echter Website-Screenshot pro erreichbarer öffentlicher Webseite
+- klar gekennzeichnetes KI-Projektcover für Projekte ohne veröffentlichte Website
 - direkter Öffnen-Button
 - mehrere Links pro Projekt (z. B. Lovable + GitHub Pages + Repository)
 - Suche, Plattform-, Status- und Kategorienfilter
@@ -31,6 +32,8 @@ Er prüft:
 3. neue Pushes bei reinen GitHub-Projekten
 4. Statuswechsel
 5. Vorschaubilder beim ersten Lauf und nach echten Änderungen
+
+Kontogeschützte oder sensible Projekte können mit `previewPolicy: no-preview` vollständig von der automatischen Screenshot-Erzeugung ausgeschlossen werden. Vorschaubilder werden ausschließlich als lokale Dateien unter `public/previews` eingebunden; externe Bild-URLs werden in der Oberfläche nicht übernommen.
 
 Nur wenn sich tatsächlich etwas ändert, werden `sites.json` bzw. Vorschaubilder committed. Dadurch löst Render nicht bei jedem Scan einen unnötigen Deploy aus.
 

@@ -93,6 +93,9 @@ function isPublicWebUrl(value='') {
       (normalizedHost.includes('.') || normalizedHost.includes(':'));
   } catch { return false; }
 }
+function isLocalPreviewPath(value='') {
+  return typeof value === 'string' && value.startsWith('previews/') && !value.includes('..') && !value.includes('://');
+}
 function publicLinks(item) {
   return (item.links || []).filter(link => link?.url && isPublicWebUrl(link.url));
 }
@@ -202,7 +205,7 @@ function previewMarkup(item) {
     const symbol = item.kind === 'process' ? '↻' : item.kind === 'artifact' ? '◇' : 'OT';
     return `<div class="preview-fallback ${escapeHtml(item.kind)}"><span>${symbol}</span></div>`;
   }
-  const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
+  const src = [item.previewImage, item.technical?.previewImage, publicLinks(item).find(link => link.previewImage)?.previewImage].find(isLocalPreviewPath);
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || (src ? 'website-screenshot' : 'fallback');
   if (src) {
     const alt = previewKind === 'ai-cover' ? `KI-Projektcover für ${item.title}` : `Website-Screenshot von ${item.title}`;
@@ -213,7 +216,7 @@ function previewMarkup(item) {
 }
 function previewOriginMarkup(item) {
   if (item.previewPolicy === 'no-preview' || item.technical?.previewPolicy === 'no-preview') return '';
-  const src = item.previewImage || item.technical?.previewImage || publicLinks(item).find(link => link.previewImage)?.previewImage;
+  const src = [item.previewImage, item.technical?.previewImage, publicLinks(item).find(link => link.previewImage)?.previewImage].find(isLocalPreviewPath);
   if (!src) return '';
   const previewKind = item.previewKind || item.technical?.previewKind || publicLinks(item).find(link => link.previewImage)?.previewKind || 'website-screenshot';
   const label = previewKind === 'ai-cover' ? 'KI-Projektcover' : 'Website-Screenshot';
@@ -294,7 +297,11 @@ function linksMarkup(item) {
       : link.contentStatus === 'failed'
       ? `HTTP ${status || '–'} · Inhalt fehlerhaft`
       : status ? `HTTP ${status}${reachable ? '' : ' · nicht erreichbar'}` : 'wird geprüft';
+    const preview = isLocalPreviewPath(link.previewImage) && link.previewKind === 'website-screenshot'
+      ? `<img class="resource-preview" src="${escapeHtml(link.previewImage)}" alt="Website-Screenshot von ${escapeHtml(link.label || item.title)}" loading="lazy" decoding="async">`
+      : '';
     return `<div class="resource-link">
+      ${preview}
       <div><span class="resource-type">${escapeHtml(linkTypeLabel(link.kind))} · ${escapeHtml(check)}</span><strong>${escapeHtml(link.label || 'Öffentliche URL')}</strong><code>${escapeHtml(link.url)}</code></div>
       ${reachable ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">Öffnen ↗</a>` : `<span style="flex:0 0 auto;color:#e19a9a;font-size:10px;font-weight:700">${link.contentStatus === 'failed' ? 'Inhalt fehlerhaft' : 'Nicht erreichbar'}</span>`}
     </div>`;

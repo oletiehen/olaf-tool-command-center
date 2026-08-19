@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 30,
-    "updatedAt": "2026-08-19T14:40:52.079Z",
+    "version": 31,
+    "updatedAt": "2026-08-19T15:01:35.635Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -37,16 +37,17 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/olaf-projektzentrale-1.png"
+          "previewImage": "previews/catalog/olaf-projektzentrale-1.png",
+          "previewKind": "website-screenshot"
         },
         {
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "b18a91006946e2fb7dc407d267c98221d0ca9eff89726376ec66f8cea23e8534",
+          "fingerprint": "64c50d97979def5a60aa3a33b53ee485e2829fd9d734fc96b86202ef83fcaf3c",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-19T14:40:52.079Z",
+          "lastCheckedAt": "2026-08-19T15:01:35.635Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -92,10 +93,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "686f4354752f4a9d0e0fa9f3a5cc909e28ed47b60b421e9e48817da9e1423edf",
+          "fingerprint": "784e908e14b4f032987cf84d0d82b451b58abf1d11fc3d04b386c28e9b2a9de4",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-08-19T14:40:52.079Z"
+          "lastCheckedAt": "2026-08-19T15:01:35.635Z"
         }
       ],
       "files": [
@@ -212,7 +213,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://www.davidlangarica.dev/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/website-animation-showcase-1.png"
+          "previewImage": "previews/catalog/website-animation-showcase-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "previewImage": "previews/catalog/website-animation-showcase-1.png",
@@ -350,7 +352,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/niklas-volland/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/niklas-volland-dashboard-1.png"
+          "previewImage": "previews/catalog/niklas-volland-dashboard-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -441,7 +444,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/wiechert-reisen/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/wiechert-reisen-1.png"
+          "previewImage": "previews/catalog/wiechert-reisen-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -482,7 +486,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/oc-reiseplan/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/oc-reiseplan-1.png"
+          "previewImage": "previews/catalog/oc-reiseplan-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -505,7 +510,7 @@
       "priority": "niedrig",
       "status": "active",
       "statusText": "Die vollständige ChatGPT-Web-App liegt als öffentliche Render-Unterseite vor.",
-      "currentState": "Statische HTML-Version befindet sich unter /apps/sonos-alexa/.",
+      "currentState": "Die vorhandene statische HTML-Version wird unter /artifacts/sonos-alexa-mobile/ als öffentliche Render-Unterseite geführt.",
       "nextAction": "HTTP-Status und Screenshot automatisch übernehmen.",
       "openPoints": [],
       "tags": [
@@ -517,17 +522,18 @@
       "links": [
         {
           "label": "Öffentliche ChatGPT-Web-App",
-          "url": "https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/",
+          "url": "https://olaf-projektzentrale.onrender.com/artifacts/sonos-alexa-mobile/",
           "kind": "live",
           "fingerprint": "9976c466be05e10a455bfe9713cdbf8482aaf1cc36834dcffd90f0f59fcff4c7",
           "lastHttpStatus": 200,
-          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/sonos-alexa/",
+          "resolvedUrl": "https://olaf-projektzentrale.onrender.com/artifacts/sonos-alexa-mobile/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/sonos-alexa-mobile-1.png"
+          "previewImage": "previews/catalog/sonos-alexa-mobile-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
-        "sonos-alexa-mobile-lite.html"
+        "link-hub/public/artifacts/sonos-alexa-mobile/index.html"
       ],
       "previewImage": "previews/catalog/sonos-alexa-mobile-1.png",
       "previewKind": "website-screenshot",
@@ -564,7 +570,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/apple-intelligence/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png"
+          "previewImage": "previews/catalog/apple-intelligence-chatgpt-app-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -607,7 +614,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/chatgpt-business-system/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/chatgpt-business-system-1.png"
+          "previewImage": "previews/catalog/chatgpt-business-system-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "files": [
@@ -699,10 +707,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "ad4fbaa758d63e265f8f008f3535351061e411d5e9844c40d4df644163494a35",
+          "fingerprint": "cef4cc921ebc2d8b390653711b8bff88435d00752c55e9f54feeb93bb0bf733d",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-08-19T14:40:52.079Z",
+          "lastCheckedAt": "2026-08-19T15:01:35.635Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -796,7 +804,8 @@
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
           "lastCheckedAt": "2026-08-18T23:02:18.375Z",
-          "previewImage": "previews/catalog/render-deploy-process-1.png"
+          "previewImage": "previews/catalog/render-deploy-process-1.png",
+          "previewKind": "website-screenshot"
         }
       ],
       "previewImage": "previews/catalog/render-deploy-process-1.png",

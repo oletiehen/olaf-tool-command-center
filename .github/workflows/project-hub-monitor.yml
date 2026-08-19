@@ -28,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v7
@@ -50,6 +50,7 @@ jobs:
       - name: Commit real changes only
         shell: bash
         run: |
+          git pull --rebase --autostash origin main
           git add link-hub/public/data/sites.json link-hub/public/data/catalog.json link-hub/public/previews || true
           if git diff --cached --quiet; then
             echo "No monitored changes detected."
@@ -58,4 +59,12 @@ jobs:
           git config user.name "Olaf Project Hub Monitor"
           git config user.email "actions@users.noreply.github.com"
           git commit -m "chore(project-hub): refresh verified links and previews"
-          git push
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push attempt ${attempt} conflicted; rebasing onto the latest main."
+            git pull --rebase origin main
+          done
+          echo "Could not push monitoring changes after three attempts."
+          exit 1

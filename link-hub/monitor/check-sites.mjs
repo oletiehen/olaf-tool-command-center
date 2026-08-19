@@ -8,6 +8,7 @@ const root = path.resolve(here, '..');
 const sitesPath = path.join(root, 'public', 'data', 'sites.json');
 const catalogPath = path.join(root, 'public', 'data', 'catalog.json');
 const previewsDir = path.join(root, 'public', 'previews');
+const siteLinkPreviewsDir = path.join(previewsDir, 'links');
 const catalogPreviewsDir = path.join(previewsDir, 'catalog');
 const now = new Date().toISOString();
 const token = process.env.GITHUB_TOKEN || '';
@@ -135,6 +136,7 @@ async function monitorWeb(site) {
 
   const previousFingerprint = site.fingerprint;
   const previousHttpStatus = site.lastHttpStatus;
+  const previousResolvedUrl = site.resolvedUrl || null;
   const previewFile = path.join(previewsDir, `${site.id}.png`);
   let result;
 
@@ -156,6 +158,7 @@ async function monitorWeb(site) {
   const baseline = !previousFingerprint;
   const contentChanged = Boolean(previousFingerprint && previousFingerprint !== fingerprint);
   const statusChanged = previousHttpStatus !== null && previousHttpStatus !== result.status;
+  const urlChanged = Boolean(previousResolvedUrl && previousResolvedUrl !== result.url);
   const accountRestricted = site.accessMode === 'account-required' && [401, 403].includes(result.status);
   const wasNotLive = !['live', 'unknown', 'restricted'].includes(site.status);
 
@@ -181,14 +184,14 @@ async function monitorWeb(site) {
     sitesDirty = true;
   }
 
-  if (!baseline && (contentChanged || statusChanged || wasNotLive)) {
+  if (!baseline && (contentChanged || statusChanged || urlChanged || wasNotLive)) {
     site.lastChangedAt = now;
     sitesDirty = true;
   }
 
   const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview';
   const needsPreview = !skipPreview && !(await exists(previewFile));
-  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || wasNotLive)) {
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || urlChanged || wasNotLive)) {
     if (await screenshotSite(site)) sitesDirty = true;
   }
 }
@@ -216,11 +219,70 @@ function safeFilePart(value) {
   return String(value || 'link').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'link';
 }
 
+async function monitorSiteLink(site, link, index) {
+  const skipPreview = site.previewPolicy === 'cover-only' || site.previewPolicy === 'no-preview' || link.accessMode === 'account-required';
+  if (skipPreview || !isPublicHttps(link.url)) return;
+
+  if (link.url === site.primaryUrl && site.previewKind === 'website-screenshot' && site.previewImage) {
+    if (link.previewImage !== site.previewImage) { link.previewImage = site.previewImage; sitesDirty = true; }
+    if (link.previewKind !== 'website-screenshot') { link.previewKind = 'website-screenshot'; sitesDirty = true; }
+    if (link.lastHttpStatus !== site.lastHttpStatus) { link.lastHttpStatus = site.lastHttpStatus; sitesDirty = true; }
+    if (link.resolvedUrl !== site.resolvedUrl) { link.resolvedUrl = site.resolvedUrl; sitesDirty = true; }
+    return;
+  }
+
+  const previousFingerprint = link.fingerprint || null;
+  const previousStatus = link.lastHttpStatus ?? null;
+  const previousResolvedUrl = link.resolvedUrl || null;
+  let result;
+
+  try {
+    result = await fetchText(link.url);
+  } catch (error) {
+    if (link.lastHttpStatus !== 0) { link.lastHttpStatus = 0; link.lastCheckedAt = now; sitesDirty = true; }
+    console.warn(`[site-link] ${site.id} ${link.url}: ${error.message}`);
+    return;
+  }
+
+  const fingerprint = hash(canonicalizeHtml(result.text));
+  const contentChanged = Boolean(previousFingerprint && previousFingerprint !== fingerprint);
+  const statusChanged = previousStatus !== null && previousStatus !== result.status;
+  const urlChanged = Boolean(previousResolvedUrl && previousResolvedUrl !== result.url);
+  const fileName = `${safeFilePart(site.id)}-${index + 1}.png`;
+  const file = path.join(siteLinkPreviewsDir, fileName);
+  const previewPath = `previews/links/${fileName}`;
+  let metadataChanged = false;
+
+  if (link.fingerprint !== fingerprint) { link.fingerprint = fingerprint; metadataChanged = true; }
+  if (link.lastHttpStatus !== result.status) { link.lastHttpStatus = result.status; metadataChanged = true; }
+  if (link.resolvedUrl !== result.url) { link.resolvedUrl = result.url; metadataChanged = true; }
+  if (metadataChanged) { link.lastCheckedAt = now; sitesDirty = true; }
+
+  const needsPreview = !(await exists(file));
+  if (result.ok && (needsPreview || contentChanged || statusChanged || urlChanged)) {
+    const screenshot = await screenshotUrl(link.url, file, `${site.id} link ${index + 1}`);
+    if (screenshot.ok) {
+      link.previewImage = previewPath;
+      link.previewKind = 'website-screenshot';
+      sitesDirty = true;
+    }
+  } else if (result.ok && await exists(file)) {
+    if (link.previewImage !== previewPath) { link.previewImage = previewPath; sitesDirty = true; }
+    if (link.previewKind !== 'website-screenshot') { link.previewKind = 'website-screenshot'; sitesDirty = true; }
+  }
+}
+
+async function monitorSiteLinks(site) {
+  const links = (site.links || []).filter(link => isPublicHttps(link.url));
+  for (let index = 0; index < links.length; index++) await monitorSiteLink(site, links[index], index);
+}
+
 async function monitorCatalogLink(item, link, index) {
   if (!isPublicHttps(link.url)) return false;
 
   const previousFingerprint = link.fingerprint || null;
   const previousStatus = link.lastHttpStatus ?? null;
+  const previousResolvedUrl = link.resolvedUrl || null;
   let result;
 
   try {
@@ -238,6 +300,7 @@ async function monitorCatalogLink(item, link, index) {
   const fingerprint = hash(canonicalizeHtml(result.text));
   const contentChanged = Boolean(previousFingerprint && previousFingerprint !== fingerprint);
   const statusChanged = previousStatus !== null && previousStatus !== result.status;
+  const urlChanged = Boolean(previousResolvedUrl && previousResolvedUrl !== result.url);
   const fileName = `${safeFilePart(item.id)}-${index + 1}.png`;
   const file = path.join(catalogPreviewsDir, fileName);
   const previewPath = `previews/catalog/${fileName}`;
@@ -254,7 +317,7 @@ async function monitorCatalogLink(item, link, index) {
 
   const needsPreview = !skipPreview && !(await exists(file));
   const mustRecheckFailedContent = item.previewPolicy === 'recover-to-screenshot' && link.contentStatus === 'failed';
-  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || mustRecheckFailedContent)) {
+  if (result.ok && !skipPreview && (needsPreview || contentChanged || statusChanged || urlChanged || mustRecheckFailedContent)) {
     const screenshot = await screenshotUrl(link.url, file, `${item.id}#${index + 1}`);
     if (link.contentStatus !== screenshot.contentStatus) {
       link.contentStatus = screenshot.contentStatus;
@@ -266,10 +329,9 @@ async function monitorCatalogLink(item, link, index) {
       link.previewKind = 'website-screenshot';
       catalogDirty = true;
     }
-  } else if (result.ok && !skipPreview && link.contentStatus !== 'failed' && await exists(file) && link.previewImage !== previewPath) {
-    link.previewImage = previewPath;
-    link.previewKind = 'website-screenshot';
-    catalogDirty = true;
+  } else if (result.ok && !skipPreview && link.contentStatus !== 'failed' && await exists(file)) {
+    if (link.previewImage !== previewPath) { link.previewImage = previewPath; catalogDirty = true; }
+    if (link.previewKind !== 'website-screenshot') { link.previewKind = 'website-screenshot'; catalogDirty = true; }
   }
 
   return result.ok;
@@ -307,6 +369,7 @@ async function monitorCatalog(catalog) {
 
 async function main() {
   await mkdir(previewsDir, { recursive: true });
+  await mkdir(siteLinkPreviewsDir, { recursive: true });
   await mkdir(catalogPreviewsDir, { recursive: true });
 
   const sites = JSON.parse(await readFile(sitesPath, 'utf8'));
@@ -316,6 +379,7 @@ async function main() {
     console.log(`Checking ${site.id} (${site.monitorMode})`);
     if (site.monitorMode === 'web') await monitorWeb(site);
     if (site.monitorMode === 'repo') await monitorRepo(site);
+    await monitorSiteLinks(site);
   }
 
   await monitorCatalog(catalog);

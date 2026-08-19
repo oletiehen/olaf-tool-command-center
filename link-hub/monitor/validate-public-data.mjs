@@ -59,9 +59,20 @@ async function validatePreview(owner, previewImage, previewKind, previewPolicy) 
   try { await access(resolved); } catch { errors.push(`${owner}: Vorschaubild fehlt (${previewImage})`); }
 }
 
+async function validateLinkPreview(owner, link, required) {
+  if (!link.previewImage) {
+    if (required) errors.push(`${owner}: echter Website-Screenshot fehlt`);
+    return;
+  }
+  await validatePreview(owner, link.previewImage, link.previewKind, 'website-screenshot');
+}
+
 for (const item of catalog.items || []) {
   for (const link of item.links || []) {
     if (!isPublicHttps(link.url)) errors.push(`catalog:${item.id}: nicht öffentliche URL (${link.url})`);
+    const status = Number(link.lastHttpStatus || 0);
+    const screenshotRequired = !['cover-only', 'recover-to-screenshot', 'no-preview'].includes(item.previewPolicy) && status >= 200 && status < 400 && link.contentStatus !== 'failed';
+    await validateLinkPreview(`catalog:${item.id}:${link.label || 'link'}`, link, screenshotRequired);
   }
   await validatePreview(`catalog:${item.id}`, item.previewImage, item.previewKind, item.previewPolicy);
   if (item.previewPolicy === 'recover-to-screenshot' && !(item.links || []).some(link => link.contentStatus === 'failed')) {
@@ -73,9 +84,18 @@ for (const site of sites.sites || []) {
   if (!isPublicHttps(site.primaryUrl)) errors.push(`sites:${site.id}: nicht öffentliche primaryUrl (${site.primaryUrl})`);
   for (const link of site.links || []) {
     if (!isPublicHttps(link.url)) errors.push(`sites:${site.id}: nicht öffentliche URL (${link.url})`);
+    const status = Number(link.lastHttpStatus || 0);
+    const screenshotRequired = !['cover-only', 'no-preview'].includes(site.previewPolicy) && link.accessMode !== 'account-required' && status >= 200 && status < 400;
+    await validateLinkPreview(`sites:${site.id}:${link.label || 'link'}`, link, screenshotRequired);
   }
   await validatePreview(`sites:${site.id}`, site.previewImage, site.previewKind, site.previewPolicy);
 }
+
+const sonos = (catalog.items || []).find(item => item.id === 'sonos-alexa-mobile');
+const sonosUrl = 'https://olaf-projektzentrale.onrender.com/artifacts/sonos-alexa-mobile/';
+if (!sonos) errors.push('catalog:sonos-alexa-mobile fehlt');
+if (sonos && !(sonos.links || []).some(link => link.url === sonosUrl)) errors.push('catalog:sonos-alexa-mobile: echte Artifact-URL fehlt');
+if (sonos && !(sonos.files || []).includes('link-hub/public/artifacts/sonos-alexa-mobile/index.html')) errors.push('catalog:sonos-alexa-mobile: Artifact-Datei fehlt');
 
 if (errors.length) {
   console.error(errors.join('\n'));
