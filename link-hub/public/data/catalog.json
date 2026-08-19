@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 31,
-    "updatedAt": "2026-08-19T15:01:35.635Z",
+    "version": 32,
+    "updatedAt": "2026-08-19T15:04:40.815Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -33,21 +33,22 @@
           "label": "Live",
           "url": "https://olaf-projektzentrale.onrender.com",
           "kind": "live",
-          "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
+          "fingerprint": "89c0ad14b03e7fffaeee18ebf67beee5e6bb92f4f8084e7a903823f4409a200e",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
-          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
+          "lastCheckedAt": "2026-08-19T15:04:40.815Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-1.png",
-          "previewKind": "website-screenshot"
+          "previewKind": "website-screenshot",
+          "contentStatus": "ok"
         },
         {
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "64c50d97979def5a60aa3a33b53ee485e2829fd9d734fc96b86202ef83fcaf3c",
+          "fingerprint": "a553352e6e2e7fdb63f076d4a2be09d8834e1dc6bf0f81394904398b3e276254",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-19T15:01:35.635Z",
+          "lastCheckedAt": "2026-08-19T15:04:40.815Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -93,10 +94,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "784e908e14b4f032987cf84d0d82b451b58abf1d11fc3d04b386c28e9b2a9de4",
+          "fingerprint": "9d96a23c2704d993175974e78dd24bbe5c6e2cf2562fe7c6fc0cb89fc27fbe71",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-08-19T15:01:35.635Z"
+          "lastCheckedAt": "2026-08-19T15:04:40.815Z"
         }
       ],
       "files": [
@@ -707,10 +708,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "cef4cc921ebc2d8b390653711b8bff88435d00752c55e9f54feeb93bb0bf733d",
+          "fingerprint": "9b66a53e2ab92a00fdde2627e520ac5284e942d026e277d39cd30321ef87d011",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-08-19T15:01:35.635Z",
+          "lastCheckedAt": "2026-08-19T15:04:40.815Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -800,12 +801,13 @@
           "label": "Öffentliche Projektzentrale",
           "url": "https://olaf-projektzentrale.onrender.com",
           "kind": "live",
-          "fingerprint": "e3d866d71ca13f9e97b843fd70936ff9085b87cc9bcc162fdf5865a922cfd376",
+          "fingerprint": "89c0ad14b03e7fffaeee18ebf67beee5e6bb92f4f8084e7a903823f4409a200e",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/",
-          "lastCheckedAt": "2026-08-18T23:02:18.375Z",
+          "lastCheckedAt": "2026-08-19T15:04:40.815Z",
           "previewImage": "previews/catalog/render-deploy-process-1.png",
-          "previewKind": "website-screenshot"
+          "previewKind": "website-screenshot",
+          "contentStatus": "ok"
         }
       ],
       "previewImage": "previews/catalog/render-deploy-process-1.png",
