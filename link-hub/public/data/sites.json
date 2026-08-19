@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 11,
-    "generatedAt": "2026-08-19T00:42:35.000Z",
+    "version": 12,
+    "generatedAt": "2026-08-19T00:47:56.968Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,8 +61,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": "2026-08-16T18:19:39Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:39:04.970Z",
-      "fingerprint": "e0ffee52c589981647c10ad37514348ac8728d4638c63d262b5fc37ed11393e6",
+      "lastChangedAt": "2026-08-19T00:47:56.968Z",
+      "fingerprint": "26f52265c1761c5c213b927dc5c849884b0c78d94028094eed907df75492a49a",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://oletiehen.github.io/olaf-tool-command-center/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -400,8 +400,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:39:04.970Z",
-      "fingerprint": "bcbea58b04d1b0f0fd1b8882f8c7308eeb5d86ce879ea99db7e6765cea81c553",
+      "lastChangedAt": "2026-08-19T00:47:56.968Z",
+      "fingerprint": "e818952f9f67ab5f651e134cbb7864318af2ecb34829ab1fa642218407726744",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -424,15 +424,15 @@
           "kind": "live"
         }
       ],
-      "status": "live",
+      "status": "offline",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
       "lastChangedAt": null,
-      "fingerprint": null,
-      "lastHttpStatus": 200,
-      "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/#/start",
+      "fingerprint": "4d05503ef8cba2fdd25a88ac6dbd4234b9ab601186a6ecd0d64fd882eb8f8d38",
+      "lastHttpStatus": 401,
+      "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/",
       "firstSeenAt": "2026-08-19T00:36:57.000Z",
       "previewPolicy": "no-preview"
     }
