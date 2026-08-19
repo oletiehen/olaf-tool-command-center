@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 15,
-    "generatedAt": "2026-08-19T01:40:27.909Z",
+    "version": 16,
+    "generatedAt": "2026-08-19T05:40:10.875Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -125,8 +125,8 @@
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:39:04.970Z",
-      "fingerprint": "86e8fee3a7e65789b5aceb9a3cf1c8bb71d57d8db66bff232aa0f61bc5019eda",
+      "lastChangedAt": "2026-08-19T05:40:10.875Z",
+      "fingerprint": "2606582bd0ebc1742ba2b3435950da87aa5b74711f937b40700b2399a1f06c87",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -223,8 +223,8 @@
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T00:39:04.970Z",
-      "fingerprint": "0ca3ec361cefef59e8734f22308d3b174bb38363520cf966316cb6cae014aa70",
+      "lastChangedAt": "2026-08-19T05:40:10.875Z",
+      "fingerprint": "8ff6331297970b8234da8f99af1be93e1964ce21743de84e02c2d0cca7d5cfc4",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -400,8 +400,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T01:40:27.909Z",
-      "fingerprint": "d7df14fd10709b47b9a71d6bbb2caab5cddc20212e6bf3f8f7666273a033496c",
+      "lastChangedAt": "2026-08-19T05:40:10.875Z",
+      "fingerprint": "161df63271c0628f78771fb2f95ef4a62fc7a10f927d7f7e0c2485be9e28dc8b",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
