@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 33,
-    "generatedAt": "2026-08-19T23:29:15.061Z",
+    "version": 34,
+    "generatedAt": "2026-08-20T01:39:03.594Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,10 +61,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "3b96169764e505acc56c2b77683111f6e2d9dcb04bf7f04b561fc8f716e5f8b9",
+          "fingerprint": "8a5ed25fe0aa8d6f741dbcbfdfea0ff7ebc00c892036d12471cf43ea263da626",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-19T23:29:15.061Z",
+          "lastCheckedAt": "2026-08-20T01:39:03.594Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -106,10 +106,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "a34abee9b864f8aacd90820c7701e534191d65051f4135bdb6ceb4503a7161bc",
+          "fingerprint": "2d3ff6245af9bf9891ab1eed9696dee7faeaba5c8b57b5121b44aea9be9650de",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-08-19T23:29:15.061Z",
+          "lastCheckedAt": "2026-08-20T01:39:03.594Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -153,8 +153,8 @@
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T22:31:18.106Z",
-      "fingerprint": "3c0b83b72562602f54af3b9ea2334a94af6cd9f0688e973eca7bd62245af2b05",
+      "lastChangedAt": "2026-08-20T01:39:03.594Z",
+      "fingerprint": "07c7bbc4eaa1137c0827e86c39b2536e068990d1900c75d17fdc671b0991d33e",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -261,10 +261,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "c9f9739e18104aa1042c51a0b04300d0aeaff778510452506c9f4ecc2bc17693",
+          "fingerprint": "cea728f0f5d3e3a5cb70d388cc5f451d45347b6afe4008bb0159f0d5ad0c8811",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-08-19T23:29:15.061Z",
+          "lastCheckedAt": "2026-08-20T01:39:03.594Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -275,8 +275,8 @@
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T18:48:45.111Z",
-      "fingerprint": "2cb3f8fa2a31cb9fd91302712b778f950be2e4e79922d596515dc0dd8d05f2c0",
+      "lastChangedAt": "2026-08-20T01:39:03.594Z",
+      "fingerprint": "c8b704cd637957adffe6d3e14c15effa7589048bf3ebe698a121d9efbc54dd56",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -339,10 +339,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "4913eecb8774796fb56eaa152919e18ac62b3e6f7dd836b98b855692b778087b",
+          "fingerprint": "d453317012d61b2cc6b52ae19becc103324da711f1656f1efc6968c6657dde59",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-08-19T23:29:15.061Z",
+          "lastCheckedAt": "2026-08-20T01:39:03.594Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -470,8 +470,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-19T23:29:15.061Z",
-      "fingerprint": "c4eb0dca64f010cedb370a4dae7105e42758c5fb702b0bd68b038194c75b144e",
+      "lastChangedAt": "2026-08-20T01:39:03.594Z",
+      "fingerprint": "d15f9af1da64e179447271f07058f400f2647fe06f03ca0b5bb59744616079d9",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
