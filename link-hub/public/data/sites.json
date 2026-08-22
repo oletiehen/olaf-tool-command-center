@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 91,
-    "generatedAt": "2026-08-22T14:29:02.885Z",
+    "version": 92,
+    "generatedAt": "2026-08-22T15:28:02.091Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,10 +61,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "2e6cc1b52426b246104bbc8cf462900bfc1e6f6896afb4e9ac13ac983ed64ca6",
+          "fingerprint": "4cbada2e09c1730efbfecbeff65d85b1bda1a9d0252314d464488a7d7dd76f67",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-22T14:29:02.885Z",
+          "lastCheckedAt": "2026-08-22T15:28:02.091Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -106,10 +106,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "783deff3eb3ab3dfd6db7d05b65fec2c0c65926024cd3a7ef5cfdf6ccf97a0c2",
+          "fingerprint": "9ae5233a9b176b205c9a73bde3eff447e6a1e044432f0794d13ba132b9e11668",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-08-22T14:29:02.885Z",
+          "lastCheckedAt": "2026-08-22T15:28:02.091Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -261,10 +261,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "eda5915305a93696d833b8071ca3f7f16e598b34cd057a63e24fd416065c5dae",
+          "fingerprint": "518212f652ad7470a4448c09486a9c8246d2822c782aa69400ec4747fc40306a",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-08-22T14:29:02.885Z",
+          "lastCheckedAt": "2026-08-22T15:28:02.091Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -339,10 +339,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "0e2f4f79181383292badd3afb7254600897742403d5a62a404ac4eb0147f28ea",
+          "fingerprint": "847bb025cfee4840ec564151fca80996342bf1f97292f700022931475bd59415",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-08-22T14:29:02.885Z",
+          "lastCheckedAt": "2026-08-22T15:28:02.091Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -470,8 +470,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-22T14:29:02.885Z",
-      "fingerprint": "f4646f3e6da77ecde0b45121f35b1f67c6a0b1fbc5aa80356f18ff6da58eb6ea",
+      "lastChangedAt": "2026-08-22T15:28:02.091Z",
+      "fingerprint": "6ca085ddfa35c20482ec78132417b0119efe731e927fc1f97d55a660de8e0422",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
