@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 156,
-    "generatedAt": "2026-08-25T15:51:36.462Z",
+    "version": 157,
+    "generatedAt": "2026-08-25T16:45:23.252Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,10 +61,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "4ab3527e60d44aacde9c5d49d332b2d524adc42b17b3d84a3f71b87e3aabcc24",
+          "fingerprint": "d8c92116a7c12499b470b71cc0b412d31cf250111ae91bde625cdf71a1be4a3f",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-25T15:51:36.462Z",
+          "lastCheckedAt": "2026-08-25T16:45:23.252Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -106,10 +106,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "2b2ae0035a9f187b308dd5fbbc3f77524fe093c6fa6121abeb5f87c940e132d6",
+          "fingerprint": "f0b41ac3d4adea5b609d966c076e9ed3df80e57120ce9ab2b7e2843fc9df07e6",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-08-25T15:51:36.462Z",
+          "lastCheckedAt": "2026-08-25T16:45:23.252Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -261,10 +261,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "5557280879dd7970f365f11b48c9e277e67159f7179d7462c51a4f4d53425567",
+          "fingerprint": "9decc7edf1ef58821184605dad5f61a67e2ed5e8abc8ebb45ce61b5d964ca72c",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-08-25T15:51:36.462Z",
+          "lastCheckedAt": "2026-08-25T16:45:23.252Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -339,10 +339,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "3d53cf8dbd84acc074e36952261147b8abacbd4eeb3a1aa01d6f23e4579c82aa",
+          "fingerprint": "7d1a7342f3023b2451e63286e3f77cea53f543bedea6c9b2a8e9a18019588625",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-08-25T15:51:36.462Z",
+          "lastCheckedAt": "2026-08-25T16:45:23.252Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -380,9 +380,9 @@
       "status": "repository",
       "monitorMode": "repo",
       "lastPlatformUpdateAt": null,
-      "lastSourceUpdateAt": "2026-08-25T15:26:47Z",
+      "lastSourceUpdateAt": "2026-08-25T16:36:47Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-25T15:51:36.462Z",
+      "lastChangedAt": "2026-08-25T16:45:23.252Z",
       "fingerprint": null,
       "lastHttpStatus": null,
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -470,8 +470,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-08-25T15:51:36.462Z",
-      "fingerprint": "212ee3b9ebd0764528cf7e31f08259f8757cb2e696c1ac68c6f95f93650a7bb9",
+      "lastChangedAt": "2026-08-25T16:45:23.252Z",
+      "fingerprint": "7d0870d6d7203e58729e7a953e8d2f6bcb7b714dee8a151c93419c9e3800fcfa",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
