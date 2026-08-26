@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 174,
-    "updatedAt": "2026-08-26T03:12:30.499Z",
+    "version": 175,
+    "updatedAt": "2026-08-26T04:47:47.954Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -45,10 +45,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "257d263f1942647a6d5ac9ddcc2add1d01965ed675ac58b08ad86dc55daf621a",
+          "fingerprint": "6c0f821eb70ab7e85fa8183605eb63ddf30299530539bba9126b14208e1bff8d",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-08-26T03:12:30.499Z",
+          "lastCheckedAt": "2026-08-26T04:47:47.954Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -94,10 +94,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "15793b5508274b89091c221af3dec6b5293e4357d46117b1c6e0e81d0a753cbb",
+          "fingerprint": "a10ac7d68302e53f862d115c82a9937268d001c4781e1e4247b5e06a6228145a",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-08-26T03:12:30.499Z"
+          "lastCheckedAt": "2026-08-26T04:47:47.954Z"
         }
       ],
       "files": [
@@ -619,10 +619,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "a613ffa4b5c641b652454966cbcffdda9c6ae4d177c693e49abba954fd7f62b8",
+          "fingerprint": "9aff1d047f89657bc83200f7f01238a9b41d59ac8778d619590c583613b20502",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-08-26T03:12:30.499Z",
+          "lastCheckedAt": "2026-08-26T04:47:47.954Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
