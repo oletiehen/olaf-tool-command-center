@@ -1,0 +1,929 @@
+{
+  "categories": [
+    {
+      "id": "denken",
+      "label": "Denken & Recherche",
+      "items": [
+        {
+          "number": 1,
+          "id": "analyse-beratung",
+          "title": "Analyse & Beratung",
+          "icon": "brain-circuit",
+          "status": "Direkt",
+          "summary": "Komplexe Themen werden verständlich zerlegt, bewertet und in belastbare Entscheidungen oder nächste Schritte übersetzt.",
+          "actions": [
+            "Sachverhalte erklären, strukturieren und priorisieren",
+            "Varianten, Risiken, Abhängigkeiten und Zielkonflikte vergleichen",
+            "Roadmaps, Checklisten, Szenarien und Entscheidungsmatrizen erstellen"
+          ],
+          "boundary": "Bei Medizin, Recht, Steuern oder Finanzen unterstütze ich fachlich, ersetze aber keine verbindliche professionelle Beratung."
+        },
+        {
+          "number": 2,
+          "id": "schreiben-uebersetzen",
+          "title": "Schreiben & Übersetzen",
+          "icon": "languages",
+          "status": "Direkt",
+          "summary": "Texte lassen sich neu verfassen, gezielt überarbeiten, an Ton und Zielgruppe anpassen oder in andere Sprachen übertragen.",
+          "actions": [
+            "E-Mails, Briefe, Berichte, Briefings und Dokumentationen schreiben",
+            "Texte kürzen, präzisieren, vereinfachen oder stilistisch anpassen",
+            "Rechtschreibung, Grammatik, Tonalität und Lesefluss prüfen"
+          ],
+          "boundary": "Vorhandene Formulierungen und sensible Aussagen kann ich bewusst erhalten oder sichtbar als unsicher kennzeichnen."
+        },
+        {
+          "number": 3,
+          "id": "recherche-quellen",
+          "title": "Recherche & Quellen",
+          "icon": "search",
+          "status": "Direkt / situativ",
+          "summary": "Aktuelle Informationen können im Web geprüft, aus mehreren Quellen abgeglichen und mit anklickbaren Belegen zusammengeführt werden.",
+          "actions": [
+            "Aktuelle Nachrichten, Regeln, Preise, Termine und Produktdaten prüfen",
+            "Primärquellen, offizielle Dokumentation, Studien und PDFs auswerten",
+            "Fakten, Schlussfolgerungen und Vermutungen klar voneinander trennen"
+          ],
+          "boundary": "Paywalls, Logins, CAPTCHAs oder technische Sperren können den Zugriff begrenzen; private Inhalte benötigen eine autorisierte Verbindung."
+        }
+      ]
+    },
+    {
+      "id": "entwicklung",
+      "label": "Entwicklung & Steuerung",
+      "items": [
+        {
+          "number": 4,
+          "id": "dateien-arbeitsbereiche",
+          "title": "Dateien & Arbeitsbereiche",
+          "icon": "folder-open",
+          "status": "Direkt",
+          "summary": "Freigegebene Ordner und Dateien können tief untersucht, gezielt verändert und nachvollziehbar dokumentiert werden.",
+          "actions": [
+            "Dateien, Inhalte, Konfigurationen und Logs schnell durchsuchen",
+            "Neue Dateien anlegen und bestehende Dateien präzise patchen",
+            "Inventare, Unterschiede, Manifeste und Änderungsprotokolle erstellen"
+          ],
+          "boundary": "Ich schreibe nur in freigegebene Bereiche und lösche keine Inhalte ohne ausdrücklichen Auftrag."
+        },
+        {
+          "number": 5,
+          "id": "softwareentwicklung",
+          "title": "Softwareentwicklung",
+          "icon": "code-2",
+          "status": "Direkt / situativ",
+          "summary": "Bestehende Codebasen lassen sich verstehen, erweitern, debuggen, testen und auf Qualität sowie Sicherheit prüfen.",
+          "actions": [
+            "Frontend-, Backend-, Full-Stack-, Skript- und CLI-Funktionen bauen",
+            "Fehler reproduzieren, Ursachen eingrenzen und gezielt beheben",
+            "Tests, Linting, Typprüfung, Build, Performance und Barrierefreiheit prüfen"
+          ],
+          "boundary": "Toolchains, Paketinstallationen oder Netzwerkzugriffe können zusätzliche Freigaben benötigen; Tests reduzieren Risiken, garantieren aber keine Fehlerfreiheit."
+        },
+        {
+          "number": 6,
+          "id": "terminal-skripte",
+          "title": "Terminal & Skripte",
+          "icon": "terminal",
+          "status": "Direkt / mit Freigabe",
+          "summary": "Lokale Befehle, Projekt-Skripte, Entwicklungsserver, Builds und laufende Prozesse können kontrolliert ausgeführt werden.",
+          "actions": [
+            "Shell-Befehle, Tests, Builds und Rebuilds ausführen",
+            "Entwicklungsserver starten und ihre Ausgabe beobachten",
+            "Verfügbare Laufzeiten, Bibliotheken und Terminalzustände prüfen"
+          ],
+          "boundary": "Sandbox, Netzwerk- und Dateirechte bleiben aktiv; Sicherheitsmechanismen werden nicht umgangen."
+        },
+        {
+          "number": 7,
+          "id": "git-github",
+          "title": "Git & GitHub",
+          "icon": "git-branch",
+          "status": "Direkt / mit Verbindung",
+          "summary": "Lokale Änderungen und Git-Historie können geprüft und GitHub-Repositories, Issues sowie Pull Requests mit Verbindung bearbeitet werden.",
+          "actions": [
+            "Status, Branches, Commits und Diffs analysieren",
+            "Code-Reviews und konkrete Datei-/Zeilenbefunde liefern",
+            "Auf klaren Auftrag committen, pushen und Draft Pull Requests anlegen"
+          ],
+          "boundary": "Externe Repositories werden nicht beiläufig verändert; Push und Veröffentlichung brauchen einen eindeutigen Auftrag und passende Berechtigung."
+        },
+        {
+          "number": 8,
+          "id": "webseiten-webapps",
+          "title": "Webseiten & Web-Apps",
+          "icon": "layout-dashboard",
+          "status": "Lokal direkt",
+          "summary": "Responsive Websites, Portale, Dashboards und interne Tools können im vorhandenen Designsystem gebaut und weiterentwickelt werden.",
+          "actions": [
+            "Layouts, Navigation, Formulare, Filter, Tabellen und Zustände umsetzen",
+            "Desktop, Mobile, Kontrast, Tastaturbedienung und Performance prüfen",
+            "Bestehende Premium-Optik gezielt bewahren und verfeinern"
+          ],
+          "boundary": "Ein lokaler Build ist kein Produktionsnachweis; Hosting, Authentifizierung und echte End-to-End-Funktion werden separat geprüft."
+        },
+        {
+          "number": 9,
+          "id": "browser-webtests",
+          "title": "Browsersteuerung & Web-Tests",
+          "icon": "mouse-pointer-2",
+          "status": "Mit Websitefreigabe",
+          "summary": "Webseiten können sichtbar bedient, auf verschiedenen Breiten geprüft und in reproduzierbaren Abläufen getestet werden.",
+          "actions": [
+            "Navigieren, klicken, tippen, scrollen und Screenshots aufnehmen",
+            "DOM, CSS, Konsole, Netzwerk und Frontendfehler untersuchen",
+            "Mit Playwright automatisierte UI-Abläufe und Regressionstests erstellen"
+          ],
+          "boundary": "Logins, CAPTCHAs und sensible Aktionen können eingreifen; der integrierte Browser teilt nicht automatisch deine normale Chrome-Sitzung."
+        },
+        {
+          "number": 10,
+          "id": "desktop-apps",
+          "title": "Desktop-Apps bedienen",
+          "icon": "monitor",
+          "status": "Mit Betriebssystemfreigabe",
+          "summary": "Sichtbare macOS- oder Windows-Oberflächen können für App-übergreifende Abläufe und UI-Prüfungen bedient werden.",
+          "actions": [
+            "Menüs, Dialoge, Einstellungen und App-Abläufe nachvollziehen",
+            "Klicken, tippen, navigieren und Screenshots auswerten",
+            "UI-Probleme reproduzieren und nach Änderungen erneut testen"
+          ],
+          "boundary": "Bildschirmaufnahme und Bedienungshilfen müssen freigegeben sein; Administrator- oder Sicherheitsdialoge bestätigst weiterhin du."
+        }
+      ]
+    },
+    {
+      "id": "design-medien",
+      "label": "Design & Medien",
+      "items": [
+        {
+          "number": 11,
+          "id": "bilder-gestaltung",
+          "title": "Bilder & visuelle Gestaltung",
+          "icon": "image",
+          "status": "Direkt / situativ",
+          "summary": "Bilder und Screenshots können analysiert, neue Visuals generiert und bestehende Bilder gezielt bearbeitet werden.",
+          "actions": [
+            "Layout, Kontrast, Hierarchie und Lesbarkeit visuell beurteilen",
+            "Bilder generieren, retuschieren, umfärben oder neu komponieren",
+            "Diagramme, Abläufe, Art Direction und konkrete Bildprompts entwickeln"
+          ],
+          "boundary": "Generierte Details, Texte, Markenmerkmale und Personen sollten immer visuell kontrolliert werden."
+        },
+        {
+          "number": 12,
+          "id": "canva",
+          "title": "Canva",
+          "icon": "palette",
+          "status": "Mit Verbindung",
+          "summary": "Canva-Designs können markengerecht geprüft, erstellt, bearbeitet, übersetzt und für Formate angepasst werden.",
+          "actions": [
+            "Brand-Kit-Abweichungen bei Farbe, Schrift, Logo und Ton melden",
+            "Präsentationen, Serien-Designs und Social-Formate erstellen",
+            "Texte, Bilder, Layout und eindeutiges Review-Feedback bearbeiten"
+          ],
+          "boundary": "Die tatsächlichen Aktionen hängen von der verbundenen Canva-Berechtigung und dem zugänglichen Design ab."
+        },
+        {
+          "number": 13,
+          "id": "biorender",
+          "title": "BioRender",
+          "icon": "microscope",
+          "status": "Mit Verbindung",
+          "summary": "Passende wissenschaftliche Icons und Figurvorlagen können gesucht und zur weiteren Bearbeitung bereitgestellt werden.",
+          "actions": [
+            "Die BioRender-Bibliothek nach fachlichen Motiven durchsuchen",
+            "Geeignete wissenschaftliche Figurvorlagen vergleichen",
+            "Icon- und Template-Metadaten für die Bearbeitung bereitstellen"
+          ],
+          "boundary": "Die wissenschaftliche Richtigkeit der fertigen Abbildung muss anhand der zugrunde liegenden Fachinhalte geprüft werden."
+        },
+        {
+          "number": 18,
+          "id": "praesentationen",
+          "title": "Präsentationen",
+          "icon": "presentation",
+          "status": "Direkt / mit Verbindung",
+          "summary": "Präsentationen können als PowerPoint, Google Slides oder Canva-Deck konzipiert, gestaltet, bearbeitet und geprüft werden.",
+          "actions": [
+            "Storyline, Gliederung und Executive-Decks entwickeln",
+            "Texte, Charts, Tabellen, Bildflächen und Sprecherlogik gestalten",
+            "Vorlagen ableiten sowie Folien rendern und visuell verifizieren"
+          ],
+          "boundary": "Google Slides und Canva benötigen eine Verbindung; lokale PowerPoint-Dateien können direkt im Arbeitsbereich bearbeitet werden."
+        },
+        {
+          "number": 21,
+          "id": "video-avatare",
+          "title": "Video & Avatare",
+          "icon": "video",
+          "status": "Mit Verbindung / Toolchain",
+          "summary": "Presenter-Videos und Avatare lassen sich mit HeyGen und programmatische Videos mit Remotion planen und erzeugen.",
+          "actions": [
+            "Avatar, Stimme, Seitenverhältnis und Video-Prompt abstimmen",
+            "Animationen, Szenen, Untertitel und Datenvisualisierung als Code bauen",
+            "Videos rendern und performant in Webseiten integrieren"
+          ],
+          "boundary": "Rechte, Einwilligung und Identität realer Personen oder Stimmen dürfen nicht vorausgesetzt werden."
+        },
+        {
+          "number": 22,
+          "id": "musik",
+          "title": "Musik",
+          "icon": "music",
+          "status": "Mit Verbindung",
+          "summary": "Musik kann über Apple Music gesucht, als Playlist kuratiert und über Shazam identifiziert oder eingeordnet werden.",
+          "actions": [
+            "Künstler, Alben, Songs und Playlists im Katalog finden",
+            "Songlisten mit offiziellen Metadaten und spielbaren Links anreichern",
+            "Aufnahmen erkennen sowie Einflüsse und Bandbeziehungen erklären"
+          ],
+          "boundary": "Urheberrechtlich geschützte Songtexte dürfen nicht vollständig wiedergegeben werden."
+        }
+      ]
+    },
+    {
+      "id": "dokumente-daten",
+      "label": "Dokumente & Daten",
+      "items": [
+        {
+          "number": 14,
+          "id": "word-google-docs",
+          "title": "Word & Google Docs",
+          "icon": "file-text",
+          "status": "Direkt / mit Verbindung",
+          "summary": "Word- und Google-Dokumente können strukturerhaltend erstellt, bearbeitet, kommentiert und visuell geprüft werden.",
+          "actions": [
+            "DOCX-Dateien erstellen, redlinen und gezielt korrigieren",
+            "Google Docs suchen, lesen, erstellen und bearbeiten",
+            "Kommentare schreiben, beantworten und auflösen"
+          ],
+          "boundary": "Google Docs benötigt eine verbundene Berechtigung; lokale Dokumente werden mit Render- und Layoutprüfung bearbeitet."
+        },
+        {
+          "number": 15,
+          "id": "pdf",
+          "title": "PDF",
+          "icon": "file-check-2",
+          "status": "Direkt",
+          "summary": "PDFs können gelesen, erstellt, gerendert, visuell geprüft und – soweit das Format es erlaubt – bearbeitet oder ausgefüllt werden.",
+          "actions": [
+            "Text, Tabellen, Seiten und Dokumentstruktur auswerten",
+            "Neue PDFs und ausfüllbare Formulare erstellen oder bearbeiten",
+            "Seitenumbrüche, Schriften, Überlagerungen und Layout verifizieren"
+          ],
+          "boundary": "Schlechte Scans, Handschrift, komplexe Tabellen oder geschützte Dateien können die Erkennung und Bearbeitung begrenzen."
+        },
+        {
+          "number": 16,
+          "id": "tabellen-excel",
+          "title": "Tabellen, Excel & Sheets",
+          "icon": "table-2",
+          "status": "Direkt / mit Verbindung",
+          "summary": "Tabellendaten können erstellt, bereinigt, berechnet, visualisiert und für Excel oder Google Sheets aufbereitet werden.",
+          "actions": [
+            "XLSX, XLS, CSV und TSV lesen, erstellen und bearbeiten",
+            "Formeln, Filter, Formatierung, Auswertungen und Diagramme aufbauen",
+            "Dubletten, Lücken, Inkonsistenzen und Ausreißer prüfen"
+          ],
+          "boundary": "Google Sheets und Live-Excel benötigen eine verbundene Sitzung; lokale Dateien können direkt geprüft werden."
+        },
+        {
+          "number": 17,
+          "id": "datenanalyse-dashboard",
+          "title": "Datenanalyse & Dashboards",
+          "icon": "bar-chart-3",
+          "status": "Direkt / datenabhängig",
+          "summary": "Datenqualität, KPIs, Ursachen, Marktgrößen und Geschäftsfragen können reproduzierbar analysiert und visuell berichtet werden.",
+          "actions": [
+            "SQL-/Python-Notebooks, KPI-Definitionen und semantische Kontexte erstellen",
+            "Kennzahlen diagnostizieren, Entscheidungen unterstützen und Märkte schätzen",
+            "Validierte Berichte, Charts, Scorecards und Dashboards bauen"
+          ],
+          "boundary": "Fehlende Daten werden nicht erfunden; Quellen, Methodik, Vergleichszeiträume und Unsicherheiten bleiben sichtbar."
+        }
+      ]
+    },
+    {
+      "id": "wissen-zusammenarbeit",
+      "label": "Wissen & Zusammenarbeit",
+      "items": [
+        {
+          "number": 19,
+          "id": "notion",
+          "title": "Notion",
+          "icon": "book-open",
+          "status": "Mit Verbindung",
+          "summary": "Notion-Inhalte können recherchiert und als strukturierte Wissensseiten, Meeting-Unterlagen oder Umsetzungspläne weitergeführt werden.",
+          "actions": [
+            "Informationen über mehrere Seiten recherchieren und bündeln",
+            "Entscheidungen, Anleitungen, FAQs und Wikiseiten erfassen",
+            "Spezifikationen in Aufgaben, Pläne und Fortschritt überführen"
+          ],
+          "boundary": "Zugriff und Änderungen sind auf die Berechtigungen der verbundenen Notion-Umgebung begrenzt."
+        },
+        {
+          "number": 20,
+          "id": "google-drive",
+          "title": "Google Drive",
+          "icon": "hard-drive",
+          "status": "Mit Verbindung",
+          "summary": "Drive-Dateien und -Ordner können gesucht, organisiert und mit Docs, Sheets, Slides sowie Kommentaren bearbeitet werden.",
+          "actions": [
+            "Dateien und Ordner suchen, abrufen, kopieren und exportieren",
+            "Docs, Sheets und Slides lesen, erstellen und bearbeiten",
+            "Informationen aus mehreren Dateien zu Briefings zusammenführen"
+          ],
+          "boundary": "Es sind nur Inhalte erreichbar, für die das verbundene Konto tatsächlich berechtigt ist; Teilen erfolgt nur im klaren Auftrag."
+        },
+        {
+          "number": 27,
+          "id": "codex-aufgaben",
+          "title": "Codex-Aufgaben & Threads",
+          "icon": "messages-square",
+          "status": "Auf ausdrücklichen Auftrag",
+          "summary": "Codex-Aufgaben können gesucht, geöffnet, weitergeführt, organisiert und für längere Abläufe beobachtet werden.",
+          "actions": [
+            "Pläne führen, Fortschritt aktualisieren und Ergebnisse zusammenführen",
+            "Aufgaben lesen, öffnen, umbenennen, anheften oder archivieren",
+            "Neue Aufgaben, Abzweigungen oder Übergaben gezielt anlegen"
+          ],
+          "boundary": "Neue, sichtbare Aufgaben und organisatorische Änderungen führe ich nur auf ausdrücklichen Auftrag aus."
+        },
+        {
+          "number": 28,
+          "id": "subagenten",
+          "title": "Subagenten & parallele Arbeit",
+          "icon": "users",
+          "status": "Auf ausdrücklichen Wunsch",
+          "summary": "Unabhängige Teilaufgaben können parallel an spezialisierte Agenten verteilt und anschließend kontrolliert zusammengeführt werden.",
+          "actions": [
+            "Recherche, Tests, Exploration oder Reviews parallelisieren",
+            "Status verfolgen und Folgeaufträge an laufende Agenten senden",
+            "Einzelergebnisse prüfen und zu einer Hauptantwort verdichten"
+          ],
+          "boundary": "Subagenten werden hier nur ausdrücklich oder durch eine geltende Projektanweisung eingesetzt; parallele Schreibbereiche müssen klar getrennt sein."
+        },
+        {
+          "number": 29,
+          "id": "automationen",
+          "title": "Automationen & Monitoring",
+          "icon": "clock-3",
+          "status": "Situativ",
+          "summary": "Einmalige Erinnerungen, wiederkehrende Aufgaben und regelmäßige Prüfungen können geplant und verwaltet werden.",
+          "actions": [
+            "Erinnerungen, Monitore und wiederkehrende Berichte einrichten",
+            "Aufgaben später wieder aufnehmen oder regelmäßig prüfen lassen",
+            "Aktive, pausierte und abgeschlossene Automationen verwalten"
+          ],
+          "boundary": "Lokale Ausführungen benötigen meist einen laufenden Computer und die geöffnete App; externe Aktionen brauchen weiterhin Verbindung und Berechtigung."
+        },
+        {
+          "number": 30,
+          "id": "skills-plugins-mcp",
+          "title": "Skills, Plugins & MCP",
+          "icon": "puzzle",
+          "status": "Direkt / mit Freigabe",
+          "summary": "Wiederverwendbare Skills, vollständige Plugins, Connectoren und Workspace-Agenten können erstellt, eingerichtet und verwaltet werden.",
+          "actions": [
+            "AGENTS.md und vorhandene Skills als dauerhafte Arbeitsregeln nutzen",
+            "Neue Skills oder Plugins mit Manifest, Tools und Assets erstellen",
+            "MCP-Verbindungen, Hooks und Workspace-Agenten konfigurieren"
+          ],
+          "boundary": "Installationen, externe Verbindungen und Veröffentlichungen können Freigaben verlangen; Agenten gehen nur ausdrücklich live."
+        },
+        {
+          "number": 33,
+          "id": "gedaechtnis",
+          "title": "Gedächtnis & Arbeitsweise",
+          "icon": "history",
+          "status": "Direkt",
+          "summary": "Relevante frühere Präferenzen und Entscheidungen können für konsistente Arbeit genutzt und bei Unsicherheit als möglicherweise veraltet markiert werden.",
+          "actions": [
+            "Den aktuellen Gesprächsverlauf und relevante Erinnerungen berücksichtigen",
+            "Aktuelle Anweisungen gegenüber älteren Informationen priorisieren",
+            "Auf ausdrücklichen Wunsch eine Aktualisierungsnotiz vorbereiten"
+          ],
+          "boundary": "Dauerhaftes Gedächtnis wird nicht ungefragt verändert; sensible persönliche Informationen werden nur gezielt verwendet."
+        }
+      ]
+    },
+    {
+      "id": "reisen-maerkte",
+      "label": "Reisen & Märkte",
+      "items": [
+        {
+          "number": 23,
+          "id": "reisen-aktivitaeten",
+          "title": "Reisen, Hotels & Aktivitäten",
+          "icon": "plane",
+          "status": "Mit Verbindung",
+          "summary": "Unterkünfte, Hoteloptionen, Touren und Aktivitäten können aktuell gesucht, verglichen und in Reisepläne übersetzt werden.",
+          "actions": [
+            "Booking.com-, trivago-, GetYourGuide- und CHECK24-Optionen vergleichen",
+            "Preis, Bewertung, Lage, Bedingungen und Verfügbarkeit strukturieren",
+            "Tagespläne, Packlisten und Entscheidungsübersichten erstellen"
+          ],
+          "boundary": "Preise und Verfügbarkeit ändern sich; Buchung, Zahlung oder Storno benötigen eine besonders klare Bestätigung."
+        },
+        {
+          "number": 24,
+          "id": "immobilien-marktplaetze",
+          "title": "Immobilien & Preisvergleich",
+          "icon": "house",
+          "status": "Mit Verbindung",
+          "summary": "Immobilien, Kleinanzeigen und Produktangebote können gesucht, gefiltert und als belastbare Shortlist gegenübergestellt werden.",
+          "actions": [
+            "ImmoScout24- und Kleinanzeigen-Angebote recherchieren",
+            "idealo- und CHECK24-Angebote nach relevanten Kriterien vergleichen",
+            "Preis, Lage, Ausstattung, Zustand und Risiken strukturiert bewerten"
+          ],
+          "boundary": "Echtheit, tatsächlicher Zustand und Verfügbarkeit eines Inserats lassen sich aus dem Angebot allein nicht garantieren."
+        }
+      ]
+    },
+    {
+      "id": "openai-publishing",
+      "label": "OpenAI & Veröffentlichung",
+      "items": [
+        {
+          "number": 25,
+          "id": "openai-entwicklung",
+          "title": "OpenAI-Entwicklung",
+          "icon": "bot",
+          "status": "Dokumentation direkt",
+          "summary": "OpenAI-basierte Apps, Agenten und Tools können mit aktueller Dokumentation geplant, entwickelt, getestet und diagnostiziert werden.",
+          "actions": [
+            "Modellwahl, Migration, Prompting und Agents SDK unterstützen",
+            "ChatGPT Apps mit MCP-Server und Widget-Oberfläche bauen",
+            "API-Fehler diagnostizieren und App-Submissions vorbereiten"
+          ],
+          "boundary": "API-Nutzung benötigt einen sicher eingerichteten Schlüssel; Zugangsdaten werden nicht als Klartext im Chat behandelt."
+        },
+        {
+          "number": 26,
+          "id": "sites-veroeffentlichung",
+          "title": "Sites & Veröffentlichung",
+          "icon": "globe-2",
+          "status": "Mit Verbindung",
+          "summary": "Sites-Projekte können weiterentwickelt, versioniert und mit nachvollziehbarem Quellstand produktiv bereitgestellt werden.",
+          "actions": [
+            "Bestehende Projekt-ID, Quellstand und Laufzeitbindungen prüfen",
+            "Versionen speichern, deployen und den Deploymentstatus kontrollieren",
+            "Validierte Analyseberichte als Sites-Paket veröffentlichen"
+          ],
+          "boundary": "Jede Deployment-URL ist produktiv; Datenschutz, Freigabe, Rechtsseiten und echte Online-QA gehören vor die Veröffentlichung."
+        }
+      ]
+    },
+    {
+      "id": "module-erweiterungen",
+      "label": "Module & Erweiterungen",
+      "items": [
+        {
+          "number": 31,
+          "id": "sichtbare-fachmodule",
+          "title": "Sichtbare Fachmodule",
+          "icon": "blocks",
+          "status": "Situativ",
+          "summary": "Die Sitzung bündelt spezialisierte Module für Browser, Design, Daten, Office, Entwicklung, Wissen, Reisen und Katalogsuche.",
+          "actions": [
+            "Browser-, Computer-, Bild-, Canva-, HeyGen- und BioRender-Module nutzen",
+            "Datenanalyse-, Office-, GitHub-, OpenAI- und Sites-Workflows ausführen",
+            "Drive-, Notion-, Musik-, Reise-, Immobilien- und Produktsuchen verbinden"
+          ],
+          "boundary": "Tatsächliche Nutzbarkeit hängt von Anmeldung, Tarif, Region, Workspace-Regeln und Berechtigungen ab."
+        },
+        {
+          "number": 32,
+          "id": "installierbare-plugins",
+          "title": "Installierbare Plugins",
+          "icon": "plug",
+          "status": "Installierbar",
+          "summary": "Weitere Connectoren sind verfügbar, in dieser Umgebung aber noch nicht installiert oder mit einem Konto verbunden.",
+          "actions": [
+            "Atlassian Rovo, Box, Figma und Gmail ergänzen",
+            "Google Calendar, Outlook Calendar und Outlook Email verbinden",
+            "SharePoint, Slack und Teams installieren"
+          ],
+          "boundary": "Installation, Kontoverbindung und gegebenenfalls eine Workspace-Freigabe sind erforderlich, bevor private Inhalte erreichbar sind."
+        }
+      ]
+    },
+    {
+      "id": "sicherheit-auftrag",
+      "label": "Sicherheit & guter Auftrag",
+      "items": [
+        {
+          "number": 34,
+          "id": "sicherheit-datenschutz",
+          "title": "Sicherheit & Datenschutz",
+          "icon": "shield-check",
+          "status": "Immer aktiv",
+          "summary": "Datei-, Netzwerk- und App-Rechte werden respektiert; sensible Inhalte und folgenschwere Aktionen werden bewusst kontrolliert.",
+          "actions": [
+            "Ziele prüfen, bevor etwas überschrieben, verschoben oder gelöscht wird",
+            "Private Inhalte, Geheimnisse und Zahlungsdaten gezielt schützen",
+            "Prompt-Injection, veraltete Behauptungen und externe Risiken prüfen"
+          ],
+          "boundary": "Riskante oder schwer rückgängig zu machende Aktionen können eine ausdrückliche Freigabe erfordern."
+        },
+        {
+          "number": 35,
+          "id": "grenzen",
+          "title": "Klare Grenzen",
+          "icon": "ban",
+          "status": "Immer aktiv",
+          "summary": "Zugriff, Sicherheit, Urheberrecht und reale Außenwirkung setzen klare Grenzen, die nicht stillschweigend umgangen werden.",
+          "actions": [
+            "Keine Passwörter, 2FA-Codes, CAPTCHAs oder Sicherheitskontrollen umgehen",
+            "Keine heimlichen Nachrichten, Käufe, Löschungen oder Veröffentlichungen ausführen",
+            "Keine Daten ohne Datei, öffentliche Quelle oder autorisierten Connector beschaffen"
+          ],
+          "boundary": "Ich kann Fehler nicht vollständig ausschließen, keine physische Handlung ausführen und keine professionelle Haftung übernehmen."
+        },
+        {
+          "number": 36,
+          "id": "geeignete-auftraege",
+          "title": "Besonders geeignete Aufträge",
+          "icon": "list-checks",
+          "status": "Orientierung",
+          "summary": "Am stärksten sind Aufträge, die Analyse, gezielte Umsetzung und überprüfbare Abnahme zu einem klaren Endergebnis verbinden.",
+          "actions": [
+            "Projekt analysieren, Fehler beheben und Build sowie Tests ausführen",
+            "Dokumente, Daten oder Angebote prüfen und eine Entscheidungsvorlage erstellen",
+            "Website im vorhandenen Designsystem bauen und erst nach Freigabe veröffentlichen"
+          ],
+          "boundary": "Ein konkretes Ziel und Abschlusskriterium helfen, Arbeitstiefe, Reichweite und Prüfungen passend zu wählen."
+        },
+        {
+          "number": 37,
+          "id": "zuverlaessige-ergebnisse",
+          "title": "Zuverlässige Ergebnisse",
+          "icon": "target",
+          "status": "Orientierung",
+          "summary": "Ein normal formulierter Auftrag reicht; Ziel, Kontext, Grenzen und Abschlusskriterium machen das Ergebnis besonders belastbar.",
+          "actions": [
+            "Ziel benennen: Was soll am Ende wirklich vorliegen?",
+            "Kontext geben: Welche Dateien, Links oder Projekte sind relevant?",
+            "Grenzen und Prüfung festlegen: Was bleibt unverändert und woran gilt es als fertig?"
+          ],
+          "boundary": "Fehlende Fakten werden nicht erfunden; bei riskanten Unklarheiten wird lieber eine sichere, kleine Verbesserung gewählt."
+        }
+      ]
+    }
+  ],
+  "practiceAreas": [
+    {
+      "id": "personal-site",
+      "label": "Persönliche Website & digitale Heimat"
+    },
+    {
+      "id": "real-estate",
+      "label": "Immobilien & Verkaufscoach"
+    },
+    {
+      "id": "private-pwa",
+      "label": "Private Apps & mobile PWA"
+    },
+    {
+      "id": "travel",
+      "label": "Reisen & Alltagsorganisation"
+    },
+    {
+      "id": "files",
+      "label": "Dateien, Ordnung & Datenschutz"
+    },
+    {
+      "id": "github",
+      "label": "GitHub & Veröffentlichung"
+    },
+    {
+      "id": "data",
+      "label": "Dokumente, Daten & Entscheidungen"
+    },
+    {
+      "id": "knowledge",
+      "label": "Wissen, Notion & Automationen"
+    }
+  ],
+  "depthLabels": {
+    "quick": "Schnell klären",
+    "develop": "Ausarbeiten",
+    "end-to-end": "End-to-End"
+  },
+  "practiceExamples": [
+    {
+      "id": "site-copy",
+      "area": "personal-site",
+      "depth": "quick",
+      "capabilityId": "schreiben-uebersetzen",
+      "title": "Biografischen Abschnitt ruhig schärfen",
+      "example": "Einen vorhandenen Website-Abschnitt in eine persönliche, erwachsene Ich-Perspektive bringen, ohne daraus eine Verkaufsseite zu machen.",
+      "outcome": "Eine präzise Textfassung plus zwei Alternativen, jeweils mit sichtbaren Annahmen und offenen Fakten.",
+      "does": "Codex liest den Bestand, bewahrt die Aussageabsicht und verändert nur Ton, Klarheit und Dramaturgie.",
+      "needs": "Den konkreten Abschnitt, seine Position auf der Seite und Hinweise, welche Aussagen unverändert bleiben müssen.",
+      "guardrail": "Keine neuen biografischen Behauptungen, Leistungszahlen oder privaten Details erfinden oder ungefragt veröffentlichen.",
+      "prompt": "Arbeite mit dem vorhandenen Website-Abschnitt in [Datei oder eingefügter Text].\n\nZiel: Formuliere ihn ruhig, persönlich, warm und erwachsen in ehrlicher Ich-Perspektive. Die Seite ist meine persönliche digitale Heimat – keine Verkaufsseite, Coaching-Landingpage oder Angebotsseite.\n\nVorgehen:\n1. Benenne zuerst belegte Aussagen, mögliche Annahmen und offene Fakten.\n2. Bewahre Sinn und vorhandene Formulierungen, wo sie tragen.\n3. Erstelle eine Hauptfassung und zwei kürzere Alternativen.\n4. Markiere jede Stelle, die vor Veröffentlichung noch bestätigt werden muss.\n\nNicht verändern oder ergänzen: [Grenzen].\nGewünschte Länge: [Länge]."
+    },
+    {
+      "id": "site-design",
+      "area": "personal-site",
+      "depth": "develop",
+      "capabilityId": "webseiten-webapps",
+      "title": "Designsystem und Mobile-Qualität prüfen",
+      "example": "Eine bestehende Seite im Navy-Gold-Ivory-System auf Typografie, Abstände, Kontrast, Scroll-Verhalten und ruhige Interaktion prüfen.",
+      "outcome": "Priorisierte UX-Befunde und gezielte Verbesserungen, die das vorhandene Designsystem konsequent weiterführen.",
+      "does": "Codex analysiert Komponenten und CSS, setzt sichere Änderungen um und prüft Desktop, Mobile und reduzierte Bewegung.",
+      "needs": "Projektordner, relevante Route und die Anweisung, welche Bereiche bewusst unverändert bleiben sollen.",
+      "guardrail": "Keine generische Template-Optik, keine schweren Effekte und keine privaten Medien in eine öffentliche Fassung übernehmen.",
+      "prompt": "Arbeite im bestehenden Webseitenprojekt [Projektordner] und baue die Struktur nicht neu.\n\nLeite zuerst das vorhandene Designsystem aus Komponenten und Styles ab. Prüfe danach die Route [Route] auf Desktop und Mobile:\n- Navy-Gold-Ivory-Farbführung\n- Serifenschrift für Überschriften und ruhige Sans-Serif-Navigation\n- Abstände, Lesbarkeit, Kontraste und visuelle Hierarchie\n- Scroll-Verhalten, Tastaturbedienung und prefers-reduced-motion\n- Performance ohne schwere Blur-, Parallax- oder Dauereffekte\n\nSetze nur klar begründete Verbesserungen um. Führe Build/Syntaxprüfung und eine visuelle Prüfung bei mindestens 1366 px, 375 px und 320 px durch.\n\nBerichte: geänderte Dateien, umgesetzte Punkte, bewusst unveränderte Bereiche, Prüfungen, Warnungen und nächste Schritte."
+    },
+    {
+      "id": "site-public-release",
+      "area": "personal-site",
+      "depth": "end-to-end",
+      "capabilityId": "sites-veroeffentlichung",
+      "title": "Öffentliche Version sicher ableiten",
+      "example": "Aus einem privaten Master eine eigenständige öffentliche Fassung mit expliziter Inhalts- und Asset-Freigabeliste erzeugen.",
+      "outcome": "Ein nachvollziehbarer öffentlicher Build, bei dem jede Route, Datei und Medienressource bewusst freigegeben ist.",
+      "does": "Codex prüft den kanonischen Quellstand, erstellt die Allowlist, scannt den Build, testet online und dokumentiert GO oder NO-GO.",
+      "needs": "Kanonischer Projektpfad, gewünschte öffentliche Routen, Freigaben für Texte und Medien sowie das Zielhosting.",
+      "guardrail": "Private Familien-, Kontakt-, Gesundheits-, Beziehungs- oder Medieninhalte bleiben ausgeschlossen, bis sie einzeln freigegeben sind.",
+      "prompt": "Bereite aus dem kanonischen privaten Master [Projektordner] eine separate öffentliche Fassung vor.\n\nArbeite End-to-End:\n1. Verifiziere zuerst Quelle, Branch und vorhandenes Designsystem.\n2. Erstelle eine explizite Allowlist für öffentliche Routen, Texte, Assets und Metadaten.\n3. Schließe alle nicht freigegebenen privaten Inhalte technisch aus dem Build aus.\n4. Prüfe Impressum/Datenschutz/Kontaktstatus, SEO, Barrierefreiheit und Asset-Pfade.\n5. Führe Build, Syntaxprüfung, Secret-Scan, Desktop-/Mobile-QA und eine echte Online-Prüfung durch.\n6. Veröffentliche nur bei eindeutigem GO; ansonsten liefere ein konkretes NO-GO mit Blockern.\n\nFreigegeben: [Liste].\nNicht freigegeben: alles andere."
+    },
+    {
+      "id": "coach-claims",
+      "area": "real-estate",
+      "depth": "quick",
+      "capabilityId": "analyse-beratung",
+      "title": "Funktions- und Aussagenmatrix erstellen",
+      "example": "Versprechen einer Immobilien- oder Coach-Seite gegen tatsächlich implementierte Funktionen abgleichen.",
+      "outcome": "Eine klare Matrix mit den Zuständen implementiert, Konzept, teilweise vorhanden oder nicht belegt.",
+      "does": "Codex prüft Texte, Komponenten und reale Abläufe und schlägt wahrheitsgemäße Formulierungen vor.",
+      "needs": "Quellprojekt, relevante Seiten und – falls vorhanden – Testzugang oder aktuelle Funktionsnachweise.",
+      "guardrail": "Keine Produktbehauptung aus einem Mockup, Toast oder Platzhalter als funktionierende Live-Funktion darstellen.",
+      "prompt": "Prüfe das Projekt [Projektordner] als Funktions- und Aussagenaudit.\n\nErstelle eine Matrix mit:\n- sichtbarer Aussage oder Versprechen\n- betroffener Route/Komponente\n- tatsächlichem Implementierungsnachweis\n- Status: implementiert, teilweise, Konzept oder unbelegt\n- Risiko der aktuellen Formulierung\n- wahrheitsgemäßer Ersatztext\n\nTrenne lokalen Build, Testnachweis und echte Online-Funktion. Erfinde keine fehlenden Funktionen. Ändere zunächst nichts; liefere zuerst die priorisierte Matrix mit P0/P1/P2."
+    },
+    {
+      "id": "coach-journey",
+      "area": "real-estate",
+      "depth": "develop",
+      "capabilityId": "webseiten-webapps",
+      "title": "Verkäuferreise als System ausarbeiten",
+      "example": "Module wie Objektcheck, Preisstrategie, Vermarktung, Gespräche und Wissen zu einer verständlichen Verkäuferreise verbinden.",
+      "outcome": "Eine konsistente Informationsarchitektur mit klaren Übergängen, Zuständen und ehrlicher Abgrenzung zwischen Website und Kunden-App.",
+      "does": "Codex ordnet bestehende Komponenten und Inhalte, schließt UX-Lücken und setzt die priorisierten Anpassungen um.",
+      "needs": "Bestehendes Projekt, vorhandene Module, Zielgruppe und gewünschte private oder öffentliche Sichtbarkeit.",
+      "guardrail": "Die Website erklärt und schafft Vertrauen; sie darf keine nicht vorhandene Kunden-App oder automatische Aktion vortäuschen.",
+      "prompt": "Analysiere den vorhandenen Immobilien-Verkaufscoach in [Projektordner].\n\nOrdne die bestehenden Inhalte zu einer durchgängigen Verkäuferreise:\n1. Orientierung und Objekt-/Unterlagencheck\n2. Preis- und Marktstrategie\n3. Exposé und Vermarktungsplanung\n4. Interessenten, Gespräche und Verhandlung\n5. Aufgaben, Wissen und nächste Schritte\n\nZeige zuerst, was bereits vorhanden ist und wo Übergänge fehlen. Bewahre Funktionen und bestehende Komponenten. Setze anschließend die priorisierten UX- und Textverbesserungen im ruhigen Navy-Gold-Ivory-System um.\n\nPrüfe Desktop, Mobile, Barrierefreiheit, Performance und klare Produktgrenzen. Website und spätere Kunden-App müssen sichtbar getrennt bleiben."
+    },
+    {
+      "id": "coach-pilot",
+      "area": "real-estate",
+      "depth": "end-to-end",
+      "capabilityId": "softwareentwicklung",
+      "title": "Privaten Pilot vollständig abnehmen",
+      "example": "Einen geschützten Immobilien-Arbeitsbereich mit Dokumenten, Fällen, Aufgaben und Training als realistischen Pilot testen.",
+      "outcome": "Ein belegter End-to-End-Pilotbericht mit Testfällen, Nachweisen, offenen Risiken und klarer Freigabeentscheidung.",
+      "does": "Codex prüft Kernflüsse, Datenisolierung, Einwilligung, Fehlersituationen, Build und reale Online-Abläufe.",
+      "needs": "Pilotumgebung, erlaubte synthetische Testdaten, Zugriffsweg und vereinbarte Definition of Done.",
+      "guardrail": "Keine realen Kundendaten ohne Freigabe; keine automatische E-Mail, Veröffentlichung oder rechtliche, steuerliche oder notarielle Entscheidung.",
+      "prompt": "Nimm den privaten Immobilien-Verkaufscoach in [Projektordner oder URL] als technischen Pilot End-to-End ab.\n\nNutze ausschließlich freigegebene synthetische Testdaten. Prüfe:\n- Login, Nutzer- und Falldatentrennung\n- Fälle, Aufgaben, Kontakte und Aktivitäten\n- Dokumentupload, Analyse und nachvollziehbare Einwilligung\n- manuell ausgelöste E-Mail-Analyse\n- Trainingsszenarien und Fehlermeldungen\n- Desktop, Mobile, Performance und Barrierefreiheit\n- Backup-/Wiederherstellungs- sowie Datenschutzgrenzen\n\nFühre Build und automatisierte Tests aus, teste die reale Online-Version und dokumentiere jeden Nachweis. Beende mit GO, GO mit Auflagen oder NO-GO und konkreten Restpunkten."
+    },
+    {
+      "id": "pwa-parity",
+      "area": "private-pwa",
+      "depth": "quick",
+      "capabilityId": "analyse-beratung",
+      "title": "Funktionsparität vor Migration sichern",
+      "example": "Vor einer PWA-Überarbeitung alle bestehenden Funktionen, Datenflüsse und Offline-Verhalten vollständig inventarisieren.",
+      "outcome": "Eine Paritätscheckliste, die verhindert, dass bei Design- oder Technikänderungen Funktionen verloren gehen.",
+      "does": "Codex liest Quellcode und vorhandene Tests, ordnet Funktionen und markiert unklare oder nur simulierte Bereiche.",
+      "needs": "Aktueller Quellordner, bekannte Soll-Funktionen und Hinweise zu besonders wichtigen mobilen Abläufen.",
+      "guardrail": "Noch keine Migration oder Bereinigung durchführen; zunächst vollständig verstehen und nichts entfernen.",
+      "prompt": "Untersuche die bestehende PWA in [Projektordner], ohne etwas umzubauen.\n\nErstelle eine vollständige Funktionsparitätsmatrix für:\n- Eingaben, Bearbeitung und gespeicherte Daten\n- Termine, Zeitzonen und Sortierung\n- Checklisten, Notizen und Simulationen\n- Local Storage/IndexedDB und Synchronisation\n- Service Worker, Offline-Fallback und Cache\n- iPhone-spezifische Bedienung und sichtbare Bearbeitungszustände\n\nOrdne jeden Punkt als vorhanden, teilweise, unklar oder fehlend ein und verweise auf die konkrete Datei/Funktion. Nenne anschließend die kleinste sichere Migrationsreihenfolge."
+    },
+    {
+      "id": "pwa-safari",
+      "area": "private-pwa",
+      "depth": "develop",
+      "capabilityId": "browser-webtests",
+      "title": "iPhone- oder Safari-Fehler sicher eingrenzen",
+      "example": "Einen mobilen Login-, Cache- oder Entschlüsselungsfehler diagnostizieren, ohne vorschnell lokale Daten zu löschen.",
+      "outcome": "Eine belastbare Trennung zwischen Browserzustand, lokalem Speicher, Serverdaten und Konfiguration.",
+      "does": "Codex prüft Codepfad und sichtbare Signale und führt zuerst einen privaten oder unbenutzten Browser als sicheren Vergleich aus.",
+      "needs": "Exakte Fehlermeldung, betroffene URL, Gerät/Browser-Version und Erlaubnis für nicht-destruktive Tests.",
+      "guardrail": "Kein Cache-, PWA- oder IndexedDB-Löschen vor Export oder Sicherung der vorhandenen Daten.",
+      "prompt": "Diagnostiziere den iPhone-/Safari-Fehler in [App oder Projekt] sicher und schrittweise.\n\nFehlermeldung: [Wortlaut].\nBetroffener Ablauf: [Ablauf].\n\nVorgehen:\n1. Rekonstruiere zuerst den technischen Pfad im Code.\n2. Teste als sicheren Split einen privaten oder bisher unbenutzten Browser.\n3. Trenne Browserzustand, lokalen Speicher, Service Worker, Serverkonfiguration und verschlüsselte Daten.\n4. Sichere oder exportiere relevante Daten, bevor irgendein lokaler Zustand gelöscht wird.\n5. Liefere Ursache, Evidenz, risikoärmste Reparatur und einen Rückfallplan.\n\nKeine Zugangsdaten im Bericht wiederholen und keine destruktive Bereinigung ohne meine ausdrückliche Freigabe."
+    },
+    {
+      "id": "pwa-release",
+      "area": "private-pwa",
+      "depth": "end-to-end",
+      "capabilityId": "softwareentwicklung",
+      "title": "Private PWA releasefest machen",
+      "example": "Eine mobile PWA funktionsgleich, offline-tauglich und datenschutzsicher bis zur überprüften Online-Version bringen.",
+      "outcome": "Ein veröffentlichter, cache-sicher getesteter Stand mit belegter Feature-Parität und Mobile-QA.",
+      "does": "Codex implementiert gezielte Änderungen, aktualisiert Tests und Cache-Version, scannt private Daten und verifiziert die reale URL.",
+      "needs": "Kanonischer Quellstand, Zielhosting, Sichtbarkeit, freigegebene Daten und klare Abnahmekriterien.",
+      "guardrail": "Private Buchungslinks, Gesundheitsdaten, Zugangsdaten und lokale Nutzerdaten bleiben aus dem öffentlichen Build ausgeschlossen.",
+      "prompt": "Bringe die private PWA in [Projektordner] End-to-End auf einen releasefähigen Stand.\n\nErhalte vollständig die dokumentierte Funktionsparität. Prüfe und verbessere gezielt:\n- mobile Bearbeitung auf iPhone\n- Zeitzonen und Datumslogik\n- lokale Speicherung und sichere Synchronisation\n- Service Worker, Offline-Fallback und Cache-Version\n- Fehlerzustände, Datenschutz und Secret-Scan\n- prefers-reduced-motion, Performance und Barrierefreiheit\n\nFühre Build, Syntax- und Funktionsprüfungen sowie Desktop-/Mobile-QA aus. Veröffentliche nur im vereinbarten privaten Ziel. Prüfe danach einmal mit Cache-Busting-URL und anschließend erneut über die kanonische URL."
+    },
+    {
+      "id": "travel-day",
+      "area": "travel",
+      "depth": "quick",
+      "capabilityId": "analyse-beratung",
+      "title": "Tagesplan mit echten Randbedingungen erstellen",
+      "example": "Termine, Wege, Öffnungszeiten und persönliche Prioritäten zu einem realistischen Reisetag zusammenführen.",
+      "outcome": "Ein klarer Tagesablauf mit Zeitpuffern, Alternativen und sichtbaren Annahmen.",
+      "does": "Codex ordnet feste und flexible Punkte, prüft aktuelle Zeiten bei Bedarf und kennzeichnet Konflikte.",
+      "needs": "Ort, Datum, feste Termine, gewünschte Aktivitäten, Mobilität und bevorzugtes Tagesrhythmus.",
+      "guardrail": "Aktuelle Öffnungszeiten und Verfügbarkeit werden geprüft; Buchungen oder Zahlungen erfolgen nicht automatisch.",
+      "prompt": "Erstelle für [Ort] am [Datum] einen realistischen Tagesplan.\n\nFixe Termine: [Liste].\nGewünschte Aktivitäten: [Liste].\nMobilität: [zu Fuß/ÖPNV/Auto].\nPersönliche Prioritäten: [ruhig, früh/spät, Pausen, Essen].\n\nPrüfe aktuelle Öffnungszeiten und Wege, wenn sie für die Planung relevant sind. Baue Zeitpuffer ein, kennzeichne Annahmen und gib für wetter- oder verfügbarkeitsabhängige Punkte jeweils eine Alternative an. Nimm keine Buchung vor."
+    },
+    {
+      "id": "travel-offline",
+      "area": "travel",
+      "depth": "develop",
+      "capabilityId": "webseiten-webapps",
+      "title": "Offline-Reiseplan nutzbar ausarbeiten",
+      "example": "Einen Reiseplan auf schnelle mobile Bedienung, Offline-Verfügbarkeit und robuste lokale Speicherung ausrichten.",
+      "outcome": "Eine klare, mobil lesbare Reiseansicht mit verlässlichen Checklisten, Terminen und Offline-Fallback.",
+      "does": "Codex prüft bestehende PWA-Struktur, verbessert Bedienung und Offline-Logik und erhält alle vorhandenen Funktionen.",
+      "needs": "Quellprojekt, Reisezeitraum, bestehende Termine und gewünschte lokale beziehungsweise private Daten.",
+      "guardrail": "Private Buchungs- und Kontaktlinks bleiben lokal; vorhandene Termine und Zeitzonen werden nicht stillschweigend verändert.",
+      "prompt": "Arbeite den vorhandenen Reiseplan in [Projektordner] für die mobile Nutzung aus.\n\nErhalte alle bestehenden Termine, Zeitzonen, Simulationen, Checklisten und lokalen Daten. Verbessere:\n- schnelle Lesbarkeit und Bedienung auf iPhone\n- Offline-Fallback und Service-Worker-Verhalten\n- lokale Speicherung und Wiederherstellung\n- klare Tagesstruktur, Status und Checklisten\n- Performance und reduzierte Bewegung\n\nPrivate Buchungs- oder Kontaktlinks dürfen nicht in eine öffentliche Fassung gelangen. Führe Build, Syntaxprüfung und Mobile-QA bei 375 px und 320 px durch."
+    },
+    {
+      "id": "travel-end-to-end",
+      "area": "travel",
+      "depth": "end-to-end",
+      "capabilityId": "webseiten-webapps",
+      "title": "Reiseplan End-to-End aktualisieren",
+      "example": "Aktuelle Reiseinformationen recherchieren, in die bestehende PWA integrieren und die private Online-Version cache-sicher abnehmen.",
+      "outcome": "Ein vollständiger, aktueller und auf dem iPhone geprüfter privater Reiseplan.",
+      "does": "Codex recherchiert aktuelle Fakten, aktualisiert nur freigegebene Daten, testet Funktionen und prüft die reale Bereitstellung.",
+      "needs": "Reiseziel, Zeitraum, Quellprojekt, freigegebene private Details und Zugang zum vorhandenen Hosting.",
+      "guardrail": "Keine Buchung, Stornierung, Zahlung oder Veröffentlichung privater Reisedaten ohne ausdrückliche Bestätigung.",
+      "prompt": "Aktualisiere den privaten Reiseplan in [Projektordner] für [Ziel und Zeitraum] End-to-End.\n\n1. Prüfe aktuelle Öffnungszeiten, Veranstaltungen, Wege und Wetter nur aus verlässlichen Quellen.\n2. Trenne bestätigte Fakten, Annahmen und offene Entscheidungen.\n3. Integriere die freigegebenen Inhalte in die vorhandene PWA, ohne Funktionen zu entfernen.\n4. Prüfe Termine, Zeitzonen, Checklisten, lokale Speicherung und Offline-Verhalten.\n5. Führe Build, Mobile-QA und Datenschutzscan aus.\n6. Aktualisiere das bestehende private Hosting und prüfe Cache-Busting- sowie kanonische URL.\n\nKeine Buchung oder externe Nachricht ohne meine separate Bestätigung."
+    },
+    {
+      "id": "files-inventory",
+      "area": "files",
+      "depth": "quick",
+      "capabilityId": "dateien-arbeitsbereiche",
+      "title": "Tiefeninventar ohne Änderungen erstellen",
+      "example": "Einen Ordner vollständig bis in tiefe Unterordner erfassen, ohne Dateien zu verschieben oder zu löschen.",
+      "outcome": "Ein strukturiertes Inventar mit Dateitypen, Größen, Tiefen, Schutzgrenzen und auffälligen Bereichen.",
+      "does": "Codex untersucht rekursiv, erkennt Pakete, Symlinks und Cloud-Platzhalter und liefert eine sichere Orientierung.",
+      "needs": "Exakter Zielordner und Hinweise auf aktive Projekte, Cloud-Speicher oder besonders sensible Bereiche.",
+      "guardrail": "Nur lesen und dokumentieren; keine Bewegungen, Downloads von Cloud-Platzhaltern oder Paketveränderungen.",
+      "prompt": "Inventarisiere [exakter Ordner] rekursiv bis in die tiefsten Unterordner, ohne etwas zu verändern.\n\nErfasse:\n- Anzahl Dateien/Ordner und maximale Tiefe\n- Größen und Dateitypen\n- aktive Projekt-, Paket- und technische Schutzgrenzen\n- Symlinks, ACLs und Cloud-Platzhalter\n- mögliche Dubletten-Kandidaten, aber noch ohne Lösch- oder Verschiebeentscheidung\n\nGib zuerst die wichtigsten Befunde, dann eine sichere Ordnungsempfehlung. Dokumentiere ausdrücklich, welche Bereiche unangetastet blieben."
+    },
+    {
+      "id": "files-duplicates",
+      "area": "files",
+      "depth": "develop",
+      "capabilityId": "dateien-arbeitsbereiche",
+      "title": "Dubletten beweissicher prüfen",
+      "example": "Verdächtige Datei- und Ordnerduplikate über Hashes, Metadaten und Referenzen vergleichen.",
+      "outcome": "Eine belastbare Keeper-/Kandidatenmatrix mit Beweisen und Rücksicherungsweg – noch ohne Löschung.",
+      "does": "Codex vergleicht SHA-256 beziehungsweise Baumdigests, prüft Pakete und bewertet Herkunft sowie Wiederherstellbarkeit.",
+      "needs": "Zielbereiche, gewünschte Keeper-Logik und vorhandene Backups oder Referenzordner.",
+      "guardrail": "Keine Datei allein wegen gleichen Namens oder ähnlicher Größe löschen; Cloud- und Paketgrenzen respektieren.",
+      "prompt": "Prüfe die Dubletten-Kandidaten in [Ordner A] gegen [Ordner B].\n\nVorgehen:\n1. Erfasse Namen, Größe, Zeitstempel und Herkunft.\n2. Hash normale Dateien mit SHA-256.\n3. Vergleiche Ordner über reproduzierbare Baumdigests und macOS-Pakete vollständig.\n4. Berücksichtige Symlinks, ACLs und nicht lokal geladene Cloud-Dateien.\n5. Erstelle eine Matrix: Keeper, Kandidat, Beweis, Risiko und Rücksicherung.\n\nNoch nichts löschen oder verschieben. Unbestätigte, unvollständige oder nicht lokal verfügbare Kandidaten bleiben unangetastet."
+    },
+    {
+      "id": "files-organize",
+      "area": "files",
+      "depth": "end-to-end",
+      "capabilityId": "dateien-arbeitsbereiche",
+      "title": "Ablage reversibel neu ordnen",
+      "example": "Eine gewachsene Dateiablage tiefgehend sortieren, ohne aktive Strukturen oder unklare Inhalte zu verlieren.",
+      "outcome": "Eine nachvollziehbare Ordnung mit Bewegungsmanifest, Quarantäne statt Löschung und vollständigem Rollback.",
+      "does": "Codex plant, bewegt nur eindeutig zugeordnete Elemente, verifiziert beide Seiten und dokumentiert jeden Schritt.",
+      "needs": "Freigegebener Zielbereich, gewünschte Taxonomie, Schutzbereiche und ein Ort für Quarantäne beziehungsweise Rücksicherung.",
+      "guardrail": "Keine Löschung; aktive Projekte, Pakete, Cloud-Symlinks und sensible Archive bleiben geschlossene Einheiten.",
+      "prompt": "Ordne [Zielbereich] End-to-End, aber vollständig reversibel.\n\n1. Erstelle zuerst ein Tiefeninventar und erkenne aktive Projekte, Pakete, Cloud-Symlinks, ACLs und Platzhalter.\n2. Leite eine verständliche Taxonomie aus den vorhandenen Arbeitsbereichen ab.\n3. Lege einen Bewegungsplan mit Quelle, Ziel, Begründung und Rückweg vor.\n4. Verschiebe nur eindeutig zugeordnete Elemente.\n5. Lege unklare Löschkandidaten in eine ausdrücklich nicht zu löschende Quarantäne.\n6. Verifiziere jede Bewegung mit Metadaten und, wo sinnvoll, Hashes.\n7. Erstelle Manifest, Rücksicherungsanleitung und Liste unangetasteter Bereiche.\n\nKeine Inhalte löschen."
+    },
+    {
+      "id": "github-status",
+      "area": "github",
+      "depth": "quick",
+      "capabilityId": "git-github",
+      "title": "Repository und Live-Status prüfen",
+      "example": "Lokalen Branch, Remote, letzte Commits und eine veröffentlichte URL zu einem belegten Statusbild zusammenführen.",
+      "outcome": "Ein kompakter Bericht, der lokalen Quellstand, GitHub-Stand und echte Online-Erreichbarkeit sauber trennt.",
+      "does": "Codex prüft Git und GitHub read-only und ruft die Live-URL über HTTPS ab.",
+      "needs": "Lokaler Repository-Pfad oder GitHub-URL sowie die erwartete Live-Adresse.",
+      "guardrail": "Keine Commits, Pushes oder Einstellungen ändern; ein lokaler Build gilt nicht als Online-Nachweis.",
+      "prompt": "Prüfe den aktuellen Status von [lokaler Repository-Pfad oder GitHub-URL], ohne etwas zu verändern.\n\nBerichte getrennt:\n- lokaler Branch, Arbeitsbaum und letzter Commit\n- Remote, Standardbranch und Sichtbarkeit\n- offener PR-/CI-Status, sofern relevant\n- Deployment- oder Pages-Status\n- echter HTTPS-Aufruf von [Live-URL]\n- Abweichungen zwischen lokalem und veröffentlichtem Stand\n\nBelege jede Aussage mit dem passenden Git-, GitHub- oder HTTP-Nachweis."
+    },
+    {
+      "id": "github-pr-ci",
+      "area": "github",
+      "depth": "develop",
+      "capabilityId": "git-github",
+      "title": "PR- und CI-Probleme beheben",
+      "example": "Fehlgeschlagene GitHub-Actions-Checks bis zur klaren Ursache und gezielten Korrektur untersuchen.",
+      "outcome": "Ein minimaler Fix mit lokalem Test, aktualisiertem Branch und nachvollziehbarer PR-Zusammenfassung.",
+      "does": "Codex liest Checks und Logs, reproduziert den Fehler lokal, ändert nur betroffene Dateien und pusht den geprüften Fix.",
+      "needs": "Repository, Branch oder Pull Request und Berechtigung zum Ändern des betroffenen Branches.",
+      "guardrail": "Keine unrelated Änderungen stage’n; keine Sicherheitskontrolle oder fehlende Berechtigung umgehen.",
+      "prompt": "Untersuche die fehlgeschlagenen Checks für [Repository und PR/Branch].\n\n1. Prüfe PR-Metadaten und alle fehlgeschlagenen GitHub-Actions-Checks.\n2. Lies die relevanten Logs und bestimme die erste belastbare Ursache.\n3. Reproduziere den Fehler lokal, wenn möglich.\n4. Setze den kleinsten gezielten Fix um und ergänze den fehlenden Regressionstest.\n5. Führe die relevanten lokalen Checks erneut aus.\n6. Committe und pushe nur die betroffenen Dateien in den bestehenden Branch.\n\nBerichte Ursache, Änderung, Tests und verbleibende Warnungen."
+    },
+    {
+      "id": "github-pages",
+      "area": "github",
+      "depth": "end-to-end",
+      "capabilityId": "git-github",
+      "title": "GitHub Pages sicher aktualisieren",
+      "example": "Eine statische Seite prüfen, committen, auf main veröffentlichen und die echte Pages-Version bis zum identischen Inhalt abnehmen.",
+      "outcome": "Ein öffentliches HTTPS-Deployment mit sauberem Commit, gebautem Pages-Status und überprüfter URL.",
+      "does": "Codex scannt Inhalte, committed mit datenschutzfreundlicher Identität, pusht, beobachtet den Build und vergleicht Live-Datei und Quelle.",
+      "needs": "Lokales Repository, GitHub-Ziel, gewünschte öffentliche Sichtbarkeit und klare Freigabe zum Push auf den Veröffentlichungsbranch.",
+      "guardrail": "Keine privaten Dateien, Zugangsdaten oder lokalen Commit-Adressen veröffentlichen; Live-URL erst nach HTTP- und Inhaltsprüfung bestätigen.",
+      "prompt": "Aktualisiere die GitHub-Pages-Seite im Repository [Pfad/Repository] End-to-End.\n\n1. Prüfe Arbeitsbaum, Remote, Zielbranch und GitHub-Anmeldung.\n2. Scanne alle Veröffentlichungsdateien auf Secrets, private Links und persönliche Daten.\n3. Führe Syntax-, Interaktions-, Desktop- und Mobile-Prüfungen aus.\n4. Stage nur die beabsichtigten Dateien und verwende eine GitHub-noreply-Commit-Adresse.\n5. Committe und pushe auf [Branch].\n6. Beobachte den Pages-Build bis status built.\n7. Rufe die HTTPS-URL ab und vergleiche Hash oder Inhalt mit dem lokalen Stand.\n\nTeile die URL erst mit, wenn Build und echter Online-Aufruf erfolgreich sind."
+    },
+    {
+      "id": "data-pdf",
+      "area": "data",
+      "depth": "quick",
+      "capabilityId": "pdf",
+      "title": "PDFs zur Entscheidungsvorlage verdichten",
+      "example": "Mehrere Unterlagen auf Kernaussagen, Risiken, Widersprüche und offene Entscheidungen prüfen.",
+      "outcome": "Eine kurze Entscheidungsvorlage mit Quellenstellen, offenen Fragen und klarer Empfehlung.",
+      "does": "Codex liest die Dokumente, trennt Fakten und Bewertung und verweist auf konkrete Seiten.",
+      "needs": "Die PDFs, Zielentscheidung, gewünschte Perspektive und bekannte Ausschlusskriterien.",
+      "guardrail": "Keine fehlenden Vertrags-, Rechts- oder Finanzinformationen ergänzen; kritische Punkte zur professionellen Prüfung markieren.",
+      "prompt": "Analysiere die beigefügten PDFs für die Entscheidung [Entscheidung].\n\nErstelle:\n- eine knappe Zusammenfassung je Dokument\n- belegte Fakten mit Seitenverweis\n- Widersprüche, Risiken und fehlende Informationen\n- eine Vergleichsmatrix der relevanten Optionen\n- offene Fragen vor der Entscheidung\n- eine begründete Empfehlung mit Unsicherheiten\n\nTrenne Dokumentinhalt, deine Schlussfolgerung und meine noch zu bestätigenden Annahmen. Ersetze keine rechtliche, steuerliche oder finanzielle Fachprüfung."
+    },
+    {
+      "id": "data-spreadsheet",
+      "area": "data",
+      "depth": "develop",
+      "capabilityId": "tabellen-excel",
+      "title": "Excel-Datenqualität und Logik prüfen",
+      "example": "Eine gewachsene Tabelle auf Formelfehler, Dubletten, Lücken, Ausreißer und unklare Definitionen untersuchen.",
+      "outcome": "Ein bereinigter, nachvollziehbarer Datenstand mit Prüfprotokoll und klaren Kennzahlendefinitionen.",
+      "does": "Codex profiliert die Daten, prüft Formeln und Beziehungen, korrigiert freigegebene Fehler und validiert das Ergebnis.",
+      "needs": "Arbeitsmappe, Bedeutung der Tabellenblätter, zentrale Kennzahlen und erlaubte Korrekturen.",
+      "guardrail": "Originaldaten bleiben erhalten; unklare Werte werden markiert statt erfunden oder stillschweigend ersetzt.",
+      "prompt": "Prüfe die Arbeitsmappe [Datei] systematisch auf Datenqualität.\n\n1. Inventarisiere Tabellenblätter, Bereiche, Formeln und Abhängigkeiten.\n2. Suche Dubletten, fehlende Werte, Formatbrüche, Ausreißer und inkonsistente Kategorien.\n3. Prüfe zentrale Formeln und Summen gegen unabhängige Berechnungen.\n4. Definiere die wichtigsten Kennzahlen mit Einheit, Zeitraum, Nenner und Ausschlüssen.\n5. Korrigiere nur eindeutig belegte Fehler und erhalte die Originaldaten in einem unveränderten Blatt.\n6. Erstelle ein Prüfprotokoll mit vorher/nachher und offenen Fragen.\n\nZielentscheidung: [Zweck]."
+    },
+    {
+      "id": "data-dashboard",
+      "area": "data",
+      "depth": "end-to-end",
+      "capabilityId": "datenanalyse-dashboard",
+      "title": "Entscheidungsdashboard erstellen",
+      "example": "Aus belastbaren Daten ein ruhiges Dashboard mit KPIs, Treibern, Guardrails und klaren Handlungshinweisen bauen.",
+      "outcome": "Ein validiertes Dashboard, das Status, Veränderung und Ursachen ohne erfundene Daten sichtbar macht.",
+      "does": "Codex prüft Datenqualität, definiert Metriken, analysiert Treiber, baut Visuals und validiert die gesamte Aussagekette.",
+      "needs": "Datenquelle, Geschäftsfrage, Zeitraum, Zielgruppe und bekannte Definitionen beziehungsweise Ausschlüsse.",
+      "guardrail": "Keine Annahme als Messwert darstellen; Quellen, Berechnung und Unsicherheit bleiben sichtbar.",
+      "prompt": "Erstelle aus [Datenquelle] ein belastbares Entscheidungsdashboard für [Geschäftsfrage].\n\nArbeite End-to-End:\n1. Prüfe Datenqualität, Vollständigkeit, Grain und Zeitabdeckung.\n2. Definiere KPIs, Treiber und Guardrails mit exakten Formeln.\n3. Analysiere Status, Veränderung und wahrscheinliche Ursachen.\n4. Wähle nur Visualisierungen, die eine wichtige Beziehung verständlicher machen.\n5. Zeige Quellen, Methodik, Filter, Ausschlüsse und Unsicherheiten.\n6. Validiere Berechnungen und Aussagen vor der Veröffentlichung.\n\nZielgruppe: [Zielgruppe].\nZeitraum: [Zeitraum].\nGewünschte Entscheidung: [Entscheidung]."
+    },
+    {
+      "id": "knowledge-next-steps",
+      "area": "knowledge",
+      "depth": "quick",
+      "capabilityId": "codex-aufgaben",
+      "title": "Nächste Schritte ohne Umbau klären",
+      "example": "Bei mehreren Projekten zuerst die korrekte Zuordnung und den echten Status feststellen, bevor etwas verändert wird.",
+      "outcome": "Eine konkrete Prioritätenfolge mit Abhängigkeiten, offenen Entscheidungen und dem kleinsten sinnvollen nächsten Schritt.",
+      "does": "Codex prüft Projektpfad, Quellen und Status und verändert zunächst nichts.",
+      "needs": "Aktueller Arbeitsordner, Projektname und die Frage, welches Ergebnis als Nächstes erreicht werden soll.",
+      "guardrail": "Keine große Annahme, kein Redesign und keine Veröffentlichung, bevor Quelle und Ziel eindeutig sind.",
+      "prompt": "Kläre die nächsten Schritte für [Projekt], ohne schon etwas umzubauen.\n\n1. Prüfe zuerst, ob der aktuelle Arbeitsordner wirklich zum Projekt gehört.\n2. Identifiziere kanonische Quelle, ältere Varianten und aktuelle Nachweise.\n3. Trenne fertig, teilweise, Konzept, blockiert und nicht verifiziert.\n4. Nenne Entscheidungen, Abhängigkeiten und Risiken.\n5. Gib eine konkrete Prioritätenfolge mit dem kleinsten sicheren nächsten Schritt.\n\nÄndere keine Dateien, Veröffentlichungen oder externen Systeme."
+    },
+    {
+      "id": "knowledge-notion",
+      "area": "knowledge",
+      "depth": "develop",
+      "capabilityId": "notion",
+      "title": "Notion-Briefing belastbar aktualisieren",
+      "example": "Projektstand, Entscheidungen, Risiken und nächste Arbeitspakete aus mehreren Quellen in einer verlässlichen Wissensseite zusammenführen.",
+      "outcome": "Ein strukturiertes Briefing mit Quellenlage, Definition of Done, Risikoregister und klaren Aufgaben.",
+      "does": "Codex recherchiert verbundene Notion-Seiten und freigegebene Dateien und aktualisiert die Zielseite gezielt.",
+      "needs": "Zielseite oder Datenbank, relevante Quellen und klare Vorgabe, welche Abschnitte verändert werden dürfen.",
+      "guardrail": "Keine veraltete Erinnerung als aktuellen Live-Status ausgeben; keine privaten Inhalte breiter teilen als freigegeben.",
+      "prompt": "Aktualisiere das Notion-Briefing [Seite] für [Projekt].\n\nNutze die freigegebenen Quellen [Quellen] und strukturiere:\n- Ziel und aktueller Stand\n- bestätigte Fakten mit Herkunft und Datum\n- Annahmen und offene Fragen\n- Entscheidungen und Begründungen\n- Risiken und Gegenmaßnahmen\n- Definition of Done\n- priorisierte Arbeitspakete mit Verantwortlichkeit und Abhängigkeiten\n\nErhalte vorhandene Struktur, sofern sie trägt. Markiere veraltete oder nicht aktuell verifizierte Angaben sichtbar. Veröffentliche oder teile nichts zusätzlich."
+    },
+    {
+      "id": "knowledge-automation",
+      "area": "knowledge",
+      "depth": "end-to-end",
+      "capabilityId": "automationen",
+      "title": "Wöchentlichen Projektmonitor einrichten",
+      "example": "Repository-, Build-, Deployment- und Aufgabenstatus regelmäßig prüfen und als kompakten Bericht in Codex zurückmelden.",
+      "outcome": "Eine wiederkehrende Automation mit klarer Frequenz, Quellen, Warnschwellen und sicherer Ergebnisdarstellung.",
+      "does": "Codex definiert den Monitor, richtet ihn ein und prüft einen ersten Lauf innerhalb der verfügbaren Berechtigungen.",
+      "needs": "Projektordner, gewünschter Wochentag, relevante Quellen und Kriterien für Erfolg, Warnung und Handlungsbedarf.",
+      "guardrail": "Keine automatischen Pushes, Nachrichten, Käufe, Löschungen oder Produktionsänderungen ohne separate Autorisierung.",
+      "prompt": "Richte für [Projekt] einen wöchentlichen Statusmonitor ein.\n\nZeitpunkt: [Wochentag und Uhrzeit, Zeitzone].\nPrüfquellen: [Repository, Build, Deployment, Aufgabenliste, Dokumentation].\n\nDer Bericht soll enthalten:\n- Änderungen seit dem letzten Lauf\n- Build-/Test-/Deploymentstatus\n- neue Fehler oder Warnungen\n- offene Blocker und veraltete Nachweise\n- drei priorisierte nächste Schritte\n\nDefiniere klare Schwellen für OK, Beobachten und Handlungsbedarf. Die Automation darf nur lesen und berichten; keine Commits, Pushes, Nachrichten, Löschungen oder Produktionsänderungen ohne meine ausdrückliche Freigabe."
+    }
+  ]
+}

@@ -26,6 +26,10 @@ async function render(pathname = "/") {
 test("server-renders the app routes and function submenus", async () => {
   const routes = [
     ["/", /Guten Tag, Olaf\./],
+    ["/wissen", /Aus KI-Neuigkeiten werden anwendbare nächste Schritte/],
+    ["/wissen/niklas-volland", /Alle Niklas-Tipps/],
+    ["/wissen/chatgpt", /Funktionen verstehen, richtig auswählen/],
+    ["/wissen/codex", /Fähigkeiten, Grenzen und fertige Praxisaufträge/],
     ["/funktionen", /Wie möchtest du ein Werkzeug finden/],
     ["/funktionen/alle", /Finde genau die Funktion/],
     ["/funktionen/kern", /Deine wichtigsten Werkzeuge/],
@@ -53,7 +57,7 @@ test("server-renders the app routes and function submenus", async () => {
 });
 
 test("contains the 29-function core, screenshot catalog, submenus and interaction surfaces", async () => {
-  const [data, catalog, shell, appLink, functionHub, categoryHub, library, workflowBoard, promptStudio, css, layout, packageJson, nextConfig, pagesWorkflow, og] = await Promise.all([
+  const [data, catalog, shell, appLink, functionHub, categoryHub, library, workflowBoard, promptStudio, knowledgeHub, niklasLibrary, codexLibrary, knowledgeData, css, layout, packageJson, nextConfig, pagesWorkflow, og] = await Promise.all([
     readFile(new URL("../app/tool-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/plugin-catalog.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/AppShell.tsx", import.meta.url), "utf8"),
@@ -63,6 +67,10 @@ test("contains the 29-function core, screenshot catalog, submenus and interactio
     readFile(new URL("../app/ToolLibrary.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/WorkflowBoard.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/PromptStudio.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/KnowledgeHub.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/NiklasKnowledgeLibrary.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/CodexKnowledgeLibrary.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/knowledge-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
@@ -104,7 +112,7 @@ test("contains the 29-function core, screenshot catalog, submenus and interactio
     assert.match(catalog, new RegExp(`\\["${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   }
 
-  for (const href of ["/", "/funktionen", "/workflow", "/prompts"]) {
+  for (const href of ["/", "/wissen", "/funktionen", "/workflow", "/prompts"]) {
     assert.match(shell, new RegExp(`href: "${href.replace("/", "\\/")}"`));
   }
   assert.match(shell, /app-mobile-nav/);
@@ -134,12 +142,25 @@ test("contains the 29-function core, screenshot catalog, submenus and interactio
   assert.match(promptStudio, /masterPrompt/);
   assert.match(promptStudio, /sourceOptions/);
   assert.match(promptStudio, /navigator\.clipboard\.writeText/);
+  assert.match(knowledgeHub, /\/wissen\/niklas-volland/);
+  assert.match(knowledgeHub, /\/wissen\/chatgpt/);
+  assert.match(knowledgeHub, /\/wissen\/codex/);
+  assert.match(niklasLibrary, /Was bringt es Olaf/);
+  assert.match(niklasLibrary, /Neue Möglichkeiten/);
+  assert.match(niklasLibrary, /Prompt kopieren/);
+  assert.match(niklasLibrary, /Quellen &amp; Einordnung/);
+  assert.match(codexLibrary, /Praxis für Olaf/);
+  assert.match(codexLibrary, /Wichtige Grenze/);
+  assert.match(knowledgeData, /niklasInsightsJson/);
+  assert.match(knowledgeData, /codexNavigatorJson/);
 
   assert.match(css, /@media \(max-width: 860px\)/);
   assert.match(css, /@media \(max-width: 360px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(css, /\.app-mobile-nav/);
   assert.match(css, /\.app-sidebar/);
+  assert.match(css, /\.knowledge-workspace/);
+  assert.match(css, /\.knowledge-prompt-card/);
   assert.match(layout, /openGraph/);
   assert.match(layout, /twitter/);
   assert.doesNotMatch(layout, /headers\(\)/);

@@ -21,7 +21,7 @@ const imageUrl = new URL(`${basePath}/og-v2.png`, siteOrigin).toString();
 const title = "Olaf · Tool Command Center";
 const description =
   `Olafs App-Navigator mit ${coreTools.length} Kernfunktionen, ${screenshotTools.length} Screenshot-Erweiterungen, ` +
-  "Prompt-Vorlagen und dem empfohlenen Workflow.";
+  "Niklas-Volland-Wissensbasis, Codex-Praxisnavigator, Prompt-Vorlagen und dem empfohlenen Workflow.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),

@@ -10,6 +10,7 @@ const isPublicBuild = Boolean(process.env.NEXT_PUBLIC_PUBLICATION_URL);
 
 const navigation = [
   { href: "/", label: "Dashboard", icon: "⌂" },
+  { href: "/wissen", label: "KI-Wissen", icon: "◇" },
   { href: "/funktionen", label: "Funktionen", icon: "▦" },
   { href: "/workflow", label: "Workflow", icon: "→" },
   { href: "/prompts", label: "Prompt-Studio", icon: "✦" },
@@ -23,10 +24,33 @@ const functionNavigation = [
   { href: "/funktionen/kategorien", label: "Kategorien" },
 ] as const;
 
+const knowledgeNavigation = [
+  { href: "/wissen", label: "Übersicht" },
+  { href: "/wissen/niklas-volland", label: "Niklas Volland" },
+  { href: "/wissen/chatgpt", label: "ChatGPT" },
+  { href: "/wissen/codex", label: "Codex" },
+] as const;
+
 const pageDetails: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Dashboard",
     description: "Dein persönlicher Ausgangspunkt",
+  },
+  "/wissen": {
+    title: "KI-Wissen",
+    description: "Tipps, Anwendungen und Prompts an einem Ort",
+  },
+  "/wissen/niklas-volland": {
+    title: "Niklas Volland",
+    description: "Tipps, Projektideen und direkt nutzbare Prompts",
+  },
+  "/wissen/chatgpt": {
+    title: "ChatGPT",
+    description: "Funktionen, Apps, Workflows und Vorlagen",
+  },
+  "/wissen/codex": {
+    title: "Codex",
+    description: "Fähigkeiten, Praxisaufträge und Freigabegrenzen",
   },
   "/funktionen": {
     title: "Funktionen",
@@ -70,6 +94,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const details = pageDetails[routePath]
     ?? (routePath.startsWith("/funktionen") ? pageDetails["/funktionen"] : pageDetails["/"]);
   const showFunctionNavigation = routePath.startsWith("/funktionen");
+  const showKnowledgeNavigation = routePath.startsWith("/wissen");
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -85,7 +110,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           <span className="app-brand-mark" aria-hidden="true">OT</span>
           <span>
             <strong>Tool Command Center</strong>
-            <small>Olafs App-Navigator</small>
+            <small>Olafs KI-Dashboard</small>
           </span>
         </AppLink>
 
@@ -105,6 +130,20 @@ export default function AppShell({ children }: { children: ReactNode }) {
               {item.href === "/funktionen" && showFunctionNavigation ? (
                 <div className="sidebar-subnavigation" aria-label="Untermenü Funktionen">
                   {functionNavigation.map((subitem) => (
+                    <AppLink
+                      className={routePath === subitem.href ? "active" : ""}
+                      href={subitem.href}
+                      key={subitem.href}
+                      aria-current={routePath === subitem.href ? "page" : undefined}
+                    >
+                      {subitem.label}
+                    </AppLink>
+                  ))}
+                </div>
+              ) : null}
+              {item.href === "/wissen" && showKnowledgeNavigation ? (
+                <div className="sidebar-subnavigation" aria-label="Untermenü KI-Wissen">
+                  {knowledgeNavigation.map((subitem) => (
                     <AppLink
                       className={routePath === subitem.href ? "active" : ""}
                       href={subitem.href}
@@ -161,9 +200,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        {showFunctionNavigation ? (
-          <nav className="app-section-nav" aria-label="Untermenü Funktionen">
-            {functionNavigation.map((item) => (
+        {showFunctionNavigation || showKnowledgeNavigation ? (
+          <nav
+            className={showKnowledgeNavigation ? "app-section-nav knowledge-section-nav" : "app-section-nav"}
+            aria-label={showKnowledgeNavigation ? "Untermenü KI-Wissen" : "Untermenü Funktionen"}
+          >
+            {(showKnowledgeNavigation ? knowledgeNavigation : functionNavigation).map((item) => (
               <AppLink
                 className={routePath === item.href ? "active" : ""}
                 href={item.href}

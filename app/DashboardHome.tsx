@@ -1,5 +1,6 @@
 import AppLink from "./AppLink";
-import { coreTools, screenshotTools, tools, workflow } from "./tool-data";
+import { codexCapabilities, niklasInsights } from "./knowledge-data";
+import { coreTools, screenshotTools, tools } from "./tool-data";
 
 const featuredScreenshotTools = ["GitHub", "Figma", "Supabase", "Vercel"]
   .map((name) => screenshotTools.find((tool) => tool.name === name))
@@ -13,12 +14,12 @@ export default function DashboardHome() {
           <span className="app-eyebrow">Dein persönliches Command Center</span>
           <h2>Guten Tag, Olaf.</h2>
           <p>
-            Wähle zuerst, was du erreichen möchtest. Die App führt dich danach in den passenden
-            Bereich – ohne dass du alle {tools.length} Funktionen überblicken musst.
+            Wähle zuerst, was du erreichen möchtest. Das Dashboard verbindet aktuelle KI-Tipps,
+            deine {tools.length} Werkzeuge und konkrete Umsetzungsaufträge auf einer Plattform.
           </p>
           <div className="welcome-actions">
-            <AppLink className="app-primary-button" href="/funktionen">Werkzeug finden <span aria-hidden="true">→</span></AppLink>
-            <AppLink className="app-secondary-button" href="/workflow">Workflow starten</AppLink>
+            <AppLink className="app-primary-button" href="/wissen">KI-Wissen öffnen <span aria-hidden="true">→</span></AppLink>
+            <AppLink className="app-secondary-button" href="/funktionen">Werkzeug finden</AppLink>
           </div>
         </div>
         <div className="welcome-focus">
@@ -34,25 +35,39 @@ export default function DashboardHome() {
 
       <section className="dashboard-stats" aria-label="App-Kennzahlen">
         <article>
+          <span>Niklas-Wissensbasis</span>
+          <strong>{niklasInsights.length}</strong>
+          <small>Tipps mit Projektbezug und Vorlagen</small>
+        </article>
+        <article>
           <span>Werkzeugbibliothek</span>
           <strong>{tools.length}</strong>
           <small>{coreTools.length} Kern + {screenshotTools.length} Erweiterungen</small>
         </article>
         <article>
-          <span>Hohe Priorität</span>
-          <strong>{coreTools.filter((tool) => tool.priority === "A").length}</strong>
-          <small>persönliche Werkzeuge mit direktem Hebel</small>
+          <span>Codex-Fähigkeiten</span>
+          <strong>{codexCapabilities.length}</strong>
+          <small>mit Grenzen und Praxisaufträgen</small>
         </article>
         <article>
-          <span>Kern-Workflow</span>
-          <strong>{workflow.length}</strong>
-          <small>aufeinanderfolgende Schritte</small>
-        </article>
-        <article>
-          <span>Prompt-Bibliothek</span>
+          <span>ChatGPT-Prompts</span>
           <strong>{tools.length + 1}</strong>
           <small>alle Werkzeuge plus Master-Prompt</small>
         </article>
+      </section>
+
+      <section className="catalog-highlight" aria-label="Gemeinsame KI-Wissensbasis">
+        <div>
+          <span className="app-eyebrow">Neu zusammengeführt</span>
+          <h2>Ein Dashboard für Niklas Volland, ChatGPT und Codex</h2>
+          <p>Aktuelle Impulse, bewährte Werkzeuge, Projektbeispiele und direkt nutzbare Prompts sind jetzt intern miteinander verknüpft.</p>
+        </div>
+        <div className="catalog-highlight-links">
+          <AppLink href="/wissen/niklas-volland"><span>NV</span>Niklas Volland<i aria-hidden="true">→</i></AppLink>
+          <AppLink href="/wissen/chatgpt"><span>GPT</span>ChatGPT<i aria-hidden="true">→</i></AppLink>
+          <AppLink href="/wissen/codex"><span>CX</span>Codex<i aria-hidden="true">→</i></AppLink>
+          <AppLink className="catalog-all-link" href="/wissen">KI-Wissen öffnen <i aria-hidden="true">→</i></AppLink>
+        </div>
       </section>
 
       <section className="catalog-highlight" aria-label="Neue Screenshot-Erweiterungen">

@@ -10,6 +10,10 @@ test("GitHub Pages export contains all routes under the repository base path", a
   await access(new URL("og-v2.png", outputRoot));
   const routeFiles = [
     ["index.html", /Guten Tag, Olaf\./],
+    ["wissen/index.html", /Aus KI-Neuigkeiten werden anwendbare nächste Schritte/],
+    ["wissen/niklas-volland/index.html", /Alle Niklas-Tipps/],
+    ["wissen/chatgpt/index.html", /Funktionen verstehen, richtig auswählen/],
+    ["wissen/codex/index.html", /Fähigkeiten, Grenzen und fertige Praxisaufträge/],
     ["funktionen/index.html", /Wie möchtest du ein Werkzeug finden/],
     ["funktionen/alle/index.html", /Finde genau die Funktion/],
     ["funktionen/kern/index.html", /Deine wichtigsten Werkzeuge/],
@@ -44,7 +48,8 @@ test("GitHub Pages export contains all routes under the repository base path", a
     readFile(new URL("../server/vinext-prerender.json", outputRoot), "utf8"),
   ]);
 
-  assert.match(home, /alle <!-- -->235<!-- --> Funktionen/);
+  assert.match(home, /Niklas-Wissensbasis/);
+  assert.match(home, /Codex-Fähigkeiten/);
   assert.match(functionsHub, /13 Kategorien/);
   assert.match(library, /235<\/strong><span>Funktionen gesamt/);
   assert.match(prompts, /236<!-- --> direkt nutzbare Vorlagen/);
@@ -53,6 +58,10 @@ test("GitHub Pages export contains all routes under the repository base path", a
   const prerender = JSON.parse(manifest);
   const expectedRoutes = [
     "/",
+    "/wissen",
+    "/wissen/niklas-volland",
+    "/wissen/chatgpt",
+    "/wissen/codex",
     "/funktionen",
     "/funktionen/alle",
     "/funktionen/kern",
