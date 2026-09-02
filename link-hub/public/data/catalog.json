@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 212,
-    "updatedAt": "2026-09-01T23:55:55.244Z",
+    "version": 213,
+    "updatedAt": "2026-09-02T04:00:39.891Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -45,10 +45,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "02cef3074dbaea67a08f51705e0243d9e9a05617a8dc99e9c29a805511bf1feb",
+          "fingerprint": "dc04e563b929984d60e7017a61e39b2051b779fef918bf8ff62d4217bc808391",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-01T23:55:55.244Z",
+          "lastCheckedAt": "2026-09-02T04:00:39.891Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -94,10 +94,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "a9c5813e1d90eb571f1342843e0ed304caab75b5c73d1bc38371f778cfaf3cf4",
+          "fingerprint": "69321473aa045abb3cd1bd6a0bed2fa0ef44568923dc6ce537355fc61ecb0495",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-09-01T23:55:55.244Z"
+          "lastCheckedAt": "2026-09-02T04:00:39.891Z"
         }
       ],
       "files": [
@@ -147,8 +147,8 @@
           "accessMode": "account-required",
           "lastHttpStatus": 401,
           "resolvedUrl": "https://olaf-tiehen-persoenlich.immocoach-ol-7062.chatgpt.site/",
-          "lastCheckedAt": "2026-08-19T00:47:56.968Z",
-          "fingerprint": "4d05503ef8cba2fdd25a88ac6dbd4234b9ab601186a6ecd0d64fd882eb8f8d38"
+          "lastCheckedAt": "2026-09-02T04:00:39.891Z",
+          "fingerprint": "21175eae33194d8cc810e98ab8fa567ab1a46ab44c331764b664710050318f7d"
         },
         {
           "label": "Datensparsame Render-Referenz",
@@ -619,10 +619,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "8ee04fe7052afa67c69e4d99f82147d85a1cde52ea90ba3d5b278184e4f070ed",
+          "fingerprint": "9020b3cb6a59fa734f9941b59263a499ea5cd30cb177945a1ce7b1c9ef57b376",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-09-01T23:55:55.244Z",
+          "lastCheckedAt": "2026-09-02T04:00:39.891Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
