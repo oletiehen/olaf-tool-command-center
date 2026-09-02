@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 216,
-    "updatedAt": "2026-09-02T17:49:49.907Z",
+    "version": 217,
+    "updatedAt": "2026-09-02T20:54:00.916Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -45,10 +45,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "c8449b385f5f3dfe5be4ebb47967ad60699ea9ce8f603a7e716635c19896b54b",
+          "fingerprint": "115adb32935c621d693fa603845f0d908f225b35b49999348e35d39178f1dee3",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-02T17:49:49.907Z",
+          "lastCheckedAt": "2026-09-02T20:54:00.916Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -94,10 +94,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "f82c3df3cd8ad95f37616e5b857f7f5b76b53c9f83b2692eb5751e67f6fa7344",
+          "fingerprint": "c2d89283e453e040caab1af3d64d0003dbb8f164cb6aee71cf12c7d9ecd6ff39",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-09-02T17:49:49.907Z"
+          "lastCheckedAt": "2026-09-02T20:54:00.916Z"
         }
       ],
       "files": [
@@ -210,10 +210,10 @@
           "label": "Öffentliche Referenzseite",
           "url": "https://www.davidlangarica.dev/",
           "kind": "reference",
-          "fingerprint": "1736ef2c2bff542546e64b05183aa9a4ea01e69ee86dd46c74ca563bae4e1308",
+          "fingerprint": "7af34e154c00aa98010d6b05b7b9aa7c744ecd7dbbc15087dc575fd51e0810fd",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://www.davidlangarica.dev/",
-          "lastCheckedAt": "2026-09-02T17:49:49.907Z",
+          "lastCheckedAt": "2026-09-02T20:54:00.916Z",
           "previewImage": "previews/catalog/website-animation-showcase-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -619,10 +619,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "cb2d182cbf352254c733da7eab36099f3981872717f7d15f8452141a019f047d",
+          "fingerprint": "58f133ca8c0bcb96e296e5a17b84dc8c9882b4bb546f94a534151001fcfc55f2",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-09-02T17:49:49.907Z",
+          "lastCheckedAt": "2026-09-02T20:54:00.916Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
