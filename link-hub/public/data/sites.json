@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 230,
-    "generatedAt": "2026-09-05T23:43:41.231Z",
+    "version": 231,
+    "generatedAt": "2026-09-06T04:05:25.235Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -61,10 +61,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "e1055d8425495e3480f3626d8e4cb55e633ec9180f4980a4f0467c935ab5ace7",
+          "fingerprint": "d32743d2b5d06de92c40a0001962398da7f12f9a6dcc37e87dc2d7a69f0b8499",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-05T23:43:41.231Z",
+          "lastCheckedAt": "2026-09-06T04:05:25.235Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -106,10 +106,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "0587dadab9b5f1ae75686f282fe9e9501da1915eab6815666ab361048ea64f60",
+          "fingerprint": "4cfc8895a6ff52ffa4e0f9223829cc007584531288203c0810ac3505e1fa4812",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-09-05T23:43:41.231Z",
+          "lastCheckedAt": "2026-09-06T04:05:25.235Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -261,10 +261,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "e3ddd82dd02db609e52d800b94f09bb705b6b21e06d11807a19aa65c27967a40",
+          "fingerprint": "7aa08b94b82797b98738fb50af6c5282da5ec9b09637365642febfbe8b512a8f",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-09-05T23:43:41.231Z",
+          "lastCheckedAt": "2026-09-06T04:05:25.235Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -275,8 +275,8 @@
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-05T18:03:28.004Z",
-      "fingerprint": "049edbc1bacf9858904fd7b9f68b4dd9cf8067b77cb4f231376e175f1e83dbd0",
+      "lastChangedAt": "2026-09-06T04:05:25.235Z",
+      "fingerprint": "229f890b2a76a87c0f5158c4c117d6cbf72943a99590000b1a5a3b4f115567e5",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -339,10 +339,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "8ca6da710dd4b32d1fc3123d13ba15aa14db134fdd66e6ce7689856aea2f4aa4",
+          "fingerprint": "bbb69fa171ffb1f739a754c5349734ef83f133717a9644d431fbeeb84589ad9c",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-09-05T23:43:41.231Z",
+          "lastCheckedAt": "2026-09-06T04:05:25.235Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -470,8 +470,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-05T23:43:41.231Z",
-      "fingerprint": "655cb097a5e60a850b7eedcc8aa488c3310f3af3496f96de46fb1cd36a89ebcf",
+      "lastChangedAt": "2026-09-06T04:05:25.235Z",
+      "fingerprint": "35ab272e41540ff20c4bb8e1a1899eacf822f5207fe5d212cbd3a3c08ecb9cf3",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
