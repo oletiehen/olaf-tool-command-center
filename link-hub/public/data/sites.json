@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 280,
-    "generatedAt": "2026-09-14T05:59:46.203Z",
+    "version": 281,
+    "generatedAt": "2026-09-14T12:35:17.801Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -31,13 +31,14 @@
       "lastPlatformUpdateAt": "2026-08-11T22:59:14.904544Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "3831405f417b5f76fd0140f4e3b7b294e3a187f9316047a263d281790bb2ea84",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "a284bb3fbb57afaad07261b4ccfc8dbeb44c46b21a724b9697599560fb9fcef3",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://olaf-wissens-zentrale.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "olaf-tool-command-center",
@@ -61,10 +62,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "014c8b023832e748b0d8373b5bc18cb09130a06b0c24077c0f0a7b7244d9221c",
+          "fingerprint": "f27078adc98da9a1a391d9221426fc1df638f4264ada06c042843af019b04d8a",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-14T05:59:46.203Z",
+          "lastCheckedAt": "2026-09-14T12:35:17.801Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -106,10 +107,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "e1e96f24acefdb4936279147f1fe33d5499f369337513003756d0cafebe9c18e",
+          "fingerprint": "6d3c39ffcf7a4dfc6e5d1d4d3b04c83b0ae11bf6806ea5a270a4a54555deb712",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-09-14T05:59:46.203Z",
+          "lastCheckedAt": "2026-09-14T12:35:17.801Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -153,8 +154,8 @@
       "lastPlatformUpdateAt": "2026-08-16T20:36:44.416006Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-10T18:16:38.471Z",
-      "fingerprint": "cf8a88ce4e7f3fcc64433c7baf15cb90d58c25a21f9c18ca96d2f7d60e5d05d0",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "ce893d20ff7765a3ccd70da23d9103c6649c15db030b805ab3673c9eef0bd7b9",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://harbor-ki-support.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -187,13 +188,14 @@
       "lastPlatformUpdateAt": "2026-08-11T22:53:45.928547Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "648389ee9e3fda1b05c835f0609630be0a404402fd543b453f4f2cfd6d746017",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "0523eb5354c5e93cf8957bde8998b68e9d3853ce6a474aa40c1aa0155e50dfac",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://apple-intelligence-watch.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "apple-intelligence-guide",
@@ -220,13 +222,14 @@
       "lastPlatformUpdateAt": "2026-08-07T23:54:07.126094Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "5fb1c8dda4afd8a08b2afa0f3c6c15ba17f9f45ed30d7f8353d331bc46a7f0fd",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "ff3da67fde25431e857ede9f58468ff0a77636d8cd0e0734b088ab91b410ace4",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://apple-intelligence-guide.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "marens-daily-glow",
@@ -261,10 +264,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "634179422d06559a7fdf957f5bef37eb46f0061b1dce5f793069e77f6d80c60e",
+          "fingerprint": "398242bda5ef6fdc60cf1a85c278f9c6824451757142204eb41a6ebe2acb905f",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-09-14T05:59:46.203Z",
+          "lastCheckedAt": "2026-09-14T12:35:17.801Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -275,8 +278,8 @@
       "lastPlatformUpdateAt": "2026-08-08T00:29:58.933203Z",
       "lastSourceUpdateAt": "2026-08-08T01:53:44Z",
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-14T05:59:46.203Z",
-      "fingerprint": "0e772cdb8b6914585ab6332ca7b19485fc301285683993bf8ea40829eea1a2ad",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "f682a4371cb308a672620ae72d9d7d8eb9965e9046b976fc77350d2c843c6e4c",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://mindful-pink-moments.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
@@ -309,13 +312,14 @@
       "lastPlatformUpdateAt": "2026-07-20T23:52:39.502425Z",
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": null,
-      "fingerprint": "0105adb73311436dc7f141c7cfe615576b0f5d381dd4c875b4d0fee10fb87251",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "2800dc364fa1a345eb56edd75ad5e304ac51c49b15b5b15d5d16dad184d662b6",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://ole-verwaltung.lovable.app/",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
-      "previewPolicy": "website-screenshot"
+      "previewPolicy": "website-screenshot",
+      "contentStatus": "ok"
     },
     {
       "id": "eingliederungshilfe-nrw",
@@ -339,10 +343,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "e212fbeeeedd7ae09df586920b753d8f4232884c38ee5ec98d5842967e377bf9",
+          "fingerprint": "4f0722824d2eaa5d455078b459c039b72fab7683ae47196e624e1c12d46cacc2",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-09-14T05:59:46.203Z",
+          "lastCheckedAt": "2026-09-14T12:35:17.801Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -470,8 +474,8 @@
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-14T05:59:46.203Z",
-      "fingerprint": "4a64fbe577ba1653b02608ec7b23d14e4b3f24e4dcb4f9adff3a22fbeaa3b3bf",
+      "lastChangedAt": "2026-09-14T12:35:17.801Z",
+      "fingerprint": "9eb8a5f4ed39ac72d030d15ae80c16ea3c631f640305b4378ae4976c8c61ef31",
       "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
