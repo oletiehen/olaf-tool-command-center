@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 308,
-    "generatedAt": "2026-09-19T14:17:37.974Z",
+    "version": 309,
+    "generatedAt": "2026-09-19T17:54:43.360Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -62,10 +62,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "74b16eefa795765dcc13f4acbfa561506d1d6d0f29cbb589db694805ad808b34",
+          "fingerprint": "4a51958393064698cf64393939db43b60c2e7368948b41f26b62504fb45b44ac",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-19T14:17:37.974Z",
+          "lastCheckedAt": "2026-09-19T17:54:43.360Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -107,10 +107,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "29e20c6c1642183743e914aadc5cf8f0d1f9b1d372af6a0e01f5c37a11ebb1ba",
+          "fingerprint": "2d3a938add84954e2730278c209c6d8b646c987947018eb3a0a0ed753e6aeca4",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-09-19T14:17:37.974Z",
+          "lastCheckedAt": "2026-09-19T17:54:43.360Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -264,10 +264,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "86e3b31d5954f6ada9b09f6a99e0aeec9e46795000c3d480866bdfbd1bb76c56",
+          "fingerprint": "e2784555fb85d602130f4ce73ac94b5e590cc6daba733f785f0e0b8d14b8cc13",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-09-19T14:17:37.974Z",
+          "lastCheckedAt": "2026-09-19T17:54:43.360Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -343,10 +343,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "4a1689f6a21d3303126c3a62f9eccfa570571e628fd198d5f8990d97beae7612",
+          "fingerprint": "a0d1b677de13c446a711fd2b9042f3f1a07a11228f86f60182ce060d25cc85a3",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-09-19T14:17:37.974Z",
+          "lastCheckedAt": "2026-09-19T17:54:43.360Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -464,19 +464,19 @@
           "kind": "live",
           "previewImage": "previews/chatgpt-share-pitch.png",
           "previewKind": "website-screenshot",
-          "lastHttpStatus": 200,
+          "lastHttpStatus": 0,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de"
         }
       ],
       "previewImage": "previews/chatgpt-share-pitch.png",
-      "status": "live",
+      "status": "offline",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-19T14:17:37.974Z",
+      "lastChangedAt": "2026-09-19T17:54:43.360Z",
       "fingerprint": "5020cd5672e096b38b388c78537bccccee71e77d6c68ef51c8320de3cde09286",
-      "lastHttpStatus": 200,
+      "lastHttpStatus": 0,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
