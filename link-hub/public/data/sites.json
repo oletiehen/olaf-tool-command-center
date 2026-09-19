@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projektzentrale",
-    "version": 306,
-    "generatedAt": "2026-09-19T05:40:05.312Z",
+    "version": 307,
+    "generatedAt": "2026-09-19T10:42:53.315Z",
     "monitoring": "stündlich bei echten Änderungen"
   },
   "sites": [
@@ -62,10 +62,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "e18fae17bb278dc93259fb22c1087e8cd99eb32495a43a79f45dcf2a157b0c77",
+          "fingerprint": "29e04e6f160f4f59d7835b4297e4ae919ba519995c196c1265b76aa9feff51cb",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-19T05:40:05.312Z",
+          "lastCheckedAt": "2026-09-19T10:42:53.315Z",
           "previewImage": "previews/links/olaf-tool-command-center-2.png",
           "previewKind": "website-screenshot"
         }
@@ -107,10 +107,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
           "kind": "source",
-          "fingerprint": "80c3b669e4c9c155cd847511ad101405bc3fbccdcc1ca1d3ab928dcc76ad8a35",
+          "fingerprint": "a1678860e03a925b604da28567c9cda0c2645503e7c0b2eae1e84d739323d61d",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/codex-faehigkeiten-navigator",
-          "lastCheckedAt": "2026-09-19T05:40:05.312Z",
+          "lastCheckedAt": "2026-09-19T10:42:53.315Z",
           "previewImage": "previews/links/codex-faehigkeiten-navigator-2.png",
           "previewKind": "website-screenshot"
         }
@@ -264,10 +264,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/marens-6-minuten",
           "kind": "source",
-          "fingerprint": "7c670f2d0eec92b5a9b995f58d74287981b85100020c4bc2daa7731d949b302d",
+          "fingerprint": "6583ee953573bd6921efd0089cd3132f96abc2fad16c0d07a6657379db447624",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/marens-6-minuten",
-          "lastCheckedAt": "2026-09-19T05:40:05.312Z",
+          "lastCheckedAt": "2026-09-19T10:42:53.315Z",
           "previewImage": "previews/links/marens-daily-glow-3.png",
           "previewKind": "website-screenshot"
         }
@@ -343,10 +343,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/eingliederungshilfe-nrw",
           "kind": "source",
-          "fingerprint": "d7a49fb1a7d12ecc21aca7380f1183075e72f50ca63b6971d35b7942f31492b3",
+          "fingerprint": "f1dc6918f595fd5d57f6e2a725523201fda7b238efeb93b3f8475e945df1e149",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/eingliederungshilfe-nrw",
-          "lastCheckedAt": "2026-09-19T05:40:05.312Z",
+          "lastCheckedAt": "2026-09-19T10:42:53.315Z",
           "previewImage": "previews/links/eingliederungshilfe-nrw-2.png",
           "previewKind": "website-screenshot"
         }
@@ -464,19 +464,19 @@
           "kind": "live",
           "previewImage": "previews/chatgpt-share-pitch.png",
           "previewKind": "website-screenshot",
-          "lastHttpStatus": 0,
+          "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de"
         }
       ],
       "previewImage": "previews/chatgpt-share-pitch.png",
-      "status": "offline",
+      "status": "live",
       "monitorMode": "web",
       "lastPlatformUpdateAt": null,
       "lastSourceUpdateAt": null,
       "lastPublishedAt": null,
-      "lastChangedAt": "2026-09-19T05:40:05.312Z",
-      "fingerprint": "1ac3ad21ab444ee18b5256e575ea679c16c77a4b7959fce29e9a086bcb4b96c2",
-      "lastHttpStatus": 0,
+      "lastChangedAt": "2026-09-19T10:42:53.315Z",
+      "fingerprint": "f80557fe274f1b3ffdc06cd914cf1c61e813f842fad9d4c4bc6516b1992da56b",
+      "lastHttpStatus": 200,
       "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
       "firstSeenAt": "2026-08-18T21:31:15.009Z",
       "previewKind": "website-screenshot",
