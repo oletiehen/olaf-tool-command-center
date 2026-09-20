@@ -1,11 +1,16 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
+<<<<<<< Updated upstream
     "version": 322,
 <<<<<<< Updated upstream
     "updatedAt": "2026-09-20T03:38:00.000Z",
 =======
     "updatedAt": "2026-09-20T03:38:15.276Z",
+>>>>>>> Stashed changes
+=======
+    "version": 323,
+    "updatedAt": "2026-09-20T03:40:37.088Z",
 >>>>>>> Stashed changes
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
@@ -49,10 +54,17 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
+<<<<<<< Updated upstream
           "fingerprint": "9bc985cb4f3f7897df4b58714148d0b5b41ed4c1b1aa6fe1fd4a05d8772198a5",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
           "lastCheckedAt": "2026-09-20T03:38:15.276Z",
+=======
+          "fingerprint": "316b4b061d8f6be8cc97935cf494c5bc508bb39a8d55cb0da7e7025f92cb1bf8",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
+          "lastCheckedAt": "2026-09-20T03:40:37.088Z",
+>>>>>>> Stashed changes
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -98,10 +110,17 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
+<<<<<<< Updated upstream
           "fingerprint": "6025c0da57307fb43f3feb6031925eb358c571426b2a442af8ef207f3e665653",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
           "lastCheckedAt": "2026-09-20T03:38:15.276Z"
+=======
+          "fingerprint": "c86e076c4771bfbda7f4ea49c298266b16da8c22131344ba43b8434f09ba4eeb",
+          "lastHttpStatus": 404,
+          "resolvedUrl": "https://immobilien-coach.netlify.app/",
+          "lastCheckedAt": "2026-09-20T03:40:37.088Z"
+>>>>>>> Stashed changes
         }
       ],
       "files": [
@@ -407,7 +426,11 @@
           "fingerprint": "4a01f6908cf9229749f20d77a9f5981da6c5b6b7b440a1f08fff92faba00e819",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/ki-tools/",
+<<<<<<< Updated upstream
           "lastCheckedAt": "2026-09-20T03:38:15.276Z"
+=======
+          "lastCheckedAt": "2026-09-20T03:40:37.088Z"
+>>>>>>> Stashed changes
         },
         {
           "label": "Niklas Volland Nutzen-Dashboard",
@@ -696,13 +719,20 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
+<<<<<<< Updated upstream
           "fingerprint": "2f6acbbe03c3391a2560e9ba4cb2eb548a0a3c71c4ca42553b854082deff79ca",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "lastCheckedAt": "2026-09-20T03:38:15.276Z",
+=======
+          "fingerprint": "b5b42a76fe3881052106402fc19201f415f9c3924a9c493dfaf6a96ce383e97c",
+          "lastHttpStatus": 200,
+          "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
+          "lastCheckedAt": "2026-09-20T03:40:37.088Z",
+>>>>>>> Stashed changes
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
-          "contentStatus": "ok"
+          "contentStatus": "unavailable"
         }
       ],
       "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
