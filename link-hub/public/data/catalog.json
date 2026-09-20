@@ -2,7 +2,11 @@
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
     "version": 322,
+<<<<<<< Updated upstream
     "updatedAt": "2026-09-20T03:38:00.000Z",
+=======
+    "updatedAt": "2026-09-20T03:38:15.276Z",
+>>>>>>> Stashed changes
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -45,10 +49,10 @@
           "label": "GitHub",
           "url": "https://github.com/oletiehen/olaf-tool-command-center",
           "kind": "source",
-          "fingerprint": "74d6ba4d5539bb42563d9cd89fe0d8240e7855289d04204ff65b19fe1c4ef387",
+          "fingerprint": "9bc985cb4f3f7897df4b58714148d0b5b41ed4c1b1aa6fe1fd4a05d8772198a5",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://github.com/oletiehen/olaf-tool-command-center",
-          "lastCheckedAt": "2026-09-20T03:34:54.401Z",
+          "lastCheckedAt": "2026-09-20T03:38:15.276Z",
           "previewImage": "previews/catalog/olaf-projektzentrale-2.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
@@ -94,10 +98,10 @@
           "label": "Frühere öffentliche Netlify-Vorschau",
           "url": "https://immobilien-coach.netlify.app",
           "kind": "historical",
-          "fingerprint": "87ff025b4cc9419b8fc0e1fd0ed7340112fd291bd4ed6cea0fb64975c6d8c77c",
+          "fingerprint": "6025c0da57307fb43f3feb6031925eb358c571426b2a442af8ef207f3e665653",
           "lastHttpStatus": 404,
           "resolvedUrl": "https://immobilien-coach.netlify.app/",
-          "lastCheckedAt": "2026-09-20T03:34:54.401Z"
+          "lastCheckedAt": "2026-09-20T03:38:15.276Z"
         }
       ],
       "files": [
@@ -400,10 +404,10 @@
           "label": "Öffentlicher KI Tool Hub",
           "url": "https://olaf-projektzentrale.onrender.com/apps/ki-tools/",
           "kind": "live",
-          "fingerprint": "6d64a0e3c8ab969c48e54e4225377a19968f9a21f6d1eee0cc6dc1bf24c0ff95",
+          "fingerprint": "4a01f6908cf9229749f20d77a9f5981da6c5b6b7b440a1f08fff92faba00e819",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://olaf-projektzentrale.onrender.com/apps/ki-tools/",
-          "lastCheckedAt": "2026-09-20T03:34:54.401Z"
+          "lastCheckedAt": "2026-09-20T03:38:15.276Z"
         },
         {
           "label": "Niklas Volland Nutzen-Dashboard",
@@ -692,10 +696,10 @@
           "label": "Öffentlicher ChatGPT Share",
           "url": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
           "kind": "live",
-          "fingerprint": "88c4be02176ddea6989b5453f1ec85df5082f099c893a759301ac53e70ca2451",
+          "fingerprint": "2f6acbbe03c3391a2560e9ba4cb2eb548a0a3c71c4ca42553b854082deff79ca",
           "lastHttpStatus": 200,
           "resolvedUrl": "https://chatgpt.com/share/67aa8a7e-a8f0-8008-bb7c-3262cd0691de",
-          "lastCheckedAt": "2026-09-20T03:34:54.401Z",
+          "lastCheckedAt": "2026-09-20T03:38:15.276Z",
           "previewImage": "previews/catalog/chatgpt-share-pitch-1.png",
           "previewKind": "website-screenshot",
           "contentStatus": "ok"
