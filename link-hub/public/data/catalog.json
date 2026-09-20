@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 321,
-    "updatedAt": "2026-09-20T03:34:54.401Z",
+    "version": 322,
+    "updatedAt": "2026-09-20T03:38:00.000Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -373,15 +373,15 @@
       "title": "Olafs KI Tool Hub",
       "category": "KI Updates & Wissen",
       "source": "KI Agenten Werkstatt + Olaf Projektzentrale",
-      "description": "Persönliche KI-Tool-Datenbank mit 40 Tools, 11 Kategorien, Kai Score, Filtern, konkreten Olaf-Anwendungsfällen und abhaktbaren nächsten Aufgaben.",
+      "description": "Persönliche KI-Datenbank mit 40 bewerteten Kai-Score-Tools plus strukturiertem Niklas Tech Radar aus aktuell verifizierten technischen Recherchen, Workflows und Agenten-Themen.",
       "objective": "Für jede Aufgabe schnell das passende KI-Tool finden und daraus konkrete, umsetzbare nächste Schritte für Olafs Projekte ableiten.",
       "phase": "Öffentlich auf Render veröffentlicht",
       "progress": 96,
       "priority": "sehr hoch",
       "status": "active",
       "statusText": "Die Tool-Datenbank ist als eigene Unterseite in die Projektzentrale integriert und mit dem Niklas-Volland-Dashboard verknüpft.",
-      "currentState": "40 Tools sind mit Kategorie, Score, Gratis-/Datenschutz-Hinweis, persönlicher Relevanz, Anwendungsfällen und je einer nächsten Aufgabe erfasst. Suche, Filter und lokaler Aufgabenstatus sind eingebaut.",
-      "nextAction": "Künftig neue relevante Tools und Niklas-Volland-Funde laufend ergänzen und mit konkreten Olaf-Anwendungsfällen versehen.",
+      "currentState": "40 bewertete Tools und 19 verifizierte Niklas-Tech-Rechercheeinträge sind getrennt strukturiert. Der Tech Radar wird aus einer eigenen JSON-Datenbank geladen und enthält Quelle, Kernaussage, Olaf-Anwendungsfall und nächste Aufgabe.",
+      "nextAction": "Neue technische Niklas-Volland-Funde künftig als strukturierte Radar-Einträge ergänzen; nur verifizierte Kandidaten in die bewertete 40-Tool-Liste übernehmen.",
       "openPoints": [],
       "tags": [
         "KI Tools",
@@ -389,7 +389,11 @@
         "Niklas Volland",
         "Aufgaben",
         "Dashboard",
-        "Tool-Datenbank"
+        "Tool-Datenbank",
+        "Tech Radar",
+        "Agenten",
+        "Workflows",
+        "Research DB"
       ],
       "links": [
         {
@@ -421,12 +425,17 @@
         }
       ],
       "files": [
-        "link-hub/public/apps/ki-tools/index.html"
+        "link-hub/public/apps/ki-tools/index.html",
+        "link-hub/public/data/niklas-tech-radar.json"
       ],
       "timeline": [
         {
           "date": "2026-09-20",
           "text": "Erste personalisierte Fassung mit 40 Tools, Olaf-Anwendungsfällen und abhaktbaren Aufgaben erstellt."
+        },
+        {
+          "date": "2026-09-20",
+          "text": "Niklas Tech Radar als strukturierte Datenbank mit 19 verifizierten technischen Recherche- und Workflow-Einträgen ergänzt."
         }
       ],
       "previewPolicy": "no-preview"
