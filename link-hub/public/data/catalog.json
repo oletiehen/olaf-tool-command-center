@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Olaf Tiehen Projekt- und Prozesskatalog",
-    "version": 319,
-    "updatedAt": "2026-09-20T00:54:33.751Z",
+    "version": 320,
+    "updatedAt": "2026-09-20T03:33:23.071Z",
     "linkPolicy": "Als Website-Link werden ausschließlich öffentliche HTTPS-Adressen geführt. Lokale, Sandbox- und interne App-Pfade sind keine öffentlichen URLs."
   },
   "items": [
@@ -366,6 +366,58 @@
       "previewImage": "previews/catalog/niklas-volland-dashboard-1.png",
       "previewKind": "website-screenshot",
       "previewPolicy": "website-screenshot"
+    },
+    {
+      "id": "olaf-ki-tool-hub",
+      "kind": "artifact",
+      "title": "Olafs KI Tool Hub",
+      "category": "KI Updates & Wissen",
+      "source": "KI Agenten Werkstatt + Olaf Projektzentrale",
+      "description": "Persönliche KI-Tool-Datenbank mit 40 Tools, 11 Kategorien, Kai Score, Filtern, konkreten Olaf-Anwendungsfällen und abhaktbaren nächsten Aufgaben.",
+      "objective": "Für jede Aufgabe schnell das passende KI-Tool finden und daraus konkrete, umsetzbare nächste Schritte für Olafs Projekte ableiten.",
+      "phase": "Öffentlich auf Render veröffentlicht",
+      "progress": 96,
+      "priority": "sehr hoch",
+      "status": "active",
+      "statusText": "Die Tool-Datenbank ist als eigene Unterseite in die Projektzentrale integriert und mit dem Niklas-Volland-Dashboard verknüpft.",
+      "currentState": "40 Tools sind mit Kategorie, Score, Gratis-/Datenschutz-Hinweis, persönlicher Relevanz, Anwendungsfällen und je einer nächsten Aufgabe erfasst. Suche, Filter und lokaler Aufgabenstatus sind eingebaut.",
+      "nextAction": "Künftig neue relevante Tools und Niklas-Volland-Funde laufend ergänzen und mit konkreten Olaf-Anwendungsfällen versehen.",
+      "openPoints": [],
+      "tags": [
+        "KI Tools",
+        "KI Agenten Werkstatt",
+        "Niklas Volland",
+        "Aufgaben",
+        "Dashboard",
+        "Tool-Datenbank"
+      ],
+      "links": [
+        {
+          "label": "Öffentlicher KI Tool Hub",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/ki-tools/",
+          "kind": "live"
+        },
+        {
+          "label": "Niklas Volland Nutzen-Dashboard",
+          "url": "https://olaf-projektzentrale.onrender.com/apps/niklas-volland/",
+          "kind": "reference"
+        },
+        {
+          "label": "Datenquelle KI Agenten Werkstatt",
+          "url": "https://kiagentenwerkstatt.de/tools",
+          "kind": "reference"
+        }
+      ],
+      "files": [
+        "link-hub/public/apps/ki-tools/index.html"
+      ],
+      "timeline": [
+        {
+          "date": "2026-09-20",
+          "text": "Erste personalisierte Fassung mit 40 Tools, Olaf-Anwendungsfällen und abhaktbaren Aufgaben erstellt."
+        }
+      ],
+      "previewPolicy": "no-preview"
     },
     {
       "id": "oc-reiseplan",
